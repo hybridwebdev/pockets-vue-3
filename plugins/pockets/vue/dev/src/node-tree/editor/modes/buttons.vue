@@ -57,5 +57,6 @@ let editor = inject('pockets-node-tree-editor')
 let copy = () => {
     editor.mode = "copy"
     editor.selectNode(editor.active.activateInfo)
+    console.log(editor.selectedNodes)
 }
 </script>

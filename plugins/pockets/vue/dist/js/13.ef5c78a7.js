@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunktest"]=self["webpackChunktest"]||[]).push([[13],{1013:function(e,t,r){r.r(t),r.d(t,{default:function(){return a}});var n=r(821),s=r(4636);const o={inheritAttrs:!1};var u=(0,n.defineComponent)({...o,__name:"provider",props:{use:{type:String,required:!0}},setup(e){const t=e;let r=(0,n.computed)((()=>s.F.store.use(t.use)));return(e,t)=>(0,n.unref)(r)?(0,n.renderSlot)(e.$slots,"default",(0,n.normalizeProps)((0,n.mergeProps)({key:0},(0,n.unref)(r)))):(0,n.createCommentVNode)("",!0)}});const p=u;var a=p}}]);
+//# sourceMappingURL=13.ef5c78a7.js.map

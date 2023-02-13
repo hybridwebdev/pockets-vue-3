@@ -1,0 +1,36 @@
+.loading-container {
+    position:relative;
+    &:after,
+    &:before {
+        opacity: 0;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        position:absolute;
+    }
+    &[loading=true]{
+        min-height:3rem;
+        &:after {
+            background-color: var(--bs-black);
+            z-index:1;
+            content: "";
+            opacity:.5;
+        }
+        &:before {
+            opacity: 1;
+            content: "\f110";
+            font-family: FontAwesome;
+            color: var(--bs-primary-md);
+            font-weight:800;
+            font-size:3rem;
+            -webkit-animation: fa-spin 2s infinite linear;
+            animation: fa-spin 2s infinite linear;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index:2
+        }
+    }
+
+}

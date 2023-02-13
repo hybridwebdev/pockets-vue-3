@@ -1,0 +1,142 @@
+
+$theme-colors: (
+  
+  "primary-lt": #CDF7F6,
+  'primary-md': #8FB8DE,
+  "primary-dk": #95A6CD,
+
+  "accent-lt": #9A94BC,
+  'accent-md': #9B72A8,
+  'accent-dk': #835878,
+
+  "white": #fff,
+  "black": #000,
+
+  "danger": #ff4136
+
+);
+
+
+$container-max-widths: (
+  xxl: 1440px
+);
+
+$spacers:(
+  0: 0px,
+  1: 10px,
+  2: 20px,
+  3: 30px,
+  4: 40px,
+  5: 50px,
+  6: 60px,
+  7: 70px,
+  8: 80px,
+  9: 90px,
+  10: 100px,
+);
+
+$gutters: (
+  0: 0px,
+  1: 10px,
+  2: 20px,
+  3: 30px,
+  4: 40px,
+  5: 50px,
+);
+
+$grid-gutter-width: 40px; // this ends up divided by 2 cuz bootstrap
+
+
+$input-padding-y: 15px;
+$input-padding-x: 15px;
+
+
+$grid-breakpoints: (
+  none: 0,
+  xs: 320px,
+  sm: 540px,
+  md: 768px,
+  lg: 1040px,
+  xl: 1200px,
+  xxl: 1440px
+);
+
+$enable-negative-margins: true;
+
+
+
+$enable-cssgrid: true;
+
+$utilities: (
+  "font-size": (
+      property: font-size,
+      class: fs,
+      responsive: true,
+      values: (
+        10: 10px,
+        12: 12px,
+        14: 14px
+      )
+  ),
+  "max-width": (
+      property: max-width,
+      class: mw,
+      responsive: true,
+      values: (
+        10: 10vw,
+        20: 20vw,
+        25: 25vw,
+        30: 30vw,
+        40: 40vw,
+        50: 50vw,
+        60: 60vw, 
+        70: 70vw,
+        80: 80vw,
+        90: 90vw,
+        100: 100vw,
+        "100px": 100px,
+        "150px": 150px
+      )
+  ),
+  "max-height": (
+      property: max-height,
+      class: mh,
+      responsive: true,
+      values: (
+        10: 10vh,
+        20: 20vh,
+        25: 25vh,
+        30: 30vh,
+        40: 40vh,
+        50: 50vh,
+        60: 60vh, 
+        70: 70vh,
+        80: 80vh,
+        90: 90vh,
+        100: 100vh,
+        "100px": 100px,
+        "150px": 150px
+      )
+  ),
+  "columns": (
+    property: columns,
+    css-var: true,
+    responsive: true,
+    values: (
+      1: 1,
+      2: 2,
+      3: 3,
+      4: 4,
+      5: 5,
+      6: 6,
+      7: 7,
+      8: 8,
+    ),
+  ),
+);
+
+
+$input-focus-box-shadow: transparent;
+$transition-collapse: none;
+
+ 

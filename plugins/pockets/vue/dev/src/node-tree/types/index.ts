@@ -75,6 +75,7 @@ export type TreeNodeApi = TreeData & {
         node: TreeNodeResolvedPath
         parent: TreeNodeResolvedPath | null
         source: string // full qualified path
+        parentSource: string | null // full qualified path
     }
     
     tree: TreeData['tree']

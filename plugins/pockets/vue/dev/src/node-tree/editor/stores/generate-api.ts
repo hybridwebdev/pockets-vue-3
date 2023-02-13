@@ -60,7 +60,9 @@ let getPaths = (api:TreeNodeApi) => {
     return {
         node,
         parent,
-        source: [sourcePath, node.joined ].join('.')
+        source: [sourcePath, node.joined ].join('.'),
+        parentSource: null
+        //parent ? [sourcePath, parent.joined ].join('.') : null ,
     }
 }
 
@@ -108,7 +110,7 @@ let addSibling = (api:TreeNodeApi) => {
 let addInside = ( api:TreeNodeApi ) => {
     if(!api.hasNodes) return false;
     return async(node:TreeNode, addIndex: number = 0): Promise<TreeNodePathArray> => {
-        
+
         if(!api.node)  return []
 
         api.node.nodes = $pockets.utils.array.insert(api.node.nodes, addIndex, node)

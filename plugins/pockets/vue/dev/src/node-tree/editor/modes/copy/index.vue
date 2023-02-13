@@ -37,7 +37,7 @@ let confirm = async (location) => {
             // editor.active.addSibling(selectedNode.node, false)
         },
         before: async () => {
-            console.log(node)
+            console.log(editor.active)
             // selectedNode.remove()
             // editor.active.addSibling(selectedNode.node, false)
         },

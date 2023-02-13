@@ -45,7 +45,7 @@
 </template>
 <script lang='ts' setup>
 import { $pockets } from "@/pockets/"
-import { inject, ref } from "vue"
+import { inject, ref, reactive } from "vue"
 import pocketsNodeTreeNodeSelector from "@/node-tree/editor/sections/node-list/node-selector"
 import nodePlacement from "@/node-tree/editor/sections/node-placement"
 
@@ -74,19 +74,20 @@ let confirm = async (location) => {
     if(!copy) {
         return;
     }
-    let path;
-    switch(location) {
-        case 'before':
-            path = await editor.active.addSibling(copy, false)
-            break;
-        case 'after':
-            path = await editor.active.addSibling(copy)
-            break;
-        case 'inside':
-            path = await editor.active.addInside(copy)
-            break;
-        default:
+    let map = {
+        before: async () => {
+            return await editor.active.addSibling(copy, false)
+        },
+        after: async () => {
+            return await editor.active.addSibling(copy)
+        },
+        inside: async () => {
+            return await editor.active.addInside(copy)
+        }
     }
+    
+    let path = await map[location]()
+    console.log(path)
     if(path) activateNewNode(path)
 }
 let activateNewNode = (path) => {

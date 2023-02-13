@@ -34,6 +34,6 @@ export let editor:TreeEditor = reactive( {
             return;
         }
         selectedNodes.value.push(o)
-    }
+    },
 
 } )

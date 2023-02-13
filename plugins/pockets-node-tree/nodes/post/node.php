@@ -2,7 +2,7 @@
 namespace pockets_node_tree\nodes\post;
 
 class node extends \pockets_node_tree\nodes\node {
- a
+
     public $edit_fields = [
         [
             'ID'=> "post-settings",

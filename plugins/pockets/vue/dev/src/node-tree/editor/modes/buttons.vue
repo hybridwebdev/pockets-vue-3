@@ -31,14 +31,22 @@
         v-tooltip='"Clone Item"'
     />
 
-    <button 
+    <!-- <button 
         class='fa fa-solid fa-scissors btn border-0 btn-accent-dk fw-8 p-1' 
         :class="{active: editor.mode=='cut'}"
         @click='editor.mode="cut"' 
-        :disabled='!editor.active.cut'
+        :disabled='!editor.active.hasParent'
         v-tooltip='"Cut Item"'
-    />
+    /> -->
 
+    <button 
+        class='fa fa-solid fa-copy btn border-0 btn-accent-dk fw-8 p-1' 
+        :class="{active: editor.mode=='copy'}"
+        @click='copy' 
+        :disabled='!editor.active.hasParent'
+        v-tooltip='"Copy Item"'
+    />
+    
 </template>
 <script lang='ts' setup>
 
@@ -46,4 +54,9 @@ import { inject } from "vue"
 
 let editor = inject('pockets-node-tree-editor')
 
+let copy = () => {
+    editor.mode = "copy"
+    editor.selectNode({ tree: editor.active.tree, path: editor.active.path })
+    console.log(editor.selectedNodes)
+}
 </script>

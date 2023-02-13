@@ -43,6 +43,10 @@ export type TreeEditor = {
     }
 
     active: TreeNodeApi | false
+    /**
+        selected is used for moving/dragging/cutting a node
+    */
+    selectedNodes: Array<TreeNodeApi | false> 
     
     triggerNode(o:TreeData) : void
     

@@ -7,6 +7,8 @@ import { reactive, ref, computed } from "vue"
 
 let active = ref<TreeData | false>(false)  
 
+let selectedNodes = ref<Array<TreeData>>([])  
+
 export let editor:TreeEditor = reactive( {
 
     show: true,
@@ -19,9 +21,18 @@ export let editor:TreeEditor = reactive( {
         fields: []
     },
     active: computed<TreeNodeApi | false>( () => generateApi(active.value) ),
-
+    
+    selectedNodes: computed<Array<TreeNodeApi | false>>( () => {
+        return selectedNodes.value.map( (e) => {
+            console.log(e)
+            return generateApi(e)
+        } )
+    } ),
     triggerNode: (o: TreeData | false) => {
         active.value = o
+    },
+    selectNode: (o: TreeData) => {
+        selectedNodes.value.push(o)
     }
 
 } )

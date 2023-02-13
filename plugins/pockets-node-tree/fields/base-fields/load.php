@@ -3,14 +3,14 @@ namespace pockets_node_tree\fields\base_fields;
 class load extends \pockets_node_tree\fields\field {
     public $schemas = [
         [
-            'ID'=> "class",
-            'content'=> ['template' => 'fields/attributes/class'],
+            'ID'=> "base-attributes",
+            'content'=> ['template' => 'fields/attributes/base'],
             'group'=> "Attributes"
         ],
         [
             'ID'=> "node-selector",
             'content'=> ['template' => 'fields/attributes/node-selector'],
-            'group'=> "Attributes"
+            'group'=> "Node"
         ],
     ];
 }

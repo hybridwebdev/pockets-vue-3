@@ -11,7 +11,7 @@ class node extends \pockets_node_tree\nodes\node {
     ];
 
     public $schema = [
-        "fields" => ['class', 'content', 'node-selector'],
+        "fields" => ['base-attributes', 'content', 'node-selector'],
         "title" => "Render Html",
         "node" => [
             'el' => "render-html",

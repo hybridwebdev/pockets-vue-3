@@ -16,7 +16,7 @@ class node extends \pockets_node_tree\nodes\node {
             ],
         ],
     ];
-    function initialize($node){
+    function hydrate($node){
         $innerHTML = wp_nav_menu( [
             'theme_location'=>'menu-1',
             'echo'=> false,
@@ -28,6 +28,7 @@ class node extends \pockets_node_tree\nodes\node {
         $node['props']['innerHTML'] = $innerHTML;
         return $node;
     }
+
     function render($node){
         return [
             'open' => $this->apply_props("<menu class='{{{class}}}'>{{{innerHTML}}}", $node['props']),

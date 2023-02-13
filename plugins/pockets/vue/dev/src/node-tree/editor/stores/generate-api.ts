@@ -111,7 +111,9 @@ let addInside = ( api:TreeNodeApi ) => {
     if(!api.hasNodes) return false;
     return async(node:TreeNode, addIndex: number = 0): Promise<TreeNodePathArray> => {
 
-        if(!api.node)  return []
+        if(!api.node)  {
+            return []
+        }
 
         api.node.nodes = $pockets.utils.array.insert(api.node.nodes, addIndex, node)
         
@@ -167,7 +169,9 @@ export let generateApi = (object:TreeData | false) : TreeNodeApi | false => {
             /**
                 path can be changed directly in the api, allowing it to traverse the tree as it needs.
             */
-            set: (path) => object.path = path
+            set: (path) => {
+                object.path = path
+            }
         } ),
 
         paths: computed(() => getPaths(api) ),

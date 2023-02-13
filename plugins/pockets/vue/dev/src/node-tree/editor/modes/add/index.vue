@@ -45,7 +45,7 @@
 </template>
 <script lang='ts' setup>
 import { $pockets } from "@/pockets/"
-import { inject, ref, reactive } from "vue"
+import { inject, ref, reactive, nextTick } from "vue"
 import pocketsNodeTreeNodeSelector from "@/node-tree/editor/sections/node-list/node-selector"
 import nodePlacement from "@/node-tree/editor/sections/node-placement"
 
@@ -87,13 +87,14 @@ let confirm = async (location) => {
     }
     
     let path = await map[location]()
-    console.log(path)
+    
     if(path) activateNewNode(path)
 }
 let activateNewNode = (path) => {
     editor.active.path = path
     selected = false
     editor.mode = 'edit'
+
 }
 
 </script>

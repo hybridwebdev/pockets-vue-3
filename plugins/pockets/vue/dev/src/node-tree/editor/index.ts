@@ -23,10 +23,7 @@ export let editor:TreeEditor = reactive( {
     active: computed<TreeNodeApi | false>( () => generateApi(active.value) ),
     
     selectedNodes: computed<Array<TreeNodeApi | false>>( () => {
-        return selectedNodes.value.map( (e) => {
-            console.log(e)
-            return generateApi(e)
-        } )
+        return selectedNodes.value.map( generateApi )
     } ),
     setActiveNode: (o: TreeData | false) => {
         active.value = o

@@ -42,8 +42,8 @@
     <button 
         class='fa fa-solid fa-copy btn border-0 btn-accent-dk fw-8 p-1' 
         :class="{active: editor.mode=='copy'}"
-        @click='copy' 
-        :disabled='!editor.active.hasParent'
+        @click='editor.mode = "copy"' 
+        :disabled='!editor.active.hasParent || editor.selectedNodes.length > 0'
         v-tooltip='"Copy Item"'
     />
     
@@ -56,7 +56,5 @@ let editor = inject('pockets-node-tree-editor')
 
 let copy = () => {
     editor.mode = "copy"
-    editor.selectNode(editor.active.activateInfo)
-    console.log(editor.selectedNodes)
 }
 </script>

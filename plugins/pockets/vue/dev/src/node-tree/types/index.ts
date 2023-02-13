@@ -49,6 +49,7 @@ export type TreeEditor = {
     selectedNodes: Array<TreeNodeApi | false> 
     
     triggerNode(o:TreeData) : void
+    selectNode(o:TreeData) : void
     
 }
 
@@ -61,7 +62,15 @@ export type TreeNode = {
 }
 
 export type TreeNodeApi = TreeData & {
-    
+
+    /**
+        activateInfo is an object that can be directly passed to generateApi
+    */
+    activateInfo: {
+        tree: TreeData['tree'],
+        path: TreeNodePathArray
+    }
+
     paths: {
         node: TreeNodeResolvedPath
         parent: TreeNodeResolvedPath | null

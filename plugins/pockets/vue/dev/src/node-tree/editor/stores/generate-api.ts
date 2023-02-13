@@ -153,6 +153,12 @@ export let generateApi = (object:TreeData | false) : TreeNodeApi | false => {
 
     let api:TreeNodeApi = reactive( {
         
+        activateInfo: computed(() => {
+            return {
+                tree, 
+                path
+            }
+        }),
         tree,
         path: computed<TreeNodePathArray>( {
             get: () =>  path,

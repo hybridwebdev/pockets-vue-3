@@ -25,7 +25,7 @@
             <button 
                 class='fa fa-times p-1 btn border-0 btn-accent-dk fw-8 p-1 rounded-0' 
                 v-if='editor.active && editor.show' 
-                @click='editor.triggerNode(false)'
+                @click='editor.setActiveNode(false)'
                 v-tooltip='"Close"'
             />
         </div>

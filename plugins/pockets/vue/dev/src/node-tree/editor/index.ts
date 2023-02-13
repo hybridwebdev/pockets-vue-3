@@ -28,7 +28,7 @@ export let editor:TreeEditor = reactive( {
             return generateApi(e)
         } )
     } ),
-    triggerNode: (o: TreeData | false) => {
+    setActiveNode: (o: TreeData | false) => {
         active.value = o
     },
     selectNode: (o: TreeData) => {

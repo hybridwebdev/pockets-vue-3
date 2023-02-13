@@ -18,6 +18,6 @@ import { inject } from "vue"
 let editor = inject("pockets-node-tree-editor")
 let click = async () => {
     await editor.active.remove()
-    editor.triggerNode(false)
+    editor.setActiveNode(false)
 }
 </script>

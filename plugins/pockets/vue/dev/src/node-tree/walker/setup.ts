@@ -52,7 +52,7 @@ export let setup = (props) => {
     return {
         clickHandler: () =>  {
             if(!tree || !editor.show) return
-            return editor.triggerNode( {
+            return editor.setActiveNode( {
                 path, 
                 tree
             })

@@ -48,7 +48,7 @@ export type TreeEditor = {
     */
     selectedNodes: Array<TreeNodeApi | false> 
     
-    triggerNode(o:TreeData) : void
+    setActiveNode(o:TreeData) : void
     selectNode(o:TreeData) : void
     
 }

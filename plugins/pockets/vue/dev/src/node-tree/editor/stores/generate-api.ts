@@ -193,6 +193,7 @@ export let generateApi = (object:TreeData | false) : TreeNodeApi | false => {
         save: computed(() => save(api)),
         hydrate: computed(() => hydrate(api)),
         initialize: computed(() => initialize(api)),
+
     } )
 
 

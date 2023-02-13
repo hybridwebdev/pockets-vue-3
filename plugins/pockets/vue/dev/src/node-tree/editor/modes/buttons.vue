@@ -54,7 +54,4 @@ import { inject } from "vue"
 
 let editor = inject('pockets-node-tree-editor')
 
-let copy = () => {
-    editor.mode = "copy"
-}
 </script>

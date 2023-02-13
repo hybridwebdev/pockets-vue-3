@@ -1,7 +1,12 @@
 <template>
-    <div>    
+    <div v-if='editor.selectedNodes.length==0'>    
         <button @click='trigger'>
             Copy Element
+        </button>
+    </div>
+    <div v-if='!editor.selectedNodes.length==0'>    
+        <button @click='confirm'>
+            Confirm Placement
         </button>
     </div>
 </template>

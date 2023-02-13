@@ -28,7 +28,11 @@ export let editor:TreeEditor = reactive( {
     setActiveNode: (o: TreeData | false) => {
         active.value = o
     },
-    selectNode: (o: TreeData) => {
+    selectNode: (o: TreeData | false) => {
+        if(!o) {
+            selectedNodes.value = []
+            return;
+        }
         selectedNodes.value.push(o)
     }
 

@@ -12,9 +12,7 @@ let createApi = (props) => {
     let getNode = (path: path ) => {
     
         let $path = path.join('.nodes.')
-
         let index = path.slice(-1)[0]
-
         let node = computed( () => $pockets.utils.object.get( $path, props) )
         
         let parent = computed( () => {
@@ -68,7 +66,7 @@ export let api = (props) => {
         
     }
     
-    // let el2 = api.getNode(['root', 0, 0])
+    let el2 = api.getNode(['root', 0])
 
     // if(el2.clone.self) {
 

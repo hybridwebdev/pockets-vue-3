@@ -1,33 +1,10 @@
 import { reactive, computed } from "vue"
 import { $pockets } from "@/pockets"
-import { useAdd } from "./use-add"
-import { useRemove } from "./use-remove"
-
+import { useAdd } from "./add"
+import { useRemove } from "./remove"
+import { useClone } from "./clone"
+import { useCrud } from "./crud"
 type path = Array<string | number>
-
-
-let useClone = (api) => {
-    let clone = (index:number) => {
-        // let targetNode = api.node?.nodes[index] 
-        // if(!targetNode) return;
-        // api.insert(index, $pockets.utils.object.clone( targetNode ) )
-        // return path.concat(index)
-    }
-    return {
-        clone
-    }
-}
-
-let useCrud = (api) => {
-    let initialize = async () => {
-        try {
-            let res = await $pockets.crud('node-tree/node').init(api.node).read(['initialize:<='])
-            api.node = res
-        } catch(e) {
-
-        }
-    }
-}
 
 let createApi = (props) => {
     
@@ -57,9 +34,12 @@ let createApi = (props) => {
         api.add = useAdd(api)
         api.remove = useRemove(api)
         api.clone = useClone(api)
+        //Object.assign(api, useCrud(api) )
+
         return api
 
     }
+
     return {
         getNode
     }
@@ -84,6 +64,8 @@ export let api = (props) => {
         }
         el.add.inside(add)
         // el.add.inside(add)
+
+        api.getNode(['root', 0, 0]).remove.self()
         
     }
 

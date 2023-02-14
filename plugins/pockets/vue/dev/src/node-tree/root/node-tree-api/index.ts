@@ -13,7 +13,10 @@ let createApi = (props) => {
     
         let $path = path.join('.nodes.')
         let index = path.slice(-1)[0]
-        let node = computed( () => $pockets.utils.object.get( $path, props) )
+        let node = computed( () => {
+            let el = $pockets.utils.object.get( $path, props)
+            return el
+        } )
         
         let parent = computed( () => {
             let parentPath = path.slice(0, -1)

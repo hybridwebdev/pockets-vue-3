@@ -8,7 +8,7 @@
 import treeWalker from "@/node-tree/walker"
 import { provide, computed } from "vue"
 import type { TreeData } from "@/node-tree/types"
-import { api } from './test'
+import { api } from './node-tree-api'
 let props = defineProps( {
     root: {
         type: Object,

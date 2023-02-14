@@ -10,3 +10,9 @@ export type clone = {
     self: false | ( () => path )
     node: false | ( (index: number) => path )
 }
+
+
+export type remove = {
+    self: false | (() => void )
+    node: false | ((index: number) => void )
+}

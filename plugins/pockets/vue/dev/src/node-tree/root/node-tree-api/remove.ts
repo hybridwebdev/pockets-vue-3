@@ -1,14 +1,8 @@
 import { $pockets } from "@/pockets"
-import type { path } from "./types"
+import type { remove } from "./types"
 
-export type useRemove = {
-    self: false | (() => void )
-    node: false | ((index: number) => void )
-}
-
-export let us
 export let useRemove = (api) => {
-    let remove:useRemove = {
+    let remove:remove = {
         self: false,
         node: false
     }

@@ -1,6 +1,7 @@
 import { $pockets } from "@/pockets"
+import type { path } from "./types"
 
-type useRemove = {
+export type useRemove = {
     self: false | (() => void )
     node: false | ((index: number) => void )
 }

@@ -1,16 +1,9 @@
 import { $pockets } from "@/pockets"
+import type { add } from "./types"
 
-type path = Array<string | number>
+export let useAdd = (api) : add => {
 
-type useAdd = {
-    inside: false | ((node: any) => path)
-    before: any
-    after: any
-}
-
-export let useAdd = (api) : useAdd => {
-
-    let add:useAdd = {
+    let add:add = {
         inside: false,
         before: false,
         after: false
@@ -27,7 +20,7 @@ export let useAdd = (api) : useAdd => {
         return api.parent.add.inside(node, api.index)
     }
 
-    if(api.parent && api.parent.hasNodes) {
+    if(api.parent) {
         Object.assign(add, { before, after } )
     }
     if(api.hasNodes ) {

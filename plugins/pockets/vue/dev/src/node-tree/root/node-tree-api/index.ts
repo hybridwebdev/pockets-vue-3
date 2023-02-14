@@ -1,10 +1,11 @@
 import { reactive, computed } from "vue"
 import { $pockets } from "@/pockets"
+
 import { useAdd } from "./add"
 import { useRemove } from "./remove"
 import { useClone } from "./clone"
-import { useCrud } from "./crud"
-type path = Array<string | number>
+
+import type { path } from "./types"
 
 let createApi = (props) => {
     
@@ -34,7 +35,6 @@ let createApi = (props) => {
         api.add = useAdd(api)
         api.remove = useRemove(api)
         api.clone = useClone(api)
-        //Object.assign(api, useCrud(api) )
 
         return api
 
@@ -64,8 +64,12 @@ export let api = (props) => {
         }
         el.add.inside(add)
         // el.add.inside(add)
+        
+        let el2 = api.getNode(['root', 0, 0])
+        if(el2.clone.self) {
 
-        api.getNode(['root', 0, 0]).remove.self()
+            el2.clone.self()
+        }
         
     }
 

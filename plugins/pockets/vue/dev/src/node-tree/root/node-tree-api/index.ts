@@ -13,6 +13,9 @@ let useClone = (api) => {
         // api.insert(index, $pockets.utils.object.clone( targetNode ) )
         // return path.concat(index)
     }
+    return {
+        clone
+    }
 }
 
 let useCrud = (api) => {
@@ -52,8 +55,8 @@ let createApi = (props) => {
         })
 
         api.add = useAdd(api)
-        useRemove(api)
-        useClone(api)
+        api.remove = useRemove(api)
+        api.clone = useClone(api)
         return api
 
     }

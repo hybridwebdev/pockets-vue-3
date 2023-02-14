@@ -1,6 +1,6 @@
 import { $pockets } from "@/pockets"
 export let useRemove = (api) => {
-    api.remove = {
+    return {
         node: (index) => {
             api.node.nodes = $pockets.utils.array.omit(api.node.nodes, index)
         },

@@ -8,9 +8,10 @@ export let useRemove = (api) => {
     }
     let node = (index: number) => {
         api.node.nodes = $pockets.utils.array.omit(api.node.nodes, index)
+        return []
     }
     let self = () => {
-        api.parent.remove.node(api.index)
+        return api.parent.remove.node(api.index)
     }
     if(api.parent) {
         remove.self = self

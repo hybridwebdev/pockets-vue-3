@@ -11,7 +11,6 @@ export type clone = {
     node: false | ( (index: number) => path )
 }
 
-
 export type remove = {
     self: false | ( () => path )
     node: false | ( (index: number) => path )

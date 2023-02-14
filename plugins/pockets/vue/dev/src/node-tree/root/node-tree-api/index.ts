@@ -51,6 +51,7 @@ export let api = (props) => {
     let el = api.getNode(['root', 0])
 
     if(el.add.inside) {
+
         let add = {
             el: "img",
             props: {
@@ -63,15 +64,16 @@ export let api = (props) => {
             }
         }
         el.add.inside(add)
-        // el.add.inside(add)
-        
-        let el2 = api.getNode(['root', 0, 0])
-        if(el2.clone.self) {
-
-            el2.clone.self()
-        }
+        el.add.inside(add)
         
     }
+    
+    // let el2 = api.getNode(['root', 0, 0])
+
+    // if(el2.clone.self) {
+
+    //     el2.clone.self()
+    // }
 
     
 }

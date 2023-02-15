@@ -1,30 +1,30 @@
 import { $pockets } from "@/pockets"
-import type { add } from "./types"
+import type { add, TreeNode } from "./types"
 
 export let useAdd = (api) : add => {
 
-    let add:add = {
-        inside: false,
-        before: false,
-        after: false
-    }
-
-    let inside = (node: any, index: number = 0) => {
+    let inside = (node: TreeNode, index: number = 0) => {
         api.node.nodes = $pockets.utils.array.insert(api.node.nodes, index, node)
         return []
     }
-    let after = (node: any) => {
+    let after = (node: TreeNode) => {
         return api.parent.add.inside(node, api.index + 1)
     }
-    let before = (node: any) => {
+    let before = (node: TreeNode) => {
         return api.parent.add.inside(node, api.index)
     }
 
-    if(api.parent) {
-        Object.assign(add, { before, after } )
+    let add:add = {
+        inside,
+        before,
+        after
     }
-    if(api.hasNodes ) {
-        add.inside = inside
+
+    if(!api.parent) {
+        Object.assign(add, { before: false, after: false } )
+    }
+    if(!api.hasNodes ) {
+        add.inside = false
     }
 
     return add

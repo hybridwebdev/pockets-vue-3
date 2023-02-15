@@ -7,10 +7,10 @@ import { useClone } from "./clone"
 import { useSchema } from './schema'
 import { editor } from "@/node-tree/editor"
 
-import type { path } from "./types"
+import type { path, TreeNodeApi, TreeNodeApiProps } from "./types"
 import { useEditFields } from "./edit-fields"
 
-let createApi = (props) => {
+let createApi = (props:TreeNodeApiProps) => {
     
     let getNode = (path: path ) => {
     
@@ -23,7 +23,7 @@ let createApi = (props) => {
             /**
                 No node found, thus cannot continue.
             */
-            return
+            return false;
         }
 
         let parent = computed( () => {
@@ -63,7 +63,7 @@ export let api = (props) => {
 
     let el = api.getNode(['root', 0])
 
-    if(el.add.inside) {
+    if(el?.add.inside) {
 
         let add = {
             el: "img",

@@ -1,9 +1,9 @@
 export type path = Array<string | number>
 
 export type add = {
-    inside: false | ( (node: any, index: number) => path)
-    before: false | ( (node: any) => path)
-    after: false | ( (node: any) => path)
+    inside: false | ( (node: TreeNode, index: number) => path)
+    before: false | ( (node: TreeNode) => path)
+    after: false | ( (node: TreeNode) => path)
 }
 
 export type clone = {
@@ -38,4 +38,18 @@ export type TreeNode = {
     props: any
     data?: any,
     schema: string
+}
+
+export type TreeNodeApi = {
+    [key: string] : any
+}
+
+export type TreeNodeApiProps = {
+    root: TreeNode
+    source: {
+        // represents where the tree is saved to or loaded from
+        ID: number
+        type: string
+        metaKey: string
+    }
 }

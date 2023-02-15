@@ -19,7 +19,11 @@ export let useAdd = (api) : add => {
         before,
         after
     }
-
+    if(!api.node) return {
+        inside: false,
+        after: false,
+        before: false
+    }
     if(!api.parent) {
         Object.assign(add, { before: false, after: false } )
     }

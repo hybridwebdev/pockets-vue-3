@@ -43,8 +43,8 @@ let createApi = (props:TreeNodeApiProps) => {
         })
     
         api.add = useAdd(api)
-        api.remove = useRemove(api)
-        api.clone = useClone(api)
+        // api.remove = useRemove(api)
+        // api.clone = useClone(api)
 
         // api.schema = useSchema(api)
         // api.editFields = useEditFields(api)

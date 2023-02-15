@@ -92,7 +92,6 @@ export let api = (props) => {
         
         el.initialize.child(0)
 
-        console.log(el.schema) 
     }
     
 

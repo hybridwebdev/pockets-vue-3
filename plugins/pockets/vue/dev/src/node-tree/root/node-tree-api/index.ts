@@ -19,12 +19,12 @@ let createApi = (props:TreeNodeApiProps) => {
 
         let node = $pockets.utils.object.get( props, $path) ?? false
 
-        if(!node) {
-            /**
-                No node found, thus cannot continue.
-            */
-            return false;
-        }
+        // if(!node) {
+        //     /**
+        //         No node found, thus cannot continue.
+        //     */
+        //     return false;
+        // }
 
         let parent = computed( () => {
             let parentPath = path.slice(0, -1)
@@ -43,11 +43,11 @@ let createApi = (props:TreeNodeApiProps) => {
         })
     
         api.add = useAdd(api)
-        // api.remove = useRemove(api)
-        // api.clone = useClone(api)
+        api.remove = useRemove(api)
+        api.clone = useClone(api)
 
-        // api.schema = useSchema(api)
-        // api.editFields = useEditFields(api)
+        api.schema = useSchema(api)
+        api.editFields = useEditFields(api)
 
         return api
 

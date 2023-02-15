@@ -74,17 +74,20 @@ export let api = (props) => {
             }
         })
 
-        el.add.inside({
+        el.add.inside( {
             el: "img",
             props: {
                 class: 'img-fluid',
                 src: "https://via.placeholder.com/150"
             },
             schema: "image",
-        })
-        // el.remove.node(1)
+        }, 1)
+
+        el.clone.child(1)
+        el.clone.child(2)
+        el.remove.child(2)
         
-        el.initialize.child(1)
+        el.initialize.child(0)
             
     }
     

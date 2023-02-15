@@ -1,5 +1,5 @@
 import { $pockets } from "@/pockets"
-import { TreeNodeApi } from "./types"
+import { TreeNodeApi, TreeNode } from "./types"
 export let useCrud = (api : TreeNodeApi) => {
  
     let createFetcher = (read) => {
@@ -10,7 +10,7 @@ export let useCrud = (api : TreeNodeApi) => {
             if(!child.node) return;
 
             try {
-                let newNode = await $pockets.crud('node-tree/node')
+                let newNode:TreeNode = await $pockets.crud('node-tree/node')
                     .init(child.node)
                     .read(read)
                 
@@ -27,12 +27,8 @@ export let useCrud = (api : TreeNodeApi) => {
     let initializer = createFetcher(['initialize:<='])
 
     let initialize = {
-        self: async () => {
-            return api.parent.initialize.child(api.index)
-        },
-        child: async (index: number) => {
-            return initializer(index)
-        }
+        self: async () => api.parent.initialize.child(api.index),
+        child: async (index: number) => initializer(index)
     }    
 
     api.initialize = initialize

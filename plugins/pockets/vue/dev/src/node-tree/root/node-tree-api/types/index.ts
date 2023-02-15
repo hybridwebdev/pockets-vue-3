@@ -7,10 +7,8 @@ export type add = {
 }
 
 export type replace = {
-    self: any
-    child: any
-    // self: false | ( () => path )
-    //node: false | ( (index: number, node: TreeNode) => path )
+    self: false | ( (node: TreeNode) => path)
+    child: false | ( (index: number, node: TreeNode) => path)
 }
 
 

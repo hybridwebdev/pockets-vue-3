@@ -2,24 +2,38 @@ import { $pockets } from "@/pockets"
 import { TreeNodeApi } from "./types"
 export let useCrud = (api : TreeNodeApi) => {
 
-    let call = async (init, read = ['initialize:<='] ) => {
-        try {
-            return await $pockets.crud('node-tree/node')
-                .init(init)
-                .read(read)
-        } catch(e) {
-            return false
+    let createFetcher = (read) => {
+        
+        return async (index: number) => {
+            
+            let node = api.node.nodes[index]
+            if(!node) return;
+
+            try {
+                let newNode = await $pockets.crud('node-tree/node')
+                    .init(node)
+                    .read(read)
+                api.node.nodes[index] = newNode
+            } catch(e) {
+            }
+
+            return []
         }
-    }
 
-
-    let initializeSelf = async () => {
-        api.parent.node.nodes[api.index] = await call(api.node)
     }
     
+    let initializer = createFetcher(['initialize:<='])
+    let hydrater = createFetcher(['hydrate:<='])
+
     let initialize = {
-        self: initializeSelf,
+        self: async () => {
+            return api.parent.initialize.child(api.index)
+        },
+        child: async (index: number) => {
+            return await initializer(index)
+        }
     }    
 
+    api.initialize = initialize
     api.initialize = initialize
 }

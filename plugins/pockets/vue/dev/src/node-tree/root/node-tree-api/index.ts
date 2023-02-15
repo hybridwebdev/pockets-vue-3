@@ -65,12 +65,9 @@ export let api = (props) => {
     if(el.add.inside) {
 
         let add = {
-            el: "div",
-            props: {
-                class: ''
-            },
             schema: "post",
         }
+        
         el.add.inside(add)
         el.clone.node(0)
         el.clone.node(0)

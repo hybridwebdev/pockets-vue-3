@@ -183,11 +183,11 @@ export let generateApi = (object:TreeData | false) : TreeNodeApi | false => {
             return api.node.nodes && Array.isArray( api.node.nodes ) ? true : false
 
         } ) ,
-        node: computed( () => $pockets.utils.object.get( api.paths.node.resolved, tree) ),
+        node: computed( () => $pockets.utils.object.get( tree, api.paths.node.resolved) ),
 
         parent: computed(() => {
             if(!api.hasParent || !api.paths.parent) return false;
-            return $pockets.utils.object.get( api.paths.parent.resolved, tree) ?? false
+            return $pockets.utils.object.get( tree, api.paths.parent.resolved) ?? false
         }),
 
         /*

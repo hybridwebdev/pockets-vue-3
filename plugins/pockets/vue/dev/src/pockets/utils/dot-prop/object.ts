@@ -1,3 +1,5 @@
+import { get } from "lodash"
+
 let set = (path: string, value: any, obj: any) => {
 
     var parts = path.split("."), p=parts.pop() 
@@ -9,7 +11,7 @@ let set = (path: string, value: any, obj: any) => {
     return obj && p ? (obj[p]=value) : undefined 
 }
 
-let get = ( path: string, obj: any ) => path.split('.').reduce( ( o: any, i: string ) => o[i], obj )
+//let get = ( path: string, obj: any ) => path.split('.').reduce( ( o: any, i: string ) => o[i], obj )
 
 export let clone = (o: object) => JSON.parse( JSON.stringify( o ) )
 

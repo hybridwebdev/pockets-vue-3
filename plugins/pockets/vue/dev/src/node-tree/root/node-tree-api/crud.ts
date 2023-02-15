@@ -1,6 +1,7 @@
 import { $pockets } from "@/pockets"
+import { TreeNodeApi } from "./types"
+export let useCrud = (api : TreeNodeApi) => {
 
-export let useCrud = (api) => {
     let initialize = async () => {
         try {
             let res = await $pockets.crud('node-tree/node').init(api.node).read(['initialize:<='])
@@ -9,6 +10,7 @@ export let useCrud = (api) => {
 
         }
     }
+    
     return {
         initialize
     }

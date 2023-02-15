@@ -56,6 +56,9 @@ export type TreeNodeApi = {
     */
     parent: TreeNodeApi
     getChild(index:number) : TreeNodeApi
+    schema: TreeNodeSchema
+    hasNodes: Boolean
+    index: number 
 
 }
 

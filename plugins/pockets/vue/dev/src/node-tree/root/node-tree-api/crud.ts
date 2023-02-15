@@ -23,14 +23,13 @@ export let useCrud = (api : TreeNodeApi) => {
     }
     
     let initializer = createFetcher(['initialize:<='])
-    let hydrater = createFetcher(['hydrate:<='])
 
     let initialize = {
         self: async () => {
             return api.parent.initialize.child(api.index)
         },
         child: async (index: number) => {
-            return await initializer(index)
+            return initializer(index)
         }
     }    
 

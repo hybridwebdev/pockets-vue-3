@@ -1,6 +1,6 @@
 import type { path, TreeNodeApiProps } from "./types"
 
-import { reactive, computed } from "vue"
+import { reactive, computed, nextTick } from "vue"
 import { $pockets } from "@/pockets"
 
 import { useAdd } from "./add"
@@ -64,23 +64,32 @@ export let api = (props) => {
 
     let el = api.getNode(['root', 0])
 
-    if(el.add.inside) {
+    if(el.hasNodes) {
 
-        let add = {
+        el.add.inside({
             schema: "post",
-        }
+            props: {
+                class: 'p-2'
+            }
+        }, 1)
 
-        el.add.inside(add)
-        el.clone.node(0)
-        el.clone.node(0)
-        el.remove.node(0)
+        el.add.inside({
+            el: "img",
+            props: {
+                class: 'img-fluid',
+                src: "https://via.placeholder.com/150"
+            },
+            schema: "image",
+        }, 1)
+        // el.remove.node(1)
+
+        nextTick( async () => {
+            await el.initialize.child(0)
+            el.clone.child(0)
+        })
 
     }
     
-    let n2 = api.getNode(['root', 0, 0])
-    if(n2.node) {
-            n2.initialize.self()
-    }
 
     console.log("Trying to get path that doesnt exist", api.getNode(['root', 0, 3]) )
     

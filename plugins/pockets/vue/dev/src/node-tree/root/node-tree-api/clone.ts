@@ -4,9 +4,9 @@ import type { clone, TreeNodeApi } from "./types"
 export let useClone = (api:TreeNodeApi) : clone => {
     
     let self = () => {
-        return api.parent.clone.node(api.index)
+        return api.parent.clone.child(api.index)
     }
-    let node = (index: number) => {
+    let child = (index: number) => {
         let node = api.node.nodes[index]
         if(node) {
             api.add.inside( $pockets.utils.object.clone( node ), index )
@@ -15,10 +15,10 @@ export let useClone = (api:TreeNodeApi) : clone => {
     }
     let clone: clone = {
         self,
-        node
+        child
     }
     if(!api.hasNodes){
-        clone.node = false
+        clone.child = false
     }
     if(!api.parent) {
         clone.self = false

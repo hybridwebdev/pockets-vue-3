@@ -1,14 +1,17 @@
+import type { path, TreeNodeApiProps } from "./types"
+
 import { reactive, computed } from "vue"
 import { $pockets } from "@/pockets"
 
 import { useAdd } from "./add"
 import { useRemove } from "./remove"
 import { useClone } from "./clone"
-import { useSchema } from './schema'
-import { editor } from "@/node-tree/editor"
 
-import type { path, TreeNodeApiProps } from "./types"
+import { useSchema } from './schema'
 import { useEditFields } from "./edit-fields"
+import { useCrud } from "./crud"
+
+import { editor } from "@/node-tree/editor"
 
 let createApi = (props:TreeNodeApiProps) => {
     
@@ -42,6 +45,8 @@ let createApi = (props:TreeNodeApiProps) => {
 
         api.schema = useSchema(api)
         api.editFields = useEditFields(api)
+        
+        useCrud(api)
 
         return api
 
@@ -76,6 +81,7 @@ export let api = (props) => {
         el.remove.node(0)
         
         console.log(el)
+        el.initialize()
     }
     
     let el2 = api.getNode(['root', 0, 3])

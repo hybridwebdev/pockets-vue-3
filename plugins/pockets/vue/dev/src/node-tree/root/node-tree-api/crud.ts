@@ -2,16 +2,20 @@ import { $pockets } from "@/pockets"
 import { TreeNodeApi } from "./types"
 export let useCrud = (api : TreeNodeApi) => {
 
-    let initialize = async () => {
+    let call = async (init, read = ['initialize:<='] ) => {
         try {
-            let res = await $pockets.crud('node-tree/node').init(api.node).read(['initialize:<='])
-            api.node = res
+            return await $pockets.crud('node-tree/node')
+                .init(init)
+                .read(read)
         } catch(e) {
-
+            return false
         }
     }
-    
-    return {
-        initialize
+        
+    api.initialize = async () => {
+        let r = await call(api.node)
+        console.log(r)
     }
+    
+    
 }

@@ -13,11 +13,13 @@ let createApi = (props) => {
     
         let $path = path.join('.nodes.')
         let index = path.slice(-1)[0]
-        let node = computed( () => {
-            let el = $pockets.utils.object.get( props, $path)
-            return el
-        } )
+
+        let node = computed(() => $pockets.utils.object.get( props, $path))
         
+        if(typeof node.value =='undefined') {
+            return
+        }
+
         let parent = computed( () => {
             let parentPath = path.slice(0, -1)
             if(parentPath.length == 0) return false
@@ -30,7 +32,7 @@ let createApi = (props) => {
             node,
             parent,
             index,
-            hasNodes
+            hasNodes,
         })
 
         api.add = useAdd(api)
@@ -69,12 +71,12 @@ export let api = (props) => {
         
     }
     
-    let el2 = api.getNode(['root', 0])
+    let el2 = api.getNode(['root', 0, 0])
 
-    // if(el2.clone.self) {
+    if(el2?.clone.self) {
 
-    //     el2.clone.self()
-    // }
+        el2.clone.self()
+    }
 
     
 }

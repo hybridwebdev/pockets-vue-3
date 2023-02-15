@@ -1,6 +1,6 @@
 import type { path, TreeNodeApiProps } from "./types"
 
-import { reactive, computed, nextTick } from "vue"
+import { reactive, computed } from "vue"
 import { $pockets } from "@/pockets"
 
 import { useAdd } from "./add"
@@ -24,7 +24,7 @@ let createApi = (props:TreeNodeApiProps) => {
         let node = $pockets.utils.object.get( props, $path) ?? false
 
         let parent = computed( () => {
-            if(!node) return false;
+            if(!node) return false; // 
             let parentPath = path.slice(0, -1)
             if(parentPath.length == 0) return false
             return getNode(parentPath)
@@ -65,7 +65,7 @@ export let api = (props) => {
 
     let api = createApi(props)
 
-    let el = api.getNode(['root', 0])
+    let el = api.getNode(['root'])
 
     if(el.hasNodes) {
 

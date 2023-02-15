@@ -49,7 +49,14 @@ export type TreeNode = {
 }
 
 export type TreeNodeApi = {
-    [key: string] : any
+    [key: string ] : any
+    node: TreeNode 
+    /*
+        If node is false, all other helpers disable themselves.
+    */
+    parent: TreeNodeApi
+    getChild(index:number) : TreeNodeApi
+
 }
 
 export type TreeNodeApiProps = {

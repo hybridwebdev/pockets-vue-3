@@ -1,4 +1,4 @@
-import type { path, TreeNodeApiProps } from "./types"
+import type { path, TreeNodeApiProps, TreeNodeApi } from "./types"
 
 import { reactive, computed } from "vue"
 import { $pockets } from "@/pockets"
@@ -16,7 +16,7 @@ import { editor } from "@/node-tree/editor"
 
 let createApi = (props:TreeNodeApiProps) => {
     
-    let getNode = (path: path ) => {
+    let getNode = (path: path ) : TreeNodeApi => {
     
         let $path = path.join('.nodes.')
         let index = path.slice(-1)[0]

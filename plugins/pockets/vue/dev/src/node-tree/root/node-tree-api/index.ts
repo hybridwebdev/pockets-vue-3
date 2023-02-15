@@ -77,7 +77,9 @@ export let api = (props) => {
             }
         }
         el.add.inside(add)
-        el.add.inside(add)
+        el.clone.node(0)
+        el.clone.node(0)
+        el.remove.node(0)
         
         console.log(el)
     }

@@ -34,5 +34,5 @@ export let useCrud = (api : TreeNodeApi) => {
     }    
 
     api.initialize = initialize
-    api.initialize = initialize
+
 }

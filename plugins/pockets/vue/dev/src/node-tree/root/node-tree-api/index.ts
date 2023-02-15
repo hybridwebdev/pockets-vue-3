@@ -65,31 +65,25 @@ export let api = (props) => {
     if(el.add.inside) {
 
         let add = {
-            el: "img",
+            el: "div",
             props: {
-                src: "https://via.placeholder.com/150"
+                class: ''
             },
-            schema: "image",
-            data: {
-                source: "remote",
-                ID: false
-            }
+            schema: "post",
         }
         el.add.inside(add)
         el.clone.node(0)
         el.clone.node(0)
         el.remove.node(0)
-        
-        console.log(el)
-        el.initialize()
+
     }
     
-    let el2 = api.getNode(['root', 0, 3])
-    console.log(el2)
-    // if(el2?.clone.self) {
-    //     console.log(el2.schema)
-    //     el2.clone.self()
-    // }
+    let n2 = api.getNode(['root', 0, 0])
+    if(n2.node) {
+            n2.initialize.self()
+    }
 
+    console.log("Trying to get path that doesnt exist", api.getNode(['root', 0, 3]) )
+    
     
 }

@@ -11,11 +11,15 @@ export let useCrud = (api : TreeNodeApi) => {
             return false
         }
     }
-        
-    api.initialize = async () => {
-        let r = await call(api.node)
-        console.log(r)
+
+
+    let initializeSelf = async () => {
+        api.parent.node.nodes[api.index] = await call(api.node)
     }
     
-    
+    let initialize = {
+        self: initializeSelf,
+    }    
+
+    api.initialize = initialize
 }

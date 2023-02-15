@@ -6,14 +6,16 @@ export let useCrud = (api : TreeNodeApi) => {
         
         return async (index: number) => {
             
-            let node = api.node.nodes[index]
-            if(!node) return;
+            let child = api.getChild(index)
+            if(!child.node) return;
 
             try {
                 let newNode = await $pockets.crud('node-tree/node')
-                    .init(node)
+                    .init(child.node)
                     .read(read)
-                api.replace.child(index, newNode)
+                
+                child.replace.self(newNode)
+
             } catch(e) {
             }
 

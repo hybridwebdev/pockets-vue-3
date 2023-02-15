@@ -37,7 +37,8 @@ let createApi = (props:TreeNodeApiProps) => {
             parent,
             index,
             hasNodes,
-            editor
+            editor,
+            getChild: (index: number) => getNode(path.concat(index) )
         })
     
         api.add = useAdd(api)

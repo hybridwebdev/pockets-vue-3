@@ -1,7 +1,7 @@
 import { $pockets } from "@/pockets"
-import type { add, TreeNode } from "./types"
+import type { add, TreeNode, TreeNodeApi } from "./types"
 
-export let useAdd = (api) : add => {
+export let useAdd = (api: TreeNodeApi) : add => {
 
     let inside = (node: TreeNode, index: number = 0) => {
         api.node.nodes = $pockets.utils.array.insert(api.node.nodes, index, node)

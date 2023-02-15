@@ -4,7 +4,7 @@ import { $pockets } from "@/pockets"
 import { useAdd } from "./add"
 import { useRemove } from "./remove"
 import { useClone } from "./clone"
-
+import { useSchema } from './schema'
 import type { path } from "./types"
 
 let createApi = (props) => {
@@ -14,9 +14,12 @@ let createApi = (props) => {
         let $path = path.join('.nodes.')
         let index = path.slice(-1)[0]
 
-        let node = computed(() => $pockets.utils.object.get( props, $path))
-        
-        if(typeof node.value =='undefined') {
+        let node = computed( () => $pockets.utils.object.get( props, $path) )
+
+        if(typeof node.value == 'undefined') {
+            /**
+                No node found, thus cannot continue.
+            */
             return
         }
 
@@ -34,10 +37,11 @@ let createApi = (props) => {
             index,
             hasNodes,
         })
-
+    
         api.add = useAdd(api)
         api.remove = useRemove(api)
         api.clone = useClone(api)
+        api.schema = useSchema(api)
 
         return api
 
@@ -74,7 +78,7 @@ export let api = (props) => {
     let el2 = api.getNode(['root', 0, 0])
 
     if(el2?.clone.self) {
-
+        console.log(el2.schema)
         el2.clone.self()
     }
 

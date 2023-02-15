@@ -6,6 +6,14 @@ export type add = {
     after: false | ( (node: TreeNode) => path)
 }
 
+export type replace = {
+    self: any
+    child: any
+    // self: false | ( () => path )
+    //node: false | ( (index: number, node: TreeNode) => path )
+}
+
+
 export type clone = {
     self: false | ( () => path )
     node: false | ( (index: number) => path )

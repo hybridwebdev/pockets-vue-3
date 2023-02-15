@@ -32,13 +32,15 @@ let createApi = (props:TreeNodeApiProps) => {
 
         let hasNodes = computed( () => Array.isArray(api.node?.nodes ) )
 
+        let getChild = (index: number) => getNode(path.concat(index) )
+
         let api = reactive({
             node,
             parent,
             index,
             hasNodes,
             editor,
-            getChild: (index: number) => getNode(path.concat(index) )
+            getChild
         })
     
         api.add = useAdd(api)

@@ -1,11 +1,8 @@
 import { $pockets } from "@/pockets"
-import type { clone } from "./types"
+import type { clone, TreeNodeApi } from "./types"
 
-export let useClone = (api) => {
-    let clone: clone = {
-        self: false,
-        node: false
-    }
+export let useClone = (api : TreeNodeApi) : clone => {
+    
     let self = () => {
         return api.parent.clone.node(api.index)
     }
@@ -16,11 +13,15 @@ export let useClone = (api) => {
         }
         return []
     }
-    if(api.hasNodes){
-        clone.node = node
+    let clone: clone = {
+        self,
+        node
     }
-    if(api.parent) {
-        clone.self = self
+    if(!api.hasNodes){
+        clone.node = false
+    }
+    if(!api.parent) {
+        clone.self = false
     }
     return clone
 }

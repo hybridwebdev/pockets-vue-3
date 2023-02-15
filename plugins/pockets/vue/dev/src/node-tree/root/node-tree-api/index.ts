@@ -92,6 +92,7 @@ export let api = (props) => {
         
         el.initialize.child(0)
 
+        el.getChild(1).clone.self()
     }
     
 

@@ -46,6 +46,29 @@ export type TreeNode = {
     schema: string
 }
 
+
+export type TreeEditor = {
+
+    show: Boolean
+    mode: "edit" | 'remove' | "clone" | "add"
+    
+    options?: {
+        "editor-active": Boolean
+    }
+
+    nodes: {
+        list: Array<TreeNodeSchema>
+        fields: Array<TreeNodeSchemaField>
+    }
+
+    active: TreeNodeApi | false
+    /**
+        selected is used for moving/dragging/cutting a node
+    */
+    selectedNodes: Array<TreeNodeApi | false> 
+    
+}
+
 export type TreeNodeApi = {
     [key: string ] : any
     node: TreeNode 
@@ -57,6 +80,7 @@ export type TreeNodeApi = {
     schema: TreeNodeSchema
     hasNodes: Boolean
     index: number 
+    editor: TreeEditor
 
 }
 

@@ -13,7 +13,7 @@ export let useCrud = (api : TreeNodeApi) => {
                 let newNode = await $pockets.crud('node-tree/node')
                     .init(node)
                     .read(read)
-                api.parent.replace.child(index, newNode)
+                api.replace.child(index, newNode)
             } catch(e) {
             }
 

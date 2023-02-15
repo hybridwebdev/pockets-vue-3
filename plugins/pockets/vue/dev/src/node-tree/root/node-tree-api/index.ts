@@ -67,11 +67,12 @@ export let api = (props) => {
     if(el.hasNodes) {
 
         el.add.inside({
+            el: "div",
             schema: "post",
             props: {
                 class: 'p-2'
             }
-        }, 1)
+        })
 
         el.add.inside({
             el: "img",
@@ -80,14 +81,11 @@ export let api = (props) => {
                 src: "https://via.placeholder.com/150"
             },
             schema: "image",
-        }, 1)
-        // el.remove.node(1)
-
-        nextTick( async () => {
-            await el.initialize.child(0)
-            el.clone.child(0)
         })
-
+        // el.remove.node(1)
+        
+        el.initialize.child(1)
+            
     }
     
 

@@ -1,7 +1,7 @@
 import { $pockets } from "@/pockets"
 import { TreeNodeApi } from "./types"
 export let useCrud = (api : TreeNodeApi) => {
-
+ 
     let createFetcher = (read) => {
         
         return async (index: number) => {
@@ -13,7 +13,7 @@ export let useCrud = (api : TreeNodeApi) => {
                 let newNode = await $pockets.crud('node-tree/node')
                     .init(node)
                     .read(read)
-                api.node.nodes[index] = newNode
+                api.parent.replace.child(index, newNode)
             } catch(e) {
             }
 

@@ -6,6 +6,7 @@ import { $pockets } from "@/pockets"
 import { useAdd } from "./add"
 import { useRemove } from "./remove"
 import { useClone } from "./clone"
+import { useReplace } from "./replace"
 
 import { useSchema } from './schema'
 import { useEditFields } from "./edit-fields"
@@ -42,6 +43,7 @@ let createApi = (props:TreeNodeApiProps) => {
         api.add = useAdd(api)
         api.remove = useRemove(api)
         api.clone = useClone(api)
+        api.replace = useReplace(api)
 
         api.schema = useSchema(api)
         api.editFields = useEditFields(api)
@@ -67,7 +69,7 @@ export let api = (props) => {
         let add = {
             schema: "post",
         }
-        
+
         el.add.inside(add)
         el.clone.node(0)
         el.clone.node(0)

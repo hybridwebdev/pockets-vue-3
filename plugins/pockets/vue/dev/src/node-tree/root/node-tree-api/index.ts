@@ -5,7 +5,10 @@ import { useAdd } from "./add"
 import { useRemove } from "./remove"
 import { useClone } from "./clone"
 import { useSchema } from './schema'
+import { editor } from "@/node-tree/editor"
+
 import type { path } from "./types"
+import { useEditFields } from "./edit-fields"
 
 let createApi = (props) => {
     
@@ -14,9 +17,9 @@ let createApi = (props) => {
         let $path = path.join('.nodes.')
         let index = path.slice(-1)[0]
 
-        let node = computed( () => $pockets.utils.object.get( props, $path) )
+        let node = $pockets.utils.object.get( props, $path)
 
-        if(typeof node.value == 'undefined') {
+        if(typeof node == 'undefined') {
             /**
                 No node found, thus cannot continue.
             */
@@ -36,12 +39,15 @@ let createApi = (props) => {
             parent,
             index,
             hasNodes,
+            editor
         })
     
         api.add = useAdd(api)
         api.remove = useRemove(api)
         api.clone = useClone(api)
+
         api.schema = useSchema(api)
+        api.editFields = useEditFields(api)
 
         return api
 
@@ -73,14 +79,14 @@ export let api = (props) => {
         el.add.inside(add)
         el.add.inside(add)
         
+        console.log(el)
     }
     
-    let el2 = api.getNode(['root', 0, 0])
-
-    if(el2?.clone.self) {
-        console.log(el2.schema)
-        el2.clone.self()
-    }
+    let el2 = api.getNode(['root', 0, 3])
+    // if(el2?.clone.self) {
+    //     console.log(el2.schema)
+    //     el2.clone.self()
+    // }
 
     
 }

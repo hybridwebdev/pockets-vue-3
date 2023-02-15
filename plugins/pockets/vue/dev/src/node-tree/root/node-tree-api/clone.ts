@@ -1,7 +1,7 @@
 import { $pockets } from "@/pockets"
 import type { clone, TreeNodeApi } from "./types"
 
-export let useClone = (api : TreeNodeApi) : clone => {
+export let useClone = (api:TreeNodeApi) : clone => {
     
     let self = () => {
         return api.parent.clone.node(api.index)

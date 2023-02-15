@@ -19,14 +19,8 @@ let createApi = (props:TreeNodeApiProps) => {
 
         let node = $pockets.utils.object.get( props, $path) ?? false
 
-        // if(!node) {
-        //     /**
-        //         No node found, thus cannot continue.
-        //     */
-        //     return false;
-        // }
-
         let parent = computed( () => {
+            if(!node) return false;
             let parentPath = path.slice(0, -1)
             if(parentPath.length == 0) return false
             return getNode(parentPath)

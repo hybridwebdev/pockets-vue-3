@@ -1,7 +1,7 @@
-
-export let useEditFields = (api) : any => {
+import { TreeNodeApi,  TreeNodeSchemaField } from "./types"
+export let useEditFields = (api:TreeNodeApi) : Array<TreeNodeSchemaField> => {
     
-    if(!api.schema || !api.editor.nodes.fields) return []
+    if(!api.schema || !api.node || !api.editor.nodes.fields) return []
     
     return api.editor.nodes.fields.filter(field => {
         if(!api.schema) return;

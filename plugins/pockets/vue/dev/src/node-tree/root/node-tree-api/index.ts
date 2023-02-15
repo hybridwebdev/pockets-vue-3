@@ -91,7 +91,8 @@ export let api = (props) => {
         el.remove.child(2)
         
         el.initialize.child(0)
-            
+
+        console.log(el.schema) 
     }
     
 

@@ -65,7 +65,7 @@ export type TreeEditor = {
     /**
         selected is used for moving/dragging/cutting a node
     */
-    selectedNodes: Array<TreeNodeApi | false> 
+    selectedNodes: Array<TreeNodeApi> 
     
 }
 
@@ -81,6 +81,7 @@ export type TreeNodeApi = {
     hasNodes: Boolean
     index: number 
     editor: TreeEditor
+    editFields: Array<TreeNodeSchemaField>
 
 }
 

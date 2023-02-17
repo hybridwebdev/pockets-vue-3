@@ -1,4 +1,4 @@
-import type { path, TreeNodeApiProps, TreeNodeApi } from "./types"
+import type { path, TreeNodeApiProps, TreeNodeApi, paths } from "./types"
 
 import { reactive, computed } from "vue"
 import { $pockets } from "@/pockets"
@@ -14,33 +14,13 @@ import { useCrud } from "./crud"
 
 import { editor } from "@/node-tree/editor"
 
-type pathObject = {
-    /*
-        index represents what index the node is in
-    */
-    index: string | number
-    /*
-        path is the initial path array passed into getNode
-    */
-    path: path
-    parent: false | pathObject
-    /*
-        Full represents the full node path, including its source path
-    */
-    full: string
-    /*
-        Joined represents the path that can be used by dotprop get/set to read 
-        the tree and find then ode. 
-    */
-    joined: string
-}
 let createApi = (props:TreeNodeApiProps) => {
 
-    let getPaths = (path: path) : pathObject => {
+    let getPaths = (path: path) : paths => {
 
         let sourcePath = [props.source.type, props.source.metaKey, props.source.ID].join('.')
 
-        let pathObject: pathObject = {
+        let pathObject: paths = {
             index: path.slice(-1)[0],
             path,
             parent: false,

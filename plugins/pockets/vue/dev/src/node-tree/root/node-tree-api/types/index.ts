@@ -94,3 +94,25 @@ export type TreeNodeApiProps = {
         metaKey: string
     }
 }
+
+
+export type paths = {
+    /*
+        index represents what index the node is in
+    */
+    index: string | number
+    /*
+        path is the initial path array passed into getNode
+    */
+    path: path
+    parent: false | paths
+    /*
+        Full represents the full node path, including its source path
+    */
+    full: string
+    /*
+        Joined represents the path that can be used by dotprop get/set to read 
+        the tree and find then ode. 
+    */
+    joined: string
+}

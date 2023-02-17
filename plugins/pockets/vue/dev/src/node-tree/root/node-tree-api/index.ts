@@ -118,6 +118,7 @@ let test = (api) =>{
     console.log("Trying to get path that doesnt exist", api.getNode(['root', 0, 3]) )
     
 }
+
 export let api = (props) => {
     return createApi(props)
 }

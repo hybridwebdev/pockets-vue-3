@@ -44,7 +44,7 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
         
         let paths = getPaths(path)
 
-        let node = $pockets.utils.object.get( props, paths.joined) ?? false
+        let node = computed(() => $pockets.utils.object.get( props, paths.joined) ?? false)
 
         let parent = computed( () => {
             if(!paths.parent) return false

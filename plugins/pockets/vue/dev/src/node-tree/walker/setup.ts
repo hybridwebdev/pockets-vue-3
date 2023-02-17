@@ -72,7 +72,7 @@ let pathProvider = (providerKey: string) => {
 }
 
 let nodeHiearchy = (api: any ) => {
-    let providerKey = 'a-test-of-this'    
+    let providerKey = 'pockets/node-tree/node-hiearchy'    
     let current = inject(providerKey , [] )
     let path = [ ...current, api ]
     provide( providerKey, path)

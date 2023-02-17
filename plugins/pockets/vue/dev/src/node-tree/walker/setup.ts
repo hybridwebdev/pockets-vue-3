@@ -1,6 +1,5 @@
 
 import { editor } from "@/node-tree/editor"
-import { generateApi  } from "@/node-tree/editor/stores/generate-api"
 import { TreeData } from "@/node-tree/types"
 import { inject, provide, computed, ref } from "vue"
 import { useInject } from "@/node-tree/node-tree-api/injection-key"

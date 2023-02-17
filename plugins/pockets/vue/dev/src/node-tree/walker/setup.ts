@@ -10,10 +10,6 @@ export let setup = (props) => {
 
     let nodeApi = useInject().getNode(path)
 
-    let tree:TreeData['tree'] | false = inject('pockets-node-tree-root') ?? false
-
-    if(!tree) return;
-    
     let hovered = ref(false)
 
     let active = computed(() => {

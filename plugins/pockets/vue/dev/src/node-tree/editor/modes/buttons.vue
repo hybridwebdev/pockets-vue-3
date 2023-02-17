@@ -5,7 +5,7 @@
         :class="{active: editor.mode=='edit'}"
         v-tooltip='"Edit Item"'
         @click='editor.mode = "edit"'
-        :disabled='editor.newActive.editFields.length == 0'
+        :disabled='editor.active.editFields.length == 0'
     />
 
     <button 
@@ -19,7 +19,7 @@
         class='fa fa-solid fa-eraser btn border-0 btn-accent-dk fw-8 p-1' 
         :class="{active: editor.mode=='remove'}"
         v-tooltip="'Remove Mode'"
-        :disabled='!editor.newActive.remove.self'
+        :disabled='!editor.active.remove.self'
         @click='editor.mode = "remove"'
     />
 
@@ -27,7 +27,7 @@
         class='fa fa-solid fa-clone btn border-0 btn-accent-dk fw-8 p-1' 
         :class="{active: editor.mode=='clone'}"
         @click='editor.mode="clone"' 
-        :disabled='!editor.newActive.clone.self'
+        :disabled='!editor.active.clone.self'
         v-tooltip='"Clone Item"'
     />
 

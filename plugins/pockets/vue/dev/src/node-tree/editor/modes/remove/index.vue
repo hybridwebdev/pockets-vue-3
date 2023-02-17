@@ -4,7 +4,7 @@
             Are you sure you want to remove this item?
         </span>
         <button
-            :disabled='!editor.newActive.remove.self'
+            :disabled='!editor.active.remove.self'
             @click='click'
             class='m-auto btn btn-danger fw-8 text-white px-4 py-1'
         >
@@ -17,7 +17,7 @@
 import { inject } from "vue"
 let editor = inject("pockets-node-tree-editor")
 let click = async () => {
-    await editor.newActive.remove.self()
+    await editor.active.remove.self()
     editor.setActiveNode(false)
 }
 </script>

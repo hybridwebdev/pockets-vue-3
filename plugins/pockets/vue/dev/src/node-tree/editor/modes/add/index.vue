@@ -23,7 +23,7 @@
             </span>
 
             <nodePlacement 
-                :api='editor.newActive' 
+                :api='editor.active' 
                 @before='confirm("before")'
                 @after='confirm("after")'
                 @inside='confirm("inside")'
@@ -76,13 +76,13 @@ let confirm = async (location) => {
     }
     let map = {
         before: async () => {
-            return await editor.newActive.add.before(copy)
+            return await editor.active.add.before(copy)
         },
         after: async () => {
-            return await editor.newActive.add.after(copy)
+            return await editor.active.add.after(copy)
         },
         inside: async () => {
-            return await editor.newActive.add.inside(copy)
+            return await editor.active.add.inside(copy)
         }
     }
     

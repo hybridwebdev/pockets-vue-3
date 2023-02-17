@@ -59,7 +59,7 @@ export let setup = (props) => {
         clickHandler: () =>  {
             if(!tree || !editor.show) return
 
-            editor.newActive = nodeApi
+            editor.active = nodeApi
             
             return editor.setActiveNode( nodeApi )
         },

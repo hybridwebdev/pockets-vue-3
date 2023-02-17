@@ -20,13 +20,13 @@ export let editor:TreeEditor = reactive( {
         list: [],
         fields: []
     },
-    active: computed<TreeNodeApi | false>( () => generateApi(active.value) ),
+    active: false,
     
     selectedNodes: computed<Array<TreeNodeApi | false>>( () => {
         return selectedNodes.value.map( generateApi )
     } ),
-    setActiveNode: (o: TreeData | false) => {
-        active.value = o
+    setActiveNode: (o: any) => {
+        editor.active = o
     },
     selectNode: (o: TreeData | false) => {
         if(!o) {

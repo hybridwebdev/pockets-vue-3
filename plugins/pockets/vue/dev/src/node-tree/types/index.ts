@@ -42,13 +42,13 @@ export type TreeEditor = {
         fields: Array<TreeNodeSchemaField>
     }
 
-    active: TreeNodeApi | false
+    active: any
     /**
         selected is used for moving/dragging/cutting a node
     */
     selectedNodes: Array<TreeNodeApi | false> 
     
-    setActiveNode(o:TreeData) : void
+    setActiveNode(o:any) : void
     selectNode(o:TreeData) : void
     
     newActive?: any

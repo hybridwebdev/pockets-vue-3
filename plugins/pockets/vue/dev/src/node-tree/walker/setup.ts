@@ -61,10 +61,7 @@ export let setup = (props) => {
 
             editor.newActive = nodeApi
             
-            return editor.setActiveNode( {
-                path, 
-                tree
-            })
+            return editor.setActiveNode( nodeApi )
         },
         hovered,
         classes,

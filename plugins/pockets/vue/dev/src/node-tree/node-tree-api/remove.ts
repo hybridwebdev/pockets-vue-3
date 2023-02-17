@@ -1,5 +1,5 @@
 import { $pockets } from "@/pockets"
-import type { remove, TreeNodeApi } from "./types"
+import type { remove, TreeNodeApi } from "@/node-tree/types"
 
 export let useRemove = (api:TreeNodeApi) : remove => {
    

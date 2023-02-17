@@ -1,5 +1,5 @@
 import { $pockets } from "@/pockets"
-import type { add, TreeNode, TreeNodeApi } from "./types"
+import type { add, TreeNode, TreeNodeApi } from "@/node-tree/types"
 
 export let useAdd = (api: TreeNodeApi) : add => {
 

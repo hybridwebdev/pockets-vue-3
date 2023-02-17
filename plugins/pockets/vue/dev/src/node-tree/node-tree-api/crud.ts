@@ -1,5 +1,5 @@
 import { $pockets } from "@/pockets"
-import { TreeNodeApi, TreeNode } from "./types"
+import { TreeNodeApi, TreeNode } from "@/node-tree/types"
 export let useCrud = (api : TreeNodeApi) => {
  
     let createFetcher = (read: Array<string>) => {

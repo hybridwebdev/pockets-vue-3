@@ -1,4 +1,4 @@
-import { TreeNodeApi, replace, TreeNode } from "./types";
+import { TreeNodeApi, replace, TreeNode } from "@/node-tree/types";
 import { $pockets } from "@/pockets"
 
 export let useReplace = (api: TreeNodeApi) : replace => {

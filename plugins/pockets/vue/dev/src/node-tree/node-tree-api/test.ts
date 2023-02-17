@@ -1,4 +1,4 @@
-import type { TreeNodeApi } from "./types"
+import type { TreeNodeApi } from "@/node-tree/types"
 export let test = (api: TreeNodeApi) => {
     
     let el = api.getNode(['root'])

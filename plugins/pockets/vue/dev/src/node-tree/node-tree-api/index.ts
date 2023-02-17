@@ -1,4 +1,4 @@
-import type { path, TreeNodeApiProps, TreeNodeApi, paths, createdApi } from "./types"
+import type { path, TreeNodeApiProps, TreeNodeApi, paths, createdApi } from "@/node-tree/types"
 
 import { reactive, computed } from "vue"
 import { $pockets } from "@/pockets"

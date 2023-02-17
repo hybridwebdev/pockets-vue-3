@@ -26,7 +26,7 @@
 </template>
 <script lang='ts'>
 import { setup } from "./setup"
-import type { TreeNode } from "@/node-tree/node-tree-api/types"
+import type { TreeNode } from "@/node-tree/types"
 
 let props = {
     nodeId: {

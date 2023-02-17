@@ -1,5 +1,5 @@
 import { $pockets } from "@/pockets"
-import type { clone, TreeNodeApi } from "./types"
+import type { clone, TreeNodeApi } from "@/node-tree/types"
 
 export let useClone = (api:TreeNodeApi) : clone => {
     

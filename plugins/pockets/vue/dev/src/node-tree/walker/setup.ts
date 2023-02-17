@@ -7,7 +7,6 @@ import { useInject } from "@/node-tree/node-tree-api/injection-key"
 
 export let setup = (props) => {
     
-    
     let { path } = pathProvider('pockets-node-tree-path')(props)
 
     let nodeApi = useInject().getNode(path)

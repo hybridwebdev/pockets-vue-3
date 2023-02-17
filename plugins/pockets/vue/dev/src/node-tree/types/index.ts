@@ -51,6 +51,7 @@ export type TreeEditor = {
     setActiveNode(o:TreeData) : void
     selectNode(o:TreeData) : void
     
+    newActive?: any
 }
 
 export type TreeNode = {

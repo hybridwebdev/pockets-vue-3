@@ -7,9 +7,12 @@ import { useInject } from "@/node-tree/node-tree-api/injection-key"
 
 export let setup = (props) => {
     
-    let newApi = useInject()
     
     let { path } = pathProvider('pockets-node-tree-path')(props)
+
+    let nodeApi = useInject().getNode(path)
+
+    console.log(nodeApi)
 
     let tree:TreeData['tree'] | false = inject('pockets-node-tree-root') ?? false
 
@@ -56,7 +59,8 @@ export let setup = (props) => {
         clickHandler: () =>  {
             if(!tree || !editor.show) return
 
-
+            editor.newActive = nodeApi
+            
             return editor.setActiveNode( {
                 path, 
                 tree

@@ -29,10 +29,10 @@ type pathObject = {
     */
     full: string
     /*
-        Resolved represents the path that can be used by dotprop get/set to read 
+        Joined represents the path that can be used by dotprop get/set to read 
         the tree and find then ode. 
     */
-    resolved: string
+    joined: string
 }
 let createApi = (props:TreeNodeApiProps) => {
 
@@ -44,11 +44,11 @@ let createApi = (props:TreeNodeApiProps) => {
             index: path.slice(-1)[0],
             path,
             parent: false,
-            resolved: path.join('.nodes.'),
+            joined: path.join('.nodes.'),
             full: '',
         }
 
-        pathObject.full = [sourcePath, pathObject.resolved].join('.')
+        pathObject.full = [sourcePath, pathObject.joined].join('.')
         
         let parentPath = path.slice(0, -1)
 
@@ -62,12 +62,10 @@ let createApi = (props:TreeNodeApiProps) => {
     let getNode = (path: path ) : TreeNodeApi => {
         
         let paths = getPaths(path)
-        console.log(paths)
 
-        let $path = path.join('.nodes.')
         let index = path.slice(-1)[0]
 
-        let node = $pockets.utils.object.get( props, $path) ?? false
+        let node = $pockets.utils.object.get( props, paths.joined) ?? false
 
         let parent = computed( () => {
             if(!node) return false; // 

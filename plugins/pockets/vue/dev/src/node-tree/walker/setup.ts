@@ -17,11 +17,9 @@ export let setup = (props) => {
     
     let hovered = ref(false)
 
-    let api = generateApi({tree, path})
-
     let active = computed(() => {
         
-        if(!editor?.active || !editor?.active?.paths || !api) return
+        if(!editor?.active || !editor?.active?.paths) return
 
         if(editor?.active?.paths?.full == nodeApi.paths.full) return "active"
 
@@ -50,7 +48,7 @@ export let setup = (props) => {
         return false
     })
     
-    let hiearchy = nodeHiearchy(api)
+    let hiearchy = nodeHiearchy(nodeApi)
 
     return {
         clickHandler: () =>  {
@@ -60,7 +58,6 @@ export let setup = (props) => {
         hovered,
         classes,
         editor,
-        api,
         showTip,
         tipContent: computed(() => {
             return hiearchy.map(e => {

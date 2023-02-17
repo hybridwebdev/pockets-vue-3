@@ -4,8 +4,13 @@ import { generateApi  } from "@/node-tree/editor/stores/generate-api"
 import { TreeData } from "@/node-tree/types"
 import { inject, provide, computed, ref } from "vue"
 
+export let setup2 = () => {
+    let newp =  inject('pockets-node-tree-api') 
+    console.log(newp)
+}
 export let setup = (props) => {
     
+    setup2()
     let tree:TreeData['tree'] | false = inject('pockets-node-tree-root') ?? false
 
     if(!tree) return;

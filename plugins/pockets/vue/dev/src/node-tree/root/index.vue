@@ -7,7 +7,7 @@
 <script lang='ts' setup>
 import treeWalker from "@/node-tree/walker"
 import { provide } from "vue"
-import { api } from './node-tree-api'
+import { createApi } from './node-tree-api'
 let props = defineProps( {
     root: {
         type: Object,
@@ -20,7 +20,9 @@ let props = defineProps( {
 
 provide('pockets-node-tree-root', props )
 
-provide('pockets-node-tree-api', api(props) )
+let api = createApi(props)
+
+provide('pockets-node-tree-api', api )
 
 
 </script>

@@ -4,20 +4,15 @@ import { generateApi  } from "@/node-tree/editor/stores/generate-api"
 import { TreeData } from "@/node-tree/types"
 import { inject, provide, computed, ref } from "vue"
 
-export let setup2 = () => {
-    let newp =  inject('pockets-node-tree-api') 
-    console.log(newp)
-}
 export let setup = (props) => {
     
-    setup2()
+    let { path } = pathProvider('pockets-node-tree-path')(props)
+
     let tree:TreeData['tree'] | false = inject('pockets-node-tree-root') ?? false
 
     if(!tree) return;
     
     let hovered = ref(false)
-
-    let { path } = pathProvider('pockets-node-tree-path')(props)
 
     let api = generateApi({tree, path})
 
@@ -57,6 +52,8 @@ export let setup = (props) => {
     return {
         clickHandler: () =>  {
             if(!tree || !editor.show) return
+
+
             return editor.setActiveNode( {
                 path, 
                 tree

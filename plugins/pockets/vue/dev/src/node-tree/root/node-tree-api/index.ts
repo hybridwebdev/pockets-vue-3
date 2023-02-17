@@ -1,4 +1,4 @@
-import type { path, TreeNodeApiProps, TreeNodeApi, paths } from "./types"
+import type { path, TreeNodeApiProps, TreeNodeApi, paths, createdApi } from "./types"
 
 import { reactive, computed } from "vue"
 import { $pockets } from "@/pockets"
@@ -14,7 +14,7 @@ import { useCrud } from "./crud"
 
 import { editor } from "@/node-tree/editor"
 
-export let api = (props:TreeNodeApiProps) => {
+export let createApi = (props:TreeNodeApiProps) : createdApi => {
 
     let getPaths = (path: path) : paths => {
 
@@ -77,7 +77,9 @@ export let api = (props:TreeNodeApiProps) => {
         return api
 
     }
+
     return {
         getNode
     }
+    
 }

@@ -117,3 +117,7 @@ export type paths = {
     */
     joined: string
 }
+
+export type createdApi = {
+    getNode: (path: path ) => TreeNodeApi
+}

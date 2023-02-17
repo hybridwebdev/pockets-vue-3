@@ -8,10 +8,10 @@ export let useAdd = (api: TreeNodeApi) : add => {
         return []
     }
     let after = (node: TreeNode) => {
-        return api.parent.add.inside(node, api.index + 1)
+        return api.parent.add.inside(node, api.paths.index + 1)
     }
     let before = (node: TreeNode) => {
-        return api.parent.add.inside(node, api.index)
+        return api.parent.add.inside(node, api.paths.index)
     }
 
     let add:add = {

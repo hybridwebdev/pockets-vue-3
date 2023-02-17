@@ -23,7 +23,7 @@ export let setup = (props) => {
         
         if(!editor?.active || !editor?.active?.paths || !api) return
 
-        if(editor?.active?.paths?.source == api.paths.source) return "active"
+        if(editor?.active?.paths?.full == nodeApi.paths.full) return "active"
 
     })
 

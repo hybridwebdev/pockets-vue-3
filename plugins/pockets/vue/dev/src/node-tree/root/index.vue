@@ -4,12 +4,13 @@
         node-id='root'
     />
 </template>
+<script lang='ts'>
+</script>
 <script lang='ts' setup>
 import treeWalker from "@/node-tree/walker"
-
-import { provide, InjectionKey } from "vue"
-
+import { provide } from "vue"
 import { createApi } from '@/node-tree/node-tree-api'
+import { injectionKey } from "@/node-tree/node-tree-api/injection-key"
 
 let props = defineProps( {
     root: {
@@ -23,11 +24,9 @@ let props = defineProps( {
 
 provide('pockets-node-tree-root', props )
 
-let api = createApi(props)
+provide(injectionKey, createApi(props) )
 
-provide('pockets-node-tree-api', api )
 
-// export let API_INJECTION_KEY: InjectionKey<> = Symbol('pockets-node-tree-api')
 
 
 </script>

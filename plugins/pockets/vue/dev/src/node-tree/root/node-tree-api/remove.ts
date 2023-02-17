@@ -8,7 +8,7 @@ export let useRemove = (api:TreeNodeApi) : remove => {
         return []
     }
     let self = () => {
-        return api.parent.remove.child(api.index)
+        return api.parent.remove.child(api.paths.index)
     }
     let remove:remove = {
         self,

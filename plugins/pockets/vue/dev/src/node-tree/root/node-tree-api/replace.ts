@@ -8,7 +8,7 @@ export let useReplace = (api: TreeNodeApi) : replace => {
             return []
         },
         self(node: TreeNode){
-            return api.parent.replace.child(api.index, node)
+            return api.parent.replace.child(api.paths.index, node)
         }
     }
     if(!api.parent) {

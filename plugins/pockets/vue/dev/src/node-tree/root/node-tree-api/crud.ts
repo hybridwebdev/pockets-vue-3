@@ -28,7 +28,7 @@ export let useCrud = (api : TreeNodeApi) => {
     let initializer = createFetcher(['initialize:<='])
 
     let initialize = {
-        self: async () => api.parent.initialize.child(api.index),
+        self: async () => api.parent.initialize.child(api.paths.index),
         child: async (index: number) => initializer(index)
     }    
 

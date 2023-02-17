@@ -15,15 +15,32 @@ import { useCrud } from "./crud"
 import { editor } from "@/node-tree/editor"
 
 type pathObject = {
-    [key: string] : any
+    /*
+        index represents what index the node is in
+    */
+    index: string | number
+    /*
+        path is the initial path array passed into getNode
+    */
+    path: path
+    parent: false | pathObject
+    /*
+        Full represents the full node path, including its source path
+    */
+    full: string
+    /*
+        Resolved represents the path that can be used by dotprop get/set to read 
+        the tree and find then ode. 
+    */
+    resolved: string
 }
 let createApi = (props:TreeNodeApiProps) => {
 
-    let getPaths = (path: path) => {
+    let getPaths = (path: path) : pathObject => {
 
         let sourcePath = [props.source.type, props.source.metaKey, props.source.ID].join('.')
-        
-        let o: pathObject = {
+
+        let pathObject: pathObject = {
             index: path.slice(-1)[0],
             path,
             parent: false,
@@ -31,15 +48,15 @@ let createApi = (props:TreeNodeApiProps) => {
             full: '',
         }
 
-        o.full = [sourcePath, o.resolved].join('.')
+        pathObject.full = [sourcePath, pathObject.resolved].join('.')
         
         let parentPath = path.slice(0, -1)
 
         if(parentPath.length != 0) {
-            o.parent = getPaths(parentPath)
+            pathObject.parent = getPaths(parentPath)
         }
 
-        return o
+        return pathObject
 
     }
     let getNode = (path: path ) : TreeNodeApi => {

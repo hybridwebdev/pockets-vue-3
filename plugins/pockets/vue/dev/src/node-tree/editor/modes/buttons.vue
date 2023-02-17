@@ -27,7 +27,7 @@
         class='fa fa-solid fa-clone btn border-0 btn-accent-dk fw-8 p-1' 
         :class="{active: editor.mode=='clone'}"
         @click='editor.mode="clone"' 
-        :disabled='!editor.active.clone'
+        :disabled='!editor.newActive.clone.self'
         v-tooltip='"Clone Item"'
     />
 
@@ -46,7 +46,6 @@
         :disabled='!editor.active.hasParent || editor.selectedNodes.length > 0'
         v-tooltip='"Copy Item"'
     />
-    
 </template>
 <script lang='ts' setup>
 

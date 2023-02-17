@@ -4,8 +4,8 @@
             Are you sure you want to copy this item?
         </span>
         <button
-            :disabled='!editor.active.clone'
-            @click='editor.active.clone'
+            :disabled='!editor.newActive.clone.self'
+            @click='editor.newActive.clone.self'
             class='m-auto btn btn-accent-dk fw-8 text-white px-4 py-1'
         >
             <i class='fa fa-copy'/>

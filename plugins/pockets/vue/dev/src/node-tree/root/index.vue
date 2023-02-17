@@ -22,12 +22,9 @@ let props = defineProps( {
     }
 } )
 
-provide('pockets-node-tree-root', props )
-
 let api = createApi(props)
 
 provide(injectionKey, api )
-
 
 onMounted( () => $pockets.event.on('pockets/node-tree/save', api.saveTree) )
 

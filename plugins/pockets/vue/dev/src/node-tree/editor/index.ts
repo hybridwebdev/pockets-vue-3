@@ -1,13 +1,7 @@
 
-import type { TreeData, TreeEditor, TreeNodeApi } from "@/node-tree/types"
+import type { TreeEditor } from "@/node-tree/types"
 
-import { generateApi } from "./stores/generate-api"
-
-import { reactive, ref, computed } from "vue"
-
-let active = ref<TreeData | false>(false)  
-
-let selectedNodes = ref<Array<TreeData>>([])  
+import { reactive } from "vue"
 
 export let editor:TreeEditor = reactive( {
 
@@ -21,19 +15,9 @@ export let editor:TreeEditor = reactive( {
         fields: []
     },
     active: false,
-    
-    selectedNodes: computed<Array<TreeNodeApi | false>>( () => {
-        return selectedNodes.value.map( generateApi )
-    } ),
+
     setActiveNode: (o: any) => {
         editor.active = o
-    },
-    selectNode: (o: TreeData | false) => {
-        if(!o) {
-            selectedNodes.value = []
-            return;
-        }
-        selectedNodes.value.push(o)
     },
 
 } )

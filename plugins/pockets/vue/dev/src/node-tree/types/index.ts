@@ -43,13 +43,8 @@ export type TreeEditor = {
     }
 
     active: any
-    /**
-        selected is used for moving/dragging/cutting a node
-    */
-    selectedNodes: Array<TreeNodeApi | false> 
-    
+
     setActiveNode(o:any) : void
-    selectNode(o:TreeData) : void
     
     newActive?: any
 }

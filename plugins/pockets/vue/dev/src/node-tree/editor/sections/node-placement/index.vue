@@ -3,7 +3,7 @@
         class='fa fa-chevron-left btn btn-accent-dk p-2 text-white fw-8'
         :class='{active: location == "before"}'
         v-tooltip='"Add Before"'
-        :disabled='!api.addSibling'
+        :disabled='!api.add.before'
         @click='setLocation("before")'
     />
 
@@ -11,7 +11,7 @@
         class='fa fa-plus btn btn-accent-dk text-white fw-8 p-2 flex-fill  border border-2 border-accent-md'
         :class='{active: location == "inside"}'
         v-tooltip='"Add Inside"'
-        :disabled='!api.addInside'
+        :disabled='!api.add.inside'
         @click='setLocation("inside")'
     />
 
@@ -19,7 +19,7 @@
         class='fa fa-chevron-right p-2 btn btn-accent-dk text-white fw-8'
         :class='{active: location == "after"}'
         v-tooltip='"Add After"'
-        :disabled='!api.addSibling'
+        :disabled='!api.add.after'
         @click='setLocation("after")'
         
     />

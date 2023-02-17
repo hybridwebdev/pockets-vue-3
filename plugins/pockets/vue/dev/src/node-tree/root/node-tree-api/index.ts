@@ -77,15 +77,13 @@ let createApi = (props:TreeNodeApiProps) => {
         return api
 
     }
-
     return {
         getNode
     }
 }
-export let api = (props) => {
 
-    let api = createApi(props)
-
+let test = (api) =>{
+    
     let el = api.getNode(['root'])
 
     if(el.hasNodes) {
@@ -119,5 +117,7 @@ export let api = (props) => {
 
     console.log("Trying to get path that doesnt exist", api.getNode(['root', 0, 3]) )
     
-    
+}
+export let api = (props) => {
+    return createApi(props)
 }

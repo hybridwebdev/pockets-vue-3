@@ -96,7 +96,6 @@ export type TreeNodeApiProps = {
     }
 }
 
-
 export type paths = {
     /*
         index represents what index the node is in

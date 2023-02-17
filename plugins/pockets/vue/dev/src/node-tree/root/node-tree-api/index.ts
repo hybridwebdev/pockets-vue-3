@@ -21,7 +21,7 @@ let createApi = (props:TreeNodeApiProps) => {
         let sourcePath = [props.source.type, props.source.metaKey, props.source.ID].join('.')
 
         let paths: paths = {
-            index: path.slice(-1)[0],
+            index: path.slice(-1)[0] as number,
             path,
             parent: false,
             joined: path.join('.nodes.'),

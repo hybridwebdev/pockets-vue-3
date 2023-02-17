@@ -71,15 +71,16 @@ export type TreeEditor = {
 
 export type TreeNodeApi = {
     [key: string ] : any
-    node: TreeNode 
     /*
         If node is false, all other helpers disable themselves.
     */
+    node: TreeNode 
     parent: TreeNodeApi
     getChild(index:number) : TreeNodeApi
-    schema: TreeNodeSchema
     hasNodes: Boolean
-    index: number 
+    paths: paths
+
+    schema: TreeNodeSchema
     editor: TreeEditor
     editFields: Array<TreeNodeSchemaField>
 
@@ -100,7 +101,7 @@ export type paths = {
     /*
         index represents what index the node is in
     */
-    index: string | number
+    index: number
     /*
         path is the initial path array passed into getNode
     */

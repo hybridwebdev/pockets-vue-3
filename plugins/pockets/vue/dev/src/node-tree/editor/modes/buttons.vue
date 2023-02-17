@@ -5,7 +5,7 @@
         :class="{active: editor.mode=='edit'}"
         v-tooltip='"Edit Item"'
         @click='editor.mode = "edit"'
-        :disabled='editor.active.editFields.length == 0'
+        :disabled='editor.newActive.editFields.length == 0'
     />
 
     <button 
@@ -19,7 +19,7 @@
         class='fa fa-solid fa-eraser btn border-0 btn-accent-dk fw-8 p-1' 
         :class="{active: editor.mode=='remove'}"
         v-tooltip="'Remove Mode'"
-        :disabled='!editor.active.remove'
+        :disabled='!editor.newActive.remove.self'
         @click='editor.mode = "remove"'
     />
 
@@ -39,13 +39,13 @@
         v-tooltip='"Cut Item"'
     /> -->
 
-    <button 
+    <!-- <button 
         class='fa fa-solid fa-copy btn border-0 btn-accent-dk fw-8 p-1' 
         :class="{active: editor.mode=='copy'}"
         @click='editor.mode = "copy"' 
         :disabled='!editor.active.hasParent || editor.selectedNodes.length > 0'
         v-tooltip='"Copy Item"'
-    />
+    /> -->
 </template>
 <script lang='ts' setup>
 

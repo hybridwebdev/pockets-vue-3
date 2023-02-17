@@ -55,13 +55,18 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
 
         let getChild = (index: number) => getNode(path.concat(index) )
 
+        let editFields = computed(() => {
+            return useEditFields(api)
+        })
         let api = reactive({
             node,
             parent,
             hasNodes,
             editor,
             getChild,
-            paths
+            paths,
+            editFields
+            
         })
     
         api.add = useAdd(api)
@@ -69,9 +74,8 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
         api.clone = useClone(api)
         api.replace = useReplace(api)
 
-        api.schema = useSchema(api)
-        api.editFields = useEditFields(api)
-        
+        api.schema = computed(() => useSchema(api))
+
         useCrud(api)
 
         return api

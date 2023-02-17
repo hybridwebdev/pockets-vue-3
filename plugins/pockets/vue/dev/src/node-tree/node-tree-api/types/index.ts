@@ -118,5 +118,6 @@ export type paths = {
 }
 
 export type createdApi = {
-    getNode: (path: path ) => TreeNodeApi
+    getNode: (path: path ) => TreeNodeApi,
+    saveTree: () => Promise<any>
 }

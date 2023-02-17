@@ -15,6 +15,10 @@ import { useCrud } from "./crud"
 import { editor } from "@/node-tree/editor"
 
 export let createApi = (props:TreeNodeApiProps) : createdApi => {
+        
+    let saveTree = async () => {
+        return await $pockets.crud('node-tree/root').init(props.source).update(props.root)
+    }
 
     let getPaths = (path: path) : paths => {
 
@@ -83,7 +87,8 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
     }
 
     return {
-        getNode
+        getNode,
+        saveTree
     }
     
 }

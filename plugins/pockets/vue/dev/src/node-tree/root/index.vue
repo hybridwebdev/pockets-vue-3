@@ -8,7 +8,7 @@
 </script>
 <script lang='ts' setup>
 import treeWalker from "@/node-tree/walker"
-import { provide } from "vue"
+import { provide, onMounted } from "vue"
 import { createApi } from '@/node-tree/node-tree-api'
 import { injectionKey } from "@/node-tree/node-tree-api/injection-key"
 
@@ -24,9 +24,11 @@ let props = defineProps( {
 
 provide('pockets-node-tree-root', props )
 
-provide(injectionKey, createApi(props) )
+let api = createApi(props)
+
+provide(injectionKey, api )
 
 
-
+onMounted( () => $pockets.event.on('pockets/node-tree/save', api.saveTree) )
 
 </script>

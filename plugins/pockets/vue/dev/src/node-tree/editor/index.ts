@@ -20,8 +20,6 @@ export let editor:TreeEditor = reactive( {
         editor.active = o
     },
 
-    save(){
-        $pockets.event.emit('pockets/node-tree/save')
-    }
+    save: () => $pockets.event.emit('pockets/node-tree/save')
 
 } )

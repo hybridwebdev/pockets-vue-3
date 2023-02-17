@@ -5,8 +5,9 @@ export let useCrud = (api : TreeNodeApi) => {
     let createFetcher = (read: Array<string>) => {
         
         return async (index: number) => {
+
             let child = api.getChild(index)
-            console.log(child.node)
+
             if(!child.node) return;
 
             try {
@@ -30,10 +31,7 @@ export let useCrud = (api : TreeNodeApi) => {
     let initializer = createFetcher(['initialize:<='])
 
     let hydrate = {
-        self: async () => {
-            console.log('hydrating')
-            api.parent.hydrate.child(api.paths.index)
-        },
+        self: async () => api.parent.hydrate.child(api.paths.index),
         child: async (index: number) => hydrater(index)
     }   
 

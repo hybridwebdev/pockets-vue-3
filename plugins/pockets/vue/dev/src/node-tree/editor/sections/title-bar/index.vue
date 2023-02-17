@@ -9,7 +9,7 @@
                 class='fa fa-save p-1 btn border-0 btn-accent-dk fw-8 p-1 rounded-0'
                 v-tooltip='"Save"'
                 v-if='editor.show'
-                @click='test()'
+                @click='editor.save'
             />
             <button 
                 class='fa fa-cogs p-1 btn border-0 btn-accent-dk fw-8 p-1 rounded-0'
@@ -34,8 +34,5 @@
 <script lang='ts' setup>
 import { inject } from "vue"
 let editor = inject('pockets-node-tree-editor')
-import { $pockets } from "@/pockets"
-let test = async () => {
-    let res = await editor.active.save()
-}
+
 </script>

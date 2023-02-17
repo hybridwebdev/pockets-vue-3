@@ -14,10 +14,39 @@ import { useCrud } from "./crud"
 
 import { editor } from "@/node-tree/editor"
 
+type pathObject = {
+    [key: string] : any
+}
 let createApi = (props:TreeNodeApiProps) => {
-    
+
+    let getPaths = (path: path) => {
+
+        let sourcePath = [props.source.type, props.source.metaKey, props.source.ID].join('.')
+        
+        let o: pathObject = {
+            index: path.slice(-1)[0],
+            path,
+            parent: false,
+            resolved: path.join('.nodes.'),
+            full: '',
+        }
+
+        o.full = [sourcePath, o.resolved].join('.')
+        
+        let parentPath = path.slice(0, -1)
+
+        if(parentPath.length != 0) {
+            o.parent = getPaths(parentPath)
+        }
+
+        return o
+
+    }
     let getNode = (path: path ) : TreeNodeApi => {
-    
+        
+        let paths = getPaths(path)
+        console.log(paths)
+
         let $path = path.join('.nodes.')
         let index = path.slice(-1)[0]
 

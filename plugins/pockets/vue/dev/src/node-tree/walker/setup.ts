@@ -12,8 +12,6 @@ export let setup = (props) => {
 
     let nodeApi = useInject().getNode(path)
 
-    console.log(nodeApi)
-
     let tree:TreeData['tree'] | false = inject('pockets-node-tree-root') ?? false
 
     if(!tree) return;

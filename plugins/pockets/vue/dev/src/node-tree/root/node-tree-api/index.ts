@@ -39,6 +39,7 @@ let createApi = (props:TreeNodeApiProps) => {
         return pathObject
 
     }
+
     let getNode = (path: path ) : TreeNodeApi => {
         
         let paths = getPaths(path)
@@ -48,10 +49,8 @@ let createApi = (props:TreeNodeApiProps) => {
         let node = $pockets.utils.object.get( props, paths.joined) ?? false
 
         let parent = computed( () => {
-            if(!node) return false; // 
-            let parentPath = path.slice(0, -1)
-            if(parentPath.length == 0) return false
-            return getNode(parentPath)
+            if(!paths.parent) return false
+            return getNode(paths.parent.path)
         } )
 
         let hasNodes = computed( () => Array.isArray(api.node?.nodes ) )

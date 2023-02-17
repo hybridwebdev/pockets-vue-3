@@ -20,7 +20,7 @@ let createApi = (props:TreeNodeApiProps) => {
 
         let sourcePath = [props.source.type, props.source.metaKey, props.source.ID].join('.')
 
-        let pathObject: paths = {
+        let paths: paths = {
             index: path.slice(-1)[0],
             path,
             parent: false,
@@ -28,23 +28,21 @@ let createApi = (props:TreeNodeApiProps) => {
             full: '',
         }
 
-        pathObject.full = [sourcePath, pathObject.joined].join('.')
+        paths.full = [sourcePath, paths.joined].join('.')
         
         let parentPath = path.slice(0, -1)
 
         if(parentPath.length != 0) {
-            pathObject.parent = getPaths(parentPath)
+            paths.parent = getPaths(parentPath)
         }
 
-        return pathObject
+        return paths
 
     }
 
     let getNode = (path: path ) : TreeNodeApi => {
         
         let paths = getPaths(path)
-
-        let index = path.slice(-1)[0]
 
         let node = $pockets.utils.object.get( props, paths.joined) ?? false
 
@@ -60,7 +58,6 @@ let createApi = (props:TreeNodeApiProps) => {
         let api = reactive({
             node,
             parent,
-            index,
             hasNodes,
             editor,
             getChild,

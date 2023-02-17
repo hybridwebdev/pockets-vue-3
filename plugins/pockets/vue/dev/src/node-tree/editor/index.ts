@@ -1,9 +1,8 @@
 import { $pockets } from "@/pockets"
-import type { TreeEditor } from "@/node-tree/types"
 
 import { reactive } from "vue"
 
-export let editor:TreeEditor = reactive( {
+export let editor:any  = reactive( {
 
     show: true,
     mode: "edit",

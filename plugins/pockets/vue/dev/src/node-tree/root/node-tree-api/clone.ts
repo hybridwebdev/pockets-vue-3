@@ -4,7 +4,7 @@ import type { clone, TreeNodeApi } from "./types"
 export let useClone = (api:TreeNodeApi) : clone => {
     
     let self = () => {
-        return api.parent.clone.child(api.index)
+        return api.parent.clone.child(api.paths.index)
     }
     let child = (index: number) => {
         let child = api.getChild(index)

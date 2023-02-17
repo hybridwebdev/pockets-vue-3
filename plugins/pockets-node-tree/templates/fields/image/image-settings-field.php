@@ -44,4 +44,3 @@
 <div v-if='node.data.source=="media"'>
     <wp-media v-model:selected='node.data.ID' @update:selected='hydrate.self'></wp-media>
 </div>
-<button @click='hydrate.self'>Hydrate</button>

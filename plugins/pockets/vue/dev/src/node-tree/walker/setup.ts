@@ -3,10 +3,10 @@ import { inject, provide, computed, ref } from "vue"
 import { useInject } from "@/node-tree/create-tree-api/injection-key"
 
 export let setup = (props) => {
-    
-    let { path } = pathProvider('pockets-node-tree-path')(props)
 
-    let nodeApi = useInject().getNode(path)
+    let path = pathProvider('pockets/node-tree/path')(props)
+    
+    let nodeApi = useInject().getNode( path )
 
     let hovered = ref(false)
 
@@ -67,7 +67,7 @@ let pathProvider = (providerKey: string) => {
         let current = inject(providerKey , [] )
         let path = [ ...current, props.nodeId ]
         provide( providerKey, path)
-        return { path }
+        return path
     }
 }
 

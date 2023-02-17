@@ -9,8 +9,8 @@
 <script lang='ts' setup>
 import treeWalker from "@/node-tree/walker"
 import { provide, onMounted } from "vue"
-import { createApi } from '@/node-tree/node-tree-api'
-import { injectionKey } from "@/node-tree/node-tree-api/injection-key"
+import { createApi } from '@/node-tree/create-tree-api'
+import { injectionKey } from "@/node-tree/create-tree-api/injection-key"
 
 let props = defineProps( {
     root: {

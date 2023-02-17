@@ -1,6 +1,6 @@
 import { editor } from "@/node-tree/editor"
 import { inject, provide, computed, ref } from "vue"
-import { useInject } from "@/node-tree/node-tree-api/injection-key"
+import { useInject } from "@/node-tree/create-tree-api/injection-key"
 
 export let setup = (props) => {
     

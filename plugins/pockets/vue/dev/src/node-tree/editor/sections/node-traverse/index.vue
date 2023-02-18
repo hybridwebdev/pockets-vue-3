@@ -54,31 +54,41 @@ let editor = inject('pockets-node-tree-editor')
 
 let triggerParent = $computed(() =>{
     if(!editor.active.paths.parent) return false;
-    return () => editor.active.path = editor.active.paths.parent.path
+    return () => {
+        editor.active = editor.active.getNode(editor.active.paths.parent.path)
+    }
 })
 
 let triggerPrev = $computed(() => {
 
     if(!editor.active.paths.parent) return false
-    let index = editor.active.paths.node.index - 1
+    let index = editor.active.paths.index - 1
     if(index < 0 ) return false
-    return () => editor.active.path = editor.active.paths.parent.path.concat(index)
+    return () => editor.active = editor.active.getNode(
+        editor.active.paths.parent.path.concat(index)
+    )
 })
 
 let triggerNext = $computed(() => {
 
-    if(!editor.active.paths.parent) return false
-    let index = editor.active.paths.node.index + 1
+    if(
+        !editor.active.paths.parent 
+        ||
+        !editor.active.parent.hasNodes
+    ) return false
+    let index = editor.active.paths.index + 1
     
-    if(index == editor.active.parent.nodes.length ) return false
+    if(index == editor.active.parent.node.nodes.length ) return false
     
-    return () => editor.active.path = editor.active.paths.parent.path.concat(index)
+    return () => editor.active = editor.active.getNode(
+        editor.active.paths.parent.path.concat(index)
+    )
 })
 
 let triggerInside = $computed(() => {
     if(!editor.active.hasNodes || editor.active.node.nodes.length==0) return false;
     return (index: number = 0) => {
-        editor.active.path = editor.active.paths.node.path.concat(index)
+        editor.active = editor.active.getNode(editor.active.paths.path.concat(index))
     }
 })
  

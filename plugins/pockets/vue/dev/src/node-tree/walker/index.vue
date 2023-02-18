@@ -9,7 +9,7 @@
         @mouseleave='hovered = false'
         v-tooltip='{ 
             content: tipContent, 
-            shown: showTip, 
+            shown: tipContent, 
             triggers: [], 
             placement: "auto-start", 
             popperClass: "pockets-node-tree-node-overlay",

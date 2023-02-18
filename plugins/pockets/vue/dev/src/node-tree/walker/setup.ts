@@ -10,56 +10,43 @@ export let setup = (props) => {
 
     let hovered = ref(false)
 
-    let active = computed(() => {
-        
-        if(!editor?.active || !editor?.active?.paths) return
+    let active = computed( () => {
+        if(!editor?.active || !editor?.active?.paths) return;
+        if(editor?.active?.paths?.full == nodeApi.paths.full) return true
+    } )
 
-        if(editor?.active?.paths?.full == nodeApi.paths.full) return "active"
-
-    })
-
-    let editorShow = computed(() => {
-        if(!editor?.show ?? null) return "editor-hide"
-        return "editor-show"
-    })
-
-    let editorOpen = computed(() => {
-        if(!editor?.active ?? null) return "editor-closed"
-        return "editor-open"
-    })
-
-    let classes = computed(() => [
-        active.value, 
-        editorOpen.value, 
-        editorShow.value,
-        hovered.value === true ? "hovered" : ""
-    ])
-
-    let showTip = computed(() => {
-        if(!editor?.show ?? null) return false
-        if(hovered.value == true) return true
-        return false
+    let classes = computed(() => {
+        let {
+            active,
+            hovered
+        } = state
+        return {
+            hovered,
+            active,
+            "editor-show": editor.show
+        }
     })
     
     let hiearchy = nodeHiearchy(nodeApi)
 
-    return reactive({
+    let state = reactive( {
+        active,
         clickHandler: () =>  {
             if(!editor.show) return
             return editor.active = nodeApi 
         },
-        hovered,
         classes,
-        editor,
-        showTip,
+        hovered,
         tipContent: computed(() => {
+            if(!editor?.show ?? null) return false
+            if(!state.hovered) return false
             return hiearchy.map(e => {
                 return e.schema.title
             }).join(' > ')
         }),
+    } )
 
-    })
-
+    return state
 }
 
 let pathProvider = (providerKey: string) => {

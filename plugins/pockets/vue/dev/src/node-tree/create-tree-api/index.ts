@@ -69,7 +69,8 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
             editor,
             getChild,
             paths,
-            editFields
+            editFields,
+            getNode
             
         })
     

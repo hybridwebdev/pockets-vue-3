@@ -91,7 +91,7 @@ let confirm = async (location) => {
     if(path) activateNewNode(path)
 }
 let activateNewNode = (path) => {
-    editor.active.path = path
+    editor.active = editor.active.getNode(path)
     selected = false
     editor.mode = 'edit'
 

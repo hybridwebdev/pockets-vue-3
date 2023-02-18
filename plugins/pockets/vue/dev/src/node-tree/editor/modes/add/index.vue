@@ -75,14 +75,14 @@ let confirm = async (location) => {
         return;
     }
     let map = {
-        before: async () => {
-            return await editor.active.add.before(copy)
+        before: () => {
+            return editor.active.add.before(copy)
         },
-        after: async () => {
-            return await editor.active.add.after(copy)
+        after: () => {
+            return editor.active.add.after(copy)
         },
-        inside: async () => {
-            return await editor.active.add.inside(copy)
+        inside: () => {
+            return editor.active.add.inside(copy)
         }
     }
     
@@ -94,7 +94,6 @@ let activateNewNode = (path) => {
     editor.active = editor.active.getNode(path)
     selected = false
     editor.mode = 'edit'
-
 }
 
 </script>

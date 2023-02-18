@@ -32,10 +32,13 @@ export let setup = (props) => {
     let toolTip = computed(() => {
         
         let content:string | boolean = false
-
+        let popperClass: string = ''
         if(editor?.show) {
             if(state.hovered || state.active) {
                 content = hiearchy.map(e => e.schema.title).join(' > ')
+            }
+            if(state.active) {
+                popperClass = ''
             }
         }
         return { 
@@ -43,7 +46,7 @@ export let setup = (props) => {
             shown: content, 
             triggers: [], 
             placement: "auto-start", 
-            popperClass: "pockets-node-tree-node-overlay",
+            popperClass: `pockets-node-tree-node-tooltip ${popperClass}`,
             delay: 0
         }
     })

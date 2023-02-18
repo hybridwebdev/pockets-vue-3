@@ -40,8 +40,8 @@ export default {
     props
 }
 </script>
-<style  lang='scss'>
-    .pockets-node-tree-node-overlay {
+<style lang='scss'>
+    .pockets-node-tree-node-tooltip {
         .v-popper__inner {
             background: var(--bs-accent-dk);
             opacity: 1;

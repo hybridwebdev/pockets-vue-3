@@ -1,5 +1,5 @@
 import { editor } from "@/node-tree/editor"
-import { inject, provide, computed, ref } from "vue"
+import { inject, provide, computed, ref, reactive } from "vue"
 import { useInject } from "@/node-tree/create-tree-api/injection-key"
 
 export let setup = (props) => {
@@ -43,7 +43,7 @@ export let setup = (props) => {
     
     let hiearchy = nodeHiearchy(nodeApi)
 
-    return {
+    return reactive({
         clickHandler: () =>  {
             if(!editor.show) return
             return editor.active = nodeApi 
@@ -58,7 +58,7 @@ export let setup = (props) => {
             }).join(' > ')
         }),
 
-    }
+    })
 
 }
 

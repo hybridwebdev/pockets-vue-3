@@ -6,9 +6,7 @@ export let editor:TreeEditor  = reactive( {
 
     show: true,
     mode: "edit",
-    options: {
-        "editor-active": false
-    },
+    
     nodes: {
         list: [],
         fields: []

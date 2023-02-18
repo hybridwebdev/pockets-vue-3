@@ -74,20 +74,11 @@ let confirm = async (location) => {
     if(!copy) {
         return;
     }
-    let map = {
-        before: () => {
-            return editor.active.add.before(copy)
-        },
-        after: () => {
-            return editor.active.add.after(copy)
-        },
-        inside: () => {
-            return editor.active.add.inside(copy)
-        }
+    let fn = editor.active.add[location] ?? false
+    if(typeof fn != 'function') {
+        return;
     }
-    
-    let path = await map[location]()
-    
+    let path = fn(copy)
     if(path) activateNewNode(path)
 }
 let activateNewNode = (path) => {

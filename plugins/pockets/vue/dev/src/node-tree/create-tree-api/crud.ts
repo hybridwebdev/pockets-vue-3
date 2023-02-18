@@ -44,12 +44,12 @@ export let useCrud = (api : TreeNodeApi) => {
         child: async (index: number) => initializer(index)
     }    
     if(!api.hasNodes) {
-        initialize.self = false
-        hydrate.self = false
-    }
-    if(!api.parent) {
         initialize.child = false
         hydrate.child = false
+    }
+    if(!api.parent) {
+        initialize.self = false
+        hydrate.self = false
     }
     api.hydrate = hydrate
 

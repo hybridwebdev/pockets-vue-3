@@ -14,7 +14,7 @@
             is='tree-walker'
             v-bind='node'
             :node-id='i'
-            :key='i + node.schema'
+            :key='node.hash'
         />
     </component>
 </template>

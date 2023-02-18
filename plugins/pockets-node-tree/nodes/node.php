@@ -30,7 +30,11 @@ class node {
     
     
     public function initialize($node){
-        return $this->hydrate($this->schema['node']);
+        return $this->hydrate(
+            array_merge(
+                $this->schema['node'], [ 'hash' => uniqid() ] 
+            )
+        );
     }
 
     function hydrate($node){

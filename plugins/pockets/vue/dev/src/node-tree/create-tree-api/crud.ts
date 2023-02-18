@@ -21,7 +21,6 @@ export let useCrud = (api : TreeNodeApi) => {
 
             }
 
-            return []
         }
 
     }

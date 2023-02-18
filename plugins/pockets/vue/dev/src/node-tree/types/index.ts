@@ -63,7 +63,6 @@ export type TreeEditor = {
 
     active: TreeNodeApi | false
 
-    setActiveNode: (o: TreeNodeApi | false) => void
 }
 
 export type TreeNodeApi = {

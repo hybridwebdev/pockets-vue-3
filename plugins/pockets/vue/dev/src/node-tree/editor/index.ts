@@ -15,10 +15,6 @@ export let editor:TreeEditor  = reactive( {
     },
     active: false,
 
-    setActiveNode: (o: any) => {
-        editor.active = o
-    },
-
     save: () => $pockets.event.emit('pockets/node-tree/save')
 
 } )

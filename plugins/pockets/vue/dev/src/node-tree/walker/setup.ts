@@ -46,7 +46,7 @@ export let setup = (props) => {
     return {
         clickHandler: () =>  {
             if(!editor.show) return
-            return editor.setActiveNode( nodeApi )
+            return editor.active = nodeApi 
         },
         hovered,
         classes,

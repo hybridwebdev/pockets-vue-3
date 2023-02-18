@@ -39,7 +39,7 @@ export let setup = (props) => {
         hovered,
         tipContent: computed(() => {
             if(!editor?.show ?? null) return false
-            if(!state.hovered) return false
+            if(!state.hovered && !state.active) return false
             return hiearchy.map(e => {
                 return e.schema.title
             }).join(' > ')

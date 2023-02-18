@@ -2,14 +2,18 @@
 import { computed } from "vue"
 import nodeSelector from "./node-selector"
 import {setup, props} from "./setup"
+import { editor } from "@/node-tree/editor"
+
 export default {
     mixins: [nodeSelector],
     setup(props, ctx) {
             
         let api = setup(props, ctx)
 
-        let select = (node) => {
+        let select = async(node) => {
             api.selectedModel.value = node.node.schema
+            await editor.active.initialize.self()
+            editor.active = editor.active.getNode(editor.active.paths.path)
         }
 
         let isSelected = (node) => {

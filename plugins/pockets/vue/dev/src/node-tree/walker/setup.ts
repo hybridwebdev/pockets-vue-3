@@ -29,21 +29,33 @@ export let setup = (props) => {
     
     let hiearchy = nodeHiearchy(nodeApi)
 
+    let toolTip = computed(() => {
+        
+        let content:string | boolean = false
+
+        if(editor?.show) {
+            if(state.hovered || state.active) {
+                content = hiearchy.map(e => e.schema.title).join(' > ')
+            }
+        }
+        return { 
+            content, 
+            shown: content, 
+            triggers: [], 
+            placement: "auto-start", 
+            popperClass: "pockets-node-tree-node-overlay",
+            delay: 0
+        }
+    })
     let state = reactive( {
         active,
+        classes,
+        hovered,
+        toolTip,
         clickHandler: () =>  {
             if(!editor.show) return
             return editor.active = nodeApi 
         },
-        classes,
-        hovered,
-        tipContent: computed(() => {
-            if(!editor?.show ?? null) return false
-            if(!state.hovered && !state.active) return false
-            return hiearchy.map(e => {
-                return e.schema.title
-            }).join(' > ')
-        }),
     } )
 
     return state

@@ -7,14 +7,7 @@
         :class='classes'
         @mouseenter='hovered = true'
         @mouseleave='hovered = false'
-        v-tooltip='{ 
-            content: tipContent, 
-            shown: tipContent, 
-            triggers: [], 
-            placement: "auto-start", 
-            popperClass: "pockets-node-tree-node-overlay",
-            delay: 1
-        }'
+        v-tooltip='toolTip'
     >
         <component 
             v-for='(node, i) in nodes'
@@ -48,7 +41,7 @@ export default {
 }
 </script>
 <style  lang='scss'>
-    .pockets-node-tree-node-overlay   {
+    .pockets-node-tree-node-overlay {
         .v-popper__inner {
             background: var(--bs-accent-dk);
             opacity: 1;

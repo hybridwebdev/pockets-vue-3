@@ -29,6 +29,7 @@ export let useCrud = (api : TreeNodeApi) => {
         self: false | (() => Promise<any>)
         child: false | ((index: number) => Promise<any>)
     }
+    
     let hydrater = createFetcher(['hydrate:<='])
 
     let initializer = createFetcher(['initialize:<='])

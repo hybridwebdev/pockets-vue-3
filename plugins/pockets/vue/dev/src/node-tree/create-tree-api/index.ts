@@ -57,9 +57,8 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
 
         let getChild = (index: number) => getNode(path.concat(index) )
 
-        let editFields = computed(() => {
-            return useEditFields(api)
-        })
+        let editFields = computed(() => useEditFields(api) )
+        
         let api = reactive({
             get node(){
                 return $pockets.utils.object.get( props, paths.joined, false)

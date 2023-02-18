@@ -30,24 +30,16 @@ export let setup = (props) => {
     let hiearchy = nodeHiearchy(nodeApi)
 
     let toolTip = computed(() => {
+
+        let content = hiearchy.map(e => e.schema.title).join(' > ')
         
-        let content:string | boolean = false
-        let popperClass: string = ''
-        if(editor?.show) {
-            if(state.hovered || state.active) {
-                content = hiearchy.map(e => e.schema.title).join(' > ')
-            }
-            if(state.active) {
-                popperClass = ''
-            }
-        }
         return { 
             content, 
-            shown: content, 
+            shown: editor?.show && state.hovered, 
             triggers: [], 
             placement: "auto-start", 
-            popperClass: `pockets-node-tree-node-tooltip ${popperClass}`,
-            delay: 0
+            popperClass: `pockets-node-tree-node-tooltip`,
+            delay: 1
         }
     })
     let state = reactive( {

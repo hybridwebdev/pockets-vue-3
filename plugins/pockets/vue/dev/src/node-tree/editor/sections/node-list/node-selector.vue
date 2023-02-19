@@ -1,5 +1,5 @@
 <template>
-    <div class='grid columns-1 gap-1'>
+    <div class='grid columns-1 gap-1 loading-container' :loading='loading' >
         <div class='d-flex gap-1'>
             <input 
                 v-model='filterText' 

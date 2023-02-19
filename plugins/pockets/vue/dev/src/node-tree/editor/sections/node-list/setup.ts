@@ -3,6 +3,8 @@ import { vModel } from "@/pockets/utils/v-model"
 import { inject, ref, computed } from "vue"
 export let setup = (props, { emit } )  => { 
     
+    let loading = ref(false)
+
     let filterText = ref('')
 
     let editor = inject('pockets-node-tree-editor')
@@ -29,7 +31,8 @@ export let setup = (props, { emit } )  => {
         nodeList,
         selectedModel, 
         select,
-        isSelected
+        isSelected,
+        loading
     }
 
 }

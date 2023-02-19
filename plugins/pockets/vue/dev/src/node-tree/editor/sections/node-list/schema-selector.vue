@@ -11,9 +11,11 @@ export default {
         let api = setup(props, ctx)
 
         let select = async(node) => {
+            api.loading.value = true
             api.selectedModel.value = node.node.schema
             await editor.active.initialize.self()
             editor.active = editor.active.getNode(editor.active.paths.path)
+            api.loading.value = false
         }
 
         let isSelected = (node) => {

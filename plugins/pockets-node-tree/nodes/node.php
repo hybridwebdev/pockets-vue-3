@@ -12,7 +12,7 @@ trait wrapper_functions {
             Removing hash
         */
         unset($node['hash']);
-        return $this->sanitize($node);
+        return $this->save($node);
     }
 
     final function __hydrate($node){
@@ -61,7 +61,7 @@ class node {
         \pockets\node_tree::$nodeParsers[ $this->schema['node']['schema'] ] = $this;
     }
     
-    function sanitize($node){
+    function save($node){
         return $node;
     }
     

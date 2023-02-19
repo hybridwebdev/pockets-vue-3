@@ -25,12 +25,12 @@ class hydrate_walker {
 }
 trait hydrate {
     function hydrate($iterator){
-        return hydrate_walker::init(['method' => 'hydrate'])->walk($this->resource);
+        return hydrate_walker::init(['method' => '__hydrate'])->walk($this->resource);
     }
     function initialize($iterator) {
-        return hydrate_walker::init(['method' => 'initialize'])->walk($this->resource);
+        return hydrate_walker::init(['method' => '__initialize'])->walk($this->resource);
     }
     function sanitize($iterator) {
-        return hydrate_walker::init(['method' => 'sanitize'])->walk($this->resource);
+        return hydrate_walker::init(['method' => '__sanitize'])->walk($this->resource);
     }
 }

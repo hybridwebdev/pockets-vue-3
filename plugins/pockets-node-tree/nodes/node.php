@@ -8,7 +8,7 @@ trait wrapper_functions {
     */
 
     final function __sanitize($node){
-       
+       return $this->sanitize($node);
     }
 
     final function __hydrate($node){
@@ -58,6 +58,10 @@ class node {
         \pockets\node_tree::$nodes['list'][] = $this->schema;
         array_map('\pockets\node_tree::register_field', $this->edit_fields);
         \pockets\node_tree::$nodeParsers[ $this->schema['node']['schema'] ] = $this;
+    }
+    
+    function sanitize($node){
+        return $node;
     }
     
     function initialize($node){

@@ -30,7 +30,7 @@ trait hydrate {
     function initialize($iterator) {
         return hydrate_walker::init(['method' => '__initialize'])->walk($this->resource);
     }
-    function sanitize($iterator) {
-        return hydrate_walker::init(['method' => '__sanitize'])->walk($this->resource);
+    function save($iterator) {
+        return hydrate_walker::init(['method' => '__save'])->walk($this->resource);
     }
 }

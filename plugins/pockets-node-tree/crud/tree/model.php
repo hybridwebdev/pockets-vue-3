@@ -39,7 +39,7 @@ class model extends \pockets\crud\model {
 
         return \pockets::crud('wp-object')::init($this->resource)->update( [
             'meta' => [ 
-                $this->normalize_key() => \pockets::crud('node-tree/node')::init( $node_tree )->read( ['sanitize:<='] ) 
+                $this->normalize_key() => \pockets::crud('node-tree/node')::init( $node_tree )->read( ['save:<='] ) 
             ]
         ] );
 

@@ -7,7 +7,7 @@ trait wrapper_functions {
         They should be used as the entry point for the walkers.
     */
 
-    final function __sanitize($node){
+    final function __save($node){
         /**
             Removing hash
         */

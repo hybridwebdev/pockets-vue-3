@@ -72,10 +72,7 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
             editFields,
             getNode,
             schema,
-            can: {
-                
-            }
-            
+            root: props.root            
         })
     
         api.add = computed(() => useAdd(api))

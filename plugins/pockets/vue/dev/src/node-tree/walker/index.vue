@@ -8,13 +8,13 @@
         @mouseenter='hovered = true'
         @mouseleave='hovered = false'
         v-tooltip='toolTip'
+        :key='hash'
     >
         <component 
             v-for='(node, i) in nodes'
             is='tree-walker'
             v-bind='node'
             :node-id='i'
-            :key='node.hash'
         />
     </component>
 </template>
@@ -22,16 +22,20 @@
 import { setup } from "./setup"
 
 let props = {
+    el: String,
+    data: Object,
+    hash: {
+        type: String,
+        required: true
+    },
     nodeId: {
         type: [String, Number],
         required: true
     },
-    el: String,
     nodes: {
         type: Array,
     },
     props: Object,
-    data: Object,
     schema: String,
 }
 export default {

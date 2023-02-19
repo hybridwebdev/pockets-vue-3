@@ -8,7 +8,11 @@ trait wrapper_functions {
     */
 
     final function __sanitize($node){
-       return $this->sanitize($node);
+        /**
+            Removing hash
+        */
+        unset($node['hash']);
+        return $this->sanitize($node);
     }
 
     final function __hydrate($node){

@@ -5,7 +5,7 @@
         </span>
         <button
             :disabled='!editor.active.clone.self'
-            @click='editor.active.clone.self'
+            @click='clone'
             class='m-auto btn btn-accent-dk fw-8 text-white px-4 py-1'
         >
             <i class='fa fa-copy'/>
@@ -16,4 +16,8 @@
 <script lang='ts' setup>
 import { inject } from "vue"
 let editor = inject("pockets-node-tree-editor")
+let clone = () => {
+    let path = editor.active.clone.self()
+    editor.active = editor.active.getNode(path)
+}
 </script>

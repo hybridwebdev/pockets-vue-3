@@ -10,7 +10,7 @@ export let useClone = (api:TreeNodeApi) : clone => {
         if(child.node) {
             api.add.inside( $pockets.utils.object.clone( child.node ), index )
         }
-        return []
+        return api.paths.path.concat(index + 1)
     }
     let clone: clone = {
         self,

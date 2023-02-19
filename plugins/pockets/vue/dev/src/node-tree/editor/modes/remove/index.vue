@@ -1,10 +1,11 @@
 <template>
-    <div class='p-2 grid columns-1 gap-1'>
+    <div v-if='!editor.active.remove.self'>
+    </div>
+    <div class='p-2 grid columns-1 gap-1' v-if='editor.active.remove.self'>
         <span class='text-center fw-8'>
             Are you sure you want to remove this item?
         </span>
         <button
-            :disabled='!editor.active.remove.self'
             @click='remove'
             class='m-auto btn btn-danger fw-8 text-white px-4 py-1'
         >

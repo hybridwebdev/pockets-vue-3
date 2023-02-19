@@ -1,5 +1,8 @@
 <template>
-    <div v-if='!editor.active.remove.self'>
+    <div class='text-danger fw-8 fs-20 pt-2' v-if='!editor.active.remove.self'>
+        <p class='text-center'>
+            This Node cannot be removed!
+        </p>
     </div>
     <div class='p-2 grid columns-1 gap-1' v-if='editor.active.remove.self'>
         <span class='text-center fw-8'>

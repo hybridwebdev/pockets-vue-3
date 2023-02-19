@@ -76,6 +76,8 @@ let selectedModePanel = $computed(() => {
 
 provide('pockets-node-tree-editor', editor)
 
+provide('pockets-node-tree-editor/active', editor.active)
+
 let props = defineProps({
     nodes: {
         type: Object

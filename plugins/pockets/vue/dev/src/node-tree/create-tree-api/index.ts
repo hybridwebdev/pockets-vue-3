@@ -63,6 +63,7 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
         let schema = computed(() => useSchema(api))
 
         let api = reactive({
+            nodePath: (path) => path.join('.nodes.'),
             node,
             parent,
             hasNodes,

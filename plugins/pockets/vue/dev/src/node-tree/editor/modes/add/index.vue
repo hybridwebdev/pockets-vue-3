@@ -54,13 +54,13 @@ let editor = inject('pockets-node-tree-editor')
 let selected = $ref(false)
 let loading = $ref(false)
 
-let createCopy = async() => {
+let createCopy = async(node) => {
     
     loading = true
     
     let res = await $pockets
         .crud('node-tree/node')
-        .init(selected.node)
+        .init(node)
         .read(['initialize:<='])
 
     loading = false
@@ -70,7 +70,8 @@ let createCopy = async() => {
 }
 
 let confirm = async (location) => {
-    let copy = await createCopy()
+    let copy = await createCopy(selected.node)
+    selected = false
     if(!copy) {
         return;
     }
@@ -82,8 +83,8 @@ let confirm = async (location) => {
     if(path) activateNewNode(path)
 }
 let activateNewNode = (path) => {
+
     editor.active = editor.active.getNode(path)
-    selected = false
     editor.mode = 'edit'
 }
 

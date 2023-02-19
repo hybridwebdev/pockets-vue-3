@@ -22,8 +22,9 @@ trait wrapper_functions {
             This is only a temp field for when the editor is active
             and can be removed when the node is saved. 
         */
+        $node = $this->hydrate($node);
         $node['hash'] = uniqid();
-        return $this->hydrate($node);
+        return $node;
     }
 
     final function __initialize($node) {

@@ -40,7 +40,7 @@ export type TreeNodeSchema = {
 
 export type TreeNode = {
     el: string
-    nodes?: Record<number, TreeNode>
+    nodes?: Array<TreeNode>
     props: any
     data?: any,
     schema: string

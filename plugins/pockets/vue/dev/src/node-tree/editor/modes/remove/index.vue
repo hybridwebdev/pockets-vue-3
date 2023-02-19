@@ -5,7 +5,7 @@
         </span>
         <button
             :disabled='!editor.active.remove.self'
-            @click='click'
+            @click='remove'
             class='m-auto btn btn-danger fw-8 text-white px-4 py-1'
         >
             <i class='fa fa-eraser'></i>
@@ -16,8 +16,8 @@
 <script lang='ts' setup>
 import { inject } from "vue"
 let editor = inject("pockets-node-tree-editor")
-let click = async () => {
-    await editor.active.remove.self()
-    editor.active =  false
+let remove = async () => {
+    editor.active.remove.self()
+    editor.active = false
 }
 </script>

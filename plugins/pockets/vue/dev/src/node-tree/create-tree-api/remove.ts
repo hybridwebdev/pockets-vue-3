@@ -4,9 +4,7 @@ import type { remove, TreeNodeApi } from "@/node-tree/types"
 export let useRemove = (api:TreeNodeApi) : remove => {
    
     let child = (index: number) => {
-
-        let node = $pockets.utils.object.get(api, api.getNodePath() )
-        node.nodes = $pockets.utils.array.omit(node.nodes, index)
+        api.node.nodes = $pockets.utils.array.omit(api.node.nodes, index)
         return []
     }
     let self = () => {

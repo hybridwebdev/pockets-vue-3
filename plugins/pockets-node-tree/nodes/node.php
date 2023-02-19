@@ -18,10 +18,7 @@ trait wrapper_functions {
             This is only a temp field for when the editor is active
             and can be removed when the node is saved. 
         */
-        if(!isset($node['hash'])) {
-            $node['hash'] = uniqid();
-        }
-
+        $node['hash'] = uniqid();
         return $this->hydrate($node);
     }
 

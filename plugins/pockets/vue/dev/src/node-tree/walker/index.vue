@@ -32,7 +32,7 @@ let props = {
     },
     props: Object,
     data: Object,
-    schema: String
+    schema: String,
 }
 export default {
     name: "tree-walker",

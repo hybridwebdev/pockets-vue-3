@@ -74,7 +74,7 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
             schema,
         })
     
-        api.add = computed(() => useAdd(api))
+        api.add = useAdd(api)
         api.remove = useRemove(api)
         api.clone = useClone(api)
         api.replace = useReplace(api)

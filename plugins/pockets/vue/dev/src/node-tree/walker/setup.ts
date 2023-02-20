@@ -10,6 +10,14 @@ export let setup = (props) => {
 
     let hovered = ref(false)
 
+    let selected = computed( () => {
+        if(editor.selectedNodes.length == 0) return false;
+        let selected = editor.selectedNodes.find(e => {
+            return e.paths.full == nodeApi.paths.full
+        })
+        return selected
+    } )
+
     let active = computed( () => {
         if(!editor?.active || !editor?.active?.paths) return;
         if(editor?.active?.paths?.full == nodeApi.paths.full) return true
@@ -18,12 +26,14 @@ export let setup = (props) => {
     let classes = computed(() => {
         let {
             active,
-            hovered
+            hovered,
+            selected
         } = state
         return {
             hovered,
             active,
-            "editor-show": editor.show
+            "editor-show": editor.show,
+            "selected": selected
         }
     })
     
@@ -43,6 +53,7 @@ export let setup = (props) => {
         }
     })
     let state = reactive( {
+        selected,
         active,
         classes,
         hovered,

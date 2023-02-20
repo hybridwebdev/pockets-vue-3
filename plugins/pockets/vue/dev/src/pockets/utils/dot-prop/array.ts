@@ -4,7 +4,7 @@
     they return a modified version of it. You will need to manually apply
     reassignments if mutation is desired.
 */
-export let move = (arr: Array<any>, to: number, from: number) => {
+export let move = (arr: Array<any>, from: number, to: number) => {
     let a = arr.filter( (e, i) => i != from )
     return insert(a, to, arr[from])
 }

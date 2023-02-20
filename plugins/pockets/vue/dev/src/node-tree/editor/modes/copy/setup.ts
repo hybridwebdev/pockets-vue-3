@@ -20,33 +20,41 @@ export let setup = (props) => {
         api.selectedNodes = []
     }
     let drop = (location) => {
-        let node = toRaw (api.selected.node)
-        let cb = api.active.add[location]
-        cb(node)
-    }
-    let confirm = (location) => {
-        
         let { selected, active } = api
 
+        let index = {
+            active: active.paths.index,
+            selected: selected.paths.index
+        }
+        
         if(
             selected.parent.paths.full == active.parent.paths.full
+            &&
+            ['before', 'after'].includes(location)
         ) {
-            let { index } = selected.paths
-            let { index: newIndex } = active.paths
-            if(location=='before') {
-                // newIndex--
+            if(location=='before'){
+                index.active--
             }
-            console.log(index, newIndex)
-            return active.parent.move.child(index, newIndex)
+            if(location=='after'){
+                index.active++
+            }
+            // if(location=='before') {
+            //     index.active--
+            // }
+            // if(location=='after') {
+            //     index.active++
+            // }
+            console.log(index)
+            // if(index == selected.paths.index) {
+            //     console.log('same')
+            // }
+            
+            // return selected.move.self(index)
         }   
-        
-        // drop(location)
-
-        // nextTick(() => {
-        //     cb().remove.self()
-        //     api.selectedNodes = []
-        //     api.active = false
-        // })
+    }
+    let confirm = (location) => {
+        let p = drop(location)
+        console.log(p)
     }
 
     

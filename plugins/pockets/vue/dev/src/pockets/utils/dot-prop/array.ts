@@ -5,9 +5,8 @@
     reassignments if mutation is desired.
 */
 
-export let move = (arr: Array<any>, from: number, to: number) => {
-    return insert( omit(arr, from) , to, arr[from] )
-}
+export let move = (arr: Array<any>, from: number, to: number) => insert( omit(arr, from), to, arr[from] )
+
 
 // const move = (arr, from, to) => {
 //   const clone = [...arr]

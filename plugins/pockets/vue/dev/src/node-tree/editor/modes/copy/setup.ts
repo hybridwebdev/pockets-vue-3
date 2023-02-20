@@ -3,12 +3,12 @@ import { editor } from "@/node-tree/editor"
 
 export let setup = (props) => {
     
-    let hasSameParent = () => api.selected.parent.paths.full == api.active.parent.paths.full
+    let hasSameParent = computed(() => api.selected.parent.paths.full == api.active.parent.paths.full)
     
-    let getIndexes = () => ({
+    let indexes = computed(() => ({
         active: api.active.paths.index,
         selected: api.selected.paths.index
-    })
+    }))
     
     let {
         active,
@@ -28,10 +28,10 @@ export let setup = (props) => {
 
     let drop = (location) => {
 
-        let indexes = getIndexes()
+        let { indexes } = api 
 
         if(
-            hasSameParent()
+            api.hasSameParent
             &&
             ['before', 'after'].includes(location)
         ) {
@@ -54,17 +54,15 @@ export let setup = (props) => {
                     return 'trapped After'
                 }
             }
-
-            //return indexes.active
             return api.selected.move.self(indexes.active)
         }   
+        
     }
     let confirm = (location) => {
         let p = drop(location)
         console.log(p)
 
     }
-
     
     let selected = computed(() => api.selectedNodes[0] ?? false )
 
@@ -74,7 +72,9 @@ export let setup = (props) => {
         selected,
         trigger,
         confirm,
-        cancel
+        cancel,
+        hasSameParent,
+        indexes
     } )
 
     return api

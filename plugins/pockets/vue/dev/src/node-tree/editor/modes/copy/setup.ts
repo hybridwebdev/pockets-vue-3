@@ -1,4 +1,4 @@
-import { toRaw, reactive, computed, toRefs, nextTick  } from "vue"
+import { reactive, computed, toRefs } from "vue"
 import { editor } from "@/node-tree/editor"
 
 export let setup = (props) => {
@@ -26,18 +26,22 @@ export let setup = (props) => {
             active: active.paths.index,
             selected: selected.paths.index
         }
-        
+
         if(
             selected.parent.paths.full == active.parent.paths.full
             &&
             ['before', 'after'].includes(location)
         ) {
-            if(location=='before'){
-                index.active--
+            console.log(index)
+            if(location == 'before' && index.active-1 === index.selected) {
+                console.log('samesies')
             }
-            if(location=='after'){
-                index.active++
-            }
+            // if(location=='before'){
+            //     index.active--
+            // }
+            // if(location=='after'){
+            //     index.active++
+            // }
             // if(location=='before') {
             //     index.active--
             // }

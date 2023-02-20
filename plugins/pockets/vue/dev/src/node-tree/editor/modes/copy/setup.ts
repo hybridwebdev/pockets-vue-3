@@ -3,6 +3,11 @@ import { editor } from "@/node-tree/editor"
 
 export let setup = (props) => {
 
+    let hasSameParent = () => api.selected.parent.paths.full == api.active.parent.paths.full
+    let getIndexes = () => ({
+        active: api.active.paths.index,
+        selected: api.selected.paths.index
+    })
     let {
         active,
         selectedNodes
@@ -20,45 +25,38 @@ export let setup = (props) => {
         api.selectedNodes = []
     }
     let drop = (location) => {
-        let { selected, active } = api
 
-        let index = {
-            active: active.paths.index,
-            selected: selected.paths.index
-        }
+        let indexes = getIndexes()
 
         if(
-            selected.parent.paths.full == active.parent.paths.full
+            hasSameParent()
             &&
             ['before', 'after'].includes(location)
         ) {
-            console.log(index)
-            if(location == 'before' && index.active-1 === index.selected) {
-                console.log('samesies')
-            }
-            // if(location=='before'){
-            //     index.active--
-            // }
-            // if(location=='after'){
-            //     index.active++
-            // }
-            // if(location=='before') {
-            //     index.active--
-            // }
-            // if(location=='after') {
-            //     index.active++
-            // }
-            console.log(index)
-            // if(index == selected.paths.index) {
-            //     console.log('same')
-            // }
             
-            // return selected.move.self(index)
+            if(indexes.active == indexes.selected) {
+                return 'Trapped Early'
+            }
+
+            if(location=='before'){
+                if(indexes.active-1 == indexes.selected) {
+                    return "trapped Before"
+                }
+            }
+
+            if(location=='after'){
+                if(indexes.active+1 == indexes.selected)  {
+                    return 'trapped After'
+                }
+            }
+            return indexes
+            //return api.selected.move.self(indexes.active)
         }   
     }
     let confirm = (location) => {
         let p = drop(location)
         console.log(p)
+
     }
 
     

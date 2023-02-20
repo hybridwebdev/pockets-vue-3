@@ -3,7 +3,10 @@ import { editor } from "@/node-tree/editor"
 
 export let setup = (props) => {
     
-    let hasSameParent = computed(() => api.selected.parent.paths.full == api.active.parent.paths.full)
+    let hasSameParent = computed(() => {
+        if(!api.selected.parent || !api.active.parent) return;
+        return api.selected.parent.paths.full == api.active.parent.paths.full
+    })
     
     let indexes = computed(() => ({
         active: api.active.paths.index,

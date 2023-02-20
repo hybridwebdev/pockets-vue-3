@@ -59,7 +59,7 @@ export default {
     
     .pockets-node-tree-node {
         &.selected {
-            outline: 5px solid #f00
+            outline: 5px solid #f00 !important
         }
         &.editor-show {
             button,

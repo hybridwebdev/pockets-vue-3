@@ -23,7 +23,8 @@ import { inject, toRaw  } from "vue"
 let editor = inject('pockets-node-tree-editor')
 
 let trigger = () => {
-    editor.selectNode(editor.active.activateInfo)
+    editor.selectedNodes.push(editor.active)
+    editor.active = false
 }
 let selectedNode = $computed(() => {
     return editor.selectedNodes[0] ?? false
@@ -33,21 +34,16 @@ let confirm = async (location) => {
     let map = {
         inside: async () => {
             console.log(node)
-            // selectedNode.remove()
-            // editor.active.addSibling(selectedNode.node, false)
         },
         before: async () => {
             console.log(editor.active)
-            // selectedNode.remove()
-            // editor.active.addSibling(selectedNode.node, false)
+        },
+        after: async () => {
+            console.log(editor.active)
         },
     }
 
-    let fn = map[location] ?? false
-    if(typeof fn != 'function') return
-
-    await fn()
-    console.log('off')
-    editor.selectNode(false)
+    map[location]()
+     
 }
 </script>

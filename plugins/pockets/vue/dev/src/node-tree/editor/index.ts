@@ -12,7 +12,7 @@ export let editor:TreeEditor  = reactive( {
         fields: []
     },
     active: false,
-
+    selectedNodes: [],
     save: () => $pockets.event.emit('pockets/node-tree/save')
 
 } )

@@ -39,13 +39,13 @@
         v-tooltip='"Cut Item"'
     /> -->
 
-    <!-- <button 
+    <button 
         class='fa fa-solid fa-copy btn border-0 btn-accent-dk fw-8 p-1' 
         :class="{active: editor.mode=='copy'}"
         @click='editor.mode = "copy"' 
-        :disabled='!editor.active.hasParent || editor.selectedNodes.length > 0'
+        :disabled='!editor.active.parent || editor.selectedNodes.length > 0'
         v-tooltip='"Copy Item"'
-    /> -->
+    />
 </template>
 <script lang='ts' setup>
 

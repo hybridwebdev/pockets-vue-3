@@ -9,6 +9,7 @@ export let setup = (props) => {
     } = toRefs(editor)
 
     let trigger = () => {
+
         if(api.active){
             api.selectedNodes.push(api.active)
             api.active = false
@@ -25,7 +26,8 @@ export let setup = (props) => {
     }
     let confirm = (location) => {
         
-        // let { selected, active }  = api
+        // let path = api.active.parent.move.child(0, 1)
+        // console.log(path)
         
         // var cb = () => selected.getNode(selected.paths.path)
 

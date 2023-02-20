@@ -7,13 +7,9 @@ export let useMove = (api:TreeNodeApi) : move => {
         return []
     }
     
-    let child = (index: number) => {
-        return []
-        // let child = api.getChild(index)
-        // if(child.node) {
-        //     api.add.inside( $pockets.utils.object.clone( child.node ), index )
-        // }
-        // return api.paths.path.concat(index + 1)
+    let child = (from: number, to: number) => {
+        api.node.nodes = $pockets.utils.array.move(api.node.nodes, from, to)
+        return api.paths.path.concat(to)
     }
     let move: move = {
         self,

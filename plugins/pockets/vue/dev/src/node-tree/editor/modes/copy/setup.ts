@@ -2,7 +2,7 @@ import { reactive, computed, toRefs } from "vue"
 import { editor } from "@/node-tree/editor"
 
 export let setup = (props) => {
-
+    
     let hasSameParent = () => api.selected.parent.paths.full == api.active.parent.paths.full
     
     let getIndexes = () => ({
@@ -44,6 +44,9 @@ export let setup = (props) => {
                 if(indexes.active-1 == indexes.selected) {
                     return "trapped Before"
                 }
+                if(indexes.active > indexes.selected) {
+                    indexes.active--
+                }
             }
 
             if(location=='after'){
@@ -52,8 +55,8 @@ export let setup = (props) => {
                 }
             }
 
-            return indexes.active
-            // return api.selected.move.self(indexes.active)
+            //return indexes.active
+            return api.selected.move.self(indexes.active)
         }   
     }
     let confirm = (location) => {

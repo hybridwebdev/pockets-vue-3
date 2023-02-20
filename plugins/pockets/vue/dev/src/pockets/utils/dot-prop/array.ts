@@ -4,6 +4,11 @@
     they return a modified version of it. You will need to manually apply
     reassignments if mutation is desired.
 */
+
+export let move = (arr: Array<any>, from: number, to: number) => {
+    return insert( omit(arr, from) , to, arr[from] )
+}
+
 // const move = (arr, from, to) => {
 //   const clone = [...arr]
 //   Array.prototype.splice.call(clone, to, 0,
@@ -12,43 +17,39 @@
 //   return clone;
 // };
 
-export let move = (arr: Array<any>, from: number, to: number) => {
-    let a = arr.filter( (e, i) => i != from )
-    return insert(a, to, arr[from])
-}
-export let amove = (array, moveIndex, toIndex) =>  {
-  /* #move - Moves an array item from one position in an array to another.
-     Note: This is a pure function so a new array will be returned, instead
-     of altering the array argument.
-    Arguments:
-    1. array     (String) : Array in which to move an item.         (required)
-    2. moveIndex (Object) : The index of the item to move.          (required)
-    3. toIndex   (Object) : The index to move item at moveIndex to. (required)
-  */
-  const item = array[moveIndex];
-  const length = array.length;
-  const diff = moveIndex - toIndex;
+// export let amove = (array, moveIndex, toIndex) =>  {
+//   /* #move - Moves an array item from one position in an array to another.
+//      Note: This is a pure function so a new array will be returned, instead
+//      of altering the array argument.
+//     Arguments:
+//     1. array     (String) : Array in which to move an item.         (required)
+//     2. moveIndex (Object) : The index of the item to move.          (required)
+//     3. toIndex   (Object) : The index to move item at moveIndex to. (required)
+//   */
+//   const item = array[moveIndex];
+//   const length = array.length;
+//   const diff = moveIndex - toIndex;
 
-  if (diff > 0) {
-    // move left
-    return [
-      ...array.slice(0, toIndex),
-      item,
-      ...array.slice(toIndex, moveIndex),
-      ...array.slice(moveIndex + 1, length)
-    ];
-  } else if (diff < 0) {
-    // move right
-    const targetIndex = toIndex + 1;
-    return [
-      ...array.slice(0, moveIndex),
-      ...array.slice(moveIndex + 1, targetIndex),
-      item,
-      ...array.slice(targetIndex, length)
-    ];
-  }
-  return array;
-}
+//   if (diff > 0) {
+//     // move left
+//     return [
+//       ...array.slice(0, toIndex),
+//       item,
+//       ...array.slice(toIndex, moveIndex),
+//       ...array.slice(moveIndex + 1, length)
+//     ];
+//   } else if (diff < 0) {
+//     // move right
+//     const targetIndex = toIndex + 1;
+//     return [
+//       ...array.slice(0, moveIndex),
+//       ...array.slice(moveIndex + 1, targetIndex),
+//       item,
+//       ...array.slice(targetIndex, length)
+//     ];
+//   }
+//   return array;
+// }
 
 export let replace = (arr: Array<any>, index: number, ...newItems: Array<any>) => [
     ...arr.slice(0, index),

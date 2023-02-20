@@ -13,6 +13,7 @@ import { useEditFields } from "./edit-fields"
 import { useCrud } from "./crud"
 
 import { editor } from "@/node-tree/editor"
+import { useMove } from "./move"
 
 export let createApi = (props:TreeNodeApiProps) : createdApi => {
         
@@ -78,7 +79,8 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
         api.remove = useRemove(api)
         api.clone = useClone(api)
         api.replace = useReplace(api)
-
+        api.move = useMove(api)
+        
         useCrud(api)
 
         return api

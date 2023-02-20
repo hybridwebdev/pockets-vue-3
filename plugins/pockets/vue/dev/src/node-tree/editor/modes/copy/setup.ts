@@ -4,17 +4,18 @@ import { editor } from "@/node-tree/editor"
 export let setup = (props) => {
 
     let hasSameParent = () => api.selected.parent.paths.full == api.active.parent.paths.full
+    
     let getIndexes = () => ({
         active: api.active.paths.index,
         selected: api.selected.paths.index
     })
+    
     let {
         active,
         selectedNodes
     } = toRefs(editor)
 
     let trigger = () => {
-
         if(api.active){
             api.selectedNodes.push(api.active)
             api.active = false
@@ -24,6 +25,7 @@ export let setup = (props) => {
     let cancel = () => {
         api.selectedNodes = []
     }
+
     let drop = (location) => {
 
         let indexes = getIndexes()
@@ -49,7 +51,9 @@ export let setup = (props) => {
                     return 'trapped After'
                 }
             }
-            return api.selected.move.self(indexes.active)
+
+            return indexes.active
+            // return api.selected.move.self(indexes.active)
         }   
     }
     let confirm = (location) => {
@@ -71,4 +75,5 @@ export let setup = (props) => {
     } )
 
     return api
+
 }

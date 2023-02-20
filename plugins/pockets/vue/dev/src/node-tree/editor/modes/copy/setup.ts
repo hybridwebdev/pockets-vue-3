@@ -1,4 +1,4 @@
-import { toRaw, reactive, computed, toRefs  } from "vue"
+import { toRaw, reactive, computed, toRefs, nextTick  } from "vue"
 import { editor } from "@/node-tree/editor"
 
 export let setup = (props) => {
@@ -11,22 +11,41 @@ export let setup = (props) => {
     let trigger = () => {
         if(api.active){
             api.selectedNodes.push(api.active)
-            //api.active = false
+            api.active = false
         }
     }
-
-    let confirm = (location) => {
-
-        let node = toRaw (api.selected.node)
-
-        let cb = api.active.add[location]
-        
-        cb(node)
-        
-        //api.selected.remove.self()
-
+    
+    let cancel = () => {
         api.selectedNodes = []
+    }
+    let drop = (location) => {
+        let node = toRaw (api.selected.node)
+        let cb = api.active.add[location]
+        cb(node)
+    }
+    let confirm = (location) => {
+        
+        let { selected, active }  = api
+        
+        var cb = () => selected.getNode(selected.paths.path)
 
+        // if(
+        //     selected.parent.paths.full == active.parent.paths.full
+        // ) {
+        //     let { index } = selected.paths
+        //     if(location=='before') {
+        //         index++
+        //     }
+        //     cb = () => selected.getNode(selected.parent.paths.path.concat(index) )
+        // }   
+        
+        drop(location)
+
+        nextTick(() => {
+            cb().remove.self()
+            api.selectedNodes = []
+            api.active = false
+        })
     }
 
     
@@ -37,7 +56,8 @@ export let setup = (props) => {
         active, 
         selected,
         trigger,
-        confirm
+        confirm,
+        cancel
     } )
 
     return api

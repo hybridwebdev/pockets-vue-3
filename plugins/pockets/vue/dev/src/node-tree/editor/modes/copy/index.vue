@@ -12,6 +12,9 @@
                 @after='confirm("after")'
                 @inside='confirm("inside")'
             />
+            <button @click='cancel' class='btn btn-accent-dk p-2'>
+                Cancel Move
+            </button>
         </div>
     </div>
 </template>

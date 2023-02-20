@@ -62,6 +62,7 @@ export type TreeEditor = {
     }
 
     active: TreeNodeApi | false
+    selectedNodes: Array<TreeNodeApi>
 
 }
 

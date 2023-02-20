@@ -1,10 +1,14 @@
 <template>
-    <div class='p-2 grid columns-1 gap-1'>
+    <div class='text-danger fw-8 fs-20 pt-2' v-if='!editor.active.clone.self'>
+        <p class='text-center'>
+            This Node cannot be cloned!
+        </p>
+    </div>
+    <div class='p-2 grid columns-1 gap-1' v-if='editor.active.clone.self'>
         <span class='text-center fw-8'>
             Are you sure you want to copy this item?
         </span>
         <button
-            :disabled='!editor.active.clone.self'
             @click='clone'
             class='m-auto btn btn-accent-dk fw-8 text-white px-4 py-1'
         >

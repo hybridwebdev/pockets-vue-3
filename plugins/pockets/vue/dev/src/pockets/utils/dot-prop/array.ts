@@ -4,18 +4,18 @@
     they return a modified version of it. You will need to manually apply
     reassignments if mutation is desired.
 */
-const move = (arr, from, to) => {
-  const clone = [...arr]
-  Array.prototype.splice.call(clone, to, 0,
-    Array.prototype.splice.call(clone, from, 1)[0]
-  );
-  return clone;
-};
+// const move = (arr, from, to) => {
+//   const clone = [...arr]
+//   Array.prototype.splice.call(clone, to, 0,
+//     Array.prototype.splice.call(clone, from, 1)[0]
+//   );
+//   return clone;
+// };
 
-// export let move = (arr: Array<any>, from: number, to: number) => {
-//     let a = arr.filter( (e, i) => i != from )
-//     return insert(a, to, arr[from])
-// }
+export let move = (arr: Array<any>, from: number, to: number) => {
+    let a = arr.filter( (e, i) => i != from )
+    return insert(a, to, arr[from])
+}
 export let amove = (array, moveIndex, toIndex) =>  {
   /* #move - Moves an array item from one position in an array to another.
      Note: This is a pure function so a new array will be returned, instead

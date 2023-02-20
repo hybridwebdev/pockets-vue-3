@@ -49,8 +49,7 @@ export let setup = (props) => {
                     return 'trapped After'
                 }
             }
-            return indexes
-            //return api.selected.move.self(indexes.active)
+            return api.selected.move.self(indexes.active)
         }   
     }
     let confirm = (location) => {

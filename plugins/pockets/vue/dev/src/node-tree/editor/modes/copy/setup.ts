@@ -37,12 +37,12 @@ export let setup = (props) => {
         ) {
             
             if(indexes.active == indexes.selected) {
-                return 'Trapped Early'
+                return;
             }
 
             if(location=='before'){
                 if(indexes.active-1 == indexes.selected) {
-                    return "trapped Before"
+                    return;
                 }
                 if(indexes.active > indexes.selected) {
                     indexes.active--
@@ -51,12 +51,12 @@ export let setup = (props) => {
 
             if(location=='after'){
                 if(indexes.active+1 == indexes.selected)  {
-                    return 'trapped After'
+                    return;
                 }
             }
             return api.selected.move.self(indexes.active)
         }   
-        
+
     }
     let confirm = (location) => {
         let p = drop(location)

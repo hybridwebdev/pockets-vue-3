@@ -57,7 +57,7 @@ export let setup = (props) => {
                     return;
                 }
             }
-            return api.selected.move.self(indexes.active)
+            return () => api.selected.move.self(indexes.active)
         }   
 
     }

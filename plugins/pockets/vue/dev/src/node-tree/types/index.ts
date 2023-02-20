@@ -1,7 +1,7 @@
 export type path = Array<string | number>
 
 export type move = {
-    self: false | ( () => path )
+    self: false | ( (to: number) => path )
     child: false | ( (from: number, to: number) => path )
 }
 

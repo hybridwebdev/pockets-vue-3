@@ -26,20 +26,19 @@ export let setup = (props) => {
     }
     let confirm = (location) => {
         
-        // let path = api.active.parent.move.child(0, 1)
-        // console.log(path)
-        
-        // var cb = () => selected.getNode(selected.paths.path)
+        let { selected, active } = api
 
-        // // if(
-        // //     selected.parent.paths.full == active.parent.paths.full
-        // // ) {
-        // //     let { index } = selected.paths
-        // //     if(location=='before') {
-        // //         index++
-        // //     }
-        // //     cb = () => selected.getNode(selected.parent.paths.path.concat(index) )
-        // // }   
+        if(
+            selected.parent.paths.full == active.parent.paths.full
+        ) {
+            let { index } = selected.paths
+            let { index: newIndex } = active.paths
+            if(location=='before') {
+                // newIndex--
+            }
+            console.log(index, newIndex)
+            return active.parent.move.child(index, newIndex)
+        }   
         
         // drop(location)
 

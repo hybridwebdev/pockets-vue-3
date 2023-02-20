@@ -25,27 +25,27 @@ export let setup = (props) => {
     }
     let confirm = (location) => {
         
-        let { selected, active }  = api
+        // let { selected, active }  = api
         
-        var cb = () => selected.getNode(selected.paths.path)
+        // var cb = () => selected.getNode(selected.paths.path)
 
-        // if(
-        //     selected.parent.paths.full == active.parent.paths.full
-        // ) {
-        //     let { index } = selected.paths
-        //     if(location=='before') {
-        //         index++
-        //     }
-        //     cb = () => selected.getNode(selected.parent.paths.path.concat(index) )
-        // }   
+        // // if(
+        // //     selected.parent.paths.full == active.parent.paths.full
+        // // ) {
+        // //     let { index } = selected.paths
+        // //     if(location=='before') {
+        // //         index++
+        // //     }
+        // //     cb = () => selected.getNode(selected.parent.paths.path.concat(index) )
+        // // }   
         
-        drop(location)
+        // drop(location)
 
-        nextTick(() => {
-            cb().remove.self()
-            api.selectedNodes = []
-            api.active = false
-        })
+        // nextTick(() => {
+        //     cb().remove.self()
+        //     api.selectedNodes = []
+        //     api.active = false
+        // })
     }
 
     

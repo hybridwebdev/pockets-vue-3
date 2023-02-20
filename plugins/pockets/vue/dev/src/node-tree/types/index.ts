@@ -1,5 +1,10 @@
 export type path = Array<string | number>
 
+export type move = {
+    self: false | ( () => path )
+    child: false | ( (from: number, to: number) => path )
+}
+
 export type add = {
     inside: false | ( (node: TreeNode, index: number) => path)
     before: false | ( (node: TreeNode) => path)
@@ -10,7 +15,6 @@ export type replace = {
     self: false | ( (node: TreeNode) => path)
     child: false | ( (index: number, node: TreeNode) => path)
 }
-
 
 export type clone = {
     self: false | ( () => path )

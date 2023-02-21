@@ -20,7 +20,7 @@
 </template>
 <script lang='ts'>
 import { setup } from "./setup"
-import nodePlacement from "@/node-tree/editor/sections/node-placement"
+import nodePlacement from "@/node-tree/editor/sections/node-placement/index.vue"
 export default {
     components: { nodePlacement },
     setup

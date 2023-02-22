@@ -39,6 +39,13 @@ export let move = ( active: TreeNodeApi | false, selected: false | TreeNodeApi )
 
     let moveSelf = (index: number) => () => selected.move.self(index)
     
+    let dropAt = (location: "before" | "after" | "inside" ) => {
+        return () => {
+            let path = active.add[location](selected.node)
+            selected.remove.self()
+            return path
+        }
+    }
     let before = () => {
 
         if( sameParent() === true ){
@@ -67,11 +74,7 @@ export let move = ( active: TreeNodeApi | false, selected: false | TreeNodeApi )
 
         if(!active.parent) return false;
 
-        return () => {
-            let path = active.add.before(selected.node)
-            selected.remove.self()
-            return path
-        }
+        return dropAt('before')
 
     }
     
@@ -95,7 +98,7 @@ export let move = ( active: TreeNodeApi | false, selected: false | TreeNodeApi )
 
         if(!active.parent) return false;
 
-        return () => {}
+        return dropAt('after')
         
     }
 

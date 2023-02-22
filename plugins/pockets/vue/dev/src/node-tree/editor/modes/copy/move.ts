@@ -29,7 +29,9 @@ export let move = ( active: TreeNodeApi | false, selected: false | TreeNodeApi )
     let sameIndex = () => indexes.active == indexes.selected
 
     let moveFn = (index: number) => {
-        return () => selected.move.self(index)
+        return () => {
+            selected.move.self(index)
+        }
     }
     let before = () => {
 

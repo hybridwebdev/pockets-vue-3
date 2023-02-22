@@ -17,6 +17,20 @@ export let move = ( active: TreeNodeApi | false, selected: false | TreeNodeApi )
         ) return true;
         return false;
     }
+    let activeContainsSelected = () => {
+
+        if(
+            !active 
+            || !active.parent 
+            || !selected
+        ) return false
+
+        if( active.paths.full.includes(selected.paths.full) ) return true
+
+        return false
+
+    }
+    
     let invalid = {
         inside: false,
         before: false,
@@ -33,6 +47,7 @@ export let move = ( active: TreeNodeApi | false, selected: false | TreeNodeApi )
             root nodes cant be moved
         */
         || !selected.parent
+        || activeContainsSelected()
     )  return invalid
 
     let indexes = {

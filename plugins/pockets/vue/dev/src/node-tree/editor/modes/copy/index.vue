@@ -1,6 +1,6 @@
 <template>
     <div class='p-2'>
-        <div class='text-danger fw-8 fs-20 pt-2' v-if='adder.add.disabled'>
+        <div class='text-danger fw-8 fs-20 pt-2' v-if='!editor.active.parent && !selected'>
             <p class='text-center'>
                 This Node cannot be moved
             </p>

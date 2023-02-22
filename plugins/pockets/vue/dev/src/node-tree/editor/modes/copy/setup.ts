@@ -1,9 +1,9 @@
-import { reactive, computed, toRefs } from "vue"
+import { reactive, computed } from "vue"
 import { editor } from "@/node-tree/editor"
 import { move } from "./move"
 export let setup = (props) => {
 
-    let trigger = () => {
+    let selectNode = () => {
         if(editor.active){
             editor.selectedNodes.push(editor.active)
             editor.active = false
@@ -17,11 +17,12 @@ export let setup = (props) => {
     let selected = computed(() => editor.selectedNodes[0] ?? false )
 
     let api = reactive({
-        trigger,
+        selectNode,
         cancel,
-        abstract: computed( () => move( editor.active, selected.value ) ),
+        adder: {
+            add: computed( () => move( editor.active, selected.value ) )
+        },
         selected,
-        active: editor.active
     } )
 
     return api

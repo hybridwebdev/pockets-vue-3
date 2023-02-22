@@ -1,14 +1,14 @@
 <template>
     <div class='p-2'>
-        Inside {{abstract}}
+        Inside {{adder}}
         <div v-if='!selected'>    
-            <button @click='trigger' class='btn btn-accent-dk p-2'>
+            <button @click='selectNode' class='btn btn-accent-dk p-2'>
                 Copy Element
             </button>
         </div>
         <div v-if='selected' class='grid columns-3 gap-1'>    
             <nodePlacement 
-                :api='active'
+                :api='adder'
             />
             <button @click='cancel' class='btn btn-accent-dk p-2'>
                 Cancel Move

@@ -1,6 +1,6 @@
 import { $pockets } from "@/pockets"
 import type { TreeEditor } from "@/node-tree/types"
-import { reactive } from "vue"
+import { reactive, computed } from "vue"
 
 export let editor:TreeEditor  = reactive( {
 
@@ -13,6 +13,9 @@ export let editor:TreeEditor  = reactive( {
     },
     active: false,
     selectedNodes: [],
-    save: () => $pockets.event.emit('pockets/node-tree/save')
+    save: () => $pockets.event.emit('pockets/node-tree/save'),
+    modeLocked: computed(() => {
+        if(editor.selectedNodes.length > 0) return true;
+    })
 
 } )

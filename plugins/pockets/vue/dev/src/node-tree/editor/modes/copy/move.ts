@@ -49,7 +49,7 @@ export let move = ( active: TreeNodeApi | false, selected: false | TreeNodeApi )
                     nudging it up one so that it doesn't 
                     replace its sibling
                 */
-                return moveFn(indexes.active--)
+                return moveFn(indexes.active-1)
             }
 
             return moveFn(indexes.active)
@@ -61,21 +61,21 @@ export let move = ( active: TreeNodeApi | false, selected: false | TreeNodeApi )
     }
     
     let after = () => {
-
+        
         if( sameParent() === true ) {
             
             if( sameIndex() ) return false;
 
-            if(indexes.selected-1 == indexes.active)  {
+            if(indexes.selected-1 == indexes.active )  {
                  /**
                     if the item right of it is the active 
                     target then it can't move
                 */
                 return false;
             }
-        
-            return moveFn(indexes.active)
-
+            
+            return moveFn(indexes.active + 1)
+            
         }
 
         return false;

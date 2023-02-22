@@ -10,8 +10,8 @@
             <nodePlacement 
                 :api='adder'
                 @before="adder.add.before"
-                @after="adder.after"
-                @inside="adder.inside"
+                @after="adder.add.after"
+                @inside="adder.add.inside"
             />
             <button @click='cancel' class='btn btn-accent-dk p-2'>
                 Cancel Move

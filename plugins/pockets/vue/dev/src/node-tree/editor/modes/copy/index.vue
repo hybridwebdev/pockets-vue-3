@@ -1,6 +1,5 @@
 <template>
     <div class='p-2'>
-        Inside {{adder}}
         <div v-if='!selected'>    
             <button @click='selectNode' class='btn btn-accent-dk p-2'>
                 Copy Element
@@ -9,8 +8,9 @@
         <div v-if='selected' class='grid columns-3 gap-1'>    
             <nodePlacement 
                 :api='adder'
-                @before="adder.add.before"
-                @after="adder.add.after"
+                @before="confirm('before')"
+                @after="confirm('after')"
+                @inside="confirm('inside')"
             />
             <button @click='cancel' class='btn btn-accent-dk p-2'>
                 Cancel Move

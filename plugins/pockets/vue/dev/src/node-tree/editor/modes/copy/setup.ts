@@ -14,15 +14,22 @@ export let setup = (props) => {
         editor.selectedNodes = []
     }
     
+    let confirm = (location) => {
+        return add.value[location]()
+    }
+    
+    let add = computed( () => move( editor.active, selected.value ) )
+
     let selected = computed(() => editor.selectedNodes[0] ?? false )
 
     let api = reactive({
         selectNode,
         cancel,
         adder: {
-            add: computed( () => move( editor.active, selected.value ) )
+            add
         },
         selected,
+        confirm
     } )
 
     return api

@@ -127,12 +127,11 @@ export let move = ( active: TreeNodeApi | false, selected: false | TreeNodeApi )
         return false
     }
 
-    let api:api = {
+    return {
         before: before(),
         after: after(),
         inside: inside(),
         draggable: draggable()
     }
 
-    return api
 }

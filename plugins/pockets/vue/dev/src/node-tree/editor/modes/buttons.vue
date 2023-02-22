@@ -5,7 +5,7 @@
         :class="{active: editor.mode=='edit'}"
         v-tooltip='"Edit Item"'
         @click='editor.mode = "edit"'
-        :disabled='editor.active.editFields.length == 0'
+        :disabled='editor.active.editFields.length == 0 || editor.modeLocked'
     />
 
     <button 
@@ -13,13 +13,14 @@
         :class="{active: editor.mode=='add'}"
         v-tooltip='"Add Item"'
         @click='editor.mode = "add"'
+        :disabled='editor.modeLocked'
     />
 
      <button 
         class='fa fa-solid fa-eraser btn border-0 btn-accent-dk fw-8 p-1' 
         :class="{active: editor.mode=='remove'}"
         v-tooltip="'Remove Mode'"
-        :disabled='!editor.active.remove.self'
+        :disabled='!editor.active.remove.self || editor.modeLocked'
         @click='editor.mode = "remove"'
     />
 
@@ -27,7 +28,7 @@
         class='fa fa-solid fa-clone btn border-0 btn-accent-dk fw-8 p-1' 
         :class="{active: editor.mode=='clone'}"
         @click='editor.mode="clone"' 
-        :disabled='!editor.active.clone.self'
+        :disabled='!editor.active.clone.self || editor.modeLocked'
         v-tooltip='"Clone Item"'
     />
 
@@ -43,7 +44,7 @@
         class='fa fa-solid fa-copy btn border-0 btn-accent-dk fw-8 p-1' 
         :class="{active: editor.mode=='copy'}"
         @click='editor.mode = "copy"' 
-        :disabled='!editor.active.parent || editor.selectedNodes.length > 0'
+        :disabled='!editor.active.parent || editor.selectedNodes.length > 0 || editor.modeLocked'
         v-tooltip='"Copy Item"'
     />
 </template>

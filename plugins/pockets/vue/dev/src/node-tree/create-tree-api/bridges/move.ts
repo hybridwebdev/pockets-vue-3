@@ -4,15 +4,10 @@ type api = {
     inside: number | boolean | (() => any)
     before: number | boolean | (() => any)
     after : number | boolean | (() => any)
-    draggable: boolean
 }
 
 export let move = ( active: TreeNodeApi | false, selected: false | TreeNodeApi ) : api => {
 
-    let draggable = () => {
-        if( active && active.parent ) return true
-        return false
-    }
     let activeContainsSelected = () => {
 
         if(
@@ -31,7 +26,6 @@ export let move = ( active: TreeNodeApi | false, selected: false | TreeNodeApi )
         inside: false,
         before: false,
         after: false,
-        draggable: draggable()
     }
 
     if(
@@ -131,7 +125,6 @@ export let move = ( active: TreeNodeApi | false, selected: false | TreeNodeApi )
         before: before(),
         after: after(),
         inside: inside(),
-        draggable: draggable()
     }
 
 }

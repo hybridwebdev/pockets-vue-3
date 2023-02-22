@@ -14,7 +14,16 @@ export let move = ( active: TreeNodeApi | false, selected: false | TreeNodeApi )
         after: false
     }
 
-    if(!active || !selected)  return invalid
+    if(
+        !active 
+        || !active.node 
+        || !selected 
+        || !selected.node
+        /**
+            root nodes cant be moved
+        */
+        || !selected.parent
+    )  return invalid
 
     let indexes = {
         active: active.paths.index,
@@ -28,7 +37,7 @@ export let move = ( active: TreeNodeApi | false, selected: false | TreeNodeApi )
 
     let sameIndex = () => indexes.active == indexes.selected
 
-    let moveFn = (index: number) => () => selected.move.self(index)
+    let moveSelf = (index: number) => () => selected.move.self(index)
     
     let before = () => {
 
@@ -49,10 +58,10 @@ export let move = ( active: TreeNodeApi | false, selected: false | TreeNodeApi )
                     nudging it up one so that it doesn't 
                     replace its sibling
                 */
-                return moveFn(indexes.active-1)
+                return moveSelf(indexes.active-1)
             }
 
-            return moveFn(indexes.active)
+            return moveSelf(indexes.active)
 
         }
 
@@ -61,7 +70,7 @@ export let move = ( active: TreeNodeApi | false, selected: false | TreeNodeApi )
             selected.remove.self()
             return path
         }
-        
+
         return false
 
     }
@@ -80,7 +89,7 @@ export let move = ( active: TreeNodeApi | false, selected: false | TreeNodeApi )
                 return false;
             }
             
-            return moveFn(indexes.active + 1)
+            return moveSelf(indexes.active + 1)
             
         }
 

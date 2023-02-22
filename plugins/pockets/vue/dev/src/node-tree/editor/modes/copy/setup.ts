@@ -1,11 +1,11 @@
 import { reactive, computed } from "vue"
 import { editor } from "@/node-tree/editor"
-import { move } from "./move"
+import { move } from "@/node-tree/create-tree-api/bridges/move"
 export let setup = (props) => {
 
     let selectNode = () => {
         if(editor.active){
-            editor.selectedNodes.push(editor.active)
+            editor.selectedNodes = [ editor.active ]
             editor.active = false
         }
     }

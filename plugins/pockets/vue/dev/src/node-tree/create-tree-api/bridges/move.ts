@@ -11,7 +11,7 @@ export let move = ( active: TreeNodeApi | false, selected: false | TreeNodeApi )
     let invalid = {
         inside: false,
         before: false,
-        after: false
+        after: false,
     }
 
     if(
@@ -65,13 +65,13 @@ export let move = ( active: TreeNodeApi | false, selected: false | TreeNodeApi )
 
         }
 
+        if(!active.parent) return false;
+
         return () => {
             let path = active.add.before(selected.node)
             selected.remove.self()
             return path
         }
-
-        return false
 
     }
     
@@ -93,7 +93,10 @@ export let move = ( active: TreeNodeApi | false, selected: false | TreeNodeApi )
             
         }
 
-        return false;
+        if(!active.parent) return false;
+
+        return () => {}
+        
     }
 
     let inside = () => {
@@ -103,7 +106,7 @@ export let move = ( active: TreeNodeApi | false, selected: false | TreeNodeApi )
     let api:api = {
         before: before(),
         after: after(),
-        inside: inside()
+        inside: inside(),
     }
 
     return api

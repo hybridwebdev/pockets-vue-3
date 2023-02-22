@@ -28,6 +28,7 @@ export let setup = (props) => {
             add: computed( () => move( editor.active, selected.value ) )
         },
         selected,
+        editor
     } )
 
     return api

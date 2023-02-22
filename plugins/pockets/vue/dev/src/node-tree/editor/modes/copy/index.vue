@@ -1,8 +1,13 @@
 <template>
     <div class='p-2'>
-        <div v-if='!selected'>    
+        <div class='text-danger fw-8 fs-20 pt-2' v-if='!editor.active.parent && !selected'>
+            <p class='text-center'>
+                This Node cannot be moved
+            </p>
+        </div>
+        <div v-if='!selected && editor.active.parent'>    
             <button @click='selectNode' class='btn btn-accent-dk p-2'>
-                Copy Element
+                Move Element
             </button>
         </div>
         <div v-if='selected' class='grid columns-3 gap-1'>    

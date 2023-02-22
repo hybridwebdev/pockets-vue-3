@@ -77,7 +77,7 @@ export let setup = (props) => {
         cancel,
         hasSameParent,
         indexes,
-        abstract: computed(() => move( editor.active, selected.value ))
+        abstract: computed( () => move( editor.active, selected.value ) )
     } )
 
     return api

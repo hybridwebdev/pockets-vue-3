@@ -4,14 +4,25 @@ type api = {
     inside: number | boolean | (() => any)
     before: number | boolean | (() => any)
     after : number | boolean | (() => any)
+    disabled: boolean
 }
 
 export let move = ( active: TreeNodeApi | false, selected: false | TreeNodeApi ) : api => {
 
+    let disabled = () => {
+
+        if(!active || !active.parent) return true;
+        return false;
+        // return false;
+        // if(!active) return true;
+        // if(selected) return true;
+        // return false
+    }
     let invalid = {
         inside: false,
         before: false,
         after: false,
+        disabled: disabled()
     }
 
     if(
@@ -110,6 +121,7 @@ export let move = ( active: TreeNodeApi | false, selected: false | TreeNodeApi )
         before: before(),
         after: after(),
         inside: inside(),
+        disabled: disabled()
     }
 
     return api

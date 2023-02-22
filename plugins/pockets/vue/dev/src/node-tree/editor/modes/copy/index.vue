@@ -8,9 +8,9 @@
         <div v-if='selected' class='grid columns-3 gap-1'>    
             <nodePlacement 
                 :api='adder'
-                @before="adder.add.before"
-                @after="adder.add.after"
-                @inside="adder.add.inside"
+                @before="confirm('before')"
+                @after="confirm('after')"
+                @inside="confirm('inside')"
             />
             <button @click='cancel' class='btn btn-accent-dk p-2'>
                 Cancel Move

@@ -16,6 +16,9 @@ export let setup = (props) => {
 
     let selected = computed(() => editor.selectedNodes[0] ?? false )
 
+    let confirm = (location) => {
+        api.adder.add[location]()
+    }
     let api = reactive({
         cancel,
         confirm,

@@ -56,6 +56,12 @@ export let move = ( active: TreeNodeApi | false, selected: false | TreeNodeApi )
 
         }
 
+        return () => {
+            let path = active.add.before(selected.node)
+            selected.remove.self()
+            return path
+        }
+        
         return false
 
     }

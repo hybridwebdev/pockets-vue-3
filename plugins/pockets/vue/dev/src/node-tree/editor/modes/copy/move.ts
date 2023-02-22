@@ -8,7 +8,7 @@ type api = {
 
 export let move = ( active: TreeNodeApi | false, selected: false | TreeNodeApi ) : api => {
 
-    let invalid:api = {
+    let invalid = {
         inside: false,
         before: false,
         after: false

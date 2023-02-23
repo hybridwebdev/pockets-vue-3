@@ -1,8 +1,7 @@
 import { getTree } from "./"
 import { move } from "@/node-tree/create-tree-api/bridges/move"
-import type { path } from "@/node-tree/types"
 
-let moveBridge = (active: path | string, selected: path) => {
+let moveBridge = (active: string, selected: string ) => {
     let tree = getTree()
     return {
         tree,
@@ -10,7 +9,7 @@ let moveBridge = (active: path | string, selected: path) => {
     }
 }
 let moveTest = () => {
-    let { tree, before } = moveBridge('root.0', ['root', 0, 0])
+    let { tree, before } = moveBridge('root.0', 'root.0.0')
     
     expect(typeof before).toBe('function')
     
@@ -20,11 +19,11 @@ let moveTest = () => {
     before()
     
     expect(
-        tree.getNode(['root', 0]).node.props.key 
+        tree.getNode('root.0').node.props.key 
     ).toBe('root.0.0')
     
     expect(
-        tree.getNode(['root', 1, 0]).node.props.key 
+        tree.getNode('root.1.0').node.props.key 
     ).toBe('root.0.1')
 
 }

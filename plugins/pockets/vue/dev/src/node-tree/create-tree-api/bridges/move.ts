@@ -1,12 +1,7 @@
 import type { TreeNodeApi } from "@/node-tree/types"
+import { dropApi } from "@/node-tree/types"
 
-type api = {
-    inside: number | boolean | (() => any)
-    before: number | boolean | (() => any)
-    after : number | boolean | (() => any)
-}
-
-export let createModule = ( active: TreeNodeApi, selected: TreeNodeApi ) : api => {
+export let createModule = ( active: TreeNodeApi, selected: TreeNodeApi ) : dropApi => {
     
     let indexes = {
         active: active.paths.index,
@@ -98,7 +93,7 @@ export let createModule = ( active: TreeNodeApi, selected: TreeNodeApi ) : api =
     }
 
 }
-export let move = ( active: TreeNodeApi | false, selected: false | TreeNodeApi ) : api => {
+export let move = ( active: TreeNodeApi | false, selected: false | TreeNodeApi ) : dropApi => {
 
     let activeContainsSelected = () => {
 

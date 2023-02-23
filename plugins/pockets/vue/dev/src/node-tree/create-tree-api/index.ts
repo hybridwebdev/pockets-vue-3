@@ -45,8 +45,10 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
 
     }
 
-    let getNode = (path: path ) : TreeNodeApi => {
+    let getNode = ($path: path | string) : TreeNodeApi => {
         
+        let path = typeof $path === 'string' ? $path.split('.') : $path
+
         let paths = getPaths(path)
 
         let parent = computed( () => {

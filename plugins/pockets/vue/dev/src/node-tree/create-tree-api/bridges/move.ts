@@ -6,40 +6,8 @@ type api = {
     after : number | boolean | (() => any)
 }
 
-export let move = ( active: TreeNodeApi | false, selected: false | TreeNodeApi ) : api => {
-
-    let activeContainsSelected = () => {
-
-        if(
-            !active 
-            || !active.parent 
-            || !selected
-        ) return false
-
-        if( active.paths.full.includes(selected.paths.full) ) return true
-
-        return false
-
-    }
+export let createModule = ( active: TreeNodeApi, selected: TreeNodeApi ) : api => {
     
-    let invalid = {
-        inside: false,
-        before: false,
-        after: false,
-    }
-
-    if(
-        !active 
-        || !active.node 
-        || !selected 
-        || !selected.node
-        /**
-            root nodes cant be moved
-        */
-        || !selected.parent
-        || activeContainsSelected()
-    )  return invalid
-
     let indexes = {
         active: active.paths.index,
         selected: selected.paths.index
@@ -118,7 +86,9 @@ export let move = ( active: TreeNodeApi | false, selected: false | TreeNodeApi )
     }
 
     let inside = () => {
-        return false
+        if(!active.node.nodes) return false;
+
+        return dropAt('inside')
     }
 
     return {
@@ -127,4 +97,41 @@ export let move = ( active: TreeNodeApi | false, selected: false | TreeNodeApi )
         inside: inside(),
     }
 
+}
+export let move = ( active: TreeNodeApi | false, selected: false | TreeNodeApi ) : api => {
+
+    let activeContainsSelected = () => {
+
+        if(
+            !active 
+            || !active.parent 
+            || !selected
+        ) return false
+
+        if( active.paths.full.includes(selected.paths.full) ) return true
+
+        return false
+
+    }
+    
+    let invalid = {
+        inside: false,
+        before: false,
+        after: false,
+    }
+
+    if(
+        !active 
+        || !active.node 
+        || !selected 
+        || !selected.node
+        /**
+            root nodes cant be moved
+        */
+        || !selected.parent
+        || activeContainsSelected()
+    )  return invalid
+
+    return createModule(active, selected)
+    
 }

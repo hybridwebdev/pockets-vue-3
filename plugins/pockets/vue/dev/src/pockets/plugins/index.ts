@@ -4,19 +4,25 @@
 
     This can be externally extended via register, allowing external libraries to hook in their own extensions. 
 */
-let context = require.context("@/", true, /\pockets-plugin.ts$/);
+let getList = () => {
+    
+    // if(!require) return []
 
-export let pluginList = context.keys()
-    .map( (path: string) => {
-        let plugin:$pocketsPlugin = context(path)?.plugin ?? {}
-        return {
-            ...plugin,
-            path
-        }
-    } )
+    let context = require.context("@/", true, /\pockets-plugin.ts$/);
+
+    let pluginList = context.keys()
+        .map( (path: string) => {
+            let plugin:$pocketsPlugin = context(path)?.plugin ?? {}
+            return {
+                ...plugin,
+                path
+            }
+        } )
+    return pluginList
+}
 import { $pockets } from "@/pockets"
 export let plugins = {
-    registered: pluginList,
+    registered: [],
     add(plugin: $pocketsPlugin){
         this.registered.push(plugin)
     },
@@ -24,8 +30,9 @@ export let plugins = {
         return ( app: any,  ...args:any[] ) => {
             
             app.config.globalProperties.$pockets = $pockets
-            
-            $pockets.plugins?.registered.forEach( ( loader: $pocketsPlugin ) =>  {
+            let arr = [ ...plugins.registered, ...getList() ]
+
+            arr.forEach( ( loader: $pocketsPlugin ) =>  {
                 if( hookName in loader == false) return;
                 let fn = loader[hookName] ?? false
                 if(typeof fn === 'function') fn(app, $pockets, ...args)

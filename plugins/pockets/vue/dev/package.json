@@ -10,6 +10,7 @@
   "dependencies": {
     "@googlemaps/js-api-loader": "^1.15.1",
     "axios": "^1.2.1",
+    "babel-plugin-require-context-hook": "^1.0.0",
     "click-outside-vue3": "^4.0.1",
     "core-js": "^3.8.3",
     "dataloader": "^2.1.0",
@@ -20,7 +21,7 @@
     "youtube-vue3": "^0.1.15"
   },
   "devDependencies": {
-    "@types/jest": "^27.0.1",
+    "@types/jest": "^27.5.2",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-typescript": "~5.0.0",
     "@vue/cli-plugin-unit-jest": "~5.0.0",
@@ -28,6 +29,7 @@
     "@vue/test-utils": "^2.3.0",
     "@vue/vue3-jest": "^27.0.0-alpha.1",
     "babel-jest": "^27.0.6",
+    "babel-plugin-transform-require-context": "^0.1.1",
     "jest": "^27.0.5",
     "node-sass": "^8.0.0",
     "sass-loader": "^13.2.0",

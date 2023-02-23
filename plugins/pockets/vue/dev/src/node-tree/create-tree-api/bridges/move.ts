@@ -1,4 +1,4 @@
-import type { TreeNodeApi } from "@/node-tree/types"
+import type { TreeNodeApi, dropLocations } from "@/node-tree/types"
 import { dropApi } from "@/node-tree/types"
 
 export let createModule = ( active: TreeNodeApi, selected: TreeNodeApi ) : dropApi => {
@@ -17,7 +17,7 @@ export let createModule = ( active: TreeNodeApi, selected: TreeNodeApi ) : dropA
 
     let moveSelf = (index: number) => () => selected.move.self(index)
     
-    let dropAt = (location: "before" | "after" | "inside" ) => {
+    let dropAt = (location: dropLocations ) => {
         return () => {
             let path = active.add[location](selected.node)
             selected.remove.self()

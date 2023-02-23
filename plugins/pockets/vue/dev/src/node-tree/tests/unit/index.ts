@@ -2,10 +2,8 @@ import type { TreeNode, createdApi } from "@/node-tree/types"
 import { createApi } from "@/node-tree/create-tree-api"
 
 export let node = (key: string ) : TreeNode => ( {
-    el: "test",
-    props: {
-        key
-    },
+    el: key,
+    props: {},
     schema: "test",
 } )
 

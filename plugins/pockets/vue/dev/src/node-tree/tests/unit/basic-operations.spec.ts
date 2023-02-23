@@ -6,7 +6,7 @@ let clone = () => {
     tree.getNode('root.0.2').clone.self()
 
     expect(
-        tree.getNode('root.0.3').node.props.key
+        tree.getNode('root.0.3').node.el
     ).toBe('root.0.2')
 }
 
@@ -15,7 +15,7 @@ let remove = () => {
     let tree = getTree()
     tree.getNode('root.0.0').remove.self()
     expect(
-        tree.getNode('root.0.0').node.props.key
+        tree.getNode('root.0.0').node.el
     ).toBe('root.0.1')
 
 }
@@ -26,7 +26,7 @@ let addBefore = () => {
     tree.getNode('root.0.0').add.before( node('a new node') )
 
     expect(
-        tree.getNode('root.0.0').node.props.key
+        tree.getNode('root.0.0').node.el
     ).toBe('a new node')
 }
 
@@ -36,7 +36,7 @@ let addInside = () => {
     tree.getNode('root.0').add.inside( node('a new node'), 2 )
 
     expect(
-        tree.getNode( 'root.0.2' ).node.props.key
+        tree.getNode( 'root.0.2' ).node.el
     ).toBe('a new node')
 }
 
@@ -46,7 +46,7 @@ let addAfter = () => {
     tree.getNode('root.0.0').add.after( node('a new node') )
 
     expect(
-        tree.getNode('root.0.1').node.props.key
+        tree.getNode('root.0.1').node.el
     ).toBe('a new node')
 }
 

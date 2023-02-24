@@ -1,4 +1,4 @@
-import type { TreeNode, createdApi, dropLocations } from "@/node-tree/types"
+import type { TreeNode, createdApi, dropLocations, dropApi } from "@/node-tree/types"
 
 import { createApi } from "@/node-tree/create-tree-api"
 import { move } from "@/node-tree/create-tree-api/bridges/move"
@@ -37,9 +37,10 @@ export let getTree = () : createdApi => createApi( {
     }
 } )
 
-export let moveAction = (active: string, selected: string, location: dropLocations, sameTree: boolean = true ) : { 
+export let moveBridge = (active: string, selected: string, location: dropLocations | false = false, sameTree: boolean = true ) : { 
     first: createdApi, 
-    second: createdApi
+    second: createdApi,
+    bridge: dropApi
 } => {
 
     /**
@@ -54,10 +55,11 @@ export let moveAction = (active: string, selected: string, location: dropLocatio
 
     let bridge = move( trees.first.getNode(active), trees.second.getNode(selected) )
 
-    let action = bridge[location]
+    if(location) {
+        let action = bridge[location]
+        if(typeof action == 'function') action()
+    }
 
-    if(typeof action == 'function') action()
-
-    return { ...trees }
+    return { ...trees, bridge }
 
 }

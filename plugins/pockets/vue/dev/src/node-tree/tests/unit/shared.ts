@@ -1,5 +1,5 @@
 import type { TreeNode, createdApi, dropLocations, dropApi } from "@/node-tree/types"
-
+import { reactive } from "vue"
 import { createApi } from "@/node-tree/create-tree-api"
 import { move } from "@/node-tree/create-tree-api/bridges/move"
 
@@ -18,7 +18,7 @@ export let node = (key: string ) : TreeNode => ( {
 
 export let getTree = () : testCreatedApi => {
     let tree = createApi( {
-        root: {
+        root: reactive({
             el: "div",
             props: {},
             schema: 'container',
@@ -60,7 +60,7 @@ export let getTree = () : testCreatedApi => {
                     ]
                 },
             ]
-        },
+        }),
         source: {
             ID: -1,
             type: "test",

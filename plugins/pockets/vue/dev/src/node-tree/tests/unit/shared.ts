@@ -29,6 +29,7 @@ export let getTree = () : testCreatedApi => {
                         node("root.0.0"),
                         node("root.0.1"),
                         node("root.0.2"),
+                        node("root.0.3"),
                     ]
                 },
                 {
@@ -37,6 +38,7 @@ export let getTree = () : testCreatedApi => {
                         node("root.1.0"),
                         node("root.1.1"),
                         node("root.1.2"),
+                        node("root.1.3"),
                     ]
                 },
                 {
@@ -45,6 +47,16 @@ export let getTree = () : testCreatedApi => {
                         node("root.2.0"),
                         node("root.2.1"),
                         node("root.2.2"),
+                        node("root.2.3"),
+                    ]
+                },
+                {
+                    ...node("root.3"),
+                    nodes: [
+                        node("root.3.0"),
+                        node("root.3.1"),
+                        node("root.3.2"),
+                        node("root.3.3"),
                     ]
                 },
             ]

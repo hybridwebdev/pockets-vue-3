@@ -70,3 +70,22 @@ export let testMove = (active: string, selected: string, location: dropLocations
     }
 
 }
+
+type testCreatedApi = createdApi & {
+    test: {
+        node: ((path: string) => any )
+    }
+}
+
+export let testBasic = () : testCreatedApi  => {
+    
+    let tree = getTree()
+
+    return {
+        ...tree,
+        test: {
+            node: (path: string) => expect( tree.getNode(path).node.el ),
+        }
+    }
+
+}

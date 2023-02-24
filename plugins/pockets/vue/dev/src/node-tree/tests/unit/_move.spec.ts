@@ -24,10 +24,6 @@ test('Sibling Right of Target', () => {
     expectNode('root.0.1').toBe('root.0.2')
 } )
 
-
-
-
-
 test('Try and move A node inside itself', () => {
     let { dropApi, expectNode } = testMove('root.0.0', 'root.0', 'inside')
     

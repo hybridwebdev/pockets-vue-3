@@ -5,7 +5,8 @@ import { move } from "@/node-tree/create-tree-api/bridges/move"
 
 type testCreatedApi = createdApi & {
     test: {
-        node: ((path: string) => any )
+        node: ( ( path: string ) => any )
+        nodes: ( ( path: string, arr: Array<string> ) => any )
     }
 }
 
@@ -30,8 +31,22 @@ export let getTree = () : testCreatedApi => {
                         node("root.0.2"),
                     ]
                 },
-                node("root.1"),
-                node("root.2"),
+                {
+                    ...node("root.1"),
+                    nodes: [
+                        node("root.1.0"),
+                        node("root.1.1"),
+                        node("root.1.2"),
+                    ]
+                },
+                {
+                    ...node("root.2"),
+                    nodes: [
+                        node("root.2.0"),
+                        node("root.2.1"),
+                        node("root.2.2"),
+                    ]
+                },
             ]
         },
         source: {
@@ -43,10 +58,12 @@ export let getTree = () : testCreatedApi => {
             metaKey:  ( Math.random() + 1 ).toString(36).substring(2) 
         }
     } )
+
     return {
         ...tree,
         test: {
             node: (path: string) => expect( tree.getNode(path).node.el ),
+            nodes: (path: string, arr: Array<string>) => expect( tree.getNode(path).node.nodes?.map(e=>e.el) ).toStrictEqual(arr),
         }
     }
 }

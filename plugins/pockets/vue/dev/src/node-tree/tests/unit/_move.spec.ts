@@ -2,26 +2,22 @@ import { testMove } from "./shared"
 
 test('Child Before Target', () => {
     let { to } = testMove('root.0', 'root.0.0', 'before')
-    to.test.node('root.0').toBe('root.0.0')
-    to.test.node('root.1.0').toBe('root.0.1')
+    to.test.nodes('root.1', ['root.0.1', 'root.0.2'])
 } )
 
 test('Child After Target', () => {
     let { to } = testMove('root.0', 'root.0.0', 'after')
-    to.test.node('root.0').toBe('root.0')
-    to.test.node('root.1').toBe('root.0.0')
+    to.test.nodes('root.0', ['root.0.1', 'root.0.2'])
 } )
 
 test('Sibling left of Target', () => {
     let { to } = testMove('root.0.0', 'root.0.2', 'before')
-    to.test.node('root.0.0').toBe('root.0.2')
-    to.test.node('root.0.1').toBe('root.0.0')
+    to.test.nodes('root.0', ['root.0.2', 'root.0.0', 'root.0.1'])
 } )
 
 test('Sibling Right of Target', () => {
     let { to } = testMove('root.0.0', 'root.0.2', 'after')
-    to.test.node('root.0.0').toBe('root.0.0')
-    to.test.node('root.0.1').toBe('root.0.2')
+    to.test.nodes('root.0', ['root.0.0', 'root.0.2', 'root.0.1'])
 } )
 
 test('Try and move A node inside itself', () => {

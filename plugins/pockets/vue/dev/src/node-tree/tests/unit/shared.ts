@@ -38,7 +38,7 @@ export let getTree = () : createdApi => createApi( {
 } )
 
 export let testMove = (active: string, selected: string, location: dropLocations | false = false, sameTree: boolean = true ) : { 
-    expectNode: ((path: string, toBe: string, tree?: "first" | "second" ) => void ),
+    expectNode: ((path: string, tree?: "first" | "second" ) => any ),
     dropApi: dropApi,
     trees: {
         first: createdApi,
@@ -65,7 +65,7 @@ export let testMove = (active: string, selected: string, location: dropLocations
 
     return {
         trees,
-        expectNode: (path: string, toBe: string, tree = "first") => expect( trees[tree].getNode(path).node.el ).toBe(toBe),
+        expectNode: (path: string, tree = "first") => expect( trees[tree].getNode(path).node.el ),
         dropApi 
     }
 

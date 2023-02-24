@@ -31,13 +31,17 @@ describe('Move Siblings', () => {
 })
 
 describe('Move Inside', () => {
-    test('Child of self', () => {
+    test('Child of Target', () => {
         let { to } = testMove('root.0', 'root.0.2', 'inside')
         to.test.node('root.0.0', 'root.0.2')
     })
-    test('Child of self', () => {
+    test('From Before Target', () => {
         let { to } = testMove('root.1', 'root.0', 'inside')
         to.test.node('root.0', 'root.1')
+    })
+    test('From After Target', () => {
+        let { to } = testMove('root.0', 'root.1', 'inside')
+        to.test.node('root.0.0', 'root.1')
     })
 })
 

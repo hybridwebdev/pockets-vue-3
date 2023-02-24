@@ -53,8 +53,8 @@ export let getTree = () : testCreatedApi => {
 
 export let testMove = (active: string, selected: string, location: dropLocations | false = false, sameTree: boolean = true ) : { 
     dropApi: dropApi,
-    target: testCreatedApi,
-    selected: testCreatedApi
+    to: testCreatedApi,
+    from: testCreatedApi
 } => {
     /**
         if sameTree is set to false, the operaction will occur across separate trees.
@@ -62,11 +62,11 @@ export let testMove = (active: string, selected: string, location: dropLocations
     let tree = getTree()
 
     let trees = {
-        target: tree,
-        selected: sameTree ? tree : getTree()
+        to: tree,
+        from: sameTree ? tree : getTree()
     }
 
-    let dropApi = move( trees.target.getNode(active), trees.selected.getNode(selected) )
+    let dropApi = move( trees.to.getNode(active), trees.from.getNode(selected) )
 
     if(location) {
         let action = dropApi[location]

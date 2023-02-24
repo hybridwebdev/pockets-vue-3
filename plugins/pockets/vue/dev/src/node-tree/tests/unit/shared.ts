@@ -5,7 +5,7 @@ import { move } from "@/node-tree/create-tree-api/bridges/move"
 
 type testCreatedApi = createdApi & {
     test: {
-        node: ( ( path: string ) => any )
+        node: ( ( path: string, toBe: string ) => any )
         nodes: ( ( path: string, arr: Array<string> ) => any )
     }
 }
@@ -62,7 +62,7 @@ export let getTree = () : testCreatedApi => {
     return {
         ...tree,
         test: {
-            node: (path: string) => expect( tree.getNode(path).node.el ),
+            node: (path: string, toBe: string) => expect( tree.getNode(path).node.el ).toBe(toBe),
             nodes: (path: string, arr: Array<string>) => expect( tree.getNode(path).node.nodes?.map(e=>e.el) ).toStrictEqual(arr),
         }
     }

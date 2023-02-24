@@ -79,5 +79,3 @@ export let testMove = (active: string, selected: string, location: dropLocations
     }
 
 }
-
-export let testBasic = () : testCreatedApi  => getTree()

@@ -38,9 +38,9 @@ export let getTree = () : testCreatedApi => {
             ID: -1,
             type: "test",
             /*
-                Meta key is randomized so that full path is will be unique for each tree instance
+                Meta key is randomized so that full path will be unique for each tree instance.
             */
-            metaKey:  (Math.random() + 1).toString(36).substring(2) 
+            metaKey:  ( Math.random() + 1 ).toString(36).substring(2) 
         }
     } )
     return {
@@ -51,7 +51,15 @@ export let getTree = () : testCreatedApi => {
     }
 }
 
-export let testMove = (active: string, selected: string, location: dropLocations | false = false, sameTree: boolean = true ) : { 
+export let testMove = (
+    to: string, 
+    from: string, 
+    location: dropLocations | false = false, 
+    /**
+        If location argument is provided, it will automatically run the action for that slot
+    */
+    sameTree: boolean = true 
+) : { 
     dropApi: dropApi,
     to: testCreatedApi,
     from: testCreatedApi
@@ -66,7 +74,7 @@ export let testMove = (active: string, selected: string, location: dropLocations
         from: sameTree ? tree : getTree()
     }
 
-    let dropApi = move( trees.to.getNode(active), trees.from.getNode(selected) )
+    let dropApi = move( trees.to.getNode(to), trees.from.getNode(from) )
 
     if(location) {
         let action = dropApi[location]

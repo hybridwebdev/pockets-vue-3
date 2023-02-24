@@ -30,6 +30,14 @@ describe('Move Siblings', () => {
     })
 })
 
+
+describe('Move Inside', () => {
+    test('Child of self', () => {
+        let { to } = testMove('root.0', 'root.0.2', 'inside')
+        to.test.node('root.0.0', 'root.0.2')
+    })
+})
+
 describe('Safety Checks', () => {
     test('Try and move A node inside itself', () => {
         let { to, dropApi } = testMove('root.0.0', 'root.0', 'inside')

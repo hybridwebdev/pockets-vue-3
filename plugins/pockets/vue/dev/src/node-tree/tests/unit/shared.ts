@@ -37,10 +37,13 @@ export let getTree = () : createdApi => createApi( {
     }
 } )
 
-export let moveBridge = (active: string, selected: string, location: dropLocations | false = false, sameTree: boolean = true ) : { 
-    first: createdApi, 
-    second: createdApi,
-    bridge: dropApi
+export let testMove = (active: string, selected: string, location: dropLocations | false = false, sameTree: boolean = true ) : { 
+    expectNode: ((path: string, toBe: string, tree?: "first" | "second" ) => void ),
+    dropApi: dropApi,
+    trees: {
+        first: createdApi,
+        second: createdApi
+    }
 } => {
 
     /**
@@ -53,13 +56,17 @@ export let moveBridge = (active: string, selected: string, location: dropLocatio
         second: sameTree ? tree : getTree()
     }
 
-    let bridge = move( trees.first.getNode(active), trees.second.getNode(selected) )
+    let dropApi = move( trees.first.getNode(active), trees.second.getNode(selected) )
 
     if(location) {
-        let action = bridge[location]
+        let action = dropApi[location]
         if(typeof action == 'function') action()
     }
 
-    return { ...trees, bridge }
+    return {
+        trees,
+        expectNode: (path: string, toBe: string, tree = "first") => expect( trees[tree].getNode(path).node.el ).toBe(toBe),
+        dropApi 
+    }
 
 }

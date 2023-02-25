@@ -10,15 +10,7 @@ let hasSameParent = (active, selected) => {
 let hasSameIndex = (active, selected) => active.paths.index == selected.paths.index
 
 export let createModule = ( active: TreeNodeApi, selected: TreeNodeApi ) : dropApi => {
-    
-    let test = () => {
-        
-        let inst = intersection(active.paths.path, selected.paths.path)
-        console.log(inst, 'aaaaaaaaaa', active.paths.path)
-    }
 
-
-    test()
     let indexes = {
         active: active.paths.index,
         selected: selected.paths.index
@@ -26,15 +18,19 @@ export let createModule = ( active: TreeNodeApi, selected: TreeNodeApi ) : dropA
 
     let sameParent = hasSameParent(active, selected)
 
-    let dropAt = (location: dropLocations ) => {
+    let dropAt = (location: dropLocations, tree ) => {
         return () => {
-            let path = active.add[location](selected.node)
-            selected.remove.self()
-            return path
+            // selected.remove.self()
+            // return tree.add[location](selected.node)
         }
     }
+    let dropAdjacent = (index) => {
+        console.log('index', index)
+        let node = selected.node
+        selected.remove.self()
+        return active.parent.add.inside(node, index)
+    }
     let before = () => {
-
         if( sameParent === true ){
             if( indexes.selected+1 == indexes.active) {
                 /**
@@ -44,21 +40,27 @@ export let createModule = ( active: TreeNodeApi, selected: TreeNodeApi ) : dropA
                 return false;
             }
         }
-
-        return () => []
-
+        return () => {
+            let index = active.paths.index
+            if(sameParent) {
+                if(indexes.selected > indexes.active){
+                    return dropAdjacent(index-1)
+                }
+            }
+            return dropAdjacent(index)
+        }
     }
     
     let after = () => {
-        if( sameParent === true ) {
-            if(indexes.selected-1 == indexes.active )  {
-                 /**
-                    if the item right of it is the active 
-                    target then it can't move
-                */
-                return false;
-            }
-        }
+        // if( sameParent === true ) {
+        //     if(indexes.selected-1 == indexes.active )  {
+        //          /**
+        //             if the item right of it is the active 
+        //             target then it can't move
+        //         */
+        //         return false;
+        //     }
+        // }
         return () => []
     }
 

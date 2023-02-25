@@ -1,12 +1,19 @@
 import { testMove } from "./shared"
 
-// describe("IDFK 2", () => {
-
-// })
-describe("IDFK", () => {
-    test('Child to Target', () => {
-        //testMove('root.0', 'root.0.0', 'before')
-        testMove('root.0', 'root.0.0', 'after')
+describe("Before", () => {
+    test('Child to before target', () => {
+        let { to } = testMove('root.0', 'root.0.0', 'before')
+        to.test.node('root.0', 'root.0.0')
+        to.test.node('root.1.0', 'root.0.1')
+    })
+    test('Sibling < target', () => {
+        let { to } = testMove('root.0.2', 'root.0.0', 'before')
+        to.test.node('root.0.1', 'root.0.0')
+        //to.test.nodes('root.0', ['root.0.1', 'root.0.0', 'root.0.2', 'root.0.3'])
+    })
+    test('Sibling to > target', () => {
+        let { to } = testMove('root.0.0', 'root.0.2', 'before')
+        to.test.nodes('root.0', ['root.0.2', 'root.0.0', 'root.0.1', 'root.0.3'])
     })
     // test('Before - to > selected', () => {
     //     let { to } = testMove('root.3', 'root.0', 'before')

@@ -26,8 +26,6 @@ export let createModule = ( active: TreeNodeApi, selected: TreeNodeApi ) : dropA
 
     let sameParent = hasSameParent(active, selected)
 
-    let moveSelf = (index: number) => () => selected.move.self(index)
-    
     let dropAt = (location: dropLocations ) => {
         return () => {
             let path = active.add[location](selected.node)

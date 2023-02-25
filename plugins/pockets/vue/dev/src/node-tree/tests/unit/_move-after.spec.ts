@@ -4,6 +4,7 @@ import { testMove } from "./shared"
         test('Child of target to target', () => {
             let { to } = testMove('root.0', 'root.0.0', 'after')
             to.test.node('root.1', 'root.0.0')
+            to.test.nodes('root', ['root.0', 'root.0.0', 'root.1', 'root.2', 'root.3'])
         })
         test('Child of another parent to target', () => {
             let { to } = testMove('root.0', 'root.1.0', 'after')

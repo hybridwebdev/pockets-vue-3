@@ -51,7 +51,7 @@ export let createModule = ( active: TreeNodeApi, selected: TreeNodeApi ) : dropA
         //     }
         // }
  
-        if(sameParent) {
+        if(sameParent === true) {
             if(indexes.active > indexes.selected) {
                 /**
                     Compensate for the fact active shifts one left due to removal of selected

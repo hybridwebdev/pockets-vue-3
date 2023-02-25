@@ -94,7 +94,7 @@ export let getTree = () : testCreatedApi => {
 }
 
 export let testMove = (
-    to: string, 
+    to: string | any, 
     from: string, 
     location: dropLocations | false = false, 
     /**

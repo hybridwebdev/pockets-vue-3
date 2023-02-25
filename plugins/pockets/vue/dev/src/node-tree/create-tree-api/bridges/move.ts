@@ -25,9 +25,6 @@ export let createModule = ( active: TreeNodeApi, selected: TreeNodeApi ) : dropA
     }
 
     let sameParent = hasSameParent(active, selected)
-    let sameIndex = hasSameIndex(active, selected)
-
-    
 
     let moveSelf = (index: number) => () => selected.move.self(index)
     

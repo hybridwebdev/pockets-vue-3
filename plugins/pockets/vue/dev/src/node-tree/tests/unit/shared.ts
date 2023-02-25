@@ -1,4 +1,4 @@
-import type { TreeNode, createdApi, dropLocations, dropApi } from "@/node-tree/types"
+import type { TreeNode, createdApi, dropLocations, dropApi, path } from "@/node-tree/types"
 import { reactive } from "vue"
 import { createApi } from "@/node-tree/create-tree-api"
 import { move } from "@/node-tree/create-tree-api/bridges/move"
@@ -87,15 +87,15 @@ export let getTree = () : testCreatedApi => {
     return {
         ...tree,
         test: {
-            node: (path: string, toBe: string) => expect( tree.getNode(path).node.el ).toBe(toBe),
-            nodes: (path: string, arr: Array<string>) => expect( tree.getNode(path).node.nodes?.map(e=>e.el) ).toStrictEqual(arr),
+            node: (path: string | path, toBe: string | path) => expect( tree.getNode(path).node.el ).toBe(toBe),
+            nodes: (path: string | path, arr: Array<string>) => expect( tree.getNode(path).node.nodes?.map(e=>e.el) ).toStrictEqual(arr),
         }
     }
 }
 
 export let testMove = (
-    to: string | any, 
-    from: string, 
+    to: string | path, 
+    from: string | path, 
     location: dropLocations | false = false, 
     /**
         If location argument is provided, it will automatically run the action for that slot

@@ -44,8 +44,9 @@ export let createModule = ( active: TreeNodeApi, selected: TreeNodeApi ) : dropA
             let index = active.paths.index
             if(sameParent) {
                 if(indexes.selected > indexes.active){
-                    return dropAdjacent(index-1)
+                    return dropAdjacent(2)
                 }
+                return dropAdjacent(index-1)
             }
             return dropAdjacent(index)
         }

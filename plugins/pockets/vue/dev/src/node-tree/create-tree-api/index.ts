@@ -51,7 +51,7 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
             /**
                 If path is a string, convert all non root entries into numbers
             */
-            ? $path.split('.').map(x => x=='root' ? 'root' : +x)  
+            ? $path.split('.').map(x => x == 'root' ? 'root' : Number(x) )  
             : $path
 
         let paths = getPaths(path)

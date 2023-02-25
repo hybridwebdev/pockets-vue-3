@@ -26,6 +26,7 @@ export let createModule = ( active: TreeNodeApi, selected: TreeNodeApi ) : dropA
         selected.parent.remove.child(selected.paths.index)
         return active.parent.add.inside(node, dropIndex)
     }
+    
     let before = () => {
         if( sameParent ){
             if( indexes.selected+1 == indexes.active) {
@@ -37,7 +38,6 @@ export let createModule = ( active: TreeNodeApi, selected: TreeNodeApi ) : dropA
             }
         }
         return () => dropAdjacent(indexes.active-1)
-
     }
     
     let after = () => {

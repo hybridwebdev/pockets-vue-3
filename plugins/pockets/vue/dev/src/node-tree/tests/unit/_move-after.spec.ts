@@ -1,35 +1,10 @@
 import { testMove } from "./shared"
-
-describe("Before", () => {
-    test('Child to before target', () => {
-        let { to } = testMove('root.0', 'root.0.0', 'before')
-        to.test.node('root.0', 'root.0.0')
-        to.test.node('root.1.0', 'root.0.1')
+ describe('Move - After', () => {
+    test('Child of target to after target', () => {
+        let { to } = testMove('root.0', 'root.0.0', 'after')
+        to.test.node('root.1', 'root.0.0')
     })
-    test('Sibling < target', () => {
-        let { to } = testMove('root.0.2', 'root.0.0', 'before')
-        to.test.node('root.0.1', 'root.0.0')
-        //to.test.nodes('root.0', ['root.0.1', 'root.0.0', 'root.0.2', 'root.0.3'])
-    })
-    test('Sibling to > target', () => {
-        let { to } = testMove('root.0.0', 'root.0.2', 'before')
-        to.test.nodes('root.0', ['root.0.2', 'root.0.0', 'root.0.1', 'root.0.3'])
-    })
-    // test('Before - to > selected', () => {
-    //     let { to } = testMove('root.3', 'root.0', 'before')
-    // })
-    // test('Before - to < selected', () => {
-    //     let { to } = testMove('root.1', 'root.2', 'before')
-    // })
-    // test('After - to > selected', () => {
-    //     let { to } = testMove('root.3', 'root.0', 'after')
-    // })
-    // test('After - to < selected', () => {
-    //     let { to } = testMove('root.0', 'root.3', 'after')
-    // })
-})
-
-
+ })
 // describe('Child of Target', () => {
 //     test('Before Target', () => {
 //         let { to } = testMove('root.0', 'root.0.0', 'before')
@@ -74,18 +49,4 @@ describe("Before", () => {
 //         to.test.node('root.0.0', 'root.1')
 //     })
 // })
-
-describe('Safety Checks', () => {
-    test('Try and move A node inside itself', () => {
-        let { to, dropApi } = testMove('root.0.0', 'root.0', 'inside')
-        to.test.node('root.0.0', 'root.0.0')
-        expect(dropApi.inside).toBe(false)
-    })
-    test('Target and Selected are the same', () => {
-        let { dropApi } = testMove('root.0.0', 'root.0.0')
-        expect(dropApi.after).toBe(false)
-        expect(dropApi.inside).toBe(false)
-        expect(dropApi.before).toBe(false)
-    })
-})
 

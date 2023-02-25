@@ -17,21 +17,15 @@ export let createModule = ( active: TreeNodeApi, selected: TreeNodeApi ) : dropA
     }
 
     let sameParent = hasSameParent(active, selected)
-
-    let dropAt = (location: dropLocations, tree ) => {
-        return () => {
-            // selected.remove.self()
-            // return tree.add[location](selected.node)
-        }
-    }
+ 
     let dropAdjacent = (index) => {
-        console.log('index', index)
+        if(index < 0) index = 0
         let node = selected.node
         selected.remove.self()
         return active.parent.add.inside(node, index)
     }
     let before = () => {
-        if( sameParent === true ){
+        if( sameParent ){
             if( indexes.selected+1 == indexes.active) {
                 /**
                     if the item left of it is the active 
@@ -40,16 +34,8 @@ export let createModule = ( active: TreeNodeApi, selected: TreeNodeApi ) : dropA
                 return false;
             }
         }
-        return () => {
-            let index = active.paths.index
-            if(sameParent) {
-                if(indexes.selected > indexes.active){
-                    return dropAdjacent(2)
-                }
-                return dropAdjacent(index-1)
-            }
-            return dropAdjacent(index)
-        }
+        return () => dropAdjacent(active.paths.index-1)
+
     }
     
     let after = () => {
@@ -62,7 +48,7 @@ export let createModule = ( active: TreeNodeApi, selected: TreeNodeApi ) : dropA
         //         return false;
         //     }
         // }
-        return () => []
+        return () => dropAdjacent(active.paths.index+1)
     }
 
     let inside = () => {

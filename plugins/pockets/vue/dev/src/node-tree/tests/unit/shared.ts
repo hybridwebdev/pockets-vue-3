@@ -17,12 +17,24 @@ export let node = (key: string ) : TreeNode => ( {
 } )
 
 export let getTree = () : testCreatedApi => {
+
+    /*
+        Same Tree?
+            No 
+                Dont care
+            Yes
+
+                Will overlap cause selected to change
+                    
+    */
+
     let tree = createApi( {
         root: reactive({
             el: "div",
             props: {},
             schema: 'container',
             nodes: [
+                //
                 {
                     ...node("root.0"),
                     nodes: [
@@ -32,6 +44,7 @@ export let getTree = () : testCreatedApi => {
                         node("root.0.3"),
                     ]
                 },
+                //
                 {
                     ...node("root.1"),
                     nodes: [

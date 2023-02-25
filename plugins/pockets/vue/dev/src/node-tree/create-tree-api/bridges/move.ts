@@ -1,19 +1,33 @@
 import type { TreeNodeApi, dropLocations } from "@/node-tree/types"
 import { dropApi } from "@/node-tree/types"
+import { intersection } from "lodash"
+
+let hasSameParent = (active, selected) => {
+    if(!selected.parent || !active.parent) return;
+    return selected.parent.paths.full == active.parent.paths.full
+}
+
+let hasSameIndex = (active, selected) => active.paths.index == selected.paths.index
 
 export let createModule = ( active: TreeNodeApi, selected: TreeNodeApi ) : dropApi => {
     
+    let test = () => {
+        
+        let inst = intersection(active.paths.path, selected.paths.path)
+        console.log(inst, 'aaaaaaaaaa', active.paths.path)
+    }
+
+
+    test()
     let indexes = {
         active: active.paths.index,
         selected: selected.paths.index
     }
 
-    let sameParent = () => {
-        if(!selected.parent || !active.parent) return;
-        return selected.parent.paths.full == active.parent.paths.full
-    }
+    let sameParent = hasSameParent(active, selected)
+    let sameIndex = hasSameIndex(active, selected)
 
-    let sameIndex = () => indexes.active == indexes.selected
+    
 
     let moveSelf = (index: number) => () => selected.move.self(index)
     
@@ -26,10 +40,7 @@ export let createModule = ( active: TreeNodeApi, selected: TreeNodeApi ) : dropA
     }
     let before = () => {
 
-        if( sameParent() === true ){
-    
-            if( sameIndex() ) return false;
-
+        if( sameParent === true ){
             if( indexes.selected+1 == indexes.active) {
                 /**
                     if the item left of it is the active 
@@ -37,31 +48,14 @@ export let createModule = ( active: TreeNodeApi, selected: TreeNodeApi ) : dropA
                 */
                 return false;
             }
-
-            if(indexes.active > indexes.selected) {
-                /*
-                    nudging it up one so that it doesn't 
-                    replace its sibling
-                */
-                return moveSelf(indexes.active-1)
-            }
-
-            return moveSelf(indexes.active)
-
         }
 
-        if(!active.parent) return false;
-
-        return dropAt('before')
+        return () => []
 
     }
     
     let after = () => {
-        
-        if( sameParent() === true ) {
-            
-            if( sameIndex() ) return false;
-
+        if( sameParent === true ) {
             if(indexes.selected-1 == indexes.active )  {
                  /**
                     if the item right of it is the active 
@@ -69,21 +63,13 @@ export let createModule = ( active: TreeNodeApi, selected: TreeNodeApi ) : dropA
                 */
                 return false;
             }
-            
-            return moveSelf(indexes.active + 1)
-            
         }
-
-        if(!active.parent) return false;
-
-        return dropAt('after')
-        
+        return () => []
     }
 
     let inside = () => {
         if(!active.node.nodes) return false;
-
-        return dropAt('inside')
+        return () => []
     }
 
     return {
@@ -125,6 +111,7 @@ export let move = ( active: TreeNodeApi | false, selected: false | TreeNodeApi )
         */
         || !selected.parent
         || activeContainsSelected()
+        || hasSameParent(active, selected) && hasSameIndex(active, selected)
     )  return invalid
 
     return createModule(active, selected)

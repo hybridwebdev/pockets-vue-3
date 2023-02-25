@@ -1,6 +1,5 @@
-import type { TreeNodeApi, dropLocations } from "@/node-tree/types"
+import type { TreeNodeApi } from "@/node-tree/types"
 import { dropApi } from "@/node-tree/types"
-import { intersection } from "lodash"
 
 let hasSameParent = (active, selected) => {
     if(!selected.parent || !active.parent) return;
@@ -18,10 +17,10 @@ export let createModule = ( active: TreeNodeApi, selected: TreeNodeApi ) : dropA
 
     let sameParent = hasSameParent(active, selected)
  
-    let dropAdjacent = (index) => {
+    let dropAdjacent = (index, n) => {
         if(index < 0) index = 0
         let node = selected.node
-        selected.remove.self()
+        selected.parent.remove.child(n)
         return active.parent.add.inside(node, index)
     }
     let before = () => {
@@ -34,7 +33,7 @@ export let createModule = ( active: TreeNodeApi, selected: TreeNodeApi ) : dropA
                 return false;
             }
         }
-        return () => dropAdjacent(active.paths.index-1)
+        return () => dropAdjacent(indexes.active-1, indexes.selected)
 
     }
     
@@ -48,7 +47,13 @@ export let createModule = ( active: TreeNodeApi, selected: TreeNodeApi ) : dropA
         //         return false;
         //     }
         // }
-        return () => dropAdjacent(active.paths.index+1)
+
+        if(sameParent) {
+            if(indexes.active > indexes.selected) {
+                 
+            }
+        }
+        return () => dropAdjacent(indexes.active+1, indexes.selected)
     }
 
     let inside = () => {

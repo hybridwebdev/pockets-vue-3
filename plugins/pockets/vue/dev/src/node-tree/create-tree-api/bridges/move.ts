@@ -10,20 +10,22 @@ let hasSameIndex = (active, selected) => active.paths.index == selected.paths.in
 
 export let createModule = ( active: TreeNodeApi, selected: TreeNodeApi ) : dropApi => {
 
-    let indexes = {
+    let indexes:{
+        active: number,
+        selected: number
+    } = {
         active: active.paths.index,
         selected: selected.paths.index
     }
-
+    
     let sameParent = hasSameParent(active, selected)
  
-    let dropAdjacent = (dropIndex:number, removeIndex: number = indexes.selected) => {
+    let dropAdjacent = (dropIndex:number) => {
         
         if(dropIndex < 0) dropIndex = 0
-        if(removeIndex < 0) removeIndex = 0
-
         let node = selected.node
-        selected.parent.remove.child(removeIndex)
+        selected.parent.remove.child(selected.paths.index)
+        console.log(dropIndex)
         return active.parent.add.inside(node, dropIndex)
     }
     let before = () => {
@@ -59,7 +61,7 @@ export let createModule = ( active: TreeNodeApi, selected: TreeNodeApi ) : dropA
                 return () => dropAdjacent(indexes.active)         
             }
         }
-        return () => dropAdjacent(indexes.active+1)
+        return () => dropAdjacent(active.paths.index+1 )
     }
 
     let inside = () => {

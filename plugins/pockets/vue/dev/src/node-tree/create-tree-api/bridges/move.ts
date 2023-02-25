@@ -21,11 +21,9 @@ export let createModule = ( active: TreeNodeApi, selected: TreeNodeApi ) : dropA
     let sameParent = hasSameParent(active, selected)
  
     let dropAdjacent = (dropIndex:number) => {
-        
         if(dropIndex < 0) dropIndex = 0
         let node = selected.node
         selected.parent.remove.child(selected.paths.index)
-        console.log(dropIndex)
         return active.parent.add.inside(node, dropIndex)
     }
     let before = () => {

@@ -3,7 +3,7 @@ import { dropApi } from "@/node-tree/types"
 
 let hasSameParent = (active, selected) => {
     if(!selected.parent || !active.parent) return;
-    return selected.parent.paths.full == active.parent.paths.full
+    return selected.parent.paths.full === active.parent.paths.full
 }
 
 let hasSameIndex = (active, selected) => active.paths.index == selected.paths.index

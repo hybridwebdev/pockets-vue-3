@@ -5,48 +5,5 @@ import { testMove } from "./shared"
         to.test.node('root.1', 'root.0.0')
     })
  })
-// describe('Child of Target', () => {
-//     test('Before Target', () => {
-//         let { to } = testMove('root.0', 'root.0.0', 'before')
-//         to.test.nodes('root.1', ['root.0.1', 'root.0.2', 'root.0.3'])
-//     })
-//     test('After Target', () => {
-//         let { to } = testMove('root.0', 'root.0.0', 'after')
-//         to.test.nodes('root.0', ['root.0.1', 'root.0.2', 'root.0.3'])
-//     })
-// })
 
-// describe('Move Siblings', () => {
-//     test('Before - to > selected', () => {
-//         let { to } = testMove('root.3', 'root.0', 'before')
-//         to.test.nodes('root', ['root.1', 'root.2', 'root.0', 'root.3'])
-//     })
-//     test('Before - to < selected', () => {
-//         let { to } = testMove('root.1', 'root.2', 'before')
-//         to.test.nodes('root', ['root.0', 'root.2', 'root.1', 'root.3'])
-//     })
-//     test('After - to > selected', () => {
-//         let { to } = testMove('root.3', 'root.0', 'after')
-//         to.test.nodes('root', ['root.1', 'root.2', 'root.3', 'root.0'])
-//     })
-//     test('After - to < selected', () => {
-//         let { to } = testMove('root.0', 'root.3', 'after')
-//         to.test.nodes('root', ['root.0', 'root.3', 'root.1', 'root.2'])
-//     })
-// })
-
-// describe('Move Inside', () => {
-//     test('Child of Target', () => {
-//         let { to } = testMove('root.0', 'root.0.2', 'inside')
-//         to.test.node('root.0.0', 'root.0.2')
-//     })
-//     test('From Before Target', () => {
-//         let { to } = testMove('root.1', 'root.0', 'inside')
-//         to.test.node('root.0', 'root.1')
-//     })
-//     test('From After Target', () => {
-//         let { to } = testMove('root.0', 'root.1', 'inside')
-//         to.test.node('root.0.0', 'root.1')
-//     })
-// })
 

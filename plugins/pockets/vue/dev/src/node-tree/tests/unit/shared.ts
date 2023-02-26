@@ -104,7 +104,7 @@ export let createTestDropApi = (dropApi: dropApi) : testDropApi=> {
             Object.entries(test).map(([key, value]) => {
                 let type = typeof value
                 if( type == 'boolean' ) expect( value ).toBe(false)    
-                if( type == 'string' ) expect( typeof dropApi[key] ).toBe('function')
+                if( type == 'string' ) expect( typeof dropApi[key] ).toBe(value)
             } )
         } 
     }

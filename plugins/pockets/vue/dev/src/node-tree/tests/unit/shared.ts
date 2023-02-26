@@ -78,7 +78,7 @@ export let getTree = () : testCreatedApi => {
             ]
         }),
         source: {
-            ID: -1,
+            ID: 0,
             type: "test",
             /*
                 Meta key is randomized so that full path will be unique for each tree instance.

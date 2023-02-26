@@ -126,7 +126,7 @@ export type createdApi = {
 export type dropLocations = "before" | "after" | "inside"
 
 export type dropApi = {
-    inside: boolean | ( () => any )
-    before: boolean | ( () => any )
-    after : boolean | ( () => any )
+    inside: boolean | ( () => path )
+    before: boolean | ( () => path )
+    after : boolean | ( () => path )
 }

@@ -123,12 +123,7 @@ export let testMove = (
     **/
     let tree = getTree()
 
-    let trees = {
-        to: tree,
-        from: sameTree ? tree : getTree()
-    }
-
-    let dropApi = createTestDropApi( move( trees.to.getNode(to), trees.from.getNode(from) ) )
+    let dropApi = createTestDropApi( move( tree.getNode(to), tree.getNode(from) ) )
 
     if(location) {
         let action = dropApi[location]
@@ -136,7 +131,8 @@ export let testMove = (
     }
 
     return {
-        ...trees,
+        to: tree,
+        from: tree,
         dropApi 
     }
 

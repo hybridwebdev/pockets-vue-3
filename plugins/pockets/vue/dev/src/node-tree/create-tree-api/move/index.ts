@@ -8,7 +8,7 @@ let hasSameParent = (active, selected) => {
 
 let hasSameIndex = (active: TreeNodeApi, selected: TreeNodeApi) => active.paths.index == selected.paths.index
 
-let activeContainsSelected = (active: TreeNodeApi, selected: TreeNodeApi) => {
+let targetContainsSelected = (active: TreeNodeApi, selected: TreeNodeApi) => {
     if(
         !active 
         || !active.parent 
@@ -104,7 +104,7 @@ export let move = ( active: TreeNodeApi | false, selected: false | TreeNodeApi )
             root nodes cant be moved
         */
         || !selected.parent
-        || activeContainsSelected(active, selected)
+        || targetContainsSelected(active, selected)
         || hasSameParent(active, selected) && hasSameIndex(active, selected)
     )  return invalid
 

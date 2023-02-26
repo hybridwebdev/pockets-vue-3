@@ -1,14 +1,14 @@
 import type { TreeNodeApi } from "@/node-tree/types"
 import { dropApi } from "@/node-tree/types"
 
-let hasSameParent = (target, selected) => {
+export let hasSameParent = (target: TreeNodeApi, selected: TreeNodeApi) => {
     if(!selected.parent || !target.parent) return;
     return selected.parent.paths.full === target.parent.paths.full
 }
 
-let hasSameIndex = (target: TreeNodeApi, selected: TreeNodeApi) => target.paths.index == selected.paths.index
+export let hasSameIndex = (target: TreeNodeApi, selected: TreeNodeApi) => target.paths.index == selected.paths.index
 
-let targetContainsSelected = (target: TreeNodeApi, selected: TreeNodeApi) => {
+export let targetContainsSelected = (target: TreeNodeApi, selected: TreeNodeApi) => {
     if(
         !target 
         || !target.parent 
@@ -18,10 +18,24 @@ let targetContainsSelected = (target: TreeNodeApi, selected: TreeNodeApi) => {
     return false
 }
 
-let getIndexes = (target: TreeNodeApi, selected: TreeNodeApi) => ({
+export let getIndexes = (target: TreeNodeApi, selected: TreeNodeApi) => ({
     target: target.paths.index,
     selected: selected.paths.index
 })
+
+export let isAdjacent = ( target: TreeNodeApi, selected: TreeNodeApi, index: number) => {
+    let indexes = getIndexes(target, selected)
+    let sameParent = hasSameParent(target, selected)
+    if( sameParent ){
+        if( indexes.selected+ index == indexes.target) {
+            /**
+                if the item left of it is the target 
+                target then it can't move
+            */
+            return false;
+        }
+    }
+}
 
 export let createDropApi = ( target: TreeNodeApi, selected: TreeNodeApi ) : dropApi => {
 
@@ -36,28 +50,15 @@ export let createDropApi = ( target: TreeNodeApi, selected: TreeNodeApi ) : drop
     }
 
     let before = () => {
-        if( sameParent ){
-            if( indexes.selected+1 == indexes.target) {
-                /**
-                    if the item left of it is the target 
-                    target then it can't move
-                */
-                return false;
-            }
-        }
+        
+        if( isAdjacent(target, selected, 1) ) return false
+         
         return () => dropAdjacent(indexes.target-1)
     }
     
     let after = () => {
-        if( sameParent === true ) {
-            if(indexes.selected-1 == indexes.target )  {
-                 /**
-                    if the item right of it is the target 
-                    target then it can't move
-                */
-                return false;
-            }
-        }
+        
+        if( isAdjacent(target, selected, -1) ) return false
  
         if(sameParent === true) {
             if(indexes.target > indexes.selected) {

@@ -1,17 +1,17 @@
 import { testMove } from "./shared"
  describe('Move - After', () => {
     describe('Children', () => {
-        test('Child of target to target', () => {
+        test('Child of target 1', () => {
             let { to } = testMove('root.0', 'root.0.0', 'after')
             to.test.nodes('root', ['root.0', 'root.0.0', 'root.1', 'root.2', 'root.3'])
         })
-        test('Child of another parent to target', () => {
-            let { to } = testMove('root.0', 'root.1.0', 'after')
-            to.test.node('root.1', 'root.1.0')
-        })
-        test('Mother fucking shit', () => {
+        test('Child of target 2', () => {
             let { to } = testMove('root.1', 'root.1.0', 'after')
             to.test.nodes('root', ['root.0', 'root.1', 'root.1.0', 'root.2', 'root.3'])
+        })
+        test('Child of another parent to target 1', () => {
+            let { to } = testMove('root.0', 'root.1.0', 'after')
+            to.test.node('root.1', 'root.1.0')
         })
     })
     describe("Siblings", () => {
@@ -23,7 +23,7 @@ import { testMove } from "./shared"
             let { to } = testMove('root.3', 'root.0', 'after')
             to.test.nodes('root', ['root.1', 'root.2', 'root.3', 'root.0'])
         })
-        test('Siblings - Target > Selected', () => {
+        test('Siblings - Target > Selected - test 1', () => {
             let { to } = testMove('root.0', 'root.2', 'after')
             to.test.nodes('root', ['root.0', 'root.2', 'root.1', 'root.3'])
         })

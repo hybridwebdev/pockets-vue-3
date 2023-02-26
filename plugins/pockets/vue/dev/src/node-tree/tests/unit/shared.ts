@@ -94,7 +94,7 @@ export let getTree = () : testCreatedApi => {
             nodes: (path: string | path, arr: Array<string>) => expect( tree.getNode(path).node.nodes?.map(e=>e.el) ).toStrictEqual(arr),
         }
     }
-    
+
 }
 
 export let createTestDropApi = (dropApi: dropApi) : testDropApi=> {
@@ -103,7 +103,7 @@ export let createTestDropApi = (dropApi: dropApi) : testDropApi=> {
         test: (test: testMoveApiTestArgs) => {
             Object.entries(test).map(([key, value]) => {
                 let type = typeof value
-                if( type == 'boolean' )  expect( value ).toBe(false)    
+                if( type == 'boolean' ) expect( value ).toBe(false)    
                 if( type == 'string' ) expect( typeof dropApi[key] ).toBe('function')
             } )
         } 

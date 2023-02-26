@@ -32,7 +32,7 @@ export let node = (key: string ) : TreeNode => ( {
 export let getTree = () : testCreatedApi => {
 
     let tree = createApi( {
-        root: reactive({
+        root: reactive( {
             el: "div",
             props: {},
             schema: 'container',
@@ -76,7 +76,7 @@ export let getTree = () : testCreatedApi => {
                     ]
                 },
             ]
-        }),
+        } ),
         source: {
             ID: -1,
             type: "test",

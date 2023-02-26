@@ -38,15 +38,15 @@ export let createModule = ( active: TreeNodeApi, selected: TreeNodeApi ) : dropA
     }
     
     let after = () => {
-        // if( sameParent === true ) {
-        //     if(indexes.selected-1 == indexes.active )  {
-        //          /**
-        //             if the item right of it is the active 
-        //             target then it can't move
-        //         */
-        //         return false;
-        //     }
-        // }
+        if( sameParent === true ) {
+            if(indexes.selected-1 == indexes.active )  {
+                 /**
+                    if the item right of it is the active 
+                    target then it can't move
+                */
+                return false;
+            }
+        }
  
         if(sameParent === true) {
             if(indexes.active > indexes.selected) {
@@ -61,7 +61,11 @@ export let createModule = ( active: TreeNodeApi, selected: TreeNodeApi ) : dropA
 
     let inside = () => {
         if(!active.node.nodes) return false;
-        return () => []
+        return () => {
+            let node = selected.node
+            selected.remove.self()
+            return active.add.inside(node)
+        }
     }
 
     return {

@@ -31,8 +31,8 @@ export let node = (key: string ) : TreeNode => ( {
 
 export let getTree = () : testCreatedApi => {
 
-    let state = reactive( {
-        root: {
+    let state = {
+        root: reactive({
             el: "div",
             props: {},
             schema: 'container',
@@ -76,7 +76,7 @@ export let getTree = () : testCreatedApi => {
                     ]
                 },
             ]
-        } ,
+        }),
         source: {
             ID: -1,
             type: "test",
@@ -85,7 +85,7 @@ export let getTree = () : testCreatedApi => {
             */
             metaKey:  ( Math.random() + 1 ).toString(36).substring(2) 
         }
-    } )
+    } 
     
     let tree = createApi(state)
 
@@ -95,7 +95,7 @@ export let getTree = () : testCreatedApi => {
             nodes: (path: string | path, arr: Array<string>) => expect( tree.getNode(path).node.nodes?.map(e=>e.el) ).toStrictEqual(arr),
         }
     })
-    
+
     return tree as testCreatedApi
 
 }

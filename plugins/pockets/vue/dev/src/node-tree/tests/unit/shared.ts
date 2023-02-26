@@ -9,11 +9,18 @@ type testCreatedApi = createdApi & {
         nodes: ( ( path: string, arr: Array<string> ) => void )
     }
 }
-
+type testMoveApiTestArgs = {
+    inside?: boolean | string
+    before?: boolean | string
+    after?: boolean | string
+}
+type testDropApi = dropApi & {
+    test: ( ( test: testMoveApiTestArgs) => void ) 
+}
 type testMoveApi = {
-    dropApi: dropApi,
+    dropApi: testDropApi,
     to: testCreatedApi,
-    from: testCreatedApi
+    from: testCreatedApi,
 }
 
 export let node = (key: string ) : TreeNode => ( {
@@ -95,11 +102,22 @@ export let getTree = () : testCreatedApi => {
         test: {
             node: (path: string | path, toBe: string | path) => expect( tree.getNode(path).node.el ).toBe(toBe),
             nodes: (path: string | path, arr: Array<string>) => expect( tree.getNode(path).node.nodes?.map(e=>e.el) ).toStrictEqual(arr),
-           
         }
     }
 }
 
+export let createTestDropApi = (dropApi: dropApi) : testDropApi=> {
+    return {
+        ...dropApi,
+        test: (test: testMoveApiTestArgs) => {
+            Object.entries(test).map(([key, value]) => {
+                let type = typeof dropApi[key]
+                if( type == 'boolean' )  expect( dropApi[key] ).toBe(false)    
+                if( type=='string' ) expect( typeof dropApi[key] ).toBe(value)
+            } )
+        } 
+    }
+}
 export let testMove = (
     to: string | path, 
     from: string | path, 
@@ -119,9 +137,9 @@ export let testMove = (
         from: sameTree ? tree : getTree()
     }
 
-    let dropApi = move( trees.to.getNode(to), trees.from.getNode(from) )
+    let dropApi = createTestDropApi( move( trees.to.getNode(to), trees.from.getNode(from) ) )
 
-        if(location) {
+    if(location) {
         let action = dropApi[location]
         if(typeof action == 'function') action()
     }

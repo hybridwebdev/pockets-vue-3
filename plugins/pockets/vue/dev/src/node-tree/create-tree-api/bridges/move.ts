@@ -35,7 +35,7 @@ export let createDropApi = ( target: TreeNodeApi, selected: TreeNodeApi ) : drop
         if(!target.node.nodes) return false;
         return () => {
             let node = selected.node
-            selected.remove.self()
+            selected.parent.remove.child(selected.paths.index)
             return target.add.inside(node)
         }
     }

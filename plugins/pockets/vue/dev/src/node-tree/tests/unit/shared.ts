@@ -10,6 +10,12 @@ type testCreatedApi = createdApi & {
     }
 }
 
+type testMoveApi = {
+    dropApi: dropApi,
+    to: testCreatedApi,
+    from: testCreatedApi
+}
+
 export let node = (key: string ) : TreeNode => ( {
     el: key,
     props: {},
@@ -102,11 +108,7 @@ export let testMove = (
         If location argument is provided, it will automatically run the action for that slot
     */
     sameTree: boolean = true 
-) : { 
-    dropApi: dropApi,
-    to: testCreatedApi,
-    from: testCreatedApi
-} => {
+) : testMoveApi  => {
     /**
         if sameTree is set to false, the operaction will occur across separate trees.
     **/
@@ -117,7 +119,7 @@ export let testMove = (
         from: sameTree ? tree : getTree()
     }
 
-    let dropApi:dropApi = move( trees.to.getNode(to), trees.from.getNode(from) )
+    let dropApi = move( trees.to.getNode(to), trees.from.getNode(from) )
 
         if(location) {
         let action = dropApi[location]

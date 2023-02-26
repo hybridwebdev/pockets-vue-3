@@ -1,47 +1,56 @@
 import type { TreeNodeApi } from "@/node-tree/types"
 import { dropApi } from "@/node-tree/types"
 
-export let hasSameParent = (target: TreeNodeApi, selected: TreeNodeApi) => {
-    if(!selected.parent || !target.parent) return;
-    return selected.parent.paths.full === target.parent.paths.full
-}
+export let createAbstract = (target: TreeNodeApi, selected: TreeNodeApi) => {
+    
+    let indexes = {
+        target: target.paths.index,
+        selected: selected.paths.index
+    }
 
-export let hasSameIndex = (target: TreeNodeApi, selected: TreeNodeApi) => target.paths.index == selected.paths.index
+    let targetContainsSelected = () => {
+        if(
+            !target 
+            || !target.parent 
+            || !selected
+        ) return false
+        if( target.paths.full.includes(selected.paths.full) ) return true
+        return false
+    }
+    let hasSameParent = () => {
+        if(!selected.parent || !target.parent) return;
+        return selected.parent.paths.full === target.parent.paths.full
+    }
 
-export let targetContainsSelected = (target: TreeNodeApi, selected: TreeNodeApi) => {
-    if(
-        !target 
-        || !target.parent 
-        || !selected
-    ) return false
-    if( target.paths.full.includes(selected.paths.full) ) return true
-    return false
-}
-
-export let getIndexes = (target: TreeNodeApi, selected: TreeNodeApi) => ({
-    target: target.paths.index,
-    selected: selected.paths.index
-})
-
-export let isAdjacent = ( target: TreeNodeApi, selected: TreeNodeApi, index: number) => {
-    let indexes = getIndexes(target, selected)
-    let sameParent = hasSameParent(target, selected)
-    if( sameParent ){
-        if( indexes.selected+ index == indexes.target) {
-            /**
-                if the item left of it is the target 
-                target then it can't move
-            */
-            return false;
+    let isAdjacent = () => {
+        return (index: number) => {
+            if( hasSameParent() ){
+                if( indexes.selected + index == indexes.target) {
+                    /**
+                        if the item left of it is the target 
+                        target then it can't move
+                    */
+                    return false;
+                }
+            }
         }
+    }
+
+    let sameIndex = target.paths.index == selected.paths.index
+
+    return {
+        indexes,
+        sameParent: hasSameParent(),
+        sameIndex,
+        isAdjacent: isAdjacent(),
+        targetContainsSelected: targetContainsSelected()
     }
 }
 
 export let createDropApi = ( target: TreeNodeApi, selected: TreeNodeApi ) : dropApi => {
 
-    let indexes = getIndexes(target, selected)
-    let sameParent = hasSameParent(target, selected)
- 
+    let { indexes, sameParent, isAdjacent } = createAbstract(target, selected)
+
     let dropAdjacent = (dropIndex:number) => {
         if(dropIndex < 0) dropIndex = 0
         let node = selected.node
@@ -50,16 +59,12 @@ export let createDropApi = ( target: TreeNodeApi, selected: TreeNodeApi ) : drop
     }
 
     let before = () => {
-        
-        if( isAdjacent(target, selected, 1) ) return false
-         
+        if( isAdjacent(1) ) return false
         return () => dropAdjacent(indexes.target-1)
     }
     
     let after = () => {
-        
-        if( isAdjacent(target, selected, -1) ) return false
- 
+        if( isAdjacent(-1) ) return false
         if(sameParent === true) {
             if(indexes.target > indexes.selected) {
                 /**
@@ -105,10 +110,10 @@ export let move = ( target: TreeNodeApi | false, selected: false | TreeNodeApi )
             root nodes cant be moved
         */
         || !selected.parent
-        || targetContainsSelected(target, selected)
-        || hasSameParent(target, selected) && hasSameIndex(target, selected)
     )  return invalid
 
+        // || targetContainsSelected(target, selected)
+        // || hasSameParent(target, selected) && hasSameIndex(target, selected)
     return createDropApi(target, selected)
     
 }

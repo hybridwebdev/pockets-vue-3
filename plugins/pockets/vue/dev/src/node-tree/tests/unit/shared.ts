@@ -121,9 +121,7 @@ export let testMove = (
     */
     sameTree: boolean = true 
 ) : testMoveApi  => {
-    /**
-        if sameTree is set to false, the operaction will occur across separate trees.
-    **/
+
     let tree = getTree()
 
     let dropApi = createTestDropApi( move( tree.getNode(to), tree.getNode(from) ) )

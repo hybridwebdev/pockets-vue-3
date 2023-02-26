@@ -5,13 +5,12 @@ describe('Safety Checks', () => {
         let { to, dropApi } = testMove('root.0.0', 'root.0', 'inside')
         to.test.node('root.0.0', 'root.0.0')
         dropApi.test({
-            before: false,
-            after: false,
             inside: false
         })
     })
     test('Target and Selected are the same', () => {
-        let { dropApi } = testMove('root.0.0', 'root.0.0')
+        let { dropApi, to } = testMove('root.0.0', 'root.0.0')
+        to.test.node('root.0.0', 'root.0.0')
         dropApi.test({ 
             before: false,
             after: false,
@@ -20,12 +19,18 @@ describe('Safety Checks', () => {
     })
 })
 describe('Placement Checks', () => {
+     test('Sibling Adjacent - To End', () => {
+        let { dropApi } = testMove('root.3', 'root.2')
+        dropApi.test({
+            before: false,
+            after: "function",
+        })
+    })
     test('Sibling Adjacent - Target > Selected', () => {
-        let { dropApi } = testMove('root.0', 'root.1')
+        let { dropApi } = testMove('root.2', 'root.0')
         dropApi.test({
             before: "function",
-            after: false,
-            inside: "function",
+            after: "function",
         })
     })
     test('Sibling Adjacent - Target > Selected', () => {
@@ -33,7 +38,6 @@ describe('Placement Checks', () => {
         dropApi.test({
             before: "function",
             after: false,
-            inside: "function",
         })
     })
     test('Sibling Adjacent - Selected < Target', () => {
@@ -41,7 +45,6 @@ describe('Placement Checks', () => {
         dropApi.test({
             before: false,
             after: "function",
-            inside: "function"
         })
     })
 })

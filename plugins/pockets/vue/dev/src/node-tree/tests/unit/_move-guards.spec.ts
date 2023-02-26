@@ -9,7 +9,6 @@ describe('Safety Checks', () => {
             after: false,
             inside: false
         })
-
     })
     test('Target and Selected are the same', () => {
         let { dropApi } = testMove('root.0.0', 'root.0.0')

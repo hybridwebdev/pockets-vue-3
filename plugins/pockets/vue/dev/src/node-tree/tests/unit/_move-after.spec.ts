@@ -27,6 +27,10 @@ import { testMove } from "./shared"
             let { to } = testMove('root.0', 'root.2', 'after')
             to.test.nodes('root', ['root.0', 'root.2', 'root.1', 'root.3'])
         })
+        test('Siblings - Target > Selected - test 2', () => {
+            let { to } = testMove('root.1', 'root.3', 'after')
+            to.test.nodes('root', ['root.0', 'root.1', 'root.3', 'root.2'])
+        })
         test('Siblings - Selected > Target - test 1', () => {
             let { to } = testMove('root.2', 'root.0', 'after')
             to.test.nodes('root', ['root.1', 'root.2', 'root.0', 'root.3'])

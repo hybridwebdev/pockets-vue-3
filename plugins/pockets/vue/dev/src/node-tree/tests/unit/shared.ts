@@ -1,7 +1,7 @@
 import type { TreeNode, createdApi, dropLocations, dropApi, path } from "@/node-tree/types"
 import { reactive } from "vue"
 import { createApi } from "@/node-tree/create-tree-api"
-import { move } from "@/node-tree/create-tree-api/bridges/move"
+import { move } from "@/node-tree/create-tree-api/move/"
  
 type testCreatedApi = createdApi & {
     test: {

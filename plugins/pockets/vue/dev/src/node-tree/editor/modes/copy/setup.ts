@@ -1,6 +1,6 @@
 import { reactive, computed } from "vue"
 import { editor } from "@/node-tree/editor"
-import { move } from "@/node-tree/create-tree-api/bridges/move"
+import { move } from "@/node-tree/create-tree-api/move/"
 export let setup = (props) => {
 
     let selectNode = () => {

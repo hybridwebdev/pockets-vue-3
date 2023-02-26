@@ -31,16 +31,6 @@ export let node = (key: string ) : TreeNode => ( {
 
 export let getTree = () : testCreatedApi => {
 
-    /*
-        Same Tree?
-            No 
-                Dont care
-            Yes
-
-                Will overlap cause selected to change
-                    
-    */
-
     let tree = createApi( {
         root: reactive({
             el: "div",
@@ -104,6 +94,7 @@ export let getTree = () : testCreatedApi => {
             nodes: (path: string | path, arr: Array<string>) => expect( tree.getNode(path).node.nodes?.map(e=>e.el) ).toStrictEqual(arr),
         }
     }
+    
 }
 
 export let createTestDropApi = (dropApi: dropApi) : testDropApi=> {

@@ -1,58 +1,58 @@
 import type { TreeNodeApi } from "@/node-tree/types"
 import { dropApi } from "@/node-tree/types"
 
-let hasSameParent = (active, selected) => {
-    if(!selected.parent || !active.parent) return;
-    return selected.parent.paths.full === active.parent.paths.full
+let hasSameParent = (target, selected) => {
+    if(!selected.parent || !target.parent) return;
+    return selected.parent.paths.full === target.parent.paths.full
 }
 
-let hasSameIndex = (active: TreeNodeApi, selected: TreeNodeApi) => active.paths.index == selected.paths.index
+let hasSameIndex = (target: TreeNodeApi, selected: TreeNodeApi) => target.paths.index == selected.paths.index
 
-let targetContainsSelected = (active: TreeNodeApi, selected: TreeNodeApi) => {
+let targetContainsSelected = (target: TreeNodeApi, selected: TreeNodeApi) => {
     if(
-        !active 
-        || !active.parent 
+        !target 
+        || !target.parent 
         || !selected
     ) return false
-    if( active.paths.full.includes(selected.paths.full) ) return true
+    if( target.paths.full.includes(selected.paths.full) ) return true
     return false
 }
 
-let getIndexes = (active: TreeNodeApi, selected: TreeNodeApi) => ({
-    active: active.paths.index,
+let getIndexes = (target: TreeNodeApi, selected: TreeNodeApi) => ({
+    target: target.paths.index,
     selected: selected.paths.index
 })
 
-export let createDropApi = ( active: TreeNodeApi, selected: TreeNodeApi ) : dropApi => {
+export let createDropApi = ( target: TreeNodeApi, selected: TreeNodeApi ) : dropApi => {
 
-    let indexes = getIndexes(active, selected)
-    let sameParent = hasSameParent(active, selected)
+    let indexes = getIndexes(target, selected)
+    let sameParent = hasSameParent(target, selected)
  
     let dropAdjacent = (dropIndex:number) => {
         if(dropIndex < 0) dropIndex = 0
         let node = selected.node
         selected.remove.self()
-        return active.parent.add.inside(node, dropIndex)
+        return target.parent.add.inside(node, dropIndex)
     }
 
     let before = () => {
         if( sameParent ){
-            if( indexes.selected+1 == indexes.active) {
+            if( indexes.selected+1 == indexes.target) {
                 /**
-                    if the item left of it is the active 
+                    if the item left of it is the target 
                     target then it can't move
                 */
                 return false;
             }
         }
-        return () => dropAdjacent(indexes.active-1)
+        return () => dropAdjacent(indexes.target-1)
     }
     
     let after = () => {
         if( sameParent === true ) {
-            if(indexes.selected-1 == indexes.active )  {
+            if(indexes.selected-1 == indexes.target )  {
                  /**
-                    if the item right of it is the active 
+                    if the item right of it is the target 
                     target then it can't move
                 */
                 return false;
@@ -60,22 +60,22 @@ export let createDropApi = ( active: TreeNodeApi, selected: TreeNodeApi ) : drop
         }
  
         if(sameParent === true) {
-            if(indexes.active > indexes.selected) {
+            if(indexes.target > indexes.selected) {
                 /**
-                    Compensate for the fact active shifts one left due to removal of selected
+                    Compensate for the fact target shifts one left due to removal of selected
                 */
-                return () => dropAdjacent(indexes.active)         
+                return () => dropAdjacent(indexes.target)         
             }
         }
-        return () => dropAdjacent(active.paths.index+1 )
+        return () => dropAdjacent(target.paths.index+1 )
     }
 
     let inside = () => {
-        if(!active.node.nodes) return false;
+        if(!target.node.nodes) return false;
         return () => {
             let node = selected.node
             selected.remove.self()
-            return active.add.inside(node)
+            return target.add.inside(node)
         }
     }
 
@@ -87,7 +87,7 @@ export let createDropApi = ( active: TreeNodeApi, selected: TreeNodeApi ) : drop
 
 }
  
-export let move = ( active: TreeNodeApi | false, selected: false | TreeNodeApi ) : dropApi => {
+export let move = ( target: TreeNodeApi | false, selected: false | TreeNodeApi ) : dropApi => {
     
     let invalid = {
         inside: false,
@@ -96,18 +96,18 @@ export let move = ( active: TreeNodeApi | false, selected: false | TreeNodeApi )
     }
 
     if(
-           !active 
-        || !active.node 
+           !target 
+        || !target.node 
         || !selected 
         || !selected.node
         /**
             root nodes cant be moved
         */
         || !selected.parent
-        || targetContainsSelected(active, selected)
-        || hasSameParent(active, selected) && hasSameIndex(active, selected)
+        || targetContainsSelected(target, selected)
+        || hasSameParent(target, selected) && hasSameIndex(target, selected)
     )  return invalid
 
-    return createDropApi(active, selected)
+    return createDropApi(target, selected)
     
 }

@@ -20,7 +20,7 @@ type testDropApi = dropApi & {
 type testMoveApi = {
     dropApi: testDropApi,
     to: testCreatedApi,
-    from: testCreatedApi,
+    // from: testCreatedApi,
 }
 
 export let node = (key: string ) : TreeNode => ( {
@@ -134,7 +134,6 @@ export let testMove = (
 
     return {
         to: tree,
-        from: tree,
         dropApi 
     }
 

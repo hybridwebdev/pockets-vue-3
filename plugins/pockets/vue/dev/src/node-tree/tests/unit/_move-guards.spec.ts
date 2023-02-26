@@ -28,6 +28,14 @@ describe('Placement Checks', () => {
             inside: "function",
         })
     })
+    test('Sibling Adjacent - Target > Selected', () => {
+        let { dropApi } = testMove('root.0', 'root.1')
+        dropApi.test({
+            before: "function",
+            after: false,
+            inside: "function",
+        })
+    })
     test('Sibling Adjacent - Selected < Target', () => {
         let { dropApi } = testMove('root.1', 'root.0')
         dropApi.test({

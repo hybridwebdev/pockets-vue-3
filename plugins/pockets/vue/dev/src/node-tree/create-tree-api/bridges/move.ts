@@ -1,7 +1,7 @@
 import type { TreeNodeApi } from "@/node-tree/types"
 import { dropApi } from "@/node-tree/types"
 import { createAbstract } from "./create-abstract"
-import { unref  } from "vue"
+
 export let createDropApi = ( target: TreeNodeApi, selected: TreeNodeApi ) : dropApi => {
 
     let { indexes, sameParent, isAdjacent } = createAbstract(target, selected)
@@ -34,7 +34,7 @@ export let createDropApi = ( target: TreeNodeApi, selected: TreeNodeApi ) : drop
     let inside = () => {
         if(!target.node.nodes) return false;
         return () => {
-            let node = unref(selected.node)
+            let node = selected.node
             selected.remove.self()
             return target.add.inside(node)
         }

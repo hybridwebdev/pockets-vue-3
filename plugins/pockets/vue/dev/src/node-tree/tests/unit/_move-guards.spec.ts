@@ -19,32 +19,32 @@ describe('Safety Checks', () => {
     })
 })
 describe('Placement Checks', () => {
-     test('Sibling Adjacent - To End', () => {
+     test('2 -> 3', () => {
         let { dropApi } = testMove('root.3', 'root.2')
         dropApi.test({
             before: false,
             after: "function",
         })
     })
-    test('Sibling Adjacent - Target > Selected', () => {
+    test('0 -> 1', () => {
+        let { dropApi } = testMove('root.1', 'root.0')
+        dropApi.test({
+            before: false,
+            after: "function",
+        })
+    })
+    test('0 -> 2', () => {
         let { dropApi } = testMove('root.2', 'root.0')
         dropApi.test({
             before: "function",
             after: "function",
         })
     })
-    test('Sibling Adjacent - Target > Selected', () => {
+    test('1 -> 0', () => {
         let { dropApi } = testMove('root.0', 'root.1')
         dropApi.test({
             before: "function",
             after: false,
-        })
-    })
-    test('Sibling Adjacent - Selected < Target', () => {
-        let { dropApi } = testMove('root.1', 'root.0')
-        dropApi.test({
-            before: false,
-            after: "function",
         })
     })
 })

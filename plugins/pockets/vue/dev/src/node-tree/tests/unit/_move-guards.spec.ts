@@ -1,7 +1,7 @@
 import { testMove } from "./shared"
 
 describe('Check Root', () => {
-    test('Try and move Adjacent', () => {
+    test('Check Before / After on Root', () => {
         let { dropApi } = testMove('root', 'root.0')
         dropApi.test({
             before: false,

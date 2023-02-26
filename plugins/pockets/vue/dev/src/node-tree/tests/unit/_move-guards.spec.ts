@@ -1,5 +1,14 @@
 import { testMove } from "./shared"
 
+describe('Check Root', () => {
+    test('Try and move Adjacent', () => {
+        let { dropApi } = testMove('root', 'root.0')
+        dropApi.test({
+            before: false,
+            after: false
+        })
+    })
+})
 describe('Safety Checks', () => {
     test('Try and move A node inside itself', () => {
         let { to, dropApi } = testMove('root.0.0', 'root.0', 'inside')

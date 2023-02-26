@@ -6,7 +6,9 @@ describe('Safety Checks', () => {
         to.test.node('root.0.0', 'root.0.0')
         to.test.node('root.0', 'root.0')
         dropApi.test({
-            inside: false
+            inside: false,
+            before: false,
+            after: false
         })
     })
     test('Target and Selected are the same', () => {

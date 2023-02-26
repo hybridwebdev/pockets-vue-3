@@ -1,51 +1,6 @@
 import type { TreeNodeApi } from "@/node-tree/types"
 import { dropApi } from "@/node-tree/types"
-
-export let createAbstract = (target: TreeNodeApi, selected: TreeNodeApi) => {
-    
-    let indexes = {
-        target: target.paths.index,
-        selected: selected.paths.index
-    }
-
-    let targetContainsSelected = () => {
-        if(
-            !target 
-            || !target.parent 
-            || !selected
-        ) return false
-        if( target.paths.full.includes(selected.paths.full) ) return true
-        return false
-    }
-    let hasSameParent = () => {
-        if(!selected.parent || !target.parent) return;
-        return selected.parent.paths.full === target.parent.paths.full
-    }
-
-    let isAdjacent = () => {
-        return (index: number) => {
-            if( hasSameParent() ){
-                if( indexes.selected + index == indexes.target) {
-                    /**
-                        if the item left of it is the target 
-                        target then it can't move
-                    */
-                    return false;
-                }
-            }
-        }
-    }
-
-    let sameIndex = target.paths.index == selected.paths.index
-
-    return {
-        indexes,
-        sameParent: hasSameParent(),
-        sameIndex,
-        isAdjacent: isAdjacent(),
-        targetContainsSelected: targetContainsSelected()
-    }
-}
+import { createAbstract } from "./create-abstract"
 
 export let createDropApi = ( target: TreeNodeApi, selected: TreeNodeApi ) : dropApi => {
 
@@ -102,7 +57,7 @@ export let move = ( target: TreeNodeApi | false, selected: false | TreeNodeApi )
     }
 
     if(
-           !target 
+        !target 
         || !target.node 
         || !selected 
         || !selected.node
@@ -112,8 +67,13 @@ export let move = ( target: TreeNodeApi | false, selected: false | TreeNodeApi )
         || !selected.parent
     )  return invalid
 
-        // || targetContainsSelected(target, selected)
-        // || hasSameParent(target, selected) && hasSameIndex(target, selected)
+    let { targetContainsSelected, sameParent, sameIndex } = createAbstract(target, selected)
+
+    if(
+        targetContainsSelected 
+        || sameParent && sameIndex
+    ) return invalid
+
     return createDropApi(target, selected)
     
 }

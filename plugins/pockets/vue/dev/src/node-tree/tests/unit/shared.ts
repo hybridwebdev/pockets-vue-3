@@ -2,17 +2,7 @@ import type { TreeNode, createdApi, dropLocations, dropApi, path } from "@/node-
 import { reactive } from "vue"
 import { createApi } from "@/node-tree/create-tree-api"
 import { move } from "@/node-tree/create-tree-api/bridges/move"
-
-//  dropApi: (checks) => {
-//     let { inside = false, after = false, before = false }  = checks
-//     if(inside) expect()
-// }
-
-// dropApi?: ( ( checks: {
-//             inside?: string,
-//             before?: string,
-//             after?: string
-//         } ) => void )
+ 
 type testCreatedApi = createdApi & {
     test: {
         node: ( ( path: string, toBe: string ) => void )
@@ -127,9 +117,9 @@ export let testMove = (
         from: sameTree ? tree : getTree()
     }
 
-    let dropApi = move( trees.to.getNode(to), trees.from.getNode(from) )
+    let dropApi:dropApi = move( trees.to.getNode(to), trees.from.getNode(from) )
 
-    if(location) {
+        if(location) {
         let action = dropApi[location]
         if(typeof action == 'function') action()
     }

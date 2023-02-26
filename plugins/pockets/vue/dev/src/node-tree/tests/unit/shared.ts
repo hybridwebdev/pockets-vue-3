@@ -31,7 +31,7 @@ export let node = (key: string ) : TreeNode => ( {
 
 export let getTree = () : testCreatedApi => {
 
-    let tree = createApi( reactive( {
+    let state = reactive( {
         root: {
             el: "div",
             props: {},
@@ -85,29 +85,31 @@ export let getTree = () : testCreatedApi => {
             */
             metaKey:  ( Math.random() + 1 ).toString(36).substring(2) 
         }
-    } ) )
+    } )
     
-    return {
-        ...tree,
+    let tree = createApi(state)
+    Object.assign(tree, {
         test: {
             node: (path: string | path, toBe: string | path) => expect( tree.getNode(path).node.el ).toBe(toBe),
             nodes: (path: string | path, arr: Array<string>) => expect( tree.getNode(path).node.nodes?.map(e=>e.el) ).toStrictEqual(arr),
         }
-    }
+    })
+    return tree as testCreatedApi
 
 }
 
 export let createTestDropApi = (dropApi: dropApi) : testDropApi=> {
-    return {
-        ...dropApi,
-        test: (test: testMoveApiTestArgs) => {
-            Object.entries(test).map(([key, value]) => {
-                let type = typeof value
-                if( type == 'boolean' ) expect( dropApi[key] ).toBe(false)    
-                if( type == 'string' ) expect( typeof dropApi[key] ).toBe('function')
-            } )
-        } 
-    }
+    let test = (test: testMoveApiTestArgs) => {
+        Object.entries(test).map(([key, value]) => {
+            let type = typeof value
+            if( type == 'boolean' ) expect( dropApi[key] ).toBe(false)    
+            if( type == 'string' ) expect( typeof dropApi[key] ).toBe('function')
+        } )
+    } 
+    Object.assign(dropApi, {
+        test
+    })
+    return dropApi as testDropApi
 }
 export let testMove = (
     to: string | path, 

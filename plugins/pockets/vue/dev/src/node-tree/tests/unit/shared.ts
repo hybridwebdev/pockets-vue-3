@@ -3,15 +3,20 @@ import { reactive } from "vue"
 import { createApi } from "@/node-tree/create-tree-api"
 import { move } from "@/node-tree/create-tree-api/bridges/move"
 
+//  dropApi: (checks) => {
+//     let { inside = false, after = false, before = false }  = checks
+//     if(inside) expect()
+// }
+
+// dropApi?: ( ( checks: {
+//             inside?: string,
+//             before?: string,
+//             after?: string
+//         } ) => void )
 type testCreatedApi = createdApi & {
     test: {
         node: ( ( path: string, toBe: string ) => void )
         nodes: ( ( path: string, arr: Array<string> ) => void )
-        dropApi?: ( ( checks: {
-            inside?: string,
-            before?: string,
-            after?: string
-        } ) => void )
     }
 }
 

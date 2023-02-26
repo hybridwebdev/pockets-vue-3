@@ -6,15 +6,26 @@ let hasSameParent = (active, selected) => {
     return selected.parent.paths.full === active.parent.paths.full
 }
 
-let hasSameIndex = (active, selected) => active.paths.index == selected.paths.index
+let hasSameIndex = (active: TreeNodeApi, selected: TreeNodeApi) => active.paths.index == selected.paths.index
 
-export let createModule = ( active: TreeNodeApi, selected: TreeNodeApi ) : dropApi => {
+let activeContainsSelected = (active: TreeNodeApi, selected: TreeNodeApi) => {
+    if(
+        !active 
+        || !active.parent 
+        || !selected
+    ) return false
+    if( active.paths.full.includes(selected.paths.full) ) return true
+    return false
+}
 
-    let indexes = {
-        active: active.paths.index,
-        selected: selected.paths.index
-    }
-    
+let getIndexes = (active: TreeNodeApi, selected: TreeNodeApi) => ({
+    active: active.paths.index,
+    selected: selected.paths.index
+})
+
+export let createDropApi = ( active: TreeNodeApi, selected: TreeNodeApi ) : dropApi => {
+
+    let indexes = getIndexes(active, selected)
     let sameParent = hasSameParent(active, selected)
  
     let dropAdjacent = (dropIndex:number) => {
@@ -75,21 +86,8 @@ export let createModule = ( active: TreeNodeApi, selected: TreeNodeApi ) : dropA
     }
 
 }
+ 
 export let move = ( active: TreeNodeApi | false, selected: false | TreeNodeApi ) : dropApi => {
-
-    let activeContainsSelected = () => {
-
-        if(
-            !active 
-            || !active.parent 
-            || !selected
-        ) return false
-
-        if( active.paths.full.includes(selected.paths.full) ) return true
-
-        return false
-
-    }
     
     let invalid = {
         inside: false,
@@ -98,7 +96,7 @@ export let move = ( active: TreeNodeApi | false, selected: false | TreeNodeApi )
     }
 
     if(
-        !active 
+           !active 
         || !active.node 
         || !selected 
         || !selected.node
@@ -106,10 +104,10 @@ export let move = ( active: TreeNodeApi | false, selected: false | TreeNodeApi )
             root nodes cant be moved
         */
         || !selected.parent
-        || activeContainsSelected()
+        || activeContainsSelected(active, selected)
         || hasSameParent(active, selected) && hasSameIndex(active, selected)
     )  return invalid
 
-    return createModule(active, selected)
+    return createDropApi(active, selected)
     
 }

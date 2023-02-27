@@ -70,7 +70,7 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
         let editFields = computed(() => useEditFields(api) )
         let schema = computed(() => useSchema(api))
 
-        let api = reactive({
+        let api = reactive( {
             node,
             parent,
             hasNodes,
@@ -85,7 +85,7 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
             clone:   computed( () => useClone(api) ),
             replace: computed( () => useReplace(api) ),
             move:    computed( () => useMove(api) )
-        })
+        } )
     
         
         useCrud(api)

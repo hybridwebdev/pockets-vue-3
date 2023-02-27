@@ -80,13 +80,13 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
             editFields,
             getNode,
             schema,
+            add:     computed( () => useAdd(api) ),
+            remove:  computed( () => useRemove(api) ),
+            clone:   computed( () => useClone(api) ),
+            replace: computed( () => useReplace(api) ),
+            move:    computed( () => useMove(api) )
         })
     
-        api.add = useAdd(api)
-        api.remove = useRemove(api)
-        api.clone = useClone(api)
-        api.replace = useReplace(api)
-        api.move = useMove(api)
         
         useCrud(api)
 

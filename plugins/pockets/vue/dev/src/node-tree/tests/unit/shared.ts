@@ -124,7 +124,11 @@ export let testMove = (
 
     let tree = getTree()
 
-    let dropApi = createTestDropApi( move( tree.getNode(to), tree.getNode(from) ) )
+    let states = reactive({
+        to: tree.getNode(to),
+        from: tree.getNode(from)
+    })
+    let dropApi = createTestDropApi( move( states.to, states.from ) )
 
     if(location) {
         let action = dropApi[location]

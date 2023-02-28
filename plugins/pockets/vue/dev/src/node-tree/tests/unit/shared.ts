@@ -118,10 +118,6 @@ export let testMove = (
     to: string | path, 
     from: string | path, 
     location: dropLocations | false = false, 
-    /**
-        If location argument is provided, it will automatically run the action for that slot
-    */
-    sameTree: boolean = true 
 ) : testMoveApi  => {
 
     var $path: testMoveApi['$path'] = false

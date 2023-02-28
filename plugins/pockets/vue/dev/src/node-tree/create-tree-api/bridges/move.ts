@@ -8,7 +8,6 @@ export let createDropApi = ( target: TreeNodeApi, selected: TreeNodeApi ) : drop
 
     let dropAdjacent = (dropIndex:number) => {
 
-        console.log(selected.refs.parent)
         if(dropIndex < 0) dropIndex = 0
         let node = selected.node
         selected.remove.self()

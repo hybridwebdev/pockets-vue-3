@@ -21,7 +21,14 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
         return await $pockets.crud('node-tree/root').init(props.source).update(props.root)
     }
 
-    let getPaths = (path: path) : paths => {
+    let getPaths = ($path: path | string) : paths => {
+
+        let path = typeof $path === 'string' 
+            /**
+                If path is a string, convert all non root entries into numbers
+            */
+            ? $path.split('.').map(x => x == 'root' ? 'root' : Number(x) )  
+            : $path
 
         let sourcePath = [props.source.type, props.source.metaKey, props.source.ID].join('.')
 
@@ -45,15 +52,8 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
 
     }
 
-    let getNode = ($path: path | string) : TreeNodeApi => {
+    let getNode = (path: path | string) : TreeNodeApi => {
         
-        let path = typeof $path === 'string' 
-            /**
-                If path is a string, convert all non root entries into numbers
-            */
-            ? $path.split('.').map(x => x == 'root' ? 'root' : Number(x) )  
-            : $path
-
         let paths = getPaths(path)
 
         let parent = computed( () => {
@@ -61,14 +61,11 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
             return getNode(paths.parent.path)
         } )
         
-        let node = computed(() => $pockets.utils.object.get( props, paths.joined, false) )
+        let node = computed( () => $pockets.utils.object.get( props, paths.joined, false) )
 
         let hasNodes = computed( () => Array.isArray(api.node?.nodes ) )
 
-        let getChild = (index: number) => getNode(path.concat(index) )
-
-        let editFields = computed(() => useEditFields(api) )
-        let schema = computed(() => useSchema(api))
+        let getChild = (index: number) => getNode(paths.path.concat(index) )
 
         let api = reactive( {
             node,
@@ -79,13 +76,13 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
             paths,
 
             editor,
-            editFields,
-            schema,
-            add:     computed( () => useAdd(api) ),
-            remove:  computed( () => useRemove(api) ),
-            clone:   computed( () => useClone(api) ),
-            replace: computed( () => useReplace(api) ),
-            move:    computed( () => useMove(api) )
+            editFields: computed( () => useEditFields(api) ),
+            schema:     computed( () => useSchema(api) ),
+            add:        computed( () => useAdd(api) ),
+            remove:     computed( () => useRemove(api) ),
+            clone:      computed( () => useClone(api) ),
+            replace:    computed( () => useReplace(api) ),
+            move:       computed( () => useMove(api) )
         } )
         
         useCrud(api)

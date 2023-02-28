@@ -1,16 +1,21 @@
-import type { TreeNodeApi } from "@/node-tree/types"
+import type { TreeNodeApi, TreeNode } from "@/node-tree/types"
 import { dropApi } from "@/node-tree/types"
 import { createAbstract } from "./create-abstract"
 import { $pockets } from "@/pockets"
 
+
+type TreeNodePlaceHolder = TreeNode & {
+    TreeNodePlaceHolder?: string
+} 
 export let createDropApi = ( target: TreeNodeApi, selected: TreeNodeApi ) : dropApi => {
 
     let freezeSelected = () => {
-        selected.node.hash = 'remove-me'
+        let node: TreeNodePlaceHolder = selected.node
+        node.TreeNodePlaceHolder = 'remove-me'
         let selectedParent = selected.refs.parent
         return {
             remove(){
-                selectedParent.nodes = selectedParent.nodes?.filter( (e) => e.hash != 'remove-me' )
+                selectedParent.nodes = selectedParent.nodes?.filter( (e) => e.TreeNodePlaceHolder != 'remove-me' )
             }
         }
     }

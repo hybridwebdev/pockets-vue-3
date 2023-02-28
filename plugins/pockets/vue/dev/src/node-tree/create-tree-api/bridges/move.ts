@@ -1,7 +1,8 @@
 import type { TreeNodeApi } from "@/node-tree/types"
 import { dropApi } from "@/node-tree/types"
 import { createAbstract } from "./create-abstract"
-
+import { $pockets } from "@/pockets"
+// target.parent.node.nodes = $pockets.utils.array.insert(target.parent.node.nodes, dropIndex, node)
 export let createDropApi = ( target: TreeNodeApi, selected: TreeNodeApi ) : dropApi => {
 
     let { indexes, sameParent, isAdjacent } = createAbstract(target, selected)

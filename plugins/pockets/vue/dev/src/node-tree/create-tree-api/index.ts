@@ -54,26 +54,24 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
 
     let getNodeRaw = (path: paths['joined']) : TreeNode => $pockets.utils.object.get( props, path, false)
 
+    let getParent = (api) => {
+        if(!api.paths.parent) return false
+        return api.getNode(api.paths.parent.path)
+    }
+
     let getNode = (path: path | string) : TreeNodeApi => {
         
-        let paths = getPaths(path)
+        let paths  = getPaths(path)
 
-        let parent = computed( () => {
-            if(!paths.parent) return false
-            return getNode(paths.parent.path)
-        } )
+        let parent = computed( () => getParent(api) )
         
-        let node = computed( () => getNodeRaw(paths.joined) )
-
-        let hasNodes = computed( () => Array.isArray(api.node?.nodes ) )
-
-        let getChild = (index: number) => getNode(paths.path.concat(index) )
+        let node   = computed( () => getNodeRaw(api.paths.joined) )
 
         let api = reactive( {
             node,
             parent,
-            hasNodes,
-            getChild,
+            hasNodes: computed( () => Array.isArray(api.node?.nodes ) ),
+            getChild: (index: number) => getNode(api.paths.path.concat(index) ),
             getNode,
             getNodeRaw,
             paths,
@@ -81,11 +79,13 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
             editor,
             editFields: computed( () => useEditFields(api) ),
             schema:     computed( () => useSchema(api) ),
+
             add:        computed( () => useAdd(api) ),
             remove:     computed( () => useRemove(api) ),
             clone:      computed( () => useClone(api) ),
             replace:    computed( () => useReplace(api) ),
             move:       computed( () => useMove(api) )
+
         } )
         
         useCrud(api)

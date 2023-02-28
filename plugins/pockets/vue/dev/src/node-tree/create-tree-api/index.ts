@@ -52,28 +52,25 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
 
     }
 
-    let getNodeRaw = (path: paths['joined']) : TreeNode => $pockets.utils.object.get( props, path, false)
-
-    let getParent = (api) => {
-        if(!api.paths.parent) return false
-        return api.getNode(api.paths.parent.path)
-    }
-
     let getNode = (path: path | string) : TreeNodeApi => {
         
         let paths  = getPaths(path)
 
-        let parent = computed( () => getParent(api) )
-        
-        let node   = computed( () => getNodeRaw(api.paths.joined) )
-
         let api = reactive( {
-            node,
-            parent,
+            refs: {
+                get node() {
+                    return $pockets.utils.object.get( props, paths.joined, false)
+                },
+                get parent(){
+                    if(!api.paths.parent) return false
+                    return api.getNode(api.paths.parent.path)
+                }
+            },
+            node: computed( () => api.refs.node ),
+            parent: computed( () => api.refs.parent ),
             hasNodes: computed( () => Array.isArray(api.node?.nodes ) ),
             getChild: (index: number) => getNode(api.paths.path.concat(index) ),
             getNode,
-            getNodeRaw,
             paths,
 
             editor,
@@ -97,7 +94,6 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
     return {
         getNode,
         saveTree,
-        getNodeRaw
     }
     
 }

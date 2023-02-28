@@ -121,7 +121,6 @@ export type paths = {
 export type createdApi = {
     getNode: ( path: path | string ) => TreeNodeApi
     saveTree: () => Promise<any>
-    getNodeRaw: ( path: paths['joined'] ) => TreeNode
 }
 
 export type dropLocations = "before" | "after" | "inside"

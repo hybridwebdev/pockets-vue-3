@@ -2,39 +2,38 @@ import type { TreeNodeApi } from "@/node-tree/types"
 import { dropApi } from "@/node-tree/types"
 import { createAbstract } from "./create-abstract"
 import { $pockets } from "@/pockets"
-//@ts-nocheck
-// target.parent.node.nodes = $pockets.utils.array.insert(target.parent.node.nodes, dropIndex, node)
+
 export let createDropApi = ( target: TreeNodeApi, selected: TreeNodeApi ) : dropApi => {
 
-    let dropper = (dropIndex: number) => {
-        return () => {
-            let node = $pockets.utils.object.clone(selected.node)
-            selected.node.hash = 'remove-me'
-            let selectedParent = selected.refs.parent
-            let remover = (e) => e.hash!='remove-me'
-            target.parent.refs.node.nodes = $pockets.utils.array.insert(target.parent.refs.node.nodes, dropIndex, node)
-            selectedParent.nodes = selectedParent.nodes?.filter(remover)
-            return []
+    let freezeSelected = () => {
+        selected.node.hash = 'remove-me'
+        let selectedParent = selected.refs.parent
+        return {
+            remove(){
+                selectedParent.nodes = selectedParent.nodes?.filter( (e) => e.hash != 'remove-me' )
+            }
         }
     }
-    let { indexes, sameParent, isAdjacent } = createAbstract(target, selected)
 
-    let dropAdjacent = (dropIndex:number) => {
-
-        if(dropIndex < 0) dropIndex = 0
-        let node = selected.node
-        selected.remove.self()
-        return target.parent.add.inside(node, dropIndex)
+    let dropAdjacent = (dropIndex: number) => {
+        return () => {
+            let node = $pockets.utils.object.clone(selected.node)
+            let placeHolder = freezeSelected()
+            target.parent.add.inside(node, dropIndex) 
+            placeHolder.remove()
+            return target.parent.paths.path.concat(dropIndex)
+        }
     }
+    let { indexes, isAdjacent } = createAbstract(target, selected)
 
     let before = () => {
         if( !target.parent || isAdjacent(1) ) return false
-        return dropper( indexes.target )
+        return dropAdjacent( indexes.target )
     }
     
     let after = () => {
         if( !target.parent || isAdjacent(-1) ) return false
-        return dropper( indexes.target+1 )
+        return dropAdjacent( indexes.target+1 )
     }
 
     let inside = () => {

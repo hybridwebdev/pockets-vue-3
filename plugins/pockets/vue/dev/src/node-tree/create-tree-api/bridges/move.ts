@@ -6,6 +6,15 @@ import { $pockets } from "@/pockets"
 // target.parent.node.nodes = $pockets.utils.array.insert(target.parent.node.nodes, dropIndex, node)
 export let createDropApi = ( target: TreeNodeApi, selected: TreeNodeApi ) : dropApi => {
 
+    let dropper = () => {
+        let node = $pockets.utils.object.clone(selected.node)
+        selected.node.hash = 'remove-me'
+        let selectedParent = selected.refs.parent
+        let remover = (e) => e.hash!='remove-me'
+        target.parent.refs.node.nodes = $pockets.utils.array.insert(target.parent.refs.node.nodes, indexes.target, node)
+        selectedParent.nodes = selectedParent.nodes?.filter(remover)
+        return []
+    }
     let { indexes, sameParent, isAdjacent } = createAbstract(target, selected)
 
     let dropAdjacent = (dropIndex:number) => {
@@ -18,18 +27,8 @@ export let createDropApi = ( target: TreeNodeApi, selected: TreeNodeApi ) : drop
 
     let before = () => {
         if( !target.parent || isAdjacent(1) ) return false
-        // return () => {
-        //     let node = $pockets.utils.object.clone(selected.node)
-        //     selected.node.hash = 'remove-me'
-        //     selected.node.nodes = selected.node.nodes?.filter(e => {
-        //         return e.hash!='remove-me'
-        //     })
-        //     target.parent.node.nodes = $pockets.utils.array.insert(target.parent.node.nodes, indexes.target, node)
-        //     return []
-        // }
-        return () => {
-            return dropAdjacent(indexes.target-1)
-        }
+        
+        return dropper
     }
     
     let after = () => {

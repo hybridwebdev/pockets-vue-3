@@ -17,6 +17,9 @@ export let createDropApi = ( target: TreeNodeApi, selected: TreeNodeApi ) : drop
 
     let before = () => {
         if( !target.parent || isAdjacent(1) ) return false
+        // return () => {
+        //     return []
+        // }
         return () => {
             return dropAdjacent(indexes.target-1)
         }
@@ -25,9 +28,6 @@ export let createDropApi = ( target: TreeNodeApi, selected: TreeNodeApi ) : drop
     let after = () => {
         if( !target.parent || isAdjacent(-1) ) return false
 
-        // return () => {
-        //     return []
-        // }
         if(sameParent === true) {
             if(indexes.target > indexes.selected) {
                 /**

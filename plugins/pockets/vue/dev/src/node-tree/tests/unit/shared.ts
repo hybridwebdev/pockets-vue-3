@@ -88,15 +88,14 @@ export let getTree = () : testCreatedApi => {
     
     let tree = createApi(state)
 
-    Object.assign(tree, {
+    return {
+        ...tree,
         test: {
             node: (path: string | path, toBe: string | path) => expect( tree.getNode(path).node.el ).toBe(toBe),
             nodes: (path: string | path, arr: Array<string>) => expect( tree.getNode(path).node.nodes?.map(e=>e.el) ).toStrictEqual(arr),
         }
-    })
-
-    return tree as testCreatedApi
-
+    }
+     
 }
 
 export let createTestDropApi = (dropApi: dropApi) : testDropApi=> {
@@ -107,10 +106,10 @@ export let createTestDropApi = (dropApi: dropApi) : testDropApi=> {
             if( type == 'string' ) expect( typeof dropApi[key] ).toBe('function')
         } )
     } 
-    Object.assign(dropApi, {
+    return {
+        ...dropApi,
         test
-    })
-    return dropApi as testDropApi
+    }
 }
 export let testMove = (
     to: string | path, 

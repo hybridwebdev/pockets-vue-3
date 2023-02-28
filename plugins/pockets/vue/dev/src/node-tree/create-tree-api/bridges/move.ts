@@ -3,27 +3,28 @@ import { dropApi } from "@/node-tree/types"
 import { createAbstract } from "./create-abstract"
 import { $pockets } from "@/pockets"
 
-
 type TreeNodePlaceHolder = TreeNode & {
     TreeNodePlaceHolder?: string
 } 
-export let createDropApi = ( target: TreeNodeApi, selected: TreeNodeApi ) : dropApi => {
 
-    let freezeSelected = () => {
-        let node: TreeNodePlaceHolder = selected.node
-        node.TreeNodePlaceHolder = 'remove-me'
-        let selectedParent = selected.refs.parent
-        return {
-            remove(){
-                selectedParent.nodes = selectedParent.nodes?.filter( (e) => e.TreeNodePlaceHolder != 'remove-me' )
-            }
+let placeHoldSelected = (selected: TreeNodeApi) => {
+    let node: TreeNodePlaceHolder = selected.node
+    node.TreeNodePlaceHolder = 'remove-me'
+    let selectedParent = selected.refs.parent
+    return {
+        remove(){
+            selectedParent.nodes = selectedParent.nodes?.filter( (e) => e.TreeNodePlaceHolder != 'remove-me' )
         }
     }
+}
+
+export let createDropApi = ( target: TreeNodeApi, selected: TreeNodeApi ) : dropApi => {
+
 
     let dropAdjacent = (dropIndex: number) => {
         return () => {
             let node = $pockets.utils.object.clone(selected.node)
-            let placeHolder = freezeSelected()
+            let placeHolder = placeHoldSelected(selected)
             target.parent.add.inside(node, dropIndex) 
             placeHolder.remove()
             return target.parent.paths.path.concat(dropIndex)
@@ -46,7 +47,7 @@ export let createDropApi = ( target: TreeNodeApi, selected: TreeNodeApi ) : drop
         return () => {
             let dropIndex = 0
             let node = $pockets.utils.object.clone(selected.node)
-            let placeHolder = freezeSelected()
+            let placeHolder = placeHoldSelected(selected)
             target.add.inside(node, dropIndex) 
             placeHolder.remove()
             return target.paths.path.concat(dropIndex)

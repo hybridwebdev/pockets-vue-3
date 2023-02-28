@@ -29,22 +29,12 @@ export let createDropApi = ( target: TreeNodeApi, selected: TreeNodeApi ) : drop
 
     let before = () => {
         if( !target.parent || isAdjacent(1) ) return false
-        
-        return dropper(indexes.target)
+        return dropper( indexes.target )
     }
     
     let after = () => {
         if( !target.parent || isAdjacent(-1) ) return false
-
-        if(sameParent === true) {
-            if(indexes.target > indexes.selected) {
-                /**
-                    Compensate for the fact target shifts one left due to removal of selected
-                */
-                return () => dropAdjacent(indexes.target)         
-            }
-        }
-        return () => dropAdjacent(target.paths.index+1 )
+        return dropper( indexes.target+1 )
     }
 
     let inside = () => {

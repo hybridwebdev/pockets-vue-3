@@ -1,4 +1,4 @@
-import type { path, TreeNodeApiProps, TreeNodeApi, paths, createdApi } from "@/node-tree/types"
+import type { path, TreeNodeApiProps, TreeNodeApi, paths, createdApi, TreeNode } from "@/node-tree/types"
 
 import { reactive, computed } from "vue"
 import { $pockets } from "@/pockets"
@@ -52,6 +52,8 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
 
     }
 
+    let getNodeRaw = (path: paths['joined']) : TreeNode => $pockets.utils.object.get( props, path, false)
+
     let getNode = (path: path | string) : TreeNodeApi => {
         
         let paths = getPaths(path)
@@ -61,7 +63,7 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
             return getNode(paths.parent.path)
         } )
         
-        let node = computed( () => $pockets.utils.object.get( props, paths.joined, false) )
+        let node = computed( () => getNodeRaw(paths.joined) )
 
         let hasNodes = computed( () => Array.isArray(api.node?.nodes ) )
 
@@ -93,7 +95,8 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
 
     return {
         getNode,
-        saveTree
+        saveTree,
+        getNodeRaw
     }
     
 }

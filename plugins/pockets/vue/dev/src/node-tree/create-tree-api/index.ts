@@ -62,12 +62,14 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
                     return $pockets.utils.object.get( props, paths.joined, false)
                 },
                 get parent(){
-                    if(!api.paths.parent) return false
-                    return api.getNode(api.paths.parent.path)
+                    return $pockets.utils.object.get( props, api.paths.parent.joined, false)
                 }
             },
             node: computed( () => api.refs.node ),
-            parent: computed( () => api.refs.parent ),
+            parent: computed( () => {
+                if(!api.paths.parent) return false
+                return api.getNode(api.paths.parent.path)
+            } ),
             hasNodes: computed( () => Array.isArray(api.node?.nodes ) ),
             getChild: (index: number) => getNode(api.paths.path.concat(index) ),
             getNode,

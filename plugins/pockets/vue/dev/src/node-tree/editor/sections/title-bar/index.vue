@@ -2,7 +2,7 @@
     <div class='bg-accent-dk d-flex align-items-center text-white border-bottom border-5 border-accent-lt'>
         
         <div v-if='editor.active && editor.show' class='p-1 text-capitalize fw-8'>
-            {{editor.mode}} - {{editor.active.schema.title ?? editor.active.node.el }}
+            {{editor.mode}} - {{editor.active.schema.title ?? editor.active.node.el }} - #{{ editor.active.node.hash}}
         </div>
         <div class='ms-auto gap-1 d-flex'>
             <button 

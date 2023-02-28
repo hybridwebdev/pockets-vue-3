@@ -74,11 +74,12 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
             node,
             parent,
             hasNodes,
-            editor,
             getChild,
-            paths,
-            editFields,
             getNode,
+            paths,
+
+            editor,
+            editFields,
             schema,
             add:     computed( () => useAdd(api) ),
             remove:  computed( () => useRemove(api) ),
@@ -86,7 +87,6 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
             replace: computed( () => useReplace(api) ),
             move:    computed( () => useMove(api) )
         } )
-    
         
         useCrud(api)
 

@@ -1,5 +1,5 @@
 import type { TreeNode, createdApi, dropLocations, dropApi, path } from "@/node-tree/types"
-import { reactive, computed } from "vue"
+import { reactive } from "vue"
 import { createApi } from "@/node-tree/create-tree-api"
 import { move } from "@/node-tree/create-tree-api/bridges/move"
  
@@ -124,11 +124,7 @@ export let testMove = (
 
     let tree = getTree()
 
-    let states = reactive({
-        to: tree.getNode(to),
-        from: tree.getNode(from)
-    })
-    let dropApi = createTestDropApi( move( states.to, states.from ) )
+    let dropApi = createTestDropApi( move( tree.getNode(to), tree.getNode(from) ) )
 
     if(location) {
         let action = dropApi[location]

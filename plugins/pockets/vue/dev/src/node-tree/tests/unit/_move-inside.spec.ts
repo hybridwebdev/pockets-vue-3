@@ -2,8 +2,9 @@ import { testMove } from "./shared"
 
 describe('Move Inside', () => {
     test('Bug', () => {
-        let { to } = testMove('root.2', 'root.0', 'inside')
+        let { to, $path } = testMove('root.2', 'root.0', 'inside')
         to.test.node('root.1', 'root.2')
+        expect($path).toBe('root.2.0')
     })
     test('Child of another parent', () => {
         let { to } = testMove('root.0', 'root.1.1', 'inside')

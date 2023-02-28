@@ -20,7 +20,7 @@ type testDropApi = dropApi & {
 type testMoveApi = {
     dropApi: testDropApi,
     to: testCreatedApi,
-    returnPath: path | boolean
+    $path: string | boolean
 }
 
 export let node = (key: string ) : TreeNode => ( {
@@ -124,7 +124,7 @@ export let testMove = (
     sameTree: boolean = true 
 ) : testMoveApi  => {
 
-    var returnPath: testMoveApi['returnPath'] = false
+    var $path: testMoveApi['$path'] = false
 
     let tree = getTree()
 
@@ -133,14 +133,14 @@ export let testMove = (
     if(location) {
         let action = dropApi[location]
         if(typeof action == 'function') {
-            returnPath = action()
+            $path = action().join('.')
         }
     }
 
     return {
         to: tree,
         dropApi,
-        returnPath
+        $path
     }
 
 }

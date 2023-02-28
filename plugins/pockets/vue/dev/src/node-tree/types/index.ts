@@ -48,6 +48,7 @@ export type TreeNode = {
     props: any
     data?: any,
     schema: string
+    hash?: string
 }
 
 

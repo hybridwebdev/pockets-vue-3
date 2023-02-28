@@ -2,6 +2,7 @@ import type { TreeNodeApi } from "@/node-tree/types"
 import { dropApi } from "@/node-tree/types"
 import { createAbstract } from "./create-abstract"
 import { $pockets } from "@/pockets"
+//@ts-nocheck
 // target.parent.node.nodes = $pockets.utils.array.insert(target.parent.node.nodes, dropIndex, node)
 export let createDropApi = ( target: TreeNodeApi, selected: TreeNodeApi ) : dropApi => {
 
@@ -18,6 +19,12 @@ export let createDropApi = ( target: TreeNodeApi, selected: TreeNodeApi ) : drop
     let before = () => {
         if( !target.parent || isAdjacent(1) ) return false
         // return () => {
+        //     let node = $pockets.utils.object.clone(selected.node)
+        //     selected.node.hash = 'remove-me'
+        //     selected.node.nodes = selected.node.nodes?.filter(e => {
+        //         return e.hash!='remove-me'
+        //     })
+        //     target.parent.node.nodes = $pockets.utils.array.insert(target.parent.node.nodes, indexes.target, node)
         //     return []
         // }
         return () => {

@@ -99,18 +99,20 @@ export let getTree = () : testCreatedApi => {
 }
 
 export let createTestDropApi = (dropApi: dropApi) : testDropApi=> {
-    let test = (test: testMoveApiTestArgs) => {
-        Object.entries(test).map(([key, value]) => {
-            let type = typeof value
-            if( type == 'boolean' ) expect( dropApi[key] ).toBe(false)    
-            if( type == 'string' ) expect( typeof dropApi[key] ).toBe('function')
-        } )
-    } 
+
+    let test = (test: testMoveApiTestArgs) => Object.entries(test).map(([key, value]) => {
+        let type = typeof value
+        if( type == 'boolean' ) expect( dropApi[key] ).toBe(false)    
+        if( type == 'string' ) expect( typeof dropApi[key] ).toBe('function')
+    } )
+
     return {
         ...dropApi,
         test
     }
+
 }
+
 export let testMove = (
     to: string | path, 
     from: string | path, 

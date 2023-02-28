@@ -22,15 +22,16 @@ export let createDropApi = ( target: TreeNodeApi, selected: TreeNodeApi ) : drop
 
     let { indexes, isAdjacent } = createAbstract(target, selected)
 
-    let dropInside = () => {
-        let dropIndex = 0
-        let node = $pockets.utils.object.clone(selected.node)
-        let placeHolder = placeHoldSelected(selected)
-        target.add.inside(node, dropIndex) 
-        placeHolder.remove()
-        return target.paths.path.concat(dropIndex)
+    let dropInside = (dropIndex: number) => {
+        return () => {
+            let node = $pockets.utils.object.clone(selected.node)
+            let placeHolder = placeHoldSelected(selected)
+            target.add.inside(node, dropIndex) 
+            placeHolder.remove()
+            return target.paths.path.concat(dropIndex)
+        }
     }
-    
+
     let dropAdjacent = (dropIndex: number) => {
         return () => {
             let node = $pockets.utils.object.clone(selected.node)
@@ -53,7 +54,7 @@ export let createDropApi = ( target: TreeNodeApi, selected: TreeNodeApi ) : drop
 
     let inside = () => {
         if(!target.node.nodes) return false;
-        return dropInside
+        return dropInside(0)
     }
 
     return {

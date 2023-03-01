@@ -21,5 +21,6 @@ describe("Move - Before", () => {
     test('Siblings to > target', () => {
         let { to, $path } = testMove('root.0', 'root.2', 'before')
         to.test.nodes('root', ['root.2', 'root.0', 'root.1', 'root.3'])
+        expect($path).toBe('root.0')
     })
 })

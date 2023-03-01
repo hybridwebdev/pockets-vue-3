@@ -47,7 +47,7 @@ export let createDropApi = ( target: TreeNodeApi, selected: TreeNodeApi ) : drop
         var offset = 0
         if(sameParent) {
             if(indexes.selected < indexes.target) {
-                offset = 1
+                offset = -1
             }
         }
         return dropAdjacent( indexes.target, offset )

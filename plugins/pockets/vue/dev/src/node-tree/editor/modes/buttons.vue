@@ -42,10 +42,10 @@
 
     <button 
         class='fa fa-solid fa-copy btn border-0 btn-accent-dk fw-8 p-1' 
-        :class="{active: editor.mode=='copy'}"
-        @click='editor.mode = "copy"' 
+        :class="{active: editor.mode=='move'}"
+        @click='editor.mode = "move"' 
         :disabled='!editor.active.parent || editor.selectedNodes.length > 0 || editor.modeLocked'
-        v-tooltip='"Copy Item"'
+        v-tooltip='"Move Item"'
     />
 </template>
 <script lang='ts' setup>

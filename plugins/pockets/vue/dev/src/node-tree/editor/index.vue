@@ -59,15 +59,14 @@ import add from "./modes/add"
 import edit from "./modes/edit"
 import remove from "./modes/remove"
 import clone from "./modes/clone"
-import cut from "./modes/cut"
-import copy from "./modes/copy"
+
+import move from "./modes/move"
 let modePanels = {
     add, 
     edit,
     remove,
     clone,
-    cut,
-    copy
+    move
 }
 
 let selectedModePanel = $computed(() => {

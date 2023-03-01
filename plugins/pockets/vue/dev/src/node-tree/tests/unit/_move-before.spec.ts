@@ -5,6 +5,7 @@ describe("Move - Before", () => {
         let { to, $path } = testMove('root.0', 'root.0.0', 'before')
         to.test.node('root.0', 'root.0.0')
         to.test.node('root.1', 'root.0')
+        expect($path).toBe('root.0')
     })
     test('Child of another parent to target', () => {
         let { to, $path } = testMove('root.0', 'root.1.0', 'before')

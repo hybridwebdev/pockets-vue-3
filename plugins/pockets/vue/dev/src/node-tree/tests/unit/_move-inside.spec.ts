@@ -1,17 +1,19 @@
 import { testMove } from "./shared"
 
 describe('Move Inside', () => {
-    test('Bug', () => {
+    test('Root node inside root node', () => {
         let { to, $path } = testMove('root.2', 'root.0', 'inside')
         to.test.node('root.1', 'root.2')
         expect($path).toBe('root.2.0')
     })
     test('Child of another parent', () => {
-        let { to } = testMove('root.0', 'root.1.1', 'inside')
+        let { to, $path } = testMove('root.0', 'root.1.1', 'inside')
         to.test.nodes('root.0', ['root.1.1', 'root.0.0', 'root.0.1', 'root.0.2', 'root.0.3'])
+        expect($path).toBe('root.0.0')
     })
     test('Move Sibling in root', () => {
-        let { to } = testMove('root', 'root.1', 'inside')
+        let { to, $path } = testMove('root', 'root.1', 'inside')
         to.test.nodes('root', ['root.1', 'root.0', 'root.2', 'root.3'])
+        expect($path).toBe('root.0')
     })
 })

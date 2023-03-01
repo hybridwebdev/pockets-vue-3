@@ -28,7 +28,7 @@ export let createDropApi = ( target: TreeNodeApi, selected: TreeNodeApi ) : drop
             let placeHolder = placeHoldSelected(selected)
             let path = target.add.inside(node, dropIndex) 
             placeHolder.remove()
-            return path
+            //return path
             return target.paths.path.concat(dropIndex)
         }
     }

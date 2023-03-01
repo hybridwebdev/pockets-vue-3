@@ -26,8 +26,9 @@ export let createDropApi = ( target: TreeNodeApi, selected: TreeNodeApi ) : drop
         return () => {
             let node = $pockets.utils.object.clone(selected.node)
             let placeHolder = placeHoldSelected(selected)
-            target.add.inside(node, dropIndex) 
+            let path = target.add.inside(node, dropIndex) 
             placeHolder.remove()
+            return path
             return target.paths.path.concat(dropIndex)
         }
     }

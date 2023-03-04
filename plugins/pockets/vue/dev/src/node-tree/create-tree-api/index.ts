@@ -23,7 +23,13 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
             path: computed(() =>  node.__getPath ),
             
             node,
-            parent: false,
+            parent: computed( () => {
+                let nodes = node.__getParent()
+                if(!nodes) return
+                let parent = nodes.__getParent()
+                if(parent) return parent
+                return false
+            }),
 
             hasNodes: false,
             getChild: (index: number) => false,

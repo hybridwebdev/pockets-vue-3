@@ -23,11 +23,7 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
             path: computed(() =>  node.__getPath ),
             index: computed(() => {
                 if(!api.parent) return false
-
-                const pos = api.parent.node.nodes.map(e => e.hash)
-                let ter = pos.indexOf(api.node.hash);
-                console.log(ter, api, api.node.hash)
-                return ter
+                return api.node.__getPath.split('.').slice(-1)[0]
             }),
             node,
             parent: computed( () => {

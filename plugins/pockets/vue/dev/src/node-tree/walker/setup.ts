@@ -64,7 +64,7 @@ export let setup = (t) => {
         toolTip,
         clickHandler: () =>  {
             if(!editor.show) return
-            return editor.active = nodeApi 
+            return editor.active = newApi 
         },
     } )
 

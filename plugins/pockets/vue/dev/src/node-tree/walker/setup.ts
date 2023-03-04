@@ -2,18 +2,12 @@ import { editor } from "@/node-tree/editor"
 import { inject, provide, computed, ref, reactive, toRef } from "vue"
 import { useInject } from "@/node-tree/create-tree-api/injection-key"
 
-export let setup2 = (props) => {
-    let nodeApi = useInject()
-    return nodeApi.getNodeApi(props)
-}
 export let setup = (t) => {
     let props = t.treeNode
     
-    let newApi = setup2(props)
+    let newApi = useInject().getNodeApi(props)
 
     let path = pathProvider('pockets/node-tree/path')(t)
-    
-    let nodeApi = useInject().getNode( path )
 
     let hovered = ref(false)
 
@@ -38,8 +32,6 @@ export let setup = (t) => {
             "selected": selected
         }
     })
-    
-    let hiearchy = nodeHiearchy(nodeApi)
 
     let toolTip = computed(() => {
 
@@ -77,14 +69,3 @@ let pathProvider = (providerKey: string) => {
         return path
     }
 }
-
-let nodeHiearchy = (api: any ) => {
-    let providerKey = 'pockets/node-tree/node-hiearchy'    
-    let current = inject(providerKey , [] )
-    let path = [ ...current, api ]
-    provide( providerKey, path)
-    return path
-}
-
-
-

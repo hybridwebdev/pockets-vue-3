@@ -30,8 +30,8 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
                 let nodes = node.__getParent()
                 if(!nodes) return false
                 let parent = nodes.__getParent()
-                if(parent) return getNodeApi(parent)
-                return false
+                if(!parent) return false
+                return getNodeApi(parent)
             }),
 
             hasNodes: false,

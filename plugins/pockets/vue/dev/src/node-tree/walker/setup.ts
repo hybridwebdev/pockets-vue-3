@@ -12,7 +12,6 @@ export let setup = (t) => {
     let selected = computed( () =>  false )
 
     let active = computed( () => {
-        
         if(!editor?.active ) return;
         if(editor?.active?.path == newApi.path) return true
     } )

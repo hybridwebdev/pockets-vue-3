@@ -27,7 +27,7 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
                 let nodes = node.__getParent()
                 if(!nodes) return
                 let parent = nodes.__getParent()
-                if(parent) return parent
+                if(parent) return getNodeApi(parent)
                 return false
             }),
 

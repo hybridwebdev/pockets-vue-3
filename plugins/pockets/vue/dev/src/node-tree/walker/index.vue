@@ -8,6 +8,7 @@
         :class='classes'
         @mouseenter='hovered = true'
         @mouseleave='hovered = false'
+        v-tooltip='toolTip'
     >
         <component 
             v-for='(node, i) in treeNode.nodes'

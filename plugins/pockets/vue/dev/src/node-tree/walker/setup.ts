@@ -45,16 +45,16 @@ export let setup = (t) => {
 
     let toolTip = computed(() => {
 
-        let content = hiearchy.map(e => e.schema.title).join(' > ')
+        let content = 'hello world'
         
-        // return { 
-        //     content, 
-        //     shown: editor?.show && state.hovered, 
-        //     triggers: [], 
-        //     placement: "auto-start", 
-        //     popperClass: `pockets-node-tree-node-tooltip`,
-        //     delay: 1
-        // }
+        return { 
+            content, 
+            shown: editor?.show && state.hovered, 
+            triggers: [], 
+            placement: "auto-start", 
+            popperClass: `pockets-node-tree-node-tooltip`,
+            delay: 1
+        }
     })
     let state = reactive( {
         selected,

@@ -26,7 +26,7 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
 
                 const pos = api.parent.node.nodes.map(e => e.hash)
                 let ter = pos.indexOf(api.node.hash);
-                console.log(ter)
+                console.log(ter, api)
                 return ter
             }),
             node,

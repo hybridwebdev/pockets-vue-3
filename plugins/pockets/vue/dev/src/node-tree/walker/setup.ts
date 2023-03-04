@@ -28,17 +28,17 @@ export let setup = (t) => {
     } )
 
     let classes = computed(() => {
-        // let {
-        //     active,
-        //     hovered,
-        //     selected
-        // } = state
-        // return {
-        //     hovered,
-        //     active,
-        //     "editor-show": editor.show,
-        //     "selected": selected
-        // }
+        let {
+            active,
+            hovered,
+            selected
+        } = state
+        return {
+            hovered,
+            active,
+            "editor-show": editor.show,
+            "selected": selected
+        }
     })
     
     let hiearchy = nodeHiearchy(nodeApi)

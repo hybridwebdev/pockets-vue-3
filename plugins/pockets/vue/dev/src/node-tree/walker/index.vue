@@ -5,6 +5,9 @@
         class='pockets-node-tree-node'
         @click.capture='clickHandler'
         :key='treeNode.hash'
+        :class='classes'
+        @mouseenter='hovered = true'
+        @mouseleave='hovered = false'
     >
         <component 
             v-for='(node, i) in treeNode.nodes'

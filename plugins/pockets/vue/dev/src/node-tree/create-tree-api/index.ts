@@ -22,7 +22,14 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
             
             path: computed(() =>  node.__getPath ),
             index: computed(() => {
-                return 0
+                if(!api.parent) return false
+
+                const pos = api.parent.node.nodes.map(e => e.__targetPosition)
+                
+                let ter = pos.indexOf(api.node.__targetPosition);
+                console.log(ter)
+
+                return ter
             }),
             node,
             parent: computed( () => {

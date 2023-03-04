@@ -15,6 +15,38 @@ import { useCrud } from "./crud"
 import { editor } from "@/node-tree/editor"
 import { useMove } from "./move"
 
+
+
+
+let getNodeApi = (node: any) => {
+    let api = reactive( {
+        path: computed(() => {
+            // if(!node.__getPath) return 'ass';
+            if(!api.node.nodes) return;
+            console.log('node.nodes.__getPath')
+            return node.nodes.__getPath
+        }),
+        node,
+        parent: false,
+    } )
+    return api
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export let createApi = ($props:TreeNodeApiProps) : createdApi => {
 
     let props:any = ObservableSlim.create($props, false, (change) => {
@@ -56,23 +88,7 @@ export let createApi = ($props:TreeNodeApiProps) : createdApi => {
 
     }
 
-    let getNodeApi = (node: TreeNode) => {
-        let api = reactive( {
-            node,
-            parent: false,
-            hasNodes: false,
-            getNode,
-            editor,
-            editFields: computed( () => useEditFields(api) ),
-            schema:     computed( () => useSchema(api) ),
-            add:        computed( () => useAdd(api) ),
-            remove:     computed( () => useRemove(api) ),
-            clone:      computed( () => useClone(api) ),
-            replace:    computed( () => useReplace(api) ),
-            move:       computed( () => useMove(api) ),
-        } )
-        return api
-    }
+    
 
     let getNode = (path: path | string) : TreeNodeApi => {
         

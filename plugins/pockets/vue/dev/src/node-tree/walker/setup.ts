@@ -8,38 +8,37 @@ export let setup2 = (props) => {
 }
 export let setup = (t) => {
     let props = t.treeNode
-    setup2(props)
+    
+    let newApi = setup2(props)
+
+    console.log(newApi)
+
     let path = pathProvider('pockets/node-tree/path')(t)
     
     let nodeApi = useInject().getNode( path )
 
     let hovered = ref(false)
 
-    let selected = computed( () => {
-        if(editor.selectedNodes.length == 0) return false;
-        let selected = editor.selectedNodes.find(e => {
-            return e.paths.full == nodeApi.paths.full
-        })
-        return selected
-    } )
+    let selected = computed( () =>  false )
 
     let active = computed( () => {
-        if(!editor?.active || !editor?.active?.paths) return;
-        if(editor?.active?.paths?.full == nodeApi.paths.full) return true
+        return false
+        // if(!editor?.active || !editor?.active?.paths) return;
+        // if(editor?.active?.paths?.full == nodeApi.paths.full) return true
     } )
 
     let classes = computed(() => {
-        let {
-            active,
-            hovered,
-            selected
-        } = state
-        return {
-            hovered,
-            active,
-            "editor-show": editor.show,
-            "selected": selected
-        }
+        // let {
+        //     active,
+        //     hovered,
+        //     selected
+        // } = state
+        // return {
+        //     hovered,
+        //     active,
+        //     "editor-show": editor.show,
+        //     "selected": selected
+        // }
     })
     
     let hiearchy = nodeHiearchy(nodeApi)
@@ -48,14 +47,14 @@ export let setup = (t) => {
 
         let content = hiearchy.map(e => e.schema.title).join(' > ')
         
-        return { 
-            content, 
-            shown: editor?.show && state.hovered, 
-            triggers: [], 
-            placement: "auto-start", 
-            popperClass: `pockets-node-tree-node-tooltip`,
-            delay: 1
-        }
+        // return { 
+        //     content, 
+        //     shown: editor?.show && state.hovered, 
+        //     triggers: [], 
+        //     placement: "auto-start", 
+        //     popperClass: `pockets-node-tree-node-tooltip`,
+        //     delay: 1
+        // }
     })
     let state = reactive( {
         selected,

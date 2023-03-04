@@ -11,8 +11,6 @@ export let setup = (t) => {
     
     let newApi = setup2(props)
 
-    console.log(newApi)
-
     let path = pathProvider('pockets/node-tree/path')(t)
     
     let nodeApi = useInject().getNode( path )

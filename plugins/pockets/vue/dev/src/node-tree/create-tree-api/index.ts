@@ -15,51 +15,33 @@ import { useCrud } from "./crud"
 import { editor } from "@/node-tree/editor"
 import { useMove } from "./move"
 
-
-
-
-let getNodeApi = (node: any) => {
-    let api = reactive({
-        
-        path: computed(() => {
-            return node.__getPath
-        }),
-        node,
-        parent: false,
-
-        hasNodes: false,
-        getChild: (index: number) => false,
-        getNode: () => false,
-        editor,
-        editFields: computed( () => useEditFields(api) ),
-        schema:     computed( () => useSchema(api) ),
-
-        add:        computed( () => useAdd(api) ),
-        remove:     computed( () => useRemove(api) ),
-        clone:      computed( () => useClone(api) ),
-        replace:    computed( () => useReplace(api) ),
-        move:       computed( () => useMove(api) ),
-
-    } )
-    return api
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export let createApi = (props:TreeNodeApiProps) : createdApi => {
+        
+    let getNodeApi = (node: any) => {
+        let api = reactive({
+            
+            path: computed(() =>  node.__getPath ),
+            
+            node,
+            parent: false,
+
+            hasNodes: false,
+            getChild: (index: number) => false,
+            getNode: () => false,
+            editor,
+            editFields: computed( () => useEditFields(api) ),
+            schema:     computed( () => useSchema(api) ),
+
+            add:        computed( () => useAdd(api) ),
+            remove:     computed( () => useRemove(api) ),
+            clone:      computed( () => useClone(api) ),
+            replace:    computed( () => useReplace(api) ),
+            move:       computed( () => useMove(api) ),
+
+        } )
+        return api
+    }
+
 
     
     let saveTree = async () => {

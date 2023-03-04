@@ -20,7 +20,10 @@ import { useMove } from "./move"
 
 let getNodeApi = (node: any) => {
     let api = reactive({
-
+        
+        path: computed(() => {
+            return node.__getPath
+        }),
         node,
         parent: false,
 

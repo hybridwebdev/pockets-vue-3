@@ -22,9 +22,9 @@ export let setup = (t) => {
     let selected = computed( () =>  false )
 
     let active = computed( () => {
-        return false
-        // if(!editor?.active || !editor?.active?.paths) return;
-        // if(editor?.active?.paths?.full == nodeApi.paths.full) return true
+        
+        if(!editor?.active ) return;
+        if(editor?.active?.path == newApi.path) return true
     } )
 
     let classes = computed(() => {

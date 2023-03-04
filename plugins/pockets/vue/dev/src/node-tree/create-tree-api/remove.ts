@@ -6,6 +6,7 @@ export let useRemove = (api:TreeNodeApi) : remove => {
     let child = (index: number) => []
 
     let self = () => {
+        console.log("remove", api)
         // api.parent.node.nodes = $pockets.utils.array.omit(api.parent.node.nodes, 0)
         return []
     }

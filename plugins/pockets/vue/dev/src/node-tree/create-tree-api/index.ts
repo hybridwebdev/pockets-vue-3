@@ -32,8 +32,6 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
             }),
 
             hasNodes: false,
-            getChild: (index: number) => false,
-            getNode: () => false,
             editor,
             editFields: computed( () => useEditFields(api) ),
             schema:     computed( () => useSchema(api) ),

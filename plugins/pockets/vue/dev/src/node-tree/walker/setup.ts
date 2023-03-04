@@ -4,16 +4,13 @@ import { useInject } from "@/node-tree/create-tree-api/injection-key"
 
 export let setup2 = (props) => {
     let nodeApi = useInject()
-    let terst = nodeApi.getNodeApi(props)
-    console.log(props.__getPath, props.__targetPosition, terst.path)
-    //console.log(terst.path)
-    // console.log(terst.__targetPosition)
+    return nodeApi.getNodeApi(props)
 }
 export let setup = (t) => {
     let props = t.treeNode
     setup2(props)
     let path = pathProvider('pockets/node-tree/path')(t)
-    console.log(path, props)
+    
     let nodeApi = useInject().getNode( path )
 
     let hovered = ref(false)

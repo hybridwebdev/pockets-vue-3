@@ -2,14 +2,14 @@ import { editor } from "@/node-tree/editor"
 import { inject, provide, computed, ref, reactive } from "vue"
 import { useInject } from "@/node-tree/create-tree-api/injection-key"
 
-export let setup2 = (props) => {
-    let nodeApi = useInject()
-    let terst = nodeApi.getNodeApi(props)
-    console.log(terst.path)
-}
+// export let setup2 = (props) => {
+//     let nodeApi = useInject()
+//     let terst = nodeApi.getNodeApi(props)
+//     console.log(terst.path)
+// }
 export let setup = (props) => {
 
-    setup2(props)
+    // setup2(props)
     let path = pathProvider('pockets/node-tree/path')(props)
     
     let nodeApi = useInject().getNode( path )

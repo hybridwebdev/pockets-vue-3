@@ -23,7 +23,6 @@ let props = defineProps( {
 } )
 
 let api = createApi(props)
-console.log(api)
 
 provide(injectionKey, api )
 

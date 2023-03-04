@@ -23,9 +23,6 @@
 import { setup } from "./setup"
 
 let props = {
-    nodeId: {
-        type: [String, Number]
-    },
     treeNode: {
          el: String,
         data: Object,

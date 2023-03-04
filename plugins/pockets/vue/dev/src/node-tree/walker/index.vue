@@ -13,7 +13,6 @@
         <component 
             v-for='(node, i) in treeNode.nodes'
             is='tree-walker'
-            
             :tree-node='node'
             :key='node.hash'
         />

@@ -1,7 +1,6 @@
 <template>
     <tree-walker
         :tree-node='props.root'
-        node-id='root'
     />
 </template>
 <script lang='ts'>

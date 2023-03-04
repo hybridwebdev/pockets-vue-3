@@ -1,6 +1,6 @@
 <template>
     <tree-walker
-        :tree-node='api.getNode("root").node'
+        :tree-node='props.root'
         node-id='root'
     />
 </template>

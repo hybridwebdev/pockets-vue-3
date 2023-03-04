@@ -1,5 +1,5 @@
 import type { path, TreeNodeApiProps, TreeNodeApi, paths, createdApi, TreeNode } from "@/node-tree/types"
-
+import ObservableSlim from "observable-slim"
 import { reactive, computed } from "vue"
 import { $pockets } from "@/pockets"
 
@@ -15,8 +15,12 @@ import { useCrud } from "./crud"
 import { editor } from "@/node-tree/editor"
 import { useMove } from "./move"
 
-export let createApi = (props:TreeNodeApiProps) : createdApi => {
-        
+export let createApi = ($props:TreeNodeApiProps) : createdApi => {
+
+    let props:any = ObservableSlim.create($props, false, (change) => {
+        console.log(change)
+    })     
+    
     let saveTree = async () => {
         return await $pockets.crud('node-tree/root').init(props.source).update(props.root)
     }
@@ -83,7 +87,7 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
             remove:     computed( () => useRemove(api) ),
             clone:      computed( () => useClone(api) ),
             replace:    computed( () => useReplace(api) ),
-            move:       computed( () => useMove(api) )
+            move:       computed( () => useMove(api) ),
 
         } )
         

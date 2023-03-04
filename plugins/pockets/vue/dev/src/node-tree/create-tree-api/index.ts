@@ -45,6 +45,7 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
             move:       computed( () => useMove(api) ),
 
         } )
+        useCrud(api)
         return api
     }
 

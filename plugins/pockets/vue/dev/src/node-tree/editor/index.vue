@@ -21,7 +21,9 @@
                     <div class='bg-white d-flex'>
                         <div class='bg-accent-dk d-flex flex-column border-end border-5 border-accent-lt'>
                             <mode-buttons/>
-                            <nodeTraverse/>
+                            <!-- <nodeTraverse/> -->
+                            <button>Node Traversal Here</button>
+
                         </div>
                         <div class='flex-fill'>
                             <component :is='selectedModePanel'/>

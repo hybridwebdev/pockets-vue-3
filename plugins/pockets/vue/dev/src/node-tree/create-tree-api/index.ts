@@ -20,15 +20,23 @@ import { useMove } from "./move"
 
 let getNodeApi = (node: any) => {
     let api = reactive({
+
         node,
-        path: computed(() => {
-            if(!api.node.__getParent) return 'ass';
-            
-            return 'der'
-            // if(!node.nodes) return;
-            // console.log('node.nodes.__getPath')
-            // return node.nodes.__getParent()
-        }),
+        parent: false,
+
+        hasNodes: false,
+        getChild: (index: number) => false,
+        getNode: () => false,
+        editor,
+        editFields: computed( () => useEditFields(api) ),
+        schema:     computed( () => useSchema(api) ),
+
+        add:        computed( () => useAdd(api) ),
+        remove:     computed( () => useRemove(api) ),
+        clone:      computed( () => useClone(api) ),
+        replace:    computed( () => useReplace(api) ),
+        move:       computed( () => useMove(api) ),
+
     } )
     return api
 }

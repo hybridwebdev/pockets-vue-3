@@ -20,9 +20,10 @@ import { useMove } from "./move"
 
 let getNodeApi = (node: any) => {
     let api = reactive({
+        node,
         path: computed(() => {
-            // console.log(node)
-            if(!node.__getParent) return 'ass';
+            if(!api.node.__getParent) return 'ass';
+            
             return 'der'
             // if(!node.nodes) return;
             // console.log('node.nodes.__getPath')
@@ -47,11 +48,8 @@ let getNodeApi = (node: any) => {
 
 
 
-export let createApi = ($props:TreeNodeApiProps) : createdApi => {
+export let createApi = (props:TreeNodeApiProps) : createdApi => {
 
-    let props:any = ObservableSlim.create($props, false, (change) => {
-        console.log(change)
-    })     
     
     let saveTree = async () => {
         return await $pockets.crud('node-tree/root').init(props.source).update(props.root)
@@ -135,7 +133,6 @@ export let createApi = ($props:TreeNodeApiProps) : createdApi => {
         getNode,
         saveTree,
         getNodeApi,
-        root: props
     }
     
 }

@@ -1,20 +1,16 @@
 <template>
     <component 
-        :is='el'
-        v-bind='props'
+        :is='treeNode.el'
+        v-bind='treeNode.props'
         class='pockets-node-tree-node'
         @click.capture='clickHandler'
-        :class='classes'
-        @mouseenter='hovered = true'
-        @mouseleave='hovered = false'
-        v-tooltip='toolTip'
-        :key='hash'
+        :key='treeNode.hash'
     >
         <component 
-            v-for='(node, i) in nodes'
+            v-for='(node, i) in treeNode.nodes'
             is='tree-walker'
-            v-bind='node'
             :node-id='i'
+            :tree-node='node'
         />
     </component>
 </template>
@@ -22,21 +18,24 @@
 import { setup } from "./setup"
 
 let props = {
-    el: String,
-    data: Object,
-    hash: {
-        type: String,
-        required: true
+    
+    treeNode: {
+         el: String,
+        data: Object,
+        hash: {
+            type: String,
+            required: true
+        },
+        nodeId: {
+            type: [String, Number],
+            required: true
+        },
+        nodes: {
+            type: Array,
+        },
+        props: Object,
+        schema: String,
     },
-    nodeId: {
-        type: [String, Number],
-        required: true
-    },
-    nodes: {
-        type: Array,
-    },
-    props: Object,
-    schema: String,
 }
 export default {
     name: "tree-walker",

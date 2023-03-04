@@ -1,6 +1,6 @@
 <template>
     <tree-walker
-        v-bind='root'
+        :tree-node='api.getNode("root").node'
         node-id='root'
     />
 </template>
@@ -11,8 +11,8 @@ import treeWalker from "@/node-tree/walker"
 import { provide, onMounted } from "vue"
 import { createApi } from '@/node-tree/create-tree-api'
 import { injectionKey } from "@/node-tree/create-tree-api/injection-key"
-
-let props = defineProps( {
+import ObservableSlim from "observable-slim"
+let $props = defineProps( {
     root: {
         type: Object,
         required: true
@@ -21,6 +21,11 @@ let props = defineProps( {
         type: Object,
     }
 } )
+
+
+let props:any = ObservableSlim.create($props, false, (change) => {
+    console.log(change)
+})     
 
 let api = createApi(props)
 

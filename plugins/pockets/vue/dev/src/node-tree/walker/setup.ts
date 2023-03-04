@@ -9,11 +9,11 @@ export let setup2 = (props) => {
     //console.log(terst.path)
     // console.log(terst.__targetPosition)
 }
-export let setup = (t) => {
-    let props = t.treeNode
-    setup2(props)
+export let setup = (props) => {
+    //let props = t.treeNode
+    // setup2(props)
     let path = pathProvider('pockets/node-tree/path')(props)
-    
+    console.log(path, props)
     let nodeApi = useInject().getNode( path )
 
     let hovered = ref(false)

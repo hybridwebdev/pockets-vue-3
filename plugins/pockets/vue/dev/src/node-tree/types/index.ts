@@ -123,6 +123,7 @@ export type createdApi = {
     getNode: ( path: path | string ) => TreeNodeApi
     saveTree: () => Promise<any>
     getNodeApi: ( node: TreeNode ) => any
+    root: TreeNode
 }
 
 export type dropLocations = "before" | "after" | "inside"

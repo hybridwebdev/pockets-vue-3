@@ -19,15 +19,15 @@ import { useMove } from "./move"
 
 
 let getNodeApi = (node: any) => {
-    let api = reactive( {
+    let api = reactive({
         path: computed(() => {
-            // if(!node.__getPath) return 'ass';
-            if(!api.node.nodes) return;
-            console.log('node.nodes.__getPath')
-            return node.nodes.__getPath
+            // console.log(node)
+            if(!node.__getParent) return 'ass';
+            return 'der'
+            // if(!node.nodes) return;
+            // console.log('node.nodes.__getPath')
+            // return node.nodes.__getParent()
         }),
-        node,
-        parent: false,
     } )
     return api
 }
@@ -134,7 +134,8 @@ export let createApi = ($props:TreeNodeApiProps) : createdApi => {
     return {
         getNode,
         saveTree,
-        getNodeApi
+        getNodeApi,
+        root: props
     }
     
 }

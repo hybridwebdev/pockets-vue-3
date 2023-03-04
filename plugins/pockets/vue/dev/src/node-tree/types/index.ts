@@ -122,6 +122,7 @@ export type paths = {
 export type createdApi = {
     getNode: ( path: path | string ) => TreeNodeApi
     saveTree: () => Promise<any>
+    getNodeApi: ( node: TreeNode ) => any
 }
 
 export type dropLocations = "before" | "after" | "inside"

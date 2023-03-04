@@ -24,17 +24,15 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
             index: computed(() => {
                 if(!api.parent) return false
 
-                const pos = api.parent.node.nodes.map(e => e.__targetPosition)
-                
-                let ter = pos.indexOf(api.node.__targetPosition);
+                const pos = api.parent.node.nodes.map(e => e.hash)
+                let ter = pos.indexOf(api.node.hash);
                 console.log(ter)
-
                 return ter
             }),
             node,
             parent: computed( () => {
                 let nodes = node.__getParent()
-                if(!nodes) return
+                if(!nodes) return false
                 let parent = nodes.__getParent()
                 if(parent) return getNodeApi(parent)
                 return false

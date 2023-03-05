@@ -41,6 +41,9 @@ export let useCrud = (api : TreeNodeApi) => {
         self: async () => api.parent.hydrate.child(api.paths.index),
         child: async (index: number) => hydrater(index),
         active: async() => {
+            /**
+                Active is meant to be used within an editor context only. 
+            */
             let node = await api.hydrate.self()
             if(node ) api.editor.active = node
         }

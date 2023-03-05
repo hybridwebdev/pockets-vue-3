@@ -8,7 +8,7 @@
 <script lang='ts' setup>
 import treeWalker from "@/node-tree/walker"
 import { provide, onMounted } from "vue"
-import { createApi } from '@/node-tree/create-tree-api'
+import { createTreeApi } from '@/node-tree/create-tree-api'
 import { injectionKey } from "@/node-tree/create-tree-api/injection-key"
 import ObservableSlim from "observable-slim"
 
@@ -26,7 +26,7 @@ let props:any = ObservableSlim.create($props, false, (change) => {
     console.log(change)
 })     
 
-let api = createApi(props)
+let api = createTreeApi(props)
 
 provide(injectionKey, api )
 

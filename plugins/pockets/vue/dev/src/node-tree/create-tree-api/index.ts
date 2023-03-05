@@ -15,7 +15,7 @@ import { useCrud } from "./crud"
 
 import { editor } from "@/node-tree/editor"
 
-export let createApi = (props:TreeNodeApiProps) : createdApi => {
+export let createTreeApi = (props:TreeNodeApiProps) : createdApi => {
         
     let getNodeApi = (node: TreeNodeProxied) : TreeNodeApi => {
         

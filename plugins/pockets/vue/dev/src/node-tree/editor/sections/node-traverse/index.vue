@@ -57,20 +57,23 @@ let triggerParent = $computed( () =>{
     return () => editor.active = editor.active.parent
 } )
 
+let triggerInside = $computed(() => {
+    if(!editor.active.hasNodes || editor.active.node.nodes.length==0) return false;
+    return (index: number = 0) => editor.active = editor.active.getChild(index)
+} )
+ 
 let triggerPrev = $computed(() => {
 
-    if(!editor.active.paths.parent) return false
+    if(!editor.active.parent) return false
     let index = editor.active.paths.index - 1
     if(index < 0 ) return false
-    return () => editor.active = editor.active.getNode(
-        editor.active.paths.parent.path.concat(index)
-    )
-})
+    return () => editor.active = editor.active.parent.getChild(index)
+} )
 
 let triggerNext = $computed(() => {
 
     if(
-        !editor.active.paths.parent 
+        !editor.active.parent
         ||
         !editor.active.parent.hasNodes
     ) return false
@@ -78,14 +81,7 @@ let triggerNext = $computed(() => {
     
     if(index == editor.active.parent.node.nodes.length ) return false
     
-    return () => editor.active = editor.active.getNode(
-        editor.active.paths.parent.path.concat(index)
-    )
+    return () => editor.active = editor.active.parent.getChild(index)
 })
 
-let triggerInside = $computed(() => {
-    if(!editor.active.hasNodes || editor.active.node.nodes.length==0) return false;
-    return (index: number = 0) => editor.active = editor.active.getChild(index)
-})
- 
 </script>

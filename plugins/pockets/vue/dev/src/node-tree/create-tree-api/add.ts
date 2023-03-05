@@ -4,17 +4,16 @@ import type { add, TreeNode, TreeNodeApi } from "@/node-tree/types"
 export let useAdd = (api: TreeNodeApi) : add => {
 
     let inside = (node: TreeNode, index: number = 0) => {
-        
         api.node.nodes = $pockets.utils.array.insert(api.node.nodes, index, node)
-        
-        return api.paths.path.concat(index)
+        return []
+    }
 
-    }
     let after = (node: TreeNode) => {
-        return api.parent.add.inside(node, api.paths.index + 1)
+        return api.parent.add.inside(node, api.index + 1)
     }
+    
     let before = (node: TreeNode) => {
-        return api.parent.add.inside(node, api.paths.index)
+        return api.parent.add.inside(node, api.index)
     }
 
     let add:add = {

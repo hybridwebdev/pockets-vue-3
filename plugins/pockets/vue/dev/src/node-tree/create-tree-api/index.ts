@@ -32,6 +32,7 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
             path: node.__getPath,
             index: computed(() => api.node.__getPath.split('.').slice(-1)[0]), 
 
+            hasNodes: computed(() => Array.isArray(api.node?.nodes) ),
             node,
             parent,
 

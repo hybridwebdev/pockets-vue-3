@@ -31,7 +31,7 @@ export let setup = (props) => {
     let toolTip = computed(() => {
 
         return { 
-            content: nodeApi.branch.map(e => e.schema.title).join(' > '), 
+            content: nodeApi.branch.full.map(e => e.schema.title).join(' > '), 
             shown: editor?.show && state.hovered, 
             triggers: [], 
             placement: "auto-start", 

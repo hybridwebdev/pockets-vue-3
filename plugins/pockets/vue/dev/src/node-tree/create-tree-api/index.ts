@@ -45,8 +45,9 @@ export let createTreeApi = (props:TreeNodeApiProps) : createdApi => {
 
         let getChild = (index: number) => getNodeApi( api.node.nodes[index] )
 
-        let parents = computed(() => {
-            return api.paths.path.split('.nodes.').map((_, index) => {
+        let branch = computed(() => {
+            
+            let parents = api.paths.path.split('.nodes.').map((_, index) => {
                 let i = (index+ 1)  * 2
                 let parent = api.node.__getParent(i)
                 if(parent) {
@@ -54,13 +55,16 @@ export let createTreeApi = (props:TreeNodeApiProps) : createdApi => {
                 }
                 return false
             }).filter(e => e)
-        })
 
-        let branch = computed(() => api.parents.concat(api) )
+            return {
+                parents,
+                full: parents.concat(api)
+            }
+
+        } )
 
         let api = reactive({
             branch,
-            parents,
 
             paths,
             getNodeApi,

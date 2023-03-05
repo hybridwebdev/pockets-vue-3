@@ -29,13 +29,14 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
             return getNodeApi(parent)
         } )
 
+        let path = computed(() => node.__getPath)
+
         let api = reactive({
-            
+            path,
             paths: computed(() => {
-                let path = node.__getPath
                 return {
-                    full: [sourcePath, path].join('.'),
-                    path,
+                    full: [sourcePath, path.value].join('.'),
+                    path: path.value,
                 }
             }),
 

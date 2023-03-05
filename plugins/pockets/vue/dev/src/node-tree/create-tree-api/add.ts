@@ -4,8 +4,9 @@ import type { add, TreeNode, TreeNodeApi } from "@/node-tree/types"
 export let useAdd = (api: TreeNodeApi) : add => {
 
     let inside = (node: TreeNode, index: number = 0) => {
-        console.log(index)
-        api.node.nodes = $pockets.utils.array.insert(api.node.nodes, index, node)
+        if(api.node.nodes){
+            api.node.nodes.splice( index, 0, node )
+        }
         return []
     }
 

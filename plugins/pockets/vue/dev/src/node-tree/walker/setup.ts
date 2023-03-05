@@ -38,7 +38,9 @@ export let setup = (props) => {
             popperClass: `pockets-node-tree-node-tooltip`,
             delay: 1
         }
+
     })
+
     let state = reactive( {
         selected,
         active,
@@ -52,4 +54,5 @@ export let setup = (props) => {
     } )
 
     return state
+    
 }

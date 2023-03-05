@@ -4,7 +4,6 @@
         v-bind='treeNode.props'
         class='pockets-node-tree-node'
         @click.capture='clickHandler'
-        :key='treeNode.__targetPosition'
         :class='classes'
         @mouseenter='hovered = true'
         @mouseleave='hovered = false'

@@ -11,9 +11,9 @@ export let useAdd = (api: TreeNodeApi) : add => {
         return false
     }
 
-    let after = (node: TreeNode) => api.parent.add.inside(node, api.index + 1)
+    let after = (node: TreeNode) => api.parent.add.inside(node, api.paths.index + 1)
 
-    let before = (node: TreeNode) => api.parent.add.inside(node, api.index)
+    let before = (node: TreeNode) => api.parent.add.inside(node, api.paths.index)
 
     let add:add = {
         inside,

@@ -53,9 +53,9 @@ import { inject } from "vue"
 let editor = inject('pockets-node-tree-editor')
 
 let triggerParent = $computed(() =>{
-    if(!editor.active.paths.parent) return false;
+    if(!editor.active.parent) return false;
     return () => {
-        editor.active = editor.active.getNode(editor.active.paths.parent.path)
+        editor.active = editor.active.parent
     }
 })
 

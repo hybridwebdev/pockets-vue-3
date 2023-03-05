@@ -63,7 +63,7 @@ export let useCrud = (api : TreeNodeApi) => {
         initialize.child = false
         hydrate.child = false
     }
-    
+
     if(!api.parent) {
         initialize.self = false
         hydrate.self = false
@@ -72,5 +72,7 @@ export let useCrud = (api : TreeNodeApi) => {
     api.hydrate = hydrate
 
     api.initialize = initialize
+    
+    api.refreshNode = refreshNode
 
 }

@@ -1,4 +1,4 @@
-import type { TreeNodeApiProps, createdApi, TreeNodeProxied, TreeNodeApi } from "@/node-tree/types"
+import type { TreeNodeApiProps, createdApi, TreeNodeProxied, TreeNodeApi, TreeNode } from "@/node-tree/types"
 
 import { reactive, computed } from "vue"
 import { $pockets } from "@/pockets"
@@ -63,7 +63,8 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
 
             replace:    computed( () => useReplace(api) ),
             // move:       computed( () => useMove(api) ),
-
+            replaceActive: (node: TreeNodeProxied) => api.editor.active = getNodeApi(node)
+            
         } )
 
         useCrud(api)

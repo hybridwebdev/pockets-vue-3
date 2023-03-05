@@ -36,10 +36,19 @@ export let useCrud = (api : TreeNodeApi) => {
 
     let initializer = createFetcher(['initialize:<='])
 
+    let refreshNode:methods = {
+        self: async () => api.parent.hydrate.child(api.paths.index),
+        child: async (index: number) => hydrater(index)
+    }   
+
     let hydrate:methods = {
+        /**
+            Hydrate should only be used directly in an editor context.
+        */
         self: async () => api.parent.hydrate.child(api.paths.index),
         child: async (index: number) => {
-            hydrater(index)
+            let node = await hydrater(index)
+            if(node && api.editor.active) api.editor.active = node
         }
     }   
 

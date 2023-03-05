@@ -37,12 +37,13 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
                 return {
                     full: [sourcePath, path.value].join('.'),
                     path: path.value,
+                    index: parseInt( api.node.__getPath.split('.').slice(-1)[0] )
                 }
             }),
 
+            index: computed(() => parseInt( api.node.__getPath.split('.').slice(-1)[0] ) ) , 
             getNodeApi,
             
-            index: computed(() => parseInt( api.node.__getPath.split('.').slice(-1)[0] ) ) , 
 
             hasNodes: computed(() => Array.isArray(api.node?.nodes) ),
             node,

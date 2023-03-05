@@ -8,8 +8,7 @@ export let useClone = (api:TreeNodeApi) : clone => {
     let child = (index: number) => {
         let child = api.getChild(index)
         if(child.node) {
-            let cloned = $pockets.utils.object.clone( child.node )
-            api.add.inside(cloned , index )
+            api.add.inside( $pockets.utils.object.clone( child.node ), index )
             if(api.node.nodes) {
                 return api.node.nodes[index]  
             }

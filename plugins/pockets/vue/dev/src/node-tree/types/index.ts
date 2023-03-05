@@ -22,8 +22,8 @@ export type clone = {
 }
 
 export type remove = {
-    self: false | ( () => path )
-    child: false | ( (index: number) => path )
+    self: false | ( () => boolean )
+    child: false | ( (index: number) => boolean )
 }
 
 export type TreeNodeSchemaField = {

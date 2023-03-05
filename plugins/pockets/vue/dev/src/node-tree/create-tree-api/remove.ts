@@ -1,12 +1,17 @@
-import type { remove } from "@/node-tree/types"
+import type { remove, TreeNodeApi } from "@/node-tree/types"
 
-export let useRemove = (api:any) : remove => {
+export let useRemove = (api:TreeNodeApi) : remove => {
    
-    let child = (index: number) => api.node.nodes.splice(index, 1)
+    let child = (index: number) => {
+        if(api.node.nodes) {
+            api.node.nodes.splice(index, 1)
+        }
+        return false
+    }
 
     let self = () => {
         api.parent.remove.child(api.index)
-        return []
+        return false
     }
 
     let remove:remove = {

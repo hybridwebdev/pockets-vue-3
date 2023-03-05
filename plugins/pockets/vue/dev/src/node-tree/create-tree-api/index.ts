@@ -63,7 +63,6 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
 
             replace:    computed( () => useReplace(api) ),
             // move:       computed( () => useMove(api) ),
-            replaceActive: (node: TreeNodeProxied) => api.editor.active = getNodeApi(node)
             
         } )
 

@@ -21,14 +21,6 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
 
         let sourcePath = [props.source.metaKey, props.source.type, props.source.ID].join('.')
 
-        let parent = computed( () => {
-            let nodes = node.__getParent()
-            if(!nodes) return false
-            let parent = nodes.__getParent()
-            if(!parent) return false
-            return getNodeApi(parent)
-        } )
-
         let path = computed(() => node.__getPath)
 
         let api = reactive({
@@ -42,11 +34,16 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
             }),
 
             getNodeApi,
-            
 
             hasNodes: computed(() => Array.isArray(api.node?.nodes) ),
             node,
-            parent,
+            parent: computed( () => {
+                let nodes = node.__getParent()
+                if(!nodes) return false
+                let parent = nodes.__getParent()
+                if(!parent) return false
+                return getNodeApi(parent)
+            } ),
             getChild: (index: number) => getNodeApi(api.node.nodes[index]),
 
             editor,

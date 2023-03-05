@@ -21,6 +21,9 @@ export let useRemove = (api:TreeNodeApi) : remove => {
     if(!api.parent) {
         remove.self = false
     }
+    if(!api.node.nodes) {
+        remove.child = false
+    }
     
     return remove
 }

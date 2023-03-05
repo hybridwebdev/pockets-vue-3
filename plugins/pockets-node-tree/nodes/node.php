@@ -8,22 +8,11 @@ trait wrapper_functions {
     */
 
     final function __save($node){
-        /**
-            Removing hash
-        */
-        unset($node['hash']);
         return $this->save($node);
     }
 
     final function __hydrate($node){
-        /**
-            Creating a hash so that it can be used in vues
-            tree walker for the :key binding. 
-            This is only a temp field for when the editor is active
-            and can be removed when the node is saved. 
-        */
         $node = $this->hydrate($node);
-        $node['hash'] = uniqid();
         return $node;
     }
 

@@ -63,7 +63,6 @@ let triggerInside = $computed(() => {
 } )
  
 let triggerPrev = $computed(() => {
-
     if(!editor.active.parent) return false
     let index = editor.active.paths.index - 1
     if(index < 0 ) return false

@@ -22,7 +22,10 @@ import { setup } from "./setup"
 
 let props = {
     treeNode: {
-         el: String,
+        /**
+            This is an object so that the observableSlim proxy isn't lost
+        */
+        el: String,
         data: Object,
         nodes: {
             type: Array,
@@ -48,8 +51,6 @@ export default {
             display: none;
         }
     }
-    
-    
     .pockets-node-tree-node {
         &.selected {
             outline: 5px solid #f00 !important

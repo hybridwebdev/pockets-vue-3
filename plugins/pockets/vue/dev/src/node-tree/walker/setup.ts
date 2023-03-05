@@ -2,10 +2,9 @@ import { editor } from "@/node-tree/editor"
 import { computed, ref, reactive } from "vue"
 import { useInject } from "@/node-tree/create-tree-api/injection-key"
 
-export let setup = (t) => {
-    let props = t.treeNode
-    
-    let newApi = useInject().getNodeApi(props)
+export let setup = (props) => {
+
+    let newApi = useInject().getNodeApi(props.treeNode)
 
     let hovered = ref(false)
 

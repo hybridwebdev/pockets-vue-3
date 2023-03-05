@@ -52,7 +52,7 @@ export type TreeNodeProxied = TreeNode & {
         comprised of properties created by ObservableSlim
     */
     __getPath: string
-    __getParent: any
+    __getParent: ( () => any )
     __targetPosition: number
 }
 

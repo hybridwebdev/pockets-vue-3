@@ -1,8 +1,8 @@
 <?php
 namespace pockets_node_tree\nodes;
 trait wrapper_functions {
-    
-    /**
+     
+    /** 
         These act as middleware between the nodes methods and the walker that invokes them.
         They should be used as the entry point for the walkers.
     */

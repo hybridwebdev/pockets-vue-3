@@ -13,7 +13,7 @@ export let setup = (t) => {
 
     let active = computed( () => {
         if(!editor?.active ) return;
-        if(editor?.active?.path == newApi.path) return true
+        if(editor?.active?.paths.full == newApi.paths.full) return true
     } )
 
     let classes = computed(() => {

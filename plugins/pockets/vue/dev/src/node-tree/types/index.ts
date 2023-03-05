@@ -17,8 +17,8 @@ export type replace = {
 }
 
 export type clone = {
-    self: false | ( () => path )
-    child: false | ( (index: number) => path )
+    self: false | ( () => TreeNode | false )
+    child: false | ( (index: number) => TreeNode | false )
 }
 
 export type remove = {

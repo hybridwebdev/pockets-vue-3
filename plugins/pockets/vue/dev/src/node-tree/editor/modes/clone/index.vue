@@ -21,7 +21,7 @@
 import { inject } from "vue"
 let editor = inject("pockets-node-tree-editor")
 let clone = () => {
-    let path = editor.active.clone.self()
-    editor.active = editor.active.getNode(path)
+    let node = editor.active.clone.self()
+    editor.active = editor.active.getNodeApi(node)
 }
 </script>

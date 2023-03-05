@@ -3,12 +3,6 @@
         
         <div v-if='editor.active && editor.show' class='p-1 text-capitalize fw-8'>
             {{editor.mode}} - {{editor.active.schema.title ?? editor.active.node.el }} 
-            <div>
-            Hash: {{ editor.active.node.hash}}
-            </div>
-            <div>
-                Path:  {{editor.active.node.__getPath}}
-            </div>
         </div>
         <div class='ms-auto gap-1 d-flex'>
             <button 

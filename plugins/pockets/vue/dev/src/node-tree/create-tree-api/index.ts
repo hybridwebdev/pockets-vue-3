@@ -31,7 +31,12 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
 
         let api = reactive({
             
-            treePath: computed(() => [sourcePath, api.path].join('.')),
+            paths: computed(() => {
+                return {
+                    full: [sourcePath, api.path].join('.')
+                }
+            }),
+
             getNodeApi,
             path: node.__getPath,
             index: computed(() => parseInt( api.node.__getPath.split('.').slice(-1)[0] ) ) , 

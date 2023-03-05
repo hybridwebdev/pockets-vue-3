@@ -6,9 +6,9 @@ export type move = {
 }
 
 export type add = {
-    inside: false | ( (node: TreeNode, index: number) => path)
-    before: false | ( (node: TreeNode) => path)
-    after: false | ( (node: TreeNode) => path)
+    inside: false | ( (node: TreeNode, index: number) => TreeNode | false)
+    before: false | ( (node: TreeNode) => TreeNode | false)
+    after: false | ( (node: TreeNode) => TreeNode | false)
 }
 
 export type replace = {

@@ -13,9 +13,9 @@ export let setup = (props) => {
         }
     }
 
-    let newApi = useInject().getNodeApi(props.treeNode)
+    let nodeApi = useInject().getNodeApi(props.treeNode)
 
-    let hiearchy = createHiearchy(newApi)
+    let hiearchy = createHiearchy(nodeApi)
 
     let hovered = ref(false)
 
@@ -23,7 +23,7 @@ export let setup = (props) => {
 
     let active = computed( () => {
         if(!editor?.active ) return;
-        if(editor?.active?.paths.full == newApi.paths.full) return true
+        if(editor?.active?.paths.full == nodeApi.paths.full) return true
     } )
 
     let classes = computed(() => {
@@ -59,7 +59,7 @@ export let setup = (props) => {
         toolTip,
         clickHandler: () =>  {
             if(!editor.show) return
-            return editor.active = newApi 
+            return editor.active = nodeApi 
         },
     } )
 

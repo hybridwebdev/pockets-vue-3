@@ -29,6 +29,9 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
 
         let api = reactive({
             
+            treePath: computed(() => {
+                
+            }),
             getNodeApi,
             path: node.__getPath,
             index: computed(() => parseInt( api.node.__getPath.split('.').slice(-1)[0] ) ) , 
@@ -45,8 +48,9 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
             add:        computed( () => useAdd(api) ),
             remove:     computed( () => useRemove(api) ),
             clone:      computed( () => useClone(api) ),
-            replace:    computed( () => useReplace(api) ),
-            move:       computed( () => useMove(api) ),
+
+            // replace:    computed( () => useReplace(api) ),
+            // move:       computed( () => useMove(api) ),
 
         } )
 

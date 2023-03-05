@@ -13,8 +13,7 @@ export default {
         let select = async(node) => {
             api.loading.value = true
             api.selectedModel.value = node.node.schema
-            await editor.active.initialize.self()
-            // editor.active = editor.active.getNodeApi(editor.active.paths.path)
+            editor.active = await editor.active.initialize.self()
             api.loading.value = false
         }
 

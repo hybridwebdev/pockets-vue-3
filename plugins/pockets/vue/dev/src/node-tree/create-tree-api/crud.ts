@@ -17,6 +17,8 @@ export let useCrud = (api : TreeNodeApi) => {
                 
                 child.replace.self(newNode)
 
+                return api.getChild(index)
+                
             } catch(e) {
 
             }

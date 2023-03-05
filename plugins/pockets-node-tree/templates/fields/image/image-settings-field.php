@@ -11,7 +11,7 @@
             Source
         </label>
         
-        <select v-model='node.data.source' class='form-control' @change='hydrate.self'>
+        <select v-model='node.data.source' class='form-control' @change='hydrate.active'>
             <option value='remote'>Remote</option>
             <option value='media'>Media Library</option>
         </select>
@@ -24,7 +24,7 @@
             Size
         </label>
         
-        <select class='form-control' @change='hydrate.self' v-model='node.data.size'>
+        <select class='form-control' @change='hydrate.active' v-model='node.data.size'>
             <?php array_map($render_sizes, $sizes) ?>
         </select>
         
@@ -42,5 +42,5 @@
 </div>
 
 <div v-if='node.data.source=="media"'>
-    <wp-media v-model:selected='node.data.ID' @update:selected='hydrate.self'></wp-media>
+    <wp-media v-model:selected='node.data.ID' @update:selected='hydrate.active'></wp-media>
 </div>

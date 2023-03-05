@@ -18,23 +18,25 @@ import { useMove } from "./move"
 export let createApi = (props:TreeNodeApiProps) : createdApi => {
         
     let getNodeApi = (node: TreeNodeProxied) => {
+
+        let parent = computed( () => {
+            let nodes = node.__getParent()
+            if(!nodes) return false
+            let parent = nodes.__getParent()
+            if(!parent) return false
+            return getNodeApi(parent)
+        })
+
         let api = reactive({
-            
-            path: computed(() =>  node.__getPath ),
+            path: node.__getPath,
             index: computed(() => {
                 if(!api.parent) return false
                 return api.node.__getPath.split('.').slice(-1)[0]
             }),
-            node,
-            parent: computed( () => {
-                let nodes = node.__getParent()
-                if(!nodes) return false
-                let parent = nodes.__getParent()
-                if(!parent) return false
-                return getNodeApi(parent)
-            }),
 
-            hasNodes: false,
+            node,
+            parent,
+
             editor,
             editFields: computed( () => useEditFields(api) ),
             schema:     computed( () => useSchema(api) ),

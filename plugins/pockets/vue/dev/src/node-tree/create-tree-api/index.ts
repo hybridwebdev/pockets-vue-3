@@ -54,11 +54,12 @@ export let createTreeApi = (props:TreeNodeApiProps) : createdApi => {
                 }
                 return false
             }).filter(e => e)
-            
         })
 
-        let api = reactive({
+        let branch = computed(() => api.parents.concat(api) )
 
+        let api = reactive({
+            branch,
             parents,
 
             paths,

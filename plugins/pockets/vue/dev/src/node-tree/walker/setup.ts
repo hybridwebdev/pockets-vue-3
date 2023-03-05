@@ -3,19 +3,7 @@ import { computed, ref, reactive, provide, inject } from "vue"
 import { useInject } from "@/node-tree/create-tree-api/injection-key"
 export let setup = (props) => {
 
-    let createHiearchy = (api) => {
-        let providerKey = 'node-tree/hiearchy'
-        let hiearchy = inject(providerKey, [])
-        let newHiearchy = [...hiearchy, api]
-        provide(providerKey, newHiearchy)
-        return {
-            title: computed(() => newHiearchy.map(e => e.schema.title).join(" > "))
-        }
-    }
-
     let nodeApi = useInject().getNodeApi(props.treeNode)
-
-    let hiearchy = createHiearchy(nodeApi)
 
     let hovered = ref(false)
 
@@ -43,7 +31,7 @@ export let setup = (props) => {
     let toolTip = computed(() => {
 
         return { 
-            content: hiearchy.title, 
+            content: nodeApi.branch.map(e => e.schema.title).join(' > '), 
             shown: editor?.show && state.hovered, 
             triggers: [], 
             placement: "auto-start", 

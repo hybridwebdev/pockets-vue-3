@@ -5,15 +5,15 @@ export type move = {
     child: false | ( (from: number, to: number) => path )
 }
 
+export type replace = {
+    self: false | ( (node: TreeNode) => path)
+    child: false | ( (index: number, node: TreeNode) => path)
+}
+
 export type add = {
     inside: false | ( (node: TreeNode, index: number) => TreeNode | false)
     before: false | ( (node: TreeNode) => TreeNode | false)
     after: false | ( (node: TreeNode) => TreeNode | false)
-}
-
-export type replace = {
-    self: false | ( (node: TreeNode) => path)
-    child: false | ( (index: number, node: TreeNode) => path)
 }
 
 export type clone = {

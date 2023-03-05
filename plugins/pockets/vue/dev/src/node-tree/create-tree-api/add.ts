@@ -6,6 +6,7 @@ export let useAdd = (api: TreeNodeApi) : add => {
     let inside = (node: TreeNode, index: number = 0) => {
         if(api.node.nodes){
             api.node.nodes.splice( index, 0, node )
+            console.log(node)
         }
         return []
     }

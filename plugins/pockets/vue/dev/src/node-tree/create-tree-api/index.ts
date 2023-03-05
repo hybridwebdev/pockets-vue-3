@@ -1,4 +1,4 @@
-import type { TreeNodeApiProps, createdApi, TreeNodeProxied } from "@/node-tree/types"
+import type { TreeNodeApiProps, createdApi, TreeNodeProxied, TreeNodeApi } from "@/node-tree/types"
 
 import { reactive, computed } from "vue"
 import { $pockets } from "@/pockets"
@@ -17,7 +17,7 @@ import { useMove } from "./move"
 
 export let createApi = (props:TreeNodeApiProps) : createdApi => {
         
-    let getNodeApi = (node: TreeNodeProxied) => {
+    let getNodeApi = (node: TreeNodeProxied) : TreeNodeApi => {
 
         let parent = computed( () => {
             let nodes = node.__getParent()
@@ -25,14 +25,12 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
             let parent = nodes.__getParent()
             if(!parent) return false
             return getNodeApi(parent)
-        })
+        } )
 
         let api = reactive({
+
             path: node.__getPath,
-            index: computed(() => {
-                if(!api.parent) return false
-                return api.node.__getPath.split('.').slice(-1)[0]
-            }),
+            index: computed(() => api.node.__getPath.split('.').slice(-1)[0]), 
 
             node,
             parent,
@@ -48,15 +46,12 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
             move:       computed( () => useMove(api) ),
 
         } )
+        
         useCrud(api)
         return api
     }
-
-
     
-    let saveTree = async () => {
-        return await $pockets.crud('node-tree/root').init(props.source).update(props.root)
-    }
+    let saveTree = async () => await $pockets.crud('node-tree/root').init(props.source).update(props.root)
 
     return {
         saveTree,

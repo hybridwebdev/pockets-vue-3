@@ -25,14 +25,6 @@ let props = {
     treeNode: {
          el: String,
         data: Object,
-        hash: {
-            type: String,
-            required: true
-        },
-        nodeId: {
-            type: [String, Number],
-            required: true
-        },
         nodes: {
             type: Array,
         },

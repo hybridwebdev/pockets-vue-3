@@ -61,7 +61,7 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
             remove:     computed( () => useRemove(api) ),
             clone:      computed( () => useClone(api) ),
 
-            // replace:    computed( () => useReplace(api) ),
+            replace:    computed( () => useReplace(api) ),
             // move:       computed( () => useMove(api) ),
 
         } )

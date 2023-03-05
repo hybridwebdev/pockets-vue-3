@@ -45,7 +45,7 @@ export let createTreeApi = (props:TreeNodeApiProps) : createdApi => {
 
         let getChild = (index: number) => getNodeApi( api.node.nodes[index] )
 
-        let branch = computed(() => {
+        let branch = computed( () => {
             
             let parents = api.paths.path.split('.nodes.').map((_, index) => {
                 let i = (index+ 1)  * 2

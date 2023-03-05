@@ -53,6 +53,7 @@ export type TreeNodeProxied = TreeNode & {
     */
     __getPath: string
     __getParent: any
+    __targetPosition: number
 }
 
 export type TreeEditor = {

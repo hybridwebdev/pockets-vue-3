@@ -18,8 +18,8 @@ import { editor } from "@/node-tree/editor"
 export let createApi = (props:TreeNodeApiProps) : createdApi => {
         
     let getNodeApi = (node: TreeNodeProxied) : TreeNodeApi => {
-
-        let sourcePath = [props.source.metaKey, props.source.type, props.source.ID].join('.')
+        
+        let sourcePath = [ props.source.metaKey, props.source.type, props.source.ID ].join('.')
 
         let path = computed(() => node.__getPath)
 
@@ -42,7 +42,7 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
         let hasNodes = computed(() => Array.isArray(api.node?.nodes) )
 
         let getChild = (index: number) => getNodeApi( api.node.nodes[index] )
-        
+
         let api = reactive({
 
             paths,

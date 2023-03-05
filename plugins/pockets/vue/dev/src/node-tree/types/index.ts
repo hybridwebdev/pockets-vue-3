@@ -68,12 +68,9 @@ export type TreeEditor = {
 
 export type TreeNodeApi = {
     [key: string ] : any
-    /*
-        If node is false, all other helpers disable themselves.
-    */
+
     node: TreeNode
     parent: TreeNodeApi
-
     schema: TreeNodeSchema
     editor: TreeEditor
     editFields: Array<TreeNodeSchemaField>
@@ -93,7 +90,6 @@ export type TreeNodeApiProps = {
 }
 
 export type createdApi = {
-    getNode: ( path: path | string ) => TreeNodeApi
     saveTree: () => Promise<any>
     getNodeApi: ( node: TreeNode ) => any
 }

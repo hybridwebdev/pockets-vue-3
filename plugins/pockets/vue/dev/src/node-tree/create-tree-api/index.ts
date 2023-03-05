@@ -31,25 +31,34 @@ export let createTreeApi = (props:TreeNodeApiProps) : createdApi => {
             }
         })
 
-        let parent = computed( () => {
-            let nodes = node.__getParent()
-            if(!nodes) return false
-            let parent = nodes.__getParent()
-            if(!parent) return false
-            return getNodeApi(parent)
-        } )
+        let getParent = (node) => {
+            let parent = node.__getParent(2)
+            if(parent) {
+                return getNodeApi(parent)
+            }
+            return false
+        }
+        
+        let parent = computed( () => getParent(node)  )
 
         let hasNodes = computed(() => Array.isArray(api.node?.nodes) )
 
         let getChild = (index: number) => getNodeApi( api.node.nodes[index] )
 
-        let hiearchy = computed(() => {
-            
+        let parents = computed(() => {
+            let again = true
+            let collection = []
+            do {
+                //let p getParent()
+                again = false
+                console.log('a')
+            }
+            while(again)
         })
 
         let api = reactive({
 
-            hiearchy,
+            parents,
 
             paths,
             getNodeApi,

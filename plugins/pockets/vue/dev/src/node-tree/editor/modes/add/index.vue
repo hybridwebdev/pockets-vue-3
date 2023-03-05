@@ -79,13 +79,11 @@ let confirm = async (location) => {
     if(typeof fn != 'function') {
         return;
     }
-    let path = fn(copy)
-    if(path) activateNewNode(path)
+    let node = fn(copy)
+    if(node) activateNewNode(node)
 }
-let activateNewNode = (path) => {
-
-    //editor.active = editor.active.getNode(path)
-    editor.active = false
+let activateNewNode = (node) => {
+    editor.active = editor.active.getNodeApi(node)
     editor.mode = 'edit'
 }
 

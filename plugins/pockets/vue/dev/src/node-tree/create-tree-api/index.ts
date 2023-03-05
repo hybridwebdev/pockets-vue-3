@@ -23,28 +23,35 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
 
         let path = computed(() => node.__getPath)
 
+        let paths = computed(() => {
+            return {
+                full: [sourcePath, path.value].join('.'),
+                path: path.value,
+                index: parseInt( api.node.__getPath.split('.').slice(-1)[0] )
+            }
+        })
+
+        let parent = computed( () => {
+            let nodes = node.__getParent()
+            if(!nodes) return false
+            let parent = nodes.__getParent()
+            if(!parent) return false
+            return getNodeApi(parent)
+        } )
+
+        let hasNodes = computed(() => Array.isArray(api.node?.nodes) )
+
+        let getChild = (index: number) => getNodeApi( api.node.nodes[index] )
+        
         let api = reactive({
 
-            paths: computed(() => {
-                return {
-                    full: [sourcePath, path.value].join('.'),
-                    path: path.value,
-                    index: parseInt( api.node.__getPath.split('.').slice(-1)[0] )
-                }
-            }),
-
+            paths,
             getNodeApi,
 
-            hasNodes: computed(() => Array.isArray(api.node?.nodes) ),
+            hasNodes,
             node,
-            parent: computed( () => {
-                let nodes = node.__getParent()
-                if(!nodes) return false
-                let parent = nodes.__getParent()
-                if(!parent) return false
-                return getNodeApi(parent)
-            } ),
-            getChild: (index: number) => getNodeApi(api.node.nodes[index]),
+            parent,
+            getChild,
 
             editor,
             editFields: computed( () => useEditFields(api) ),

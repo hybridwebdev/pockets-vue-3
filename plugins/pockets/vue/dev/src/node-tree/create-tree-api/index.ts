@@ -1,4 +1,4 @@
-import type { path, TreeNodeApiProps, TreeNodeApi, createdApi, TreeNode } from "@/node-tree/types"
+import type { TreeNodeApiProps, createdApi, TreeNodeProxied } from "@/node-tree/types"
 
 import { reactive, computed } from "vue"
 import { $pockets } from "@/pockets"
@@ -17,7 +17,7 @@ import { useMove } from "./move"
 
 export let createApi = (props:TreeNodeApiProps) : createdApi => {
         
-    let getNodeApi = (node: any) => {
+    let getNodeApi = (node: TreeNodeProxied) => {
         let api = reactive({
             
             path: computed(() =>  node.__getPath ),

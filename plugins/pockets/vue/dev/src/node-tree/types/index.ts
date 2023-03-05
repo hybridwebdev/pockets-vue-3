@@ -47,6 +47,14 @@ export type TreeNode = {
     hash?: string
 }
 
+export type TreeNodeProxied = TreeNode & {
+    /**
+        comprised of properties created by ObservableSlim
+    */
+    __getPath: string
+    __getParent: any
+}
+
 export type TreeEditor = {
 
     show: Boolean
@@ -91,7 +99,7 @@ export type TreeNodeApiProps = {
 
 export type createdApi = {
     saveTree: () => Promise<any>
-    getNodeApi: ( node: TreeNode ) => any
+    getNodeApi: ( node: TreeNodeProxied ) => any
 }
 
 export type dropLocations = "before" | "after" | "inside"

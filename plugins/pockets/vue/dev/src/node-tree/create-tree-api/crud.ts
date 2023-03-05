@@ -18,7 +18,7 @@ export let useCrud = (api : TreeNodeApi) => {
                 child.replace.self(newNode)
 
                 return api.getChild(index)
-                
+
             } catch(e) {
 
             }
@@ -38,7 +38,9 @@ export let useCrud = (api : TreeNodeApi) => {
 
     let hydrate:methods = {
         self: async () => api.parent.hydrate.child(api.paths.index),
-        child: async (index: number) => hydrater(index)
+        child: async (index: number) => {
+            hydrater(index)
+        }
     }   
 
     let initialize:methods = {

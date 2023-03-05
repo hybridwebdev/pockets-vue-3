@@ -46,14 +46,7 @@ export let createTreeApi = (props:TreeNodeApiProps) : createdApi => {
         let getChild = (index: number) => getNodeApi( api.node.nodes[index] )
 
         let parents = computed(() => {
-            let again = true
-            let collection = []
-            do {
-                //let p getParent()
-                again = false
-                console.log('a')
-            }
-            while(again)
+            console.log(api.paths.path.split('.nodes.'))
         })
 
         let api = reactive({

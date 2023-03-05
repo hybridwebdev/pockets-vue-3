@@ -43,7 +43,13 @@ export let createTreeApi = (props:TreeNodeApiProps) : createdApi => {
 
         let getChild = (index: number) => getNodeApi( api.node.nodes[index] )
 
+        let hiearchy = computed(() => {
+            
+        })
+
         let api = reactive({
+
+            hiearchy,
 
             paths,
             getNodeApi,
@@ -62,6 +68,8 @@ export let createTreeApi = (props:TreeNodeApiProps) : createdApi => {
             clone:      computed( () => useClone(api) ),
 
             replace:    computed( () => useReplace(api) ),
+            
+
             // move:       computed( () => useMove(api) ),
             
         } )

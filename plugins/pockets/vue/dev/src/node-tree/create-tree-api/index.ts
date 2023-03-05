@@ -46,9 +46,11 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
             move:       computed( () => useMove(api) ),
 
         } )
-        
+
         useCrud(api)
+        
         return api
+
     }
     
     let saveTree = async () => await $pockets.crud('node-tree/root').init(props.source).update(props.root)

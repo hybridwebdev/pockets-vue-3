@@ -1,12 +1,13 @@
 import { $pockets } from "@/pockets"
 import type { remove, TreeNodeApi } from "@/node-tree/types"
 
-export let useRemove = (api:TreeNodeApi) : remove => {
+export let useRemove = (api:any) : remove => {
    
     let child = (index: number) => []
 
     let self = () => {
-        api.parent.node.nodes = $pockets.utils.array.omit(api.parent.node.nodes, api.index)
+        api.parent.node.nodes.splice(api.index, 1);
+        //api.parent.node.nodes = $pockets.utils.array.omit(api.parent.node.nodes, api.index)
         return []
     }
 

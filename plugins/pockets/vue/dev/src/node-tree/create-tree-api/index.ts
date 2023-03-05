@@ -19,6 +19,8 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
         
     let getNodeApi = (node: TreeNodeProxied) : TreeNodeApi => {
 
+        let sourcePath = [props.source.metaKey, props.source.type, props.source.ID].join('.')
+
         let parent = computed( () => {
             let nodes = node.__getParent()
             if(!nodes) return false
@@ -29,9 +31,7 @@ export let createApi = (props:TreeNodeApiProps) : createdApi => {
 
         let api = reactive({
             
-            treePath: computed(() => {
-                
-            }),
+            treePath: computed(() => [sourcePath, api.path].join('.')),
             getNodeApi,
             path: node.__getPath,
             index: computed(() => parseInt( api.node.__getPath.split('.').slice(-1)[0] ) ) , 

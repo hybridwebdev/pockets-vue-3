@@ -47,8 +47,10 @@ export let useCrud = (api : TreeNodeApi) => {
         */
         self: async () => api.parent.hydrate.child(api.paths.index),
         child: async (index: number) => {
-            let node = await hydrater(index)
-            if(node && api.editor.active) api.editor.active = node
+            if(refreshNode.child) {
+                let node = await refreshNode.child(index)
+                if(node && api.editor.active) api.editor.active = node
+            }
         }
     }   
 

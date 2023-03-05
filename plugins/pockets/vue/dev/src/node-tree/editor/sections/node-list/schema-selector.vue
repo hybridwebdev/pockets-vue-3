@@ -14,7 +14,7 @@ export default {
             api.loading.value = true
             api.selectedModel.value = node.node.schema
             await editor.active.initialize.self()
-            editor.active = editor.active.getNode(editor.active.paths.path)
+            // editor.active = editor.active.getNodeApi(editor.active.paths.path)
             api.loading.value = false
         }
 

@@ -4,7 +4,7 @@
         v-bind='treeNode.props'
         class='pockets-node-tree-node'
         @click.capture='clickHandler'
-        :key='treeNode.hash'
+        :key='treeNode.__targetPosition'
         :class='classes'
         @mouseenter='hovered = true'
         @mouseleave='hovered = false'
@@ -14,7 +14,7 @@
             v-for='(node, i) in treeNode.nodes'
             is='tree-walker'
             :tree-node='node'
-            :key='node.hash'
+            :key='node.__targetPosition'
         />
     </component>
 </template>

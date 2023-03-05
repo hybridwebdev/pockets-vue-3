@@ -52,12 +52,10 @@ import { inject } from "vue"
 
 let editor = inject('pockets-node-tree-editor')
 
-let triggerParent = $computed(() =>{
+let triggerParent = $computed( () =>{
     if(!editor.active.parent) return false;
-    return () => {
-        editor.active = editor.active.parent
-    }
-})
+    return () => editor.active = editor.active.parent
+} )
 
 let triggerPrev = $computed(() => {
 
@@ -87,9 +85,7 @@ let triggerNext = $computed(() => {
 
 let triggerInside = $computed(() => {
     if(!editor.active.hasNodes || editor.active.node.nodes.length==0) return false;
-    return (index: number = 0) => {
-        editor.active = editor.active.getNode(editor.active.paths.path.concat(index))
-    }
+    return (index: number = 0) => editor.active = editor.active.getChild(index)
 })
  
 </script>

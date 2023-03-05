@@ -7,13 +7,13 @@ import { useAdd } from "./add"
 import { useRemove } from "./remove"
 import { useClone } from "./clone"
 import { useReplace } from "./replace"
+import { useMove } from "./move"
 
 import { useSchema } from './schema'
 import { useEditFields } from "./edit-fields"
 import { useCrud } from "./crud"
 
 import { editor } from "@/node-tree/editor"
-import { useMove } from "./move"
 
 export let createApi = (props:TreeNodeApiProps) : createdApi => {
         

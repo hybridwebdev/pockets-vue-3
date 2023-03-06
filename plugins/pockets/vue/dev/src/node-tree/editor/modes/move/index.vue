@@ -5,7 +5,7 @@ div(
 )
     div( 
         v-if='!editor.active'
-        class='text-center fw-8'
+        class='text-center fw-8 pb-2'
     ) {{ !selected ? "Select a node to move." : "Select a location to move node to."}}
 
     div( v-if='editor.active' )
@@ -29,24 +29,29 @@ div(
         
         div( 
             v-if='selected' 
-            class='grid columns-3 gap-1'
         )
-            nodePlacement( 
-                :api='adder'
-                @before="confirm('before')"
-                @after="confirm('after')"
-                @inside="confirm('inside')"
+            p(
+                class='text-center fw-8'
+            ) Select a location to place selected node!
+            
+            div(
+                class='grid columns-3 gap-2 mb-2'
             )
+                nodePlacement( 
+                    :api='adder'
+                    @before="confirm('before')"
+                    @after="confirm('after')"
+                    @inside="confirm('inside')"
+                )
     
     div(
         v-if='selected' 
-        class='d-flex pt-1'
+        class='d-flex'
     )
         button( 
             @click='cancel' 
-            class='btn btn-danger mx-auto text-white fw-8 text-uppercase px-2 py-1'
+            class='btn btn-danger mx-auto text-white fw-8 text-uppercase px-8 py-2'
         ) 
-            i(class='fa fa-times me-1')
             | Cancel Move
         
 

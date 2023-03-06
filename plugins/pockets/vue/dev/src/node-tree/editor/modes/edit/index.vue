@@ -2,8 +2,11 @@
 
     <div class='flex-fill grid columns-1 gap-2'>
     
-        <div v-if='!editor.active' class='p-2'>
-            Select a Node to start editing
+        <div 
+            v-if='!editor.active' 
+            class='p-2 fw-8 text-center'
+        >
+            Select a node to edit.
         </div>
         
         <div v-if='editor.active && filteredFields.length!=0'>

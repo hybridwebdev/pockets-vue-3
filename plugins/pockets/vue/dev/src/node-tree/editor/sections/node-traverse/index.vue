@@ -3,7 +3,10 @@
         placement='right' 
         :autoHide="false"
     >
-        <button class='fa fa-tree p-1 btn btn-accent-dk text-white fw-8'/>
+        <button 
+            class='fa fa-tree p-1 btn btn-accent-dk text-white fw-8'
+            :disabled='!editor.active'
+        />
         <template #content>
             <div class='bg-accent-dk border-top border-bottom border-end border-accent-lt border-5 text-white'>
                 

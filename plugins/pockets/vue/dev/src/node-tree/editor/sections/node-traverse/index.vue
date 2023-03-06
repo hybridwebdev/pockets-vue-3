@@ -8,7 +8,7 @@
             :disabled='!editor.active'
         />
         <template #content>
-            <div class='bg-accent-dk border border-accent-lt border-5 text-white'>
+            <div class='bg-accent-dk border-end border-bottom border-accent-lt border-5 text-white'>
                 
                 <span class='text-center fw-8 d-block border-bottom border-5 border-accent-lt'>Node Tree</span>
 

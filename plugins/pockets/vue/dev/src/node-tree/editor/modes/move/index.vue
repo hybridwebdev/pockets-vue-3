@@ -9,21 +9,23 @@ div(
     ) {{ !selected ? "Select a node to move." : "Select a location to move node to."}}
 
     div( v-if='editor.active' )
-        div( 
+        p( 
             v-if='!editor.active.parent && !selected'
-            class='text-danger fw-8 fs-18 text-center' 
-        ) This Node cannot be moved
+            class='text-danger fw-8 text-center m-0' 
+        ) This Node cannot be moved!
 
         div( 
             v-if='!selected && editor.active.parent'
-            class='d-flex'
+            class='grid columns-1 gap-2'
         )
+            p(
+                class='text-center fw-8 m-0'
+            ) Are you sure you want to move this item?
             button( 
                 @click='selectNode' 
-                class='btn btn-accent-dk mx-auto px-2 py-1'
+                class='btn btn-accent-dk mx-auto px-8 py-2 fw-8 text-uppercase'
             ) 
-                i(class='fa fa-crosshairs me-1')
-                | Move Element
+                | Move
         
         div( 
             v-if='selected' 

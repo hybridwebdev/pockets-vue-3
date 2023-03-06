@@ -1,28 +1,30 @@
 <template>
+    <div class='grid columns-1 gap-2 p-2'>
 
-    <div 
-        v-if='!editor.active'
-        class='p-2 fw-8 text-center'
-    >
-        Select a node to remove.
-    </div>
-    <div v-if='editor.active'>
-        <div class='text-danger fw-8 fs-20 pt-2' v-if='!editor.active.remove.self'>
-            <p class='text-center'>
+        <div 
+            v-if='!editor.active'
+            class='fw-8 text-center'
+        >
+            Select a node to remove.
+        </div>
+
+        <div v-if='editor.active'>
+        
+            <p class='text-center text-danger fw-8 m-0' v-if='!editor.active.remove.self'>
                 This Node cannot be removed!
             </p>
-        </div>
-        <div class='p-2 grid columns-1 gap-1' v-if='editor.active.remove.self'>
-            <span class='text-center fw-8'>
-                Are you sure you want to remove this item?
-            </span>
-            <button
-                @click='remove'
-                class='m-auto btn btn-danger fw-8 text-white px-4 py-1'
-            >
-                <i class='fa fa-eraser'></i>
-                REMOVE
-            </button>
+        
+            <div class='grid columns-1 gap-2' v-if='editor.active.remove.self'>
+                <span class='text-center fw-8'>
+                    Are you sure you want to remove this item?
+                </span>
+                <button
+                    @click='remove'
+                    class='m-auto btn btn-danger fw-8 text-white px-8 py-2'
+                >
+                    REMOVE
+                </button>
+            </div>
         </div>
     </div>
 

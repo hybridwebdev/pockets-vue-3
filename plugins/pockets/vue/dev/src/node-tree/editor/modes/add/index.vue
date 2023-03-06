@@ -44,10 +44,9 @@
             <div class='col-12 d-flex'>
                 <button 
                     @click='selected = false'
-                    class='mx-auto btn btn-danger text-white px-5 fw-8'
+                    class='mx-auto btn btn-danger text-white px-8 py-2 fw-8'
                     v-tooltip='"Cancel placing element"'
                 >
-                    <i class='fa fa-xmark fw-8'></i>
                     CANCEL
                 </button>
             </div>
@@ -96,7 +95,6 @@ let confirm = async (location) => {
 }
 let activateNewNode = (node) => {
     editor.active = editor.active.getNodeApi(node)
-    editor.mode = 'edit'
 }
 
 </script>

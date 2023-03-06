@@ -13,7 +13,7 @@
             <div class='grid columns-3 gap-0 p-0 bg-accent-dk border-bottom border-5 border-accent-lt'>
                 <button 
                     v-for='group in filteredGroups' 
-                    class='btn btn-accent-dk fw-8 border-0 rounded-0'
+                    class='btn btn-accent-dk fw-8 border-0 rounded-0 p-1'
                     @click='activeGroup = group'
                     :class='{ active: activeGroup == group }'
                 >

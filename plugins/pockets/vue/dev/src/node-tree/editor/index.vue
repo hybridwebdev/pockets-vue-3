@@ -19,7 +19,7 @@
                         </div>
                         <div class='bg-accent-dk d-flex border-top border-5 border-accent-lt'>
                             <mode-buttons/>
-                            <nodeTraverse class='ms-auto'/>
+                            
                         </div>
                     </div>
                     
@@ -46,7 +46,6 @@
 import { editor } from "./"
 
 import titleBar from "./sections/title-bar/"
-import nodeTraverse from "./sections/node-traverse/"
 
 import modeButtons from "./modes/buttons.vue"
 import add from "./modes/add"

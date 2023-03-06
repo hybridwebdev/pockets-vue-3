@@ -1,14 +1,14 @@
 <template>
     <popup-menu  
-        placement='top' 
+        placement='bottom-start' 
         :autoHide="false"
     >
         <button 
-            class='fa fa-tree p-2 btn btn-accent-dk text-white fw-8 border-0 rounded-0'
+            class='fa fa-folder-tree p-1 btn btn-accent-dk text-white fw-8 border-0 rounded-0'
             :disabled='!editor.active'
         />
         <template #content>
-            <div class='bg-accent-dk border-top border-start border-end border-accent-lt border-5 text-white'>
+            <div class='bg-accent-dk border border-accent-lt border-5 text-white'>
                 
                 <span class='text-center fw-8 d-block border-bottom border-5 border-accent-lt'>Node Tree</span>
 

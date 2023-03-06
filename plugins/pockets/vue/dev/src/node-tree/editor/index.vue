@@ -43,7 +43,6 @@
 </template>
 <script lang='ts' setup>  
 
-import { provide } from "vue"
 import { editor } from "./"
 
 import titleBar from "./sections/title-bar/"
@@ -66,7 +65,6 @@ let modePanels = {
 
 let selectedModePanel = $computed( () =>  modePanels[editor.mode] ?? modePanels['edit'] )
 
-provide('pockets-node-tree-editor', editor)
 
 let props = defineProps({
     nodes: {

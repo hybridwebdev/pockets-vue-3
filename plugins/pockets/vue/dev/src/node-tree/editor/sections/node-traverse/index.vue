@@ -1,6 +1,6 @@
 <template>
     <popup-menu  
-        placement='right' 
+        placement='top' 
         :autoHide="false"
     >
         <button 
@@ -8,7 +8,7 @@
             :disabled='!editor.active'
         />
         <template #content>
-            <div class='bg-accent-dk border-top border-bottom border-end border-accent-lt border-5 text-white'>
+            <div class='bg-accent-dk border-top border-start border-end border-accent-lt border-5 text-white'>
                 
                 <span class='text-center fw-8 d-block border-bottom border-5 border-accent-lt'>Node Tree</span>
 

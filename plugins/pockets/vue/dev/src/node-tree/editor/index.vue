@@ -13,13 +13,13 @@
                 <div 
                 >
 
-                    <div class='bg-white d-flex'>
-                        <div class='bg-accent-dk d-flex flex-column border-end border-5 border-accent-lt'>
+                    <div class='bg-white'>
+                        <div>
+                            <component :is='selectedModePanel'/>
+                        </div>
+                        <div class='bg-accent-dk d-flex border-top border-5 border-accent-lt'>
                             <mode-buttons/>
                             <nodeTraverse/>
-                        </div>
-                        <div class='flex-fill'>
-                            <component :is='selectedModePanel'/>
                         </div>
                     </div>
                     

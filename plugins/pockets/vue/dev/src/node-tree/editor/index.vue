@@ -89,8 +89,5 @@ Object.assign(editor, props)
             font-weight:800;
             margin-bottom:10px
         }
-        .btn-accent-dk {
-            --bs-btn-active-bg: var(--bs-primary-dk);
-        }
     }
 </style>

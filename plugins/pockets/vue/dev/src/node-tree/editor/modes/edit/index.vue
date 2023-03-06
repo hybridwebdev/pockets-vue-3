@@ -24,7 +24,7 @@
             <render-html
                 :innerHTML='fieldsHtml' 
                 :state='editor.active' 
-                class='p-1'
+                class='p-2'
             />
 
         </div>

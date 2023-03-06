@@ -120,8 +120,9 @@ $utilities: (
   ),
   "columns": (
     property: columns,
+    class: columns,
     css-var: true,
-    responsive: true,
+    responsive: true, 
     values: (
       1: 1,
       2: 2,

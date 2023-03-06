@@ -37,7 +37,7 @@ let test = ref([])
 
 import { inject, watch, ref } from "vue"
 
-let editor:treeEditor = inject('pockets-node-tree-editor') 
+import { editor } from "@/node-tree/editor/"
 
 let filters = {
     group: (node) => {

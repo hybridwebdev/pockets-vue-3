@@ -19,13 +19,23 @@ export let createDropApi = ( target: TreeNodeApi, selected: TreeNodeApi ) : drop
 
     let dropAdjacent = (dropIndex: number) => {
         return () => {
+            /**
+                1 - Copy node and place in new location
+            */
             let node = $pockets.utils.object.clone(selected.node)
             target.parent.add.inside(node, dropIndex) 
-
+            /**
+                2 - Get reference to node in its new location
+            */
             let droppedNode = target.parent.getChild(dropIndex)
+            /**
+                3 - Remove selected from existing location. 
+                    then return new instance
+            */
             selected.parent.remove.child(selected.paths.index)
             
             return droppedNode
+
         }
     }
 

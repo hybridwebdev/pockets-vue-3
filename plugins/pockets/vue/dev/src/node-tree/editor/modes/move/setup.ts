@@ -19,8 +19,8 @@ export let setup = (props) => {
     let confirm = (location) => {
         let path = api.adder.add[location]()
         if(editor.active) {
-            editor.active = editor.active.getNode(path)
-            cancel()
+            // editor.active = editor.active.getNode(path)
+            // cancel()
         }
     }
     let api = reactive({

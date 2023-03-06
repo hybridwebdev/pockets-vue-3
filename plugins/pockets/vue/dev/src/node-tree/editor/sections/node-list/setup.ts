@@ -1,13 +1,13 @@
 //@ts-nocheck
 import { vModel } from "@/pockets/utils/v-model"
 import { inject, ref, computed } from "vue"
+import { editor } from "@/node-tree/editor"
 export let setup = (props, { emit } )  => { 
     
     let loading = ref(false)
 
     let filterText = ref('')
 
-    let editor = inject('pockets-node-tree-editor')
     
     let nodeList = computed(() => {
         return Object.values(editor.nodes.list).filter((e) => {

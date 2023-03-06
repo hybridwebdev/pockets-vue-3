@@ -49,7 +49,7 @@ import { inject, ref, reactive, nextTick } from "vue"
 import pocketsNodeTreeNodeSelector from "@/node-tree/editor/sections/node-list/node-selector"
 import nodePlacement from "@/node-tree/editor/sections/node-placement"
 
-let editor = inject('pockets-node-tree-editor')
+import { editor } from "@/node-tree/editor"
 
 let selected = $ref(false)
 let loading = $ref(false)

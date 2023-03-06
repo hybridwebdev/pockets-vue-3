@@ -48,9 +48,7 @@
 </template>
 <script lang='ts' setup>
 
-import { inject } from "vue"
-
-let editor = inject('pockets-node-tree-editor')
+import { editor } from "@/node-tree/editor"
 
 let triggerParent = $computed( () =>{
     if(!editor.active.parent) return false;

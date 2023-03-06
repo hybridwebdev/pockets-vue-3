@@ -41,7 +41,7 @@
     /> -->
 
     <button 
-        class='fa fa-solid fa-copy btn border-0 btn-accent-dk fw-8 p-1 rounded-0' 
+        class='fa fa-crosshairs btn border-0 btn-accent-dk fw-8 p-1 rounded-0' 
         :class="{active: editor.mode=='move'}"
         @click='editor.mode = "move"' 
         :disabled='editor.modeLocked'

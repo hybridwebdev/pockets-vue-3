@@ -13,7 +13,7 @@ div(
         ) Select a node to move.
         p(
             v-if='selected'
-        ) Select a location to move node to.
+        ) Select a target to move node to.
 
     div( 
         v-if='editor.active' 

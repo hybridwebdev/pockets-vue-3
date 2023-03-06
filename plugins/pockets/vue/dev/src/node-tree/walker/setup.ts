@@ -3,6 +3,10 @@ import { computed, ref, reactive } from "vue"
 import { useInject } from "@/node-tree/create-tree-api/injection-key"
 export let setup = (props) => {
 
+    let disabled = computed(() => {
+        if(state.selected && editor.mode == 'move') return true
+    })
+
     let nodeApi = useInject().getNodeApi(props.treeNode)
 
     let hovered = ref(false)
@@ -42,6 +46,7 @@ export let setup = (props) => {
     })
 
     let state = reactive( {
+        disabled,
         selected,
         active,
         classes,

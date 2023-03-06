@@ -1,6 +1,12 @@
 <template>
+
     <div class='flex-fill grid columns-1 gap-2'>
-        <div v-if='filteredFields.length!=0'>
+    
+        <div v-if='!editor.active' class='p-2'>
+            Select a Node to start editing
+        </div>
+        
+        <div v-if='editor.active && filteredFields.length!=0'>
             <div class='grid columns-3 gap-0 p-0 bg-accent-dk border-bottom border-5 border-accent-lt'>
                 <button 
                     v-for='group in filteredGroups' 
@@ -20,7 +26,7 @@
 
         </div>
         
-        <span v-if='filteredFields.length==0' class='text-center fw-8 p-2'>
+        <span v-if='editor.active && filteredFields.length==0' class='text-center fw-8 p-2'>
             This Node does not have any editable properties.
         </span>
 
@@ -47,8 +53,8 @@ let filteredGroups = $computed( () => {
     if(!editor.active.editFields) return []
     return editor.active.editFields
         .map(e => e.group )
-        .filter((value, index, self)  => self.indexOf(value) === index)
-        .sort( (a, b) => a.localeCompare(b) )
+            .filter((value, index, self)  => self.indexOf(value) === index)
+                .sort( (a, b) => a.localeCompare(b) )
         
 } )
 
@@ -68,5 +74,5 @@ watch(() => filteredGroups, () => {
 
     activeGroup = filteredGroups[0]
 
-}, { immediate: true})
+}, { immediate: true } )
 </script>

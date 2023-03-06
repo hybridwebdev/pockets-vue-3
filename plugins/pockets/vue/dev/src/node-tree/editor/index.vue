@@ -9,13 +9,8 @@
                 v-if='editor.show'
             > 
                 <titleBar/>
-                
-                <div v-if='!editor.active && editor.show' class='p-1 bg-white text-center'>
-                    Select an element to start editing
-                </div>
 
                 <div 
-                    v-if='editor.active && editor.show' 
                 >
 
                     <div class='bg-white d-flex'>
@@ -28,9 +23,9 @@
                         </div>
                     </div>
                     
-                    
                 </div>
             </div>
+
             <div
                 v-if='!editor.show'
             >
@@ -69,13 +64,9 @@ let modePanels = {
     move
 }
 
-let selectedModePanel = $computed(() => {
-    return modePanels[editor.mode] ?? modePanels['edit']
-})
+let selectedModePanel = $computed( () =>  modePanels[editor.mode] ?? modePanels['edit'] )
 
 provide('pockets-node-tree-editor', editor)
-
-provide('pockets-node-tree-editor/active', editor.active)
 
 let props = defineProps({
     nodes: {
@@ -93,7 +84,7 @@ Object.assign(editor, props)
     .pockets-node-tree-editor {
         &.open {
             width: 100%;
-            max-width:600px;
+            max-width:500px;
         }
         label {
             color: var(--bs-accent-dk);

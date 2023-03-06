@@ -24,7 +24,7 @@ export let setup = (props) => {
             hovered,
             active,
             "editor-show": editor.show,
-            "selected": selected
+            selected
         }
     })
 

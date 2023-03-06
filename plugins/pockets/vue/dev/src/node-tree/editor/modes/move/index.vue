@@ -14,7 +14,6 @@ div(
         p(
             v-if='selected'
         ) Select a target to move node to.
-
     div( 
         v-if='editor.active' 
     )
@@ -22,7 +21,6 @@ div(
             v-if='!editor.active.parent && !selected'
             class='text-danger fw-8 text-center m-0' 
         ) This Node cannot be moved!
-
         div( 
             v-if='!selected && editor.active.parent'
             class='grid columns-1 gap-2'
@@ -33,9 +31,7 @@ div(
             button( 
                 @click='selectNode' 
                 class='btn btn-accent-dk mx-auto px-8 py-2 fw-8 text-uppercase'
-            ) 
-                | Move
-        
+            ) Move
         div( 
             v-if='selected' 
         )
@@ -60,8 +56,7 @@ div(
         button( 
             @click='cancel' 
             class='btn btn-danger mx-auto text-white fw-8 text-uppercase px-8 py-2'
-        ) 
-            | Cancel Move
+        ) Cancel
         
 
 </template>

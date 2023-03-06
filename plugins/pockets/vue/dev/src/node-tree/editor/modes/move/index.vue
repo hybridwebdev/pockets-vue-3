@@ -1,9 +1,13 @@
 <template>
-    <div class='p-2'>
-        <div class='text-danger fw-8 fs-20 pt-2' v-if='!editor.active.parent && !selected'>
-            <p class='text-center'>
-                This Node cannot be moved
-            </p>
+    <div 
+        v-if='!editor.active'
+        class='p-2 text-center fw-8'
+    >
+        Select a node to move.
+    </div>
+    <div class='p-2' v-if='editor.active'>
+        <div class='text-danger fw-8 fs-18 text-center' v-if='!editor.active.parent && !selected'>
+            This Node cannot be moved
         </div>
         <div v-if='!selected && editor.active.parent'>    
             <button @click='selectNode' class='btn btn-accent-dk p-2'>

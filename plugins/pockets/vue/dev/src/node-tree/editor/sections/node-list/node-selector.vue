@@ -16,7 +16,7 @@
             <button 
                 v-for='node in nodeList' 
                 @click='select(node)'
-                class='p-1 btn btn-accent-dk d-flex gap-1 align-items-center fw-8'
+                class='p-1 btn btn-accent-dk d-flex gap-1 align-items-center fw-8 border-0 rounded-0'
                 :class='isSelected(node)'
             >
                 {{node.title}}

@@ -4,7 +4,7 @@
         :autoHide="false"
     >
         <button 
-            class='fa fa-tree p-1 btn btn-accent-dk text-white fw-8'
+            class='fa fa-tree p-1 btn btn-accent-dk text-white fw-8 border-0 rounded-0'
             :disabled='!editor.active'
         />
         <template #content>

@@ -7,17 +7,6 @@ type TreeNodePlaceHolder = TreeNode & {
     TreeNodePlaceHolder?: string
 } 
 
-let placeHoldSelected = (selected: TreeNodeApi) => {
-    // let node: TreeNodePlaceHolder = selected.node
-    // node.TreeNodePlaceHolder = 'remove-me'
-    // let selectedParent = selected.refs.parent
-    return {
-        remove(){
-            //selectedParent.nodes = selectedParent.nodes?.filter( (e) => e.TreeNodePlaceHolder != 'remove-me' )
-        }
-    }
-}
-
 export let createDropApi = ( target: TreeNodeApi, selected: TreeNodeApi ) : dropApi => {
 
     let { indexes, isAdjacent, sameParent } = createAbstract(target, selected)
@@ -32,8 +21,11 @@ export let createDropApi = ( target: TreeNodeApi, selected: TreeNodeApi ) : drop
         return () => {
             let node = $pockets.utils.object.clone(selected.node)
             target.parent.add.inside(node, dropIndex) 
+
+            let droppedNode = target.parent.getChild(dropIndex)
             selected.parent.remove.child(selected.paths.index)
-            return []
+            
+            return droppedNode
         }
     }
 

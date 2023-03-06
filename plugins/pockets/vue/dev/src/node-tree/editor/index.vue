@@ -89,5 +89,6 @@ Object.assign(editor, props)
             font-weight:800;
             margin-bottom:10px
         }
+        --bs-btn-active-bg: #f00;
     }
 </style>

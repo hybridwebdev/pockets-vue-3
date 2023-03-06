@@ -26,7 +26,7 @@ export let createDropApi = ( target: TreeNodeApi, selected: TreeNodeApi ) : drop
                 3 - Remove selected from existing location. 
                     then return new instance
             */
-            selected.parent.remove.child(selected.paths.index)
+            selected.remove.self()
             
             return droppedNode
 
@@ -48,7 +48,7 @@ export let createDropApi = ( target: TreeNodeApi, selected: TreeNodeApi ) : drop
                 3 - Remove selected from existing location. 
                     then return new instance
             */
-            selected.parent.remove.child(selected.paths.index)
+            selected.remove.self()
             
             return droppedNode
 

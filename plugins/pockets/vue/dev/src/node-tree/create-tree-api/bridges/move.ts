@@ -67,7 +67,6 @@ export let createDropApi = ( target: TreeNodeApi, selected: TreeNodeApi ) : drop
 
     let inside = () => {
         if(!target.node.nodes || target.node.nodes.length > 0) return false;
-
         return dropInside(0)
     }
 

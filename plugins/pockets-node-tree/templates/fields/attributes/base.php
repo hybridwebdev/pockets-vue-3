@@ -8,3 +8,12 @@
         <input v-model='node.props.id' class='form-control'>
     </div>
 </div>
+
+<div>
+    <select v-model='node.el'>
+        <option value='div'>DIV</option>
+        <option value='span'>SPAN</option>
+        <option value='ol'>ol</option>
+        <option value='li'>li</option>
+    </select>
+</div>

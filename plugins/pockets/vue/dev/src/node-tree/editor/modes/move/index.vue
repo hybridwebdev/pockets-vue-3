@@ -5,10 +5,13 @@ div(
 )
     div( 
         v-if='!editor.active'
-        class='text-center fw-8 pb-2'
+        class='text-center fw-8'
     ) {{ !selected ? "Select a node to move." : "Select a location to move node to."}}
 
-    div( v-if='editor.active' )
+    div( 
+        v-if='editor.active' 
+        class='pt-2'
+    )
         p( 
             v-if='!editor.active.parent && !selected'
             class='text-danger fw-8 text-center m-0' 

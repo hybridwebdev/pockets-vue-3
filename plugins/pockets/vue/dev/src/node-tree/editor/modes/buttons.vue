@@ -1,7 +1,7 @@
 <template>
 
     <button 
-        class="fa-regular fa-pen-to-square btn border-0 btn-accent-dk fw-8 p-1"
+        class="fa-regular fa-pen-to-square btn border-0 btn-accent-dk fw-8 p-1 rounded-0"
         :class="{active: editor.mode=='edit'}"
         v-tooltip='"Edit Item"'
         @click='editor.mode = "edit"'
@@ -9,7 +9,7 @@
     />
 
     <button 
-        class="fa-regular fa-plus btn border-0 btn-accent-dk fw-8 p-1"
+        class="fa-regular fa-plus btn border-0 btn-accent-dk fw-8 p-1 rounded-0"
         :class="{active: editor.mode=='add'}"
         v-tooltip='"Add Item"'
         @click='editor.mode = "add"'
@@ -17,7 +17,7 @@
     />
 
      <button 
-        class='fa fa-solid fa-eraser btn border-0 btn-accent-dk fw-8 p-1' 
+        class='fa fa-solid fa-eraser btn border-0 btn-accent-dk fw-8 p-1 rounded-0' 
         :class="{active: editor.mode=='remove'}"
         v-tooltip="'Remove Mode'"
         :disabled='editor.modeLocked'
@@ -25,7 +25,7 @@
     />
 
     <button 
-        class='fa fa-solid fa-clone btn border-0 btn-accent-dk fw-8 p-1' 
+        class='fa fa-solid fa-clone btn border-0 btn-accent-dk fw-8 p-1 rounded-0' 
         :class="{active: editor.mode=='clone'}"
         @click='editor.mode="clone"' 
         :disabled='editor.modeLocked'
@@ -41,7 +41,7 @@
     /> -->
 
     <button 
-        class='fa fa-solid fa-copy btn border-0 btn-accent-dk fw-8 p-1' 
+        class='fa fa-solid fa-copy btn border-0 btn-accent-dk fw-8 p-1 rounded-0' 
         :class="{active: editor.mode=='move'}"
         @click='editor.mode = "move"' 
         :disabled='editor.modeLocked'

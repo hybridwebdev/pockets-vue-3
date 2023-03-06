@@ -30,7 +30,7 @@
                 v-if='!editor.show'
             >
                 <button 
-                    class="fa fa-window-maximize p-1 btn rounded-0 btn-accent-dk fw-8 p-1"
+                    class="fa fa-window-maximize p-1 btn rounded-0 btn-accent-dk fw-8 p-1 border-0"
                     v-tooltip='"Show"'
                     @click='editor.show = true'
                     

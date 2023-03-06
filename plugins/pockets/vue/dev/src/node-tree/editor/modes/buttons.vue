@@ -33,20 +33,21 @@
     />
 
     <button 
-        class='fa fa-solid fa-scissors' 
-        :class="[{active: editor.mode=='cut'}, baseClass]"
-        @click='editor.mode="cut"' 
-        :disabled='editor.modeLocked'
-        v-tooltip='"Copy"'
-    />
-
-    <button 
         class='fa fa-crosshairs' 
         :class="[{active: editor.mode=='move'}, baseClass]"
         @click='editor.mode = "move"' 
         :disabled='editor.modeLocked'
         v-tooltip='"Move"'
     />
+
+    <button 
+        class='fa fa-solid fa-copy' 
+        :class="[{active: editor.mode=='cut'}, baseClass]"
+        @click='editor.mode="cut"' 
+        :disabled='editor.modeLocked'
+        v-tooltip='"Copy"'
+    />
+
 </template>
 <script lang='ts' setup>
 import { editor } from "@/node-tree/editor"

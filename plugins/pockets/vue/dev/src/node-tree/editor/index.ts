@@ -5,7 +5,7 @@ import { reactive, computed } from "vue"
 export let editor:TreeEditor  = reactive( {
 
     show: true,
-    mode: "move",
+    mode: "copy",
     
     nodes: {
         list: [],

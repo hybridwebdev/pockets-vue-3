@@ -42,8 +42,8 @@
 
     <button 
         class='fa fa-solid fa-copy' 
-        :class="[{active: editor.mode=='cut'}, baseClass]"
-        @click='editor.mode="cut"' 
+        :class="[{active: editor.mode=='copy'}, baseClass]"
+        @click='editor.mode="copy"' 
         :disabled='editor.modeLocked'
         v-tooltip='"Copy"'
     />

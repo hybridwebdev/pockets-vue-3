@@ -1,5 +1,5 @@
 <template>
-    <div>   
+    <div class='p-2 fw-8'>   
         Placing
     </div>
 </template>

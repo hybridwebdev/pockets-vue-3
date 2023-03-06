@@ -6,11 +6,17 @@ div(
     div( 
         v-if='!editor.active'
         class='text-center fw-8'
-    ) {{ !selected ? "Select a node to move." : "Select a location to move node to."}}
+    ) 
+        p(
+            v-if='!selected'
+            class='m-0'
+        ) Select a node to move.
+        p(
+            v-if='selected'
+        ) Select a location to move node to.
 
     div( 
         v-if='editor.active' 
-        class='pt-2'
     )
         p( 
             v-if='!editor.active.parent && !selected'

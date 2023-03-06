@@ -1,4 +1,4 @@
-import { editor } from "@/node-tree/editor"
+import { editor } from "@/node-tree/editor/"
 import { computed, ref, reactive } from "vue"
 import { useInject } from "@/node-tree/create-tree-api/injection-key"
 export let setup = (props) => {
@@ -7,7 +7,7 @@ export let setup = (props) => {
 
     let hovered = ref(false)
 
-    let selected = computed( () =>  false )
+    let selected = computed( () =>  editor.selectedNodes.filter(e => e.paths.full == nodeApi.paths.full ).length > 0 )
 
     let active = computed( () => {
         if(!editor?.active ) return;

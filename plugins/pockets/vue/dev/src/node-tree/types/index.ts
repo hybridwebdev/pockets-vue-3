@@ -59,7 +59,7 @@ export type TreeNodeProxied = TreeNode & {
 export type TreeEditor = {
 
     show: Boolean
-    mode: "edit" | 'remove' | "clone" | "add"
+    mode: "edit" | 'remove' | "clone" | "add" | "move"
     
     options?: {
         "editor-active": Boolean

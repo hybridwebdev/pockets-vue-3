@@ -68,56 +68,7 @@ $enable-negative-margins: true;
 $enable-cssgrid: true;
 
 $utilities: (
-  "font-size": (
-      property: font-size,
-      class: fs,
-      responsive: true,
-      values: (
-        10: 10px,
-        12: 12px,
-        14: 14px
-      )
-  ),
-  "max-width": (
-      property: max-width,
-      class: mw,
-      responsive: true,
-      values: (
-        10: 10vw,
-        20: 20vw,
-        25: 25vw,
-        30: 30vw,
-        40: 40vw,
-        50: 50vw,
-        60: 60vw, 
-        70: 70vw,
-        80: 80vw,
-        90: 90vw,
-        100: 100vw,
-        "100px": 100px,
-        "150px": 150px
-      )
-  ),
-  "max-height": (
-      property: max-height,
-      class: mh,
-      responsive: true,
-      values: (
-        10: 10vh,
-        20: 20vh,
-        25: 25vh,
-        30: 30vh,
-        40: 40vh,
-        50: 50vh,
-        60: 60vh, 
-        70: 70vh,
-        80: 80vh,
-        90: 90vh,
-        100: 100vh,
-        "100px": 100px,
-        "150px": 150px
-      )
-  ),
+
   "columns": (
     property: columns,
     class: columns,
@@ -134,6 +85,7 @@ $utilities: (
       8: 8,
     ),
   ),
+
 );
 
 

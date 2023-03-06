@@ -8519,56 +8519,8 @@ textarea.form-control-lg {
   width: auto !important;
 }
 
-.mw-10 {
-  max-width: 10vw !important;
-}
-
-.mw-20 {
-  max-width: 20vw !important;
-}
-
-.mw-25 {
-  max-width: 25vw !important;
-}
-
-.mw-30 {
-  max-width: 30vw !important;
-}
-
-.mw-40 {
-  max-width: 40vw !important;
-}
-
-.mw-50 {
-  max-width: 50vw !important;
-}
-
-.mw-60 {
-  max-width: 60vw !important;
-}
-
-.mw-70 {
-  max-width: 70vw !important;
-}
-
-.mw-80 {
-  max-width: 80vw !important;
-}
-
-.mw-90 {
-  max-width: 90vw !important;
-}
-
 .mw-100 {
-  max-width: 100vw !important;
-}
-
-.mw-100px {
-  max-width: 100px !important;
-}
-
-.mw-150px {
-  max-width: 150px !important;
+  max-width: 100% !important;
 }
 
 .vw-100 {
@@ -8599,56 +8551,8 @@ textarea.form-control-lg {
   height: auto !important;
 }
 
-.mh-10 {
-  max-height: 10vh !important;
-}
-
-.mh-20 {
-  max-height: 20vh !important;
-}
-
-.mh-25 {
-  max-height: 25vh !important;
-}
-
-.mh-30 {
-  max-height: 30vh !important;
-}
-
-.mh-40 {
-  max-height: 40vh !important;
-}
-
-.mh-50 {
-  max-height: 50vh !important;
-}
-
-.mh-60 {
-  max-height: 60vh !important;
-}
-
-.mh-70 {
-  max-height: 70vh !important;
-}
-
-.mh-80 {
-  max-height: 80vh !important;
-}
-
-.mh-90 {
-  max-height: 90vh !important;
-}
-
 .mh-100 {
-  max-height: 100vh !important;
-}
-
-.mh-100px {
-  max-height: 100px !important;
-}
-
-.mh-150px {
-  max-height: 150px !important;
+  max-height: 100% !important;
 }
 
 .vh-100 {
@@ -9869,16 +9773,28 @@ textarea.form-control-lg {
   font-family: var(--bs-font-monospace) !important;
 }
 
-.fs-10 {
-  font-size: 10px !important;
+.fs-1 {
+  font-size: calc(1.375rem + 1.5vw) !important;
 }
 
-.fs-12 {
-  font-size: 12px !important;
+.fs-2 {
+  font-size: calc(1.325rem + 0.9vw) !important;
 }
 
-.fs-14 {
-  font-size: 14px !important;
+.fs-3 {
+  font-size: calc(1.3rem + 0.6vw) !important;
+}
+
+.fs-4 {
+  font-size: calc(1.275rem + 0.3vw) !important;
+}
+
+.fs-5 {
+  font-size: 1.25rem !important;
+}
+
+.fs-6 {
+  font-size: 1rem !important;
 }
 
 .fst-italic {
@@ -10312,110 +10228,6 @@ textarea.form-control-lg {
 
   .d-xs-none {
     display: none !important;
-  }
-
-  .mw-xs-10 {
-    max-width: 10vw !important;
-  }
-
-  .mw-xs-20 {
-    max-width: 20vw !important;
-  }
-
-  .mw-xs-25 {
-    max-width: 25vw !important;
-  }
-
-  .mw-xs-30 {
-    max-width: 30vw !important;
-  }
-
-  .mw-xs-40 {
-    max-width: 40vw !important;
-  }
-
-  .mw-xs-50 {
-    max-width: 50vw !important;
-  }
-
-  .mw-xs-60 {
-    max-width: 60vw !important;
-  }
-
-  .mw-xs-70 {
-    max-width: 70vw !important;
-  }
-
-  .mw-xs-80 {
-    max-width: 80vw !important;
-  }
-
-  .mw-xs-90 {
-    max-width: 90vw !important;
-  }
-
-  .mw-xs-100 {
-    max-width: 100vw !important;
-  }
-
-  .mw-xs-100px {
-    max-width: 100px !important;
-  }
-
-  .mw-xs-150px {
-    max-width: 150px !important;
-  }
-
-  .mh-xs-10 {
-    max-height: 10vh !important;
-  }
-
-  .mh-xs-20 {
-    max-height: 20vh !important;
-  }
-
-  .mh-xs-25 {
-    max-height: 25vh !important;
-  }
-
-  .mh-xs-30 {
-    max-height: 30vh !important;
-  }
-
-  .mh-xs-40 {
-    max-height: 40vh !important;
-  }
-
-  .mh-xs-50 {
-    max-height: 50vh !important;
-  }
-
-  .mh-xs-60 {
-    max-height: 60vh !important;
-  }
-
-  .mh-xs-70 {
-    max-height: 70vh !important;
-  }
-
-  .mh-xs-80 {
-    max-height: 80vh !important;
-  }
-
-  .mh-xs-90 {
-    max-height: 90vh !important;
-  }
-
-  .mh-xs-100 {
-    max-height: 100vh !important;
-  }
-
-  .mh-xs-100px {
-    max-height: 100px !important;
-  }
-
-  .mh-xs-150px {
-    max-height: 150px !important;
   }
 
   .flex-xs-fill {
@@ -11624,18 +11436,6 @@ textarea.form-control-lg {
     gap: 100px !important;
   }
 
-  .fs-xs-10 {
-    font-size: 10px !important;
-  }
-
-  .fs-xs-12 {
-    font-size: 12px !important;
-  }
-
-  .fs-xs-14 {
-    font-size: 14px !important;
-  }
-
   .text-xs-start {
     text-align: left !important;
   }
@@ -11731,110 +11531,6 @@ textarea.form-control-lg {
 
   .d-sm-none {
     display: none !important;
-  }
-
-  .mw-sm-10 {
-    max-width: 10vw !important;
-  }
-
-  .mw-sm-20 {
-    max-width: 20vw !important;
-  }
-
-  .mw-sm-25 {
-    max-width: 25vw !important;
-  }
-
-  .mw-sm-30 {
-    max-width: 30vw !important;
-  }
-
-  .mw-sm-40 {
-    max-width: 40vw !important;
-  }
-
-  .mw-sm-50 {
-    max-width: 50vw !important;
-  }
-
-  .mw-sm-60 {
-    max-width: 60vw !important;
-  }
-
-  .mw-sm-70 {
-    max-width: 70vw !important;
-  }
-
-  .mw-sm-80 {
-    max-width: 80vw !important;
-  }
-
-  .mw-sm-90 {
-    max-width: 90vw !important;
-  }
-
-  .mw-sm-100 {
-    max-width: 100vw !important;
-  }
-
-  .mw-sm-100px {
-    max-width: 100px !important;
-  }
-
-  .mw-sm-150px {
-    max-width: 150px !important;
-  }
-
-  .mh-sm-10 {
-    max-height: 10vh !important;
-  }
-
-  .mh-sm-20 {
-    max-height: 20vh !important;
-  }
-
-  .mh-sm-25 {
-    max-height: 25vh !important;
-  }
-
-  .mh-sm-30 {
-    max-height: 30vh !important;
-  }
-
-  .mh-sm-40 {
-    max-height: 40vh !important;
-  }
-
-  .mh-sm-50 {
-    max-height: 50vh !important;
-  }
-
-  .mh-sm-60 {
-    max-height: 60vh !important;
-  }
-
-  .mh-sm-70 {
-    max-height: 70vh !important;
-  }
-
-  .mh-sm-80 {
-    max-height: 80vh !important;
-  }
-
-  .mh-sm-90 {
-    max-height: 90vh !important;
-  }
-
-  .mh-sm-100 {
-    max-height: 100vh !important;
-  }
-
-  .mh-sm-100px {
-    max-height: 100px !important;
-  }
-
-  .mh-sm-150px {
-    max-height: 150px !important;
   }
 
   .flex-sm-fill {
@@ -13043,18 +12739,6 @@ textarea.form-control-lg {
     gap: 100px !important;
   }
 
-  .fs-sm-10 {
-    font-size: 10px !important;
-  }
-
-  .fs-sm-12 {
-    font-size: 12px !important;
-  }
-
-  .fs-sm-14 {
-    font-size: 14px !important;
-  }
-
   .text-sm-start {
     text-align: left !important;
   }
@@ -13150,110 +12834,6 @@ textarea.form-control-lg {
 
   .d-md-none {
     display: none !important;
-  }
-
-  .mw-md-10 {
-    max-width: 10vw !important;
-  }
-
-  .mw-md-20 {
-    max-width: 20vw !important;
-  }
-
-  .mw-md-25 {
-    max-width: 25vw !important;
-  }
-
-  .mw-md-30 {
-    max-width: 30vw !important;
-  }
-
-  .mw-md-40 {
-    max-width: 40vw !important;
-  }
-
-  .mw-md-50 {
-    max-width: 50vw !important;
-  }
-
-  .mw-md-60 {
-    max-width: 60vw !important;
-  }
-
-  .mw-md-70 {
-    max-width: 70vw !important;
-  }
-
-  .mw-md-80 {
-    max-width: 80vw !important;
-  }
-
-  .mw-md-90 {
-    max-width: 90vw !important;
-  }
-
-  .mw-md-100 {
-    max-width: 100vw !important;
-  }
-
-  .mw-md-100px {
-    max-width: 100px !important;
-  }
-
-  .mw-md-150px {
-    max-width: 150px !important;
-  }
-
-  .mh-md-10 {
-    max-height: 10vh !important;
-  }
-
-  .mh-md-20 {
-    max-height: 20vh !important;
-  }
-
-  .mh-md-25 {
-    max-height: 25vh !important;
-  }
-
-  .mh-md-30 {
-    max-height: 30vh !important;
-  }
-
-  .mh-md-40 {
-    max-height: 40vh !important;
-  }
-
-  .mh-md-50 {
-    max-height: 50vh !important;
-  }
-
-  .mh-md-60 {
-    max-height: 60vh !important;
-  }
-
-  .mh-md-70 {
-    max-height: 70vh !important;
-  }
-
-  .mh-md-80 {
-    max-height: 80vh !important;
-  }
-
-  .mh-md-90 {
-    max-height: 90vh !important;
-  }
-
-  .mh-md-100 {
-    max-height: 100vh !important;
-  }
-
-  .mh-md-100px {
-    max-height: 100px !important;
-  }
-
-  .mh-md-150px {
-    max-height: 150px !important;
   }
 
   .flex-md-fill {
@@ -14462,18 +14042,6 @@ textarea.form-control-lg {
     gap: 100px !important;
   }
 
-  .fs-md-10 {
-    font-size: 10px !important;
-  }
-
-  .fs-md-12 {
-    font-size: 12px !important;
-  }
-
-  .fs-md-14 {
-    font-size: 14px !important;
-  }
-
   .text-md-start {
     text-align: left !important;
   }
@@ -14569,110 +14137,6 @@ textarea.form-control-lg {
 
   .d-lg-none {
     display: none !important;
-  }
-
-  .mw-lg-10 {
-    max-width: 10vw !important;
-  }
-
-  .mw-lg-20 {
-    max-width: 20vw !important;
-  }
-
-  .mw-lg-25 {
-    max-width: 25vw !important;
-  }
-
-  .mw-lg-30 {
-    max-width: 30vw !important;
-  }
-
-  .mw-lg-40 {
-    max-width: 40vw !important;
-  }
-
-  .mw-lg-50 {
-    max-width: 50vw !important;
-  }
-
-  .mw-lg-60 {
-    max-width: 60vw !important;
-  }
-
-  .mw-lg-70 {
-    max-width: 70vw !important;
-  }
-
-  .mw-lg-80 {
-    max-width: 80vw !important;
-  }
-
-  .mw-lg-90 {
-    max-width: 90vw !important;
-  }
-
-  .mw-lg-100 {
-    max-width: 100vw !important;
-  }
-
-  .mw-lg-100px {
-    max-width: 100px !important;
-  }
-
-  .mw-lg-150px {
-    max-width: 150px !important;
-  }
-
-  .mh-lg-10 {
-    max-height: 10vh !important;
-  }
-
-  .mh-lg-20 {
-    max-height: 20vh !important;
-  }
-
-  .mh-lg-25 {
-    max-height: 25vh !important;
-  }
-
-  .mh-lg-30 {
-    max-height: 30vh !important;
-  }
-
-  .mh-lg-40 {
-    max-height: 40vh !important;
-  }
-
-  .mh-lg-50 {
-    max-height: 50vh !important;
-  }
-
-  .mh-lg-60 {
-    max-height: 60vh !important;
-  }
-
-  .mh-lg-70 {
-    max-height: 70vh !important;
-  }
-
-  .mh-lg-80 {
-    max-height: 80vh !important;
-  }
-
-  .mh-lg-90 {
-    max-height: 90vh !important;
-  }
-
-  .mh-lg-100 {
-    max-height: 100vh !important;
-  }
-
-  .mh-lg-100px {
-    max-height: 100px !important;
-  }
-
-  .mh-lg-150px {
-    max-height: 150px !important;
   }
 
   .flex-lg-fill {
@@ -15881,18 +15345,6 @@ textarea.form-control-lg {
     gap: 100px !important;
   }
 
-  .fs-lg-10 {
-    font-size: 10px !important;
-  }
-
-  .fs-lg-12 {
-    font-size: 12px !important;
-  }
-
-  .fs-lg-14 {
-    font-size: 14px !important;
-  }
-
   .text-lg-start {
     text-align: left !important;
   }
@@ -15988,110 +15440,6 @@ textarea.form-control-lg {
 
   .d-xl-none {
     display: none !important;
-  }
-
-  .mw-xl-10 {
-    max-width: 10vw !important;
-  }
-
-  .mw-xl-20 {
-    max-width: 20vw !important;
-  }
-
-  .mw-xl-25 {
-    max-width: 25vw !important;
-  }
-
-  .mw-xl-30 {
-    max-width: 30vw !important;
-  }
-
-  .mw-xl-40 {
-    max-width: 40vw !important;
-  }
-
-  .mw-xl-50 {
-    max-width: 50vw !important;
-  }
-
-  .mw-xl-60 {
-    max-width: 60vw !important;
-  }
-
-  .mw-xl-70 {
-    max-width: 70vw !important;
-  }
-
-  .mw-xl-80 {
-    max-width: 80vw !important;
-  }
-
-  .mw-xl-90 {
-    max-width: 90vw !important;
-  }
-
-  .mw-xl-100 {
-    max-width: 100vw !important;
-  }
-
-  .mw-xl-100px {
-    max-width: 100px !important;
-  }
-
-  .mw-xl-150px {
-    max-width: 150px !important;
-  }
-
-  .mh-xl-10 {
-    max-height: 10vh !important;
-  }
-
-  .mh-xl-20 {
-    max-height: 20vh !important;
-  }
-
-  .mh-xl-25 {
-    max-height: 25vh !important;
-  }
-
-  .mh-xl-30 {
-    max-height: 30vh !important;
-  }
-
-  .mh-xl-40 {
-    max-height: 40vh !important;
-  }
-
-  .mh-xl-50 {
-    max-height: 50vh !important;
-  }
-
-  .mh-xl-60 {
-    max-height: 60vh !important;
-  }
-
-  .mh-xl-70 {
-    max-height: 70vh !important;
-  }
-
-  .mh-xl-80 {
-    max-height: 80vh !important;
-  }
-
-  .mh-xl-90 {
-    max-height: 90vh !important;
-  }
-
-  .mh-xl-100 {
-    max-height: 100vh !important;
-  }
-
-  .mh-xl-100px {
-    max-height: 100px !important;
-  }
-
-  .mh-xl-150px {
-    max-height: 150px !important;
   }
 
   .flex-xl-fill {
@@ -17300,18 +16648,6 @@ textarea.form-control-lg {
     gap: 100px !important;
   }
 
-  .fs-xl-10 {
-    font-size: 10px !important;
-  }
-
-  .fs-xl-12 {
-    font-size: 12px !important;
-  }
-
-  .fs-xl-14 {
-    font-size: 14px !important;
-  }
-
   .text-xl-start {
     text-align: left !important;
   }
@@ -17407,110 +16743,6 @@ textarea.form-control-lg {
 
   .d-xxl-none {
     display: none !important;
-  }
-
-  .mw-xxl-10 {
-    max-width: 10vw !important;
-  }
-
-  .mw-xxl-20 {
-    max-width: 20vw !important;
-  }
-
-  .mw-xxl-25 {
-    max-width: 25vw !important;
-  }
-
-  .mw-xxl-30 {
-    max-width: 30vw !important;
-  }
-
-  .mw-xxl-40 {
-    max-width: 40vw !important;
-  }
-
-  .mw-xxl-50 {
-    max-width: 50vw !important;
-  }
-
-  .mw-xxl-60 {
-    max-width: 60vw !important;
-  }
-
-  .mw-xxl-70 {
-    max-width: 70vw !important;
-  }
-
-  .mw-xxl-80 {
-    max-width: 80vw !important;
-  }
-
-  .mw-xxl-90 {
-    max-width: 90vw !important;
-  }
-
-  .mw-xxl-100 {
-    max-width: 100vw !important;
-  }
-
-  .mw-xxl-100px {
-    max-width: 100px !important;
-  }
-
-  .mw-xxl-150px {
-    max-width: 150px !important;
-  }
-
-  .mh-xxl-10 {
-    max-height: 10vh !important;
-  }
-
-  .mh-xxl-20 {
-    max-height: 20vh !important;
-  }
-
-  .mh-xxl-25 {
-    max-height: 25vh !important;
-  }
-
-  .mh-xxl-30 {
-    max-height: 30vh !important;
-  }
-
-  .mh-xxl-40 {
-    max-height: 40vh !important;
-  }
-
-  .mh-xxl-50 {
-    max-height: 50vh !important;
-  }
-
-  .mh-xxl-60 {
-    max-height: 60vh !important;
-  }
-
-  .mh-xxl-70 {
-    max-height: 70vh !important;
-  }
-
-  .mh-xxl-80 {
-    max-height: 80vh !important;
-  }
-
-  .mh-xxl-90 {
-    max-height: 90vh !important;
-  }
-
-  .mh-xxl-100 {
-    max-height: 100vh !important;
-  }
-
-  .mh-xxl-100px {
-    max-height: 100px !important;
-  }
-
-  .mh-xxl-150px {
-    max-height: 150px !important;
   }
 
   .flex-xxl-fill {
@@ -18719,18 +17951,6 @@ textarea.form-control-lg {
     gap: 100px !important;
   }
 
-  .fs-xxl-10 {
-    font-size: 10px !important;
-  }
-
-  .fs-xxl-12 {
-    font-size: 12px !important;
-  }
-
-  .fs-xxl-14 {
-    font-size: 14px !important;
-  }
-
   .text-xxl-start {
     text-align: left !important;
   }
@@ -18773,6 +17993,23 @@ textarea.form-control-lg {
 
   .columns-xxl-8 {
     --bs-columns: 8;
+  }
+}
+@media (min-width: 1200px) {
+  .fs-1 {
+    font-size: 2.5rem !important;
+  }
+
+  .fs-2 {
+    font-size: 2rem !important;
+  }
+
+  .fs-3 {
+    font-size: 1.75rem !important;
+  }
+
+  .fs-4 {
+    font-size: 1.5rem !important;
   }
 }
 @media print {

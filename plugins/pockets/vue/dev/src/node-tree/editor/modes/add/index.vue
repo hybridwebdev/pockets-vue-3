@@ -2,7 +2,7 @@
     
     <div 
         v-if='!editor.active'
-        class='p-2'
+        class='p-2 fw-8 text-center'
     >
         Select a node to add to.
     </div>

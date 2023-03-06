@@ -1,21 +1,31 @@
 <template>
-    <div class='text-danger fw-8 fs-20 pt-2' v-if='!editor.active.remove.self'>
-        <p class='text-center'>
-            This Node cannot be removed!
-        </p>
+
+    <div 
+        v-if='!editor.active'
+        class='p-2 fw-8 text-center'
+    >
+        Select a node to remove.
     </div>
-    <div class='p-2 grid columns-1 gap-1' v-if='editor.active.remove.self'>
-        <span class='text-center fw-8'>
-            Are you sure you want to remove this item?
-        </span>
-        <button
-            @click='remove'
-            class='m-auto btn btn-danger fw-8 text-white px-4 py-1'
-        >
-            <i class='fa fa-eraser'></i>
-            REMOVE
-        </button>
+    <div v-if='editor.active'>
+        <div class='text-danger fw-8 fs-20 pt-2' v-if='!editor.active.remove.self'>
+            <p class='text-center'>
+                This Node cannot be removed!
+            </p>
+        </div>
+        <div class='p-2 grid columns-1 gap-1' v-if='editor.active.remove.self'>
+            <span class='text-center fw-8'>
+                Are you sure you want to remove this item?
+            </span>
+            <button
+                @click='remove'
+                class='m-auto btn btn-danger fw-8 text-white px-4 py-1'
+            >
+                <i class='fa fa-eraser'></i>
+                REMOVE
+            </button>
+        </div>
     </div>
+
 </template>
 <script lang='ts' setup>
 import { editor } from "@/node-tree/editor"

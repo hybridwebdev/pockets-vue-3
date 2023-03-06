@@ -19,7 +19,7 @@
                         </div>
                         <div class='bg-accent-dk d-flex border-top border-5 border-accent-lt'>
                             <mode-buttons/>
-                            <nodeTraverse/>
+                            <nodeTraverse class='ms-auto'/>
                         </div>
                     </div>
                     

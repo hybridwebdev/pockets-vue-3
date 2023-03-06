@@ -1,5 +1,17 @@
 <template>
-    <div class='p-2 loading-container' :loading='loading'>
+    
+    <div 
+        v-if='!editor.active'
+        class='p-2'
+    >
+        Select a node to add to.
+    </div>
+    
+    <div 
+        class='p-2 loading-container' 
+        :loading='loading'
+        v-if='editor.active'
+    >
 
         <div v-show='!selected' class='gap-1 grid columns-1'>
             

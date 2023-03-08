@@ -34,11 +34,12 @@ export let useCrud = (api : TreeNodeApi) => {
 
     let hydrate:nodeHydrate = {
         self: async () => {
-            if(!api.parent) return;
+            if(!api.parent || !api.parent.hydrate.child) return;
             return api.parent.hydrate.child(api.paths.index)
         },
         child: async (index: number) => hydrater(index),
         active: async() => {
+            if(!api.hydrate.self) return;
             /**
                 Active is meant to be used within an editor context only. 
             */
@@ -50,7 +51,7 @@ export let useCrud = (api : TreeNodeApi) => {
 
     let initialize:nodeHydrate = {
         self: async () => {
-            if(!api.parent) return;
+            if(!api.parent || !api.parent.initialize.child) return;
             return api.parent.initialize.child(api.paths.index)
         },
         child: async (index: number) => initializer(index)
@@ -66,8 +67,7 @@ export let useCrud = (api : TreeNodeApi) => {
         hydrate.self = false
     }
 
-    api.hydrate = hydrate
-
-    api.initialize = initialize
-
+    return {
+        hydrate, initialize
+    }
 }

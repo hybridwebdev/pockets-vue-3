@@ -90,7 +90,6 @@ export type TreeNodeApi = {
     
     editor: TreeEditor
     [key: string ] : any
-
     paths: paths
     
     node: TreeNodeProxied
@@ -100,6 +99,7 @@ export type TreeNodeApi = {
     schema: TreeNodeSchema | false
     editFields: Array<TreeNodeSchemaField>
     getNodeApi: ( ( node: TreeNodeProxied ) => TreeNodeApi )
+    
     add: add
     clone: clone
     remove: remove

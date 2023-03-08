@@ -95,6 +95,7 @@ export type TreeNodeApi = {
     getNodeApi: ( ( node: TreeNodeProxied ) => TreeNodeApi )
     add: add
     clone: clone
+    remove: remove
 }
 
 export type TreeNodeApiProps = {

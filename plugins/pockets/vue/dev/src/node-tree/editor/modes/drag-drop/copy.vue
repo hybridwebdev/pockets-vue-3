@@ -27,7 +27,7 @@ div(
         )
             button( 
                 @click='selectNode' 
-                class='btn btn-outline-confirm mx-auto px-8 py-2 fw-8 text-uppercase'
+                class='btn btn-outline-confirm mx-auto px-8 py-2 fw-8 text-uppercase rounded-0'
                 v-tooltip='"Will create a copy of node wherever you place it."'
             ) Copy
         div( 
@@ -53,7 +53,7 @@ div(
     )
         button( 
             @click='cancel' 
-            class='btn btn-outline-danger mx-auto fw-8 text-uppercase px-8 py-2'
+            class='btn btn-outline-danger mx-auto fw-8 text-uppercase px-8 py-2 rounded-0'
         ) Cancel
         
 

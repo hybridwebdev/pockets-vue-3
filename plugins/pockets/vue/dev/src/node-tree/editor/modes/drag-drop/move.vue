@@ -27,7 +27,7 @@ div(
         )
             button( 
                 @click='selectNode' 
-                class='btn btn-outline-accent-dk mx-auto px-8 py-2 fw-8 text-uppercase rounded-0'
+                class='btn btn-outline-confirm mx-auto px-8 py-2 fw-8 text-uppercase rounded-0'
                 v-tooltip='"Will move selected node to new location."'
             ) Move
         div( 

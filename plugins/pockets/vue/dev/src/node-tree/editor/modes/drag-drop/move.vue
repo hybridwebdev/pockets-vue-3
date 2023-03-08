@@ -25,12 +25,10 @@ div(
             v-if='!selected && editor.active.parent'
             class='grid columns-1 gap-2'
         )
-            p(
-                class='text-center fw-8 m-0'
-            ) Are you sure you want to move this item?
             button( 
                 @click='selectNode' 
-                class='btn btn-accent-dk mx-auto px-8 py-2 fw-8 text-uppercase'
+                class='btn btn-outline-accent-dk mx-auto px-8 py-2 fw-8 text-uppercase'
+                v-tooltip='"Will move selected node to new location."'
             ) Move
         div( 
             v-if='selected' 

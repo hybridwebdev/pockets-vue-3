@@ -90,7 +90,7 @@ export type TreeNodeApi = {
 
     hasNodes: Boolean
     editor: TreeEditor
-    schema: TreeNodeSchema | any
+    schema: TreeNodeSchema | false
     editFields: Array<TreeNodeSchemaField>
     getNodeApi: ( ( node: TreeNodeProxied ) => TreeNodeApi )
     add: add

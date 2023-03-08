@@ -38,7 +38,10 @@ export let useCrud = (api : TreeNodeApi) => {
     let initializer = createFetcher(['initialize:<='])
 
     let hydrate:methods = {
-        self: async () => api.parent.hydrate.child(api.paths.index),
+        self: async () => {
+            if(!api.parent) return;
+            return api.parent.hydrate.child(api.paths.index)
+        },
         child: async (index: number) => hydrater(index),
         active: async() => {
             /**
@@ -51,7 +54,10 @@ export let useCrud = (api : TreeNodeApi) => {
 
 
     let initialize:methods = {
-        self: async () => api.parent.initialize.child(api.paths.index),
+        self: async () => {
+            if(!api.parent) return;
+            return api.parent.initialize.child(api.paths.index)
+        },
         child: async (index: number) => initializer(index)
     }    
 

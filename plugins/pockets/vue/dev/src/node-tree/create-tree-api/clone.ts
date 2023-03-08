@@ -9,6 +9,7 @@ export let useClone = (api:TreeNodeApi) : clone => {
     }
     
     let child = (index: number) => {
+        if(!api.add.inside) return false;
         let child = api.getChild(index)
         if(child.node) {
             let targetIndex = index+1

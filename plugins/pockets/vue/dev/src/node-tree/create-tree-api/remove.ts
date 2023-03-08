@@ -10,7 +10,7 @@ export let useRemove = (api:TreeNodeApi) : remove => {
     }
 
     let self = () => {
-        if(!api.parent) return false;
+        if(!api.parent || !api.parent.remove.child) return false;
         api.parent.remove.child(api.paths.index)
         return false
     }

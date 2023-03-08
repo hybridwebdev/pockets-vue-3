@@ -81,6 +81,7 @@ type paths = {
 }
 
 export type TreeNodeApi = {
+    
     editor: TreeEditor
     [key: string ] : any
 

@@ -52,17 +52,20 @@ export let createTreeApi = (props:TreeNodeApiProps) : createdApi => {
             let initial: Array<TreeNodeApi> = [];
 
             let parents = api.paths.path.split('.nodes.').reduce((acc, _, index) => {
-                let i = (index+ 1)  * 2
+                let i = index  * 2
                 let parent = api.node.__getParent(i)
-                if(parent) {
-                    acc.push( getNodeApi(parent) )
-                }
+                acc.push( getNodeApi(parent) )
                 return acc
             }, initial )
 
             return {
                 parents,
-                full: parents.concat(api)
+                /**
+                    As the reducer is traversing from the source node upward,
+                    the resutl must be reversed so that they are in the correct order
+                    from top to bottom.
+                */
+                full: parents.reverse() 
             }
 
         } )

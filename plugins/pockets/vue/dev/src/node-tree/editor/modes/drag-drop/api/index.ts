@@ -62,7 +62,7 @@ export let createDragDropApi = (
 ) : dropApi => {
 
     let { indexes, isAdjacent, sameParent } = createAbstract(target, selected)
-
+    
     let dropInside = (dropIndex: number) => {
         return () => {
             /**
@@ -89,6 +89,7 @@ export let createDragDropApi = (
 
     let dropAdjacent = (dropIndex: number) => {
         return () => {
+            if(!target.parent) return;
             /**
                 1 - Copy node and place in new location
             */

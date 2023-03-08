@@ -23,7 +23,7 @@
                 v-if='editor.show'
             />
             <button 
-                class="fa fa-window-minimize p-1 btn border-0 btn-accent-dk fw-8 p-1 rounded-0"
+                class="fa fa-chevron-down btn border-0 btn-accent-dk fw-8 p-1 rounded-0"
                 v-tooltip='"Hide"'
                 @click='editor.show = false'
                 v-if='editor.show'

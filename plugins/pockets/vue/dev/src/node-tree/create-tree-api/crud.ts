@@ -46,37 +46,33 @@ export let useCrud = (api : TreeNodeApi) => {
     }
     
     let useHydrater = () => {
-        return ''
-        // let hydrater = createFetcher(['hydrate:<='])
 
+        let hydrater = createFetcher(['hydrate:<='])
 
-        // let hydrate:nodeHydrate = {
-        //     self: async () => {
-        //         if(!api.parent || !api.parent.hydrate.child) return;
-        //         return api.parent.hydrate.child(api.paths.index)
-        //     },
-        //     child: async (index: number) => hydrater(index),
-        //     active: async() => {
-        //         if(!api.hydrate.self) return;
-        //         /**
-        //             Active is meant to be used within an editor context only. 
-        //         */
-        //         let node = await api.hydrate.self()
-        //         if(node ) api.editor.active = node
-        //     }
-        // }   
+        let hydrate:nodeHydrate = {
+            self: async () => {
+                if(!api.parent || !api.parent.hydrate.child) return;
+                return api.parent.hydrate.child(api.paths.index)
+            },
+            child: async (index: number) => hydrater(index),
+            active: async() => {
+                if(!api.hydrate.self) return;
+                /**
+                    Active is meant to be used within an editor context only. 
+                */
+                let node = await api.hydrate.self()
+                if(node ) api.editor.active = node
+            }
+        }   
 
+        if(!api.hasNodes) {
+            hydrate.child = false
+        }
 
-        
-
-        // if(!api.hasNodes) {
-        //     hydrate.child = false
-        // }
-
-        // if(!api.parent) {
-        //     hydrate.self = false
-        // }
-        // api.hydrate = hydrate
+        if(!api.parent) {
+            hydrate.self = false
+        }
+        return hydrate
     }
     return {
         useInitializer,

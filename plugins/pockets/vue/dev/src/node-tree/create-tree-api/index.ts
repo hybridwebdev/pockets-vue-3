@@ -93,6 +93,7 @@ export let createTreeApi = (props:TreeNodeApiProps) : createdApi => {
             hydrate: computed( () => useHydrater() )
             
         } )
+        
         let { useInitializer, useHydrater } = useCrud(api)
         
         return api

@@ -11,8 +11,8 @@ import { useMove } from "./move"
 
 import { useSchema } from './schema'
 import { useEditFields } from "./edit-fields"
-import { useCrud } from "./crud"
 
+import { useInitializer, useHydrater } from "./crud"
 import { editor } from "@/node-tree/editor"
 
 export let createTreeApi = (props:TreeNodeApiProps) : createdApi => {
@@ -94,7 +94,7 @@ export let createTreeApi = (props:TreeNodeApiProps) : createdApi => {
             
         } )
 
-        let { useInitializer, useHydrater } = useCrud(api)
+        
         
         return api
 

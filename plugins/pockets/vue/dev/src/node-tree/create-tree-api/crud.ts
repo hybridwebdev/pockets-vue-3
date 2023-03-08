@@ -66,7 +66,8 @@ export let useCrud = (api : TreeNodeApi) => {
         initialize.self = false
         hydrate.self = false
     }
-
+    api.hydrate = hydrate
+    api.initialize = initialize
     return {
         hydrate, initialize
     }

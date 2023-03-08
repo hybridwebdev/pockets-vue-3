@@ -27,7 +27,7 @@ div(
         )
             p(
                 class='text-center fw-8 m-0'
-            ) Are you sure you want to copy this item?
+            ) Will create a copy of node wherever you place it. 
             button( 
                 @click='selectNode' 
                 class='btn btn-outline-accent-dk mx-auto px-8 py-2 fw-8 text-uppercase'

@@ -10,6 +10,7 @@ export let setup = (props) => {
     }
     
     let cancel = () => {
+        editor.active = selected.value
         editor.selectedNodes = []
     }
 
@@ -19,7 +20,7 @@ export let setup = (props) => {
         let node = api.adder.add[location]()
         if(editor.active) {
             editor.active = node
-            cancel()
+            editor.selectedNodes = []
         }
     }
     let api = reactive({

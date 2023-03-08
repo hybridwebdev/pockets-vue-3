@@ -12,12 +12,12 @@ export let useAdd = (api: TreeNodeApi) : add => {
     }
 
     let after = (node: TreeNode) => {
-        if(!api.parent) return false;
+        if(!api.parent || !api.parent.add.inside) return false;
         return api.parent.add.inside(node, api.paths.index + 1)
     }
 
     let before = (node: TreeNode) => {
-        if(!api.parent) return false;
+        if(!api.parent || !api.parent.add.inside) return false;
         return api.parent.add.inside(node, api.paths.index)
     }
 

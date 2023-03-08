@@ -88,6 +88,7 @@ export type TreeNodeApi = {
     schema: TreeNodeSchema | false
     editor: TreeEditor
     editFields: Array<TreeNodeSchemaField>
+    getNodeApi: ( ( node: TreeNodeProxied ) => TreeNodeApi )
 }
 
 export type TreeNodeApiProps = {

@@ -29,8 +29,23 @@
 </template>
 <script lang='ts' setup>
 import { editor } from "@/node-tree/editor"
-let remove = async () => {
-    editor.active.remove.self()
-    editor.active = false
+import { treeNode } from "@/node-tree/types"
+
+let remove = () => {
+
+    let index = editor.active.paths.index
+    let length = editor.active.parent.node.nodes.length
+    var newTarget: treeNode | null;
+    if(length==0) {
+        let node = editor.active.parent.node
+    }
+    if(length!=0) {
+        
+    }
+
+    // editor.active.remove.self()
+    if(node) {
+        editor.active = editor.active.getNodeApi(node)
+    }
 }
 </script>

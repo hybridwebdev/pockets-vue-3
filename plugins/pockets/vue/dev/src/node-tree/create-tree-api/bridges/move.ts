@@ -1,11 +1,56 @@
 import type { TreeNodeApi, TreeNode } from "@/node-tree/types"
 import { dropApi } from "@/node-tree/types"
-import { createAbstract } from "./create-abstract"
+
 import { $pockets } from "@/pockets"
 
 type TreeNodePlaceHolder = TreeNode & {
     TreeNodePlaceHolder?: string
 } 
+
+export let createAbstract = (target: TreeNodeApi, selected: TreeNodeApi) => {
+    
+    let indexes = {
+        target: target.paths.index,
+        selected: selected.paths.index
+    }
+
+    let targetContainsSelected = () : boolean => {
+        if(
+            !target 
+            || !target.parent 
+            || !selected
+        ) return false
+        if( target.paths.full.includes(selected.paths.full) ) return true
+        return false
+    }
+    let sameParent = () : boolean => {
+        if(!selected.parent || !target.parent) return false;
+        return selected.parent.paths.full === target.parent.paths.full
+    }
+
+    let isAdjacent = (index: number) : boolean => {
+        if( sameParent() ){
+            if( indexes.selected + index == indexes.target) {
+                /**
+                    if the item left of it is the target 
+                    target then it can't move
+                */
+                return true
+            }
+        }
+        return false;
+    }
+
+    let sameIndex = target.paths.index == selected.paths.index
+
+    return {
+        indexes,
+        sameParent: sameParent(),
+        sameIndex,
+        isAdjacent,
+        targetContainsSelected: targetContainsSelected()
+    }
+}
 
 export let createDropApi = ( target: TreeNodeApi, selected: TreeNodeApi ) : dropApi => {
 
@@ -78,7 +123,10 @@ export let createDropApi = ( target: TreeNodeApi, selected: TreeNodeApi ) : drop
 
 }
  
-export let move = ( target: TreeNodeApi | false, selected: false | TreeNodeApi ) : dropApi => {
+export let move = ( 
+    target: TreeNodeApi | false, 
+    selected: false | TreeNodeApi 
+) : dropApi => {
     
     let invalid = {
         inside: false,
@@ -87,15 +135,11 @@ export let move = ( target: TreeNodeApi | false, selected: false | TreeNodeApi )
     }
 
     if(
-        ( 
             !target 
             || !target.parent 
-        )
         ||
-        ( 
             !selected  
             || !selected.parent
-        ) 
     )  return invalid
 
     let { targetContainsSelected, sameParent, sameIndex } = createAbstract(target, selected)

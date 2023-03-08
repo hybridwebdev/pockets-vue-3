@@ -4,7 +4,7 @@ import type { move, TreeNodeApi } from "@/node-tree/types"
 export let useMove = (api:TreeNodeApi) : move => {
     
     let self = (to: number) => {
-        if(!api.parent) return;
+        if(!api.parent || !api.parent.move.child) return false;
         return api.parent.move.child(api.paths.index, to )
     }
     

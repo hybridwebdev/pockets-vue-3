@@ -87,7 +87,7 @@ export let createTreeApi = (props:TreeNodeApiProps) : createdApi => {
             replace:    computed( () => useReplace(api) ),
             
 
-            // move:       computed( () => useMove(api) ),
+            move:       computed( () => useMove(api) ),
             
         } )
 

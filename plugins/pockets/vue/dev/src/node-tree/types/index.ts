@@ -96,6 +96,7 @@ export type TreeNodeApi = {
     add: add
     clone: clone
     remove: remove
+    replace: replace
 }
 
 export type TreeNodeApiProps = {

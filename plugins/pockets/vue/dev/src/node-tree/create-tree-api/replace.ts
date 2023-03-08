@@ -7,7 +7,7 @@ export let useReplace = (api: TreeNodeApi) : replace => {
             $pockets.utils.object.set(api.node.nodes, index, node)
         },
         self: (node: TreeNode) => {
-            if(!api.parent) return;
+            if(!api.parent || !api.parent.replace.child) return;
             api.parent.replace.child(api.paths.index, node)
         }
     }

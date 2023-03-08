@@ -5,8 +5,8 @@
         class='pockets-node-tree-node'
         @click.capture='clickHandler'
         :class='classes'
-        @mouseenter='hovered = true'
-        @mouseleave='hovered = false'
+        @mouseenter='hoverHandler(true)'
+        @mouseleave='hoverHandler(false)'
         v-tooltip='toolTip'
     >
         <component 

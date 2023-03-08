@@ -83,7 +83,7 @@ type paths = {
 export type TreeNodeApi = {
     [key: string ] : any
     paths: paths
-    node: TreeNode
+    node: TreeNodeProxied
     parent: TreeNodeApi
     schema: TreeNodeSchema
     editor: TreeEditor

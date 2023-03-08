@@ -42,7 +42,10 @@ export let createTreeApi = (props:TreeNodeApiProps) : createdApi => {
 
         let hasNodes = computed(() => Array.isArray(api.node?.nodes) )
 
-        let getChild = (index: number) => getNodeApi( api.node.nodes[index] )
+        let getChild = (index: number) => {
+            if(!api.node.nodes) return;
+            return getNodeApi( api.node.nodes[index] )
+        }
 
         let branch = computed( () => {
             

@@ -12,7 +12,8 @@ $theme-colors: (
   "white": #fff,
   "black": #000,
 
-  "danger": #ff4136
+  "danger": #ff4136,
+  "confirm": #198754
 
 );
 
@@ -63,8 +64,6 @@ $grid-breakpoints: (
 
 $enable-negative-margins: true;
 
-
-
 $enable-cssgrid: true;
 
 $utilities: (
@@ -92,4 +91,5 @@ $utilities: (
 $input-focus-box-shadow: transparent;
 $transition-collapse: none;
 
- $btn-active-bg-shade-amount:      50%;
+$btn-active-bg-shade-amount: 50%;
+$btn-border-width:  2px;

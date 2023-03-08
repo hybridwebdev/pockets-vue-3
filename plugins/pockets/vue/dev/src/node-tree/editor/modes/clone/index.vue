@@ -15,12 +15,10 @@
             </p>
 
             <div class='grid columns-1 gap-2' v-if='editor.active.clone.self'>
-                <p class='text-center fw-8 m-0'>
-                    Are you sure you want to copy this item?
-                </p>
                 <button
                     @click='clone'
-                    class='m-auto btn btn-accent-dk fw-8 text-white px-8 py-2'
+                    class='m-auto btn btn-outline-confirm fw-8 px-8 py-2 rounded-0'
+                    v-tooltip='"Confirming will copy node directly after itself."'
                 >
                     CLONE
                 </button>

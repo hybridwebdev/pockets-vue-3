@@ -30,7 +30,7 @@ div(
             ) Are you sure you want to copy this item?
             button( 
                 @click='selectNode' 
-                class='btn btn-accent-dk mx-auto px-8 py-2 fw-8 text-uppercase'
+                class='btn btn-outline-accent-dk mx-auto px-8 py-2 fw-8 text-uppercase'
             ) Copy
         div( 
             v-if='selected' 
@@ -55,7 +55,7 @@ div(
     )
         button( 
             @click='cancel' 
-            class='btn btn-danger mx-auto text-white fw-8 text-uppercase px-8 py-2'
+            class='btn btn-outline-danger mx-auto fw-8 text-uppercase px-8 py-2'
         ) Cancel
         
 

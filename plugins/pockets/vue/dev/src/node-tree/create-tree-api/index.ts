@@ -1,4 +1,4 @@
-import type { TreeNodeApiProps, createdApi, TreeNodeProxied, TreeNodeApi, TreeNode } from "@/node-tree/types"
+import type { TreeNodeApiProps, createdApi, TreeNodeProxied, TreeNodeApi } from "@/node-tree/types"
 
 import { reactive, computed } from "vue"
 import { $pockets } from "@/pockets"
@@ -49,14 +49,14 @@ export let createTreeApi = (props:TreeNodeApiProps) : createdApi => {
 
         let branch = computed( () => {
             
-            let parents = api.paths.path.split('.nodes.').map((_, index) => {
+            let parents: Array<TreeNodeApi> = api.paths.path.split('.nodes.').reduce((acc, _, index) => {
                 let i = (index+ 1)  * 2
                 let parent = api.node.__getParent(i)
                 if(parent) {
-                    return getNodeApi(parent)
+                    acc.push( getNodeApi(parent) )
                 }
-                return false
-            }).filter(e => e)
+                return acc
+            }, [] as Array<TreeNodeApi> )
 
             return {
                 parents,
@@ -66,6 +66,7 @@ export let createTreeApi = (props:TreeNodeApiProps) : createdApi => {
         } )
 
         let api:TreeNodeApi = reactive({
+            
             branch,
 
             paths,

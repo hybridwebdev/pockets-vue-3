@@ -108,6 +108,10 @@ export type TreeNodeApi = {
 
     initialize: nodeHydrate
     hydrate: nodeHydrate
+    branch: {
+        parents: Array<TreeNodeApi>
+        full: Array<TreeNodeApi>
+    }
 }
 
 export type TreeNodeApiProps = {

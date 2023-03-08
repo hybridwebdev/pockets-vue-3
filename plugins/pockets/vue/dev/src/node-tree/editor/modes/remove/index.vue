@@ -15,12 +15,10 @@
             </p>
         
             <div class='grid columns-1 gap-2' v-if='editor.active.remove.self'>
-                <span class='text-center fw-8'>
-                    Are you sure you want to remove this item?
-                </span>
                 <button
                     @click='remove'
                     class='m-auto btn btn-outline-danger fw-8 px-8 py-2 rounded-0'
+                    v-tooltip='"Removes Node"'
                 >
                     REMOVE
                 </button>

@@ -67,7 +67,7 @@ export let createTreeApi = (props:TreeNodeApiProps) : createdApi => {
 
         } )
 
-        let api:TreeNodeApi = reactive({
+        let api:TreeNodeApi = reactive( {
             
             branch,
             paths,

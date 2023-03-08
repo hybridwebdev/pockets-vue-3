@@ -36,7 +36,7 @@
         class='fa fa-crosshairs' 
         :class="[{active: editor.mode=='move'}, baseClass]"
         @click='editor.mode = "move"' 
-        :disabled='editor.modeLocked'
+        :disabled='editor.modeLocked && editor.mode!="move"'
         v-tooltip='"Move"'
     />
 
@@ -44,7 +44,7 @@
         class='fa fa-solid fa-copy' 
         :class="[{active: editor.mode=='copy'}, baseClass]"
         @click='editor.mode="copy"' 
-        :disabled='editor.modeLocked'
+        :disabled='editor.modeLocked && editor.mode!="copy"'
         v-tooltip='"Copy"'
     />
 

@@ -51,7 +51,7 @@ export type TreeNodeProxied = TreeNode & {
         comprised of properties created by ObservableSlim
     */
     __getPath: string
-    __getParent: ( () => any )
+    __getParent: ( (i: number) => any )
     __targetPosition: number
 }
 
@@ -84,8 +84,8 @@ export type TreeNodeApi = {
     [key: string ] : any
     paths: paths
     node: TreeNodeProxied
-    parent: TreeNodeApi
-    schema: TreeNodeSchema
+    // parent: TreeNodeApi
+    //schema: TreeNodeSchema
     editor: TreeEditor
     editFields: Array<TreeNodeSchemaField>
 }

@@ -44,7 +44,7 @@ export let createTreeApi = (props:TreeNodeApiProps) : createdApi => {
 
         let getChild = (index: number) => {
             if(!api.node.nodes) return;
-            return getNodeApi( api.node.nodes[index] )
+            return getNodeApi( api.node.nodes[index] as TreeNodeProxied)
         }
 
         let branch = computed( () => {
@@ -65,7 +65,7 @@ export let createTreeApi = (props:TreeNodeApiProps) : createdApi => {
 
         } )
 
-        let api = reactive({
+        let api:TreeNodeApi = reactive({
             branch,
 
             paths,

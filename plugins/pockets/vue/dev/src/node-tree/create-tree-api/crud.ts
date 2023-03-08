@@ -2,7 +2,7 @@ import { $pockets } from "@/pockets"
 import { TreeNodeApi, TreeNode, nodeHydrate } from "@/node-tree/types"
 export let useCrud = (api : TreeNodeApi) => {
  
-    let createFetcher = (read: Array<string>) => {
+    let createFetcher = (read: Array<string>, api : TreeNodeApi) => {
         
         return async (index: number) => {
 
@@ -28,7 +28,7 @@ export let useCrud = (api : TreeNodeApi) => {
     }
     
     let useInitializer = () => {
-        let initializer = createFetcher(['initialize:<='])
+        let initializer = createFetcher(['initialize:<='], api)
         let initialize:nodeHydrate = {
             self: async () => {
                 if(!api.parent || !api.parent.initialize.child) return;
@@ -47,7 +47,7 @@ export let useCrud = (api : TreeNodeApi) => {
     
     let useHydrater = () => {
 
-        let hydrater = createFetcher(['hydrate:<='])
+        let hydrater = createFetcher(['hydrate:<='], api)
 
         let hydrate:nodeHydrate = {
             self: async () => {

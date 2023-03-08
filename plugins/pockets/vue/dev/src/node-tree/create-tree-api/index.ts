@@ -58,12 +58,10 @@ export let createTreeApi = (props:TreeNodeApiProps) : createdApi => {
             */
             
             return api.paths.path.split('.nodes.').reduce((acc, _, index) => {
-                let i = index  * 2
-                let parent = api.node.__getParent(i)
-                acc.push( getNodeApi(parent) )
-                return acc
+                acc.push( getNodeApi( api.node.__getParent( index  * 2 ) ) )
+                return acc;
             }, initial ).reverse() 
-            
+
         } )
 
         let api:TreeNodeApi = reactive( {

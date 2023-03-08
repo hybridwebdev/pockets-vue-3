@@ -94,6 +94,7 @@ export type TreeNodeApi = {
     editFields: Array<TreeNodeSchemaField>
     getNodeApi: ( ( node: TreeNodeProxied ) => TreeNodeApi )
     add: add
+    clone: clone
 }
 
 export type TreeNodeApiProps = {

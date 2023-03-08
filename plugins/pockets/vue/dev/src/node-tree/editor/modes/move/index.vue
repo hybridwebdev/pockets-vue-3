@@ -65,6 +65,6 @@ import { setup } from "./setup"
 import nodePlacement from "@/node-tree/editor/sections/node-placement/index.vue"
 export default {
     components: { nodePlacement },
-    setup
+    setup: () => setup( { removeSelected: true } ) ,
 }
 </script>

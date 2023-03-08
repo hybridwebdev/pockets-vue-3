@@ -9,6 +9,7 @@ export let useMove = (api:TreeNodeApi) : move => {
     }
     
     let child = (from: number, to: number) : false => {
+        console.log("i need to refactor this")
         // api.node.nodes = $pockets.utils.array.move(api.node.nodes, from, to)
         return false
     }

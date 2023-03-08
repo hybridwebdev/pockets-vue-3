@@ -86,7 +86,7 @@ export type TreeNodeApi = {
     paths: paths
     
     node: TreeNodeProxied
-    parent: TreeNodeApi | any
+    parent: TreeNodeApi | false
 
     hasNodes: Boolean
     editor: TreeEditor

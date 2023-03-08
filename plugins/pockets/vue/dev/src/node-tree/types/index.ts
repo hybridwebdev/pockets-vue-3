@@ -81,6 +81,7 @@ type paths = {
 }
 
 export type TreeNodeApi = {
+    editor: TreeEditor
     [key: string ] : any
 
     paths: paths
@@ -89,7 +90,6 @@ export type TreeNodeApi = {
     parent: TreeNodeApi | false
 
     hasNodes: Boolean
-    editor: TreeEditor
     schema: TreeNodeSchema | false
     editFields: Array<TreeNodeSchemaField>
     getNodeApi: ( ( node: TreeNodeProxied ) => TreeNodeApi )

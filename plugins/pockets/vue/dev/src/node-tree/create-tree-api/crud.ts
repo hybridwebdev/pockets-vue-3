@@ -39,7 +39,6 @@ export let useCrud = (api : TreeNodeApi) => {
         if(!api.hasNodes) {
             initialize.child = false
         }
-
         if(!api.parent) {
             initialize.self = false
         }

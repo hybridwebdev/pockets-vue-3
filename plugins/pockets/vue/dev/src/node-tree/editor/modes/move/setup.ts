@@ -29,7 +29,7 @@ export let setup = (props) => {
         
         selectNode,
         adder: {
-            add: computed( () => dragDrop( editor.active, selected.value ) )
+            add: computed( () => dragDrop( editor.active, selected.value, props.removeSelected ) )
         },
         selected,
         editor

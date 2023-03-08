@@ -1,4 +1,10 @@
 
+export type nodeHydrate = {
+    self: false | (() => Promise<any>)
+    child: false | ((index: number) => Promise<any>)
+    active?: false | (() => Promise<any>)
+}
+
 export type move = {
     self: false | ( (to: number) => TreeNode | false )
     child: false | ( (from: number, to: number) => TreeNode | false )

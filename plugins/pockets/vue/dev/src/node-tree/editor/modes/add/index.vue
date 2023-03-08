@@ -44,7 +44,7 @@
             <div class='col-12 d-flex'>
                 <button 
                     @click='selected = false'
-                    class='mx-auto btn btn-danger text-white px-8 py-2 fw-8'
+                    class='mx-auto btn btn-outline-danger px-8 py-2 fw-8'
                     v-tooltip='"Cancel placing element"'
                 >
                     CANCEL

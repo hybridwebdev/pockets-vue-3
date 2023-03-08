@@ -51,5 +51,5 @@
 </template>
 <script lang='ts' setup>
 import { editor } from "@/node-tree/editor"
-let baseClass = 'btn border-0 btn-accent-dk fw-8 p-2 rounded-0'
+let baseClass = 'btn border-0 btn-accent-dk fw-8 p-2 rounded-0 flex-grow-1'
 </script>

@@ -20,7 +20,7 @@
                 </span>
                 <button
                     @click='remove'
-                    class='m-auto btn btn-danger fw-8 text-white px-8 py-2'
+                    class='m-auto btn btn-outline-danger fw-8 px-8 py-2 rounded-0'
                 >
                     REMOVE
                 </button>

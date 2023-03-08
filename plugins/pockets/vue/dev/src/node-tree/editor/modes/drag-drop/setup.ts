@@ -16,7 +16,7 @@ export let setup = (props) => {
 
     let selectedActiveSame = computed(() => {
         if(!api.selected || !editor.active) return false
-        if(editor.active.paths.full == selected.value.paths.full) return true;
+        if(editor.active.paths.full == api.selected.paths.full) return true;
     })
     let selected = computed(() => editor.selectedNodes[0] ?? false )
 

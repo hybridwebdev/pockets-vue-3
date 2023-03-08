@@ -4,7 +4,7 @@ div(
     class='p-2'
 )
     div( 
-        v-if='!editor.active'
+        v-if='!editor.active || selectedActiveSame'
         class='text-center fw-8'
     ) 
         p(
@@ -15,7 +15,7 @@ div(
             v-if='selected'
         ) Select a target to copy node to.
     div( 
-        v-if='editor.active' 
+        v-if='editor.active && !selectedActiveSame' 
     )
         p( 
             v-if='!editor.active.parent && !selected'
@@ -27,15 +27,15 @@ div(
         )
             button( 
                 @click='selectNode' 
-                class='btn btn-outline-confirm mx-auto px-8 py-2 fw-8 text-uppercase rounded-0'
-                v-tooltip='"Will create a copy of node wherever you place it."'
-            ) Copy
+                class='btn btn-outline-accent-dk mx-auto px-8 py-2 fw-8 text-uppercase rounded-0'
+                v-tooltip='"Will move selected node to new location."'
+            ) Move
         div( 
             v-if='selected' 
         )
             p(
                 class='text-center fw-8'
-            ) Select a location to copy selected node to.
+            ) Select a location to place selected node!
             
             div(
                 class='grid columns-3 gap-2 mb-2'

@@ -5,7 +5,6 @@ export let setup = (props) => {
     let selectNode = () => {
         if(editor.active){
             editor.selectedNodes = [ editor.active ]
-            editor.active = false
         }
     }
     

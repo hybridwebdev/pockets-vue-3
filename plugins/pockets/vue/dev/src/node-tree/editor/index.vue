@@ -52,8 +52,8 @@ import add from "./modes/add"
 import edit from "./modes/edit"
 import remove from "./modes/remove"
 import clone from "./modes/clone"
-import move from "./modes/move"
-import copy from "./modes/copy"
+import move from "./modes/drag-drop/move"
+import copy from "./modes/drag-drop/copy"
 let modePanels = {
     add, 
     edit,

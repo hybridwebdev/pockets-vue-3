@@ -61,7 +61,7 @@ export let createDragDropApi = (
     removeSelected: boolean 
 ) : dropApi => {
 
-    let { indexes, isAdjacent, sameParent } = createAbstract(target, selected)
+    let { indexes, isAdjacent } = createAbstract(target, selected)
     
     let dropInside = (dropIndex: number) => {
         return () => {

@@ -1,8 +1,8 @@
 export type path = Array<string | number>
 
 export type move = {
-    self: false | ( (to: number) => path )
-    child: false | ( (from: number, to: number) => path )
+    self: false | ( (to: number) => TreeNode | false )
+    child: false | ( (from: number, to: number) => TreeNode | false )
 }
 
 export type replace = {
@@ -75,14 +75,21 @@ export type TreeEditor = {
 
 }
 
+
+type paths = {
+    full: string
+    path: string 
+    index: number
+}
+
 export type TreeNodeApi = {
     [key: string ] : any
-
     node: TreeNode
     parent: TreeNodeApi
     schema: TreeNodeSchema
     editor: TreeEditor
     editFields: Array<TreeNodeSchemaField>
+    // paths: paths
 
 }
 

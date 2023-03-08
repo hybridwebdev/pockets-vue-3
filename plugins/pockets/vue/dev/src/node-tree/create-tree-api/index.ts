@@ -15,40 +15,19 @@ import { useCrud } from "./crud"
 
 import { editor } from "@/node-tree/editor"
 
-type paths = {
-    full: string
-    path: string 
-    index: number
-    prev: number | boolean
-    next: number | boolean
-}
-
 export let createTreeApi = (props:TreeNodeApiProps) : createdApi => {
         
     let getNodeApi = (node: TreeNodeProxied) : TreeNodeApi => {
 
-        let paths = computed(() : paths => {
-            
+        let paths = computed(() => {
             let sourcePath = [ props.source.metaKey, props.source.type, props.source.ID ].join('.')
             let path =  node.__getPath
             let index =  parseInt( path.split('.').slice(-1)[0] )
-            
-            let paths:paths = {
+            return {
                 full: [ sourcePath, path] .join('.'),
                 path,
                 index,
-                prev: false,
-                next: false
             }
-
-            if(index > 0) {
-                paths.prev = index - 1
-            }
-
-            return paths
-            // if(api.parent && api.parent.nodes) {
-            //     console.log('wwo')
-            // }
         })
 
         let getParent = (node) => {

@@ -52,7 +52,14 @@ export let createAbstract = (target: TreeNodeApi, selected: TreeNodeApi) => {
     }
 }
 
-export let createDropApi = ( target: TreeNodeApi, selected: TreeNodeApi ) : dropApi => {
+export let createDropApi = ( 
+    target: TreeNodeApi, 
+    selected: TreeNodeApi, 
+    /**
+        If removeSelected is true, it will remove the selected node. Otherwise it will copy the node.
+    */
+    removeSelected: boolean 
+) : dropApi => {
 
     let { indexes, isAdjacent, sameParent } = createAbstract(target, selected)
 
@@ -71,7 +78,9 @@ export let createDropApi = ( target: TreeNodeApi, selected: TreeNodeApi ) : drop
                 3 - Remove selected from existing location. 
                     then return new instance
             */
-            selected.remove.self()
+            if(removeSelected) {
+                selected.remove.self()
+            }
             
             return droppedNode
 
@@ -93,7 +102,9 @@ export let createDropApi = ( target: TreeNodeApi, selected: TreeNodeApi ) : drop
                 3 - Remove selected from existing location. 
                     then return new instance
             */
-            selected.remove.self()
+            if(removeSelected) {
+                selected.remove.self()
+            }
             
             return droppedNode
 
@@ -125,7 +136,8 @@ export let createDropApi = ( target: TreeNodeApi, selected: TreeNodeApi ) : drop
  
 export let move = ( 
     target: TreeNodeApi | false, 
-    selected: false | TreeNodeApi 
+    selected: false | TreeNodeApi,
+    removeSelected: boolean = false
 ) : dropApi => {
     
     let invalid = {
@@ -148,6 +160,6 @@ export let move = (
         return invalid
     }
 
-    return createDropApi(target, selected)
+    return createDropApi(target, selected, removeSelected)
     
 }

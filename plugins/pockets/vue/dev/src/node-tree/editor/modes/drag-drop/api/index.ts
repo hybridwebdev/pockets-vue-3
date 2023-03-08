@@ -65,6 +65,7 @@ export let createDragDropApi = (
     
     let dropInside = (dropIndex: number) => {
         return () => {
+            if(!target.parent || !target.add.inside) return;
             /**
                 1 - Copy node and place in new location
             */
@@ -89,7 +90,7 @@ export let createDragDropApi = (
 
     let dropAdjacent = (dropIndex: number) => {
         return () => {
-            if(!target.parent) return;
+            if(!target.parent || !target.parent.add.inside) return;
             /**
                 1 - Copy node and place in new location
             */
@@ -113,12 +114,12 @@ export let createDragDropApi = (
     }
 
     let before = () => {
-        if( !target.parent || isAdjacent(1) ) return false
+        if( !target.parent || isAdjacent(1)  || !target.parent.add.inside) return false
         return dropAdjacent( indexes.target )
     }
     
     let after = () => {
-        if( !target.parent || isAdjacent(-1) ) return false
+        if( !target.parent || isAdjacent(-1)  || !target.parent.add.inside) return false
         return dropAdjacent( indexes.target+1 )
     }
 

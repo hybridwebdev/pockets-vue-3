@@ -58,16 +58,7 @@ export let createTreeApi = (props:TreeNodeApiProps) : createdApi => {
                 return acc
             }, initial )
 
-            return {
-                parents,
-                /**
-                    As the reducer is traversing from the source node upward,
-                    the resutl must be reversed so that they are in the correct order
-                    from top to bottom.
-                */
-                full: parents.reverse() 
-            }
-
+            return parents.reverse() 
         } )
 
         let api:TreeNodeApi = reactive( {

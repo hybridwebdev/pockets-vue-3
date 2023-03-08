@@ -33,7 +33,7 @@
                 v-if='editor.show' 
                 @click='editor.active = false'
                 v-tooltip='"Close"'
-                :disabled='!editor.active'
+                :disabled='!editor.active || editor.modeLocked'
             />
         </div>
     </div>

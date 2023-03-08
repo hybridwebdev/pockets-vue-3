@@ -1,4 +1,3 @@
-export type path = Array<string | number>
 
 export type move = {
     self: false | ( (to: number) => TreeNode | false )
@@ -75,7 +74,6 @@ export type TreeEditor = {
 
 }
 
-
 type paths = {
     full: string
     path: string 
@@ -84,13 +82,12 @@ type paths = {
 
 export type TreeNodeApi = {
     [key: string ] : any
+    paths: paths
     node: TreeNode
     parent: TreeNodeApi
     schema: TreeNodeSchema
     editor: TreeEditor
     editFields: Array<TreeNodeSchemaField>
-    // paths: paths
-
 }
 
 export type TreeNodeApiProps = {
@@ -113,7 +110,7 @@ export type createdApi = {
 export type dropLocations = "before" | "after" | "inside"
 
 export type dropApi = {
-    inside: boolean | ( () => path )
-    before: boolean | ( () => path )
-    after : boolean | ( () => path )
+    inside: boolean | ( () => TreeNodeApi | false )
+    before: boolean | ( () => TreeNodeApi | false )
+    after : boolean | ( () => TreeNodeApi | false )
 }

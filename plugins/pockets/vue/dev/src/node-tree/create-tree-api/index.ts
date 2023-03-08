@@ -88,10 +88,11 @@ export let createTreeApi = (props:TreeNodeApiProps) : createdApi => {
             
 
             move:       computed( () => useMove(api) ),
+            initialize: computed( () => useInitializer() )
             
         } )
-
-        useCrud(api)
+        let { useInitializer } = useCrud(api)
+        // useCrud(api)
         
         return api
 

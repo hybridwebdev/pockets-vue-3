@@ -3,7 +3,10 @@ import type { clone, TreeNodeApi } from "@/node-tree/types"
 
 export let useClone = (api:TreeNodeApi) : clone => {
     
-    let self = () => api.parent.clone.child(api.paths.index)
+    let self = () => {
+        if(!api.parent) return;
+        return api.parent.clone.child(api.paths.index)
+    }
     
     let child = (index: number) => {
         let child = api.getChild(index)

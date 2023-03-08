@@ -97,6 +97,8 @@ export type TreeNodeApi = {
     clone: clone
     remove: remove
     replace: replace
+    
+    getChild: ( ( index: number ) => any )
 }
 
 export type TreeNodeApiProps = {

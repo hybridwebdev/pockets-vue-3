@@ -25,12 +25,10 @@ div(
             v-if='!selected && editor.active.parent'
             class='grid columns-1 gap-2'
         )
-            p(
-                class='text-center fw-8 m-0'
-            ) Will create a copy of node wherever you place it. 
             button( 
                 @click='selectNode' 
-                class='btn btn-outline-accent-dk mx-auto px-8 py-2 fw-8 text-uppercase'
+                class='btn btn-outline-confirm mx-auto px-8 py-2 fw-8 text-uppercase'
+                v-tooltip='"Will create a copy of node wherever you place it."'
             ) Copy
         div( 
             v-if='selected' 

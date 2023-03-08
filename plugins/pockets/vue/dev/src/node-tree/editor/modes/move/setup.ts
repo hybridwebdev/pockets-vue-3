@@ -1,6 +1,6 @@
 import { reactive, computed } from "vue"
 import { editor } from "@/node-tree/editor"
-import { move } from "@/node-tree/create-tree-api/bridges/move" 
+import { dragDrop } from "@/node-tree/create-tree-api/bridges/move" 
 export let setup = (props) => {
 
     let selectNode = () => {
@@ -29,7 +29,7 @@ export let setup = (props) => {
         
         selectNode,
         adder: {
-            add: computed( () => move( editor.active, selected.value ) )
+            add: computed( () => dragDrop( editor.active, selected.value ) )
         },
         selected,
         editor

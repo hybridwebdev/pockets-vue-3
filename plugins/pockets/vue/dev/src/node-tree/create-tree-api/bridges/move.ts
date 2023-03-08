@@ -52,7 +52,7 @@ export let createAbstract = (target: TreeNodeApi, selected: TreeNodeApi) => {
     }
 }
 
-export let createDropApi = ( 
+export let createDragDropApi = ( 
     target: TreeNodeApi, 
     selected: TreeNodeApi, 
     /**
@@ -134,7 +134,7 @@ export let createDropApi = (
 
 }
  
-export let move = ( 
+export let dragDrop = ( 
     target: TreeNodeApi | false, 
     selected: false | TreeNodeApi,
     removeSelected: boolean = false
@@ -160,6 +160,6 @@ export let move = (
         return invalid
     }
 
-    return createDropApi(target, selected, removeSelected)
+    return createDragDropApi(target, selected, removeSelected)
     
 }

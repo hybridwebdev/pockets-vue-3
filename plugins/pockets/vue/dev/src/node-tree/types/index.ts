@@ -106,6 +106,8 @@ export type TreeNodeApi = {
     replace: replace
     move: move
     getChild: ( ( index: number ) => any )
+
+    initialize: nodeHydrate
 }
 
 export type TreeNodeApiProps = {

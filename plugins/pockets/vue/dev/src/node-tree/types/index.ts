@@ -1,7 +1,7 @@
 
 export type nodeHydrate = {
     self: false | ( () => Promise<any> )
-    child: false | ( (index: number) => Promise<TreeNode> )
+    child: false | ( (index: number) => Promise<TreeNodeApi> )
     active?: false | ( () => Promise<any> )
 }
 

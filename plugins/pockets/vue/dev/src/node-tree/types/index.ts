@@ -89,7 +89,6 @@ type paths = {
 export type TreeNodeApi = {
     
     editor: TreeEditor
-    [key: string ] : any
     paths: paths
     
     node: TreeNodeProxied
@@ -108,6 +107,7 @@ export type TreeNodeApi = {
     getChild: ( ( index: number ) => any )
 
     initialize: nodeHydrate
+    hydrate: nodeHydrate
 }
 
 export type TreeNodeApiProps = {

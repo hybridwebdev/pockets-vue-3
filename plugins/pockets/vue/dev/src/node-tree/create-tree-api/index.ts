@@ -70,14 +70,14 @@ export let createTreeApi = (props:TreeNodeApiProps) : createdApi => {
         let api:TreeNodeApi = reactive({
             
             branch,
-
             paths,
+            
             getNodeApi,
-
-            hasNodes,
-            node,
-            parent,
             getChild,
+
+            node,
+            hasNodes,
+            parent,
 
             editor,
             editFields: computed( () => useEditFields(api) ),
@@ -86,13 +86,10 @@ export let createTreeApi = (props:TreeNodeApiProps) : createdApi => {
             add:        computed( () => useAdd(api) ),
             remove:     computed( () => useRemove(api) ),
             clone:      computed( () => useClone(api) ),
-
             replace:    computed( () => useReplace(api) ),
-            
-
             move:       computed( () => useMove(api) ),
+
             initialize: computed( () => useInitializer(api) ),
-            
             hydrate: computed( () => useHydrater(api) )
             
         } )

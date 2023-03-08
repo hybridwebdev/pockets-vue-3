@@ -87,23 +87,22 @@ export let move = ( target: TreeNodeApi | false, selected: false | TreeNodeApi )
     }
 
     if(
-        !target 
-        || !target.node 
-        || !selected 
-        || !selected.node
-        /**
-            root nodes cant be moved
-        */
-        || !selected.parent
-        
+        ( 
+            !target 
+            || !target.parent 
+        )
+        ||
+        ( 
+            !selected  
+            || !selected.parent
+        ) 
     )  return invalid
 
     let { targetContainsSelected, sameParent, sameIndex } = createAbstract(target, selected)
 
-    if(
-        targetContainsSelected 
-        || sameParent && sameIndex
-    ) return invalid
+    if( targetContainsSelected || sameParent && sameIndex ) {
+        return invalid
+    }
 
     return createDropApi(target, selected)
     

@@ -33,13 +33,14 @@
                     {{selected.title}}
                 </span>
             </span>
-
-            <nodePlacement 
-                :api='editor.active' 
-                @before='confirm("before")'
-                @after='confirm("after")'
-                @inside='confirm("inside")'
-            /> 
+            <div class='grid columns-3 col-12 gap-2'>
+                <nodePlacement 
+                    :api='editor.active' 
+                    @before='confirm("before")'
+                    @after='confirm("after")'
+                    @inside='confirm("inside")'
+                /> 
+            </div>
 
             <div class='col-12 d-flex'>
                 <button 

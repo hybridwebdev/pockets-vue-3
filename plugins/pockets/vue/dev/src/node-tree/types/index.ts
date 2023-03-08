@@ -1,8 +1,8 @@
 
 export type nodeHydrate = {
-    self: false | (() => Promise<any>)
-    child: false | ((index: number) => Promise<any>)
-    active?: false | (() => Promise<any>)
+    self: false | ( () => Promise<any> )
+    child: false | ( (index: number) => Promise<any> )
+    active?: false | ( () => Promise<any> )
 }
 
 export type move = {

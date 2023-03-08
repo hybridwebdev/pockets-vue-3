@@ -28,9 +28,8 @@ export let useCrud = (api : TreeNodeApi) => {
     }
     
     let useInitializer = () => {
-
         let initializer = createFetcher(['initialize:<='])
-        let initialize:nodeHydrate = {
+        let initialize = {
             self: async () => {
                 if(!api.parent || !api.parent.initialize.child) return;
                 return api.parent.initialize.child(api.paths.index)

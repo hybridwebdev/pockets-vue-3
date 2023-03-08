@@ -4,7 +4,7 @@ div(
     class='p-2'
 )
     div( 
-        v-if='!editor.active'
+        v-if='!editor.active || selectedActiveSame'
         class='text-center fw-8'
     ) 
         p(
@@ -15,7 +15,7 @@ div(
             v-if='selected'
         ) Select a target to move node to.
     div( 
-        v-if='editor.active' 
+        v-if='editor.active && !selectedActiveSame' 
     )
         p( 
             v-if='!editor.active.parent && !selected'

@@ -14,6 +14,10 @@ export let setup = (props) => {
         editor.selectedNodes = []
     }
 
+    let selectedActiveSame = computed(() => {
+        if(!api.selected || !editor.active) return false
+        if(editor.active.paths.full == selected.value.paths.full) return true;
+    })
     let selected = computed(() => editor.selectedNodes[0] ?? false )
 
     let confirm = (location) => {
@@ -26,7 +30,7 @@ export let setup = (props) => {
     let api = reactive({
         cancel,
         confirm,
-        
+        selectedActiveSame,
         selectNode,
         adder: {
             add: computed( () => dragDrop( editor.active, selected.value, props.removeSelected ) )

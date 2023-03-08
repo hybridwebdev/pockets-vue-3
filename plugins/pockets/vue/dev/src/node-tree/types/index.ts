@@ -6,8 +6,8 @@ export type move = {
 }
 
 export type replace = {
-    self: false | ( (node: TreeNode) => TreeNode | false)
-    child: false | ( (index: number, node: TreeNode) => TreeNode | false)
+    self: false | ( (node: TreeNode) => void )
+    child: false | ( (index: number, node: TreeNode) => void )
 }
 
 export type add = {

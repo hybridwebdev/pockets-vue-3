@@ -47,6 +47,9 @@
 </template>
 <script lang='ts' setup>  
 import dragTest from "./drag-test"
+
+import { useWindowDraggable } from "@/pockets/use/window-draggable"
+
 import { editor } from "./"
 
 import titleBar from "./sections/title-bar/"
@@ -80,6 +83,8 @@ let props = defineProps({
 })
 
 Object.assign(editor, props)
+
+let { container, handle, style } = useWindowDraggable( { x: "end", y: "end" } )
 
 </script>
 <style lang='scss'>

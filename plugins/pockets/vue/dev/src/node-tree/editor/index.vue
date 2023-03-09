@@ -10,10 +10,7 @@
                 <div
                     v-if='editor.show'
                 > 
-                    <div ref='handle' class='derg-herndle'>
-                        <titleBar/>
-                    </div>
-
+                    <titleBar ref='handle'/>
                     <div 
                     >
 

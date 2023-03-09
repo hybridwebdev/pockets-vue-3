@@ -39,6 +39,7 @@ export let useWindowDraggable = (props) => {
             y.value = boundaries.value.y.end
         }
     }
+    
     let validateX = () => {
         if(x.value < boundaries.value.x.start ) {
             x.value = boundaries.value.x.start

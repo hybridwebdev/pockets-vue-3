@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "@googlemaps/js-api-loader": "^1.15.1",
+    "@vueuse/components": "^9.13.0",
+    "@vueuse/core": "^9.13.0",
     "axios": "^1.2.1",
     "babel-plugin-require-context-hook": "^1.0.0",
     "click-outside-vue3": "^4.0.1",

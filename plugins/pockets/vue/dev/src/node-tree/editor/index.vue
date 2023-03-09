@@ -1,48 +1,52 @@
 <template>
     <Teleport to='body'>
-        
-        <div
-            class='position-fixed bottom-0 end-0 border border-5 border-accent-lt pockets-node-tree-editor bg-accent-dk'  
-            :class='{open: editor.show}'
-        >
+        <dragTest #default='drag'>
             <div
-                v-if='editor.show'
-            > 
-                <titleBar/>
-
-                <div 
-                >
-
-                    <div class='bg-white'>
-                        <div>
-                            <component :is='selectedModePanel'/>
-                        </div>
-                        <div class='bg-accent-dk d-flex border-top border-5 border-accent-lt'>
-                            <mode-buttons/>
-                            
-                        </div>
-                    </div>
-                    
-                </div>
-            </div>
-
-            <div
-                v-if='!editor.show'
+                class='border border-5 border-accent-lt pockets-node-tree-editor bg-accent-dk position-fixed'  
+                :class='{show: editor.show}'
+                :ref='drag.container'
+                :style='drag.style'
             >
-                <button 
-                    class="fa fa-chevron-up p-1 btn rounded-0 btn-accent-dk fw-8 p-1 border-0"
-                    v-tooltip='"Show"'
-                    @click='editor.show = true'
-                    
-                />
+                <div
+                    v-if='editor.show'
+                > 
+                    <div :ref='drag.handle' class='derg-herndle'>
+                        <titleBar/>
+                    </div>
+
+                    <div 
+                    >
+
+                        <div class='bg-white'>
+                            <div>
+                                <component :is='selectedModePanel'/>
+                            </div>
+                            <div class='bg-accent-dk d-flex border-top border-5 border-accent-lt'>
+                                <mode-buttons/>
+                                
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div
+                    v-if='!editor.show'
+                >
+                    <button 
+                        class="fa fa-chevron-up p-1 btn rounded-0 btn-accent-dk fw-8 p-1 border-0"
+                        v-tooltip='"Show"'
+                        @click='editor.show = true'
+                        
+                    />
+                </div>
+
             </div>
-
-        </div>
-
+        </dragTest>
     </Teleport>
 </template>
 <script lang='ts' setup>  
-
+import dragTest from "./drag-test"
 import { editor } from "./"
 
 import titleBar from "./sections/title-bar/"
@@ -80,7 +84,7 @@ Object.assign(editor, props)
 </script>
 <style lang='scss'>
     .pockets-node-tree-editor {
-        &.open {
+        &.show {
             width: 100%;
             max-width:500px;
         }

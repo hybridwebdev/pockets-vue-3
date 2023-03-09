@@ -5,7 +5,7 @@
                 class='border border-5 border-accent-lt pockets-node-tree-editor bg-accent-dk position-fixed'  
                 :class='{show: editor.show}'
                 :ref='drag.container'
-                :style='drag.style.value'
+                :style='style'
             >
                 <div
                     v-if='editor.show'
@@ -85,7 +85,7 @@ let props = defineProps({
 Object.assign(editor, props)
 
 let drag = useWindowDraggable( { x: "end", y: "end" } )
-
+let style = drag.style
 </script>
 <style lang='scss'>
     .pockets-node-tree-editor {

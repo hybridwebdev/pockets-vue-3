@@ -50,7 +50,7 @@ export let useWindowDraggable = (props) => {
     watch([ x, elSize.width ], validateX)
     watch([ y, elSize.height ], validateY)
 
-    return  {
+    return {
         container,
         handle,
         style 

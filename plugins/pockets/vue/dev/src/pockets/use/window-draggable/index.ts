@@ -1,12 +1,9 @@
-import { ref, watch, computed } from 'vue'
-import { useDraggable, useElementSize, useWindowSize } from '@vueuse/core'
+import { watch, computed } from 'vue'
+import { useDraggable, useElementSize, useWindowSize  } from '@vueuse/core'
 
 export let useWindowDraggable = (props) => {
 
-    let container = ref<HTMLElement | null>(null)
-    let handle = ref<HTMLElement | null>(null)
-
-    let elSize = useElementSize(container)
+    let elSize = useElementSize(props.container)
     let windowSize = useWindowSize()
 
     let boundaries = computed( () => {
@@ -22,8 +19,8 @@ export let useWindowDraggable = (props) => {
         }
     } )
 
-    let { x, y, style } = useDraggable(container, {
-        handle,
+    let { x, y, style } = useDraggable(props.container, {
+        handle: props.handle,
         initialValue: { 
             x: boundaries.value.x[props.x], 
             y: boundaries.value.y[props.y], 
@@ -51,9 +48,6 @@ export let useWindowDraggable = (props) => {
     watch([ y, elSize.height ], validateY)
 
     return {
-        container,
-        handle,
-        style 
-    } 
-
+        style
+    }
 }

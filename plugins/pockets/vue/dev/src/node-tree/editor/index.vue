@@ -4,13 +4,13 @@
             <div
                 class='border border-5 border-accent-lt pockets-node-tree-editor bg-accent-dk position-fixed'  
                 :class='{show: editor.show}'
-                :ref='drag.container'
+                ref='container'
                 :style='style'
             >
                 <div
                     v-if='editor.show'
                 > 
-                    <div :ref='drag.handle' class='derg-herndle'>
+                    <div ref='handle' class='derg-herndle'>
                         <titleBar/>
                     </div>
 
@@ -46,6 +46,7 @@
     </Teleport>
 </template>
 <script lang='ts' setup>  
+import { ref } from "vue"
 import dragTest from "./drag-test"
 
 import { useWindowDraggable } from "@/pockets/use/window-draggable"
@@ -84,8 +85,11 @@ let props = defineProps({
 
 Object.assign(editor, props)
 
-let drag = useWindowDraggable( { x: "end", y: "end" } )
-let style = drag.style
+let container = ref()
+let handle = ref()
+
+let { style } = useWindowDraggable( { x: "end", y: "end", container, handle } )
+
 </script>
 <style lang='scss'>
     .pockets-node-tree-editor {

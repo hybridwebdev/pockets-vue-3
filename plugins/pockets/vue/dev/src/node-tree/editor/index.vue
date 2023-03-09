@@ -85,7 +85,6 @@ let props = defineProps({
 Object.assign(editor, props)
 
 let drag = useWindowDraggable( { x: "end", y: "end" } )
-console.log(drag)
 
 </script>
 <style lang='scss'>

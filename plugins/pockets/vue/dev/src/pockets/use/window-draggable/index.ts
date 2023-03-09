@@ -4,8 +4,11 @@ import { useDraggable, useElementSize, useWindowSize  } from '@vueuse/core'
 export let useWindowDraggable = (props) => {
 
     let elSize = useElementSize(props.container)
-    let windowSize = useWindowSize()
-    console.log(windowSize)
+    
+    let windowSize = useWindowSize({
+        includeScrollbar: false
+    })
+
     let boundaries = computed( () => {
         return {
             x: {

@@ -1,4 +1,4 @@
-import { ref, watch, computed } from 'vue'
+import { ref, watch, computed, unref } from 'vue'
 import { useDraggable, useElementSize, useWindowSize } from '@vueuse/core'
 
 export let useWindowDraggable = (props) => {
@@ -53,7 +53,7 @@ export let useWindowDraggable = (props) => {
     return  {
         container,
         handle,
-        style
+        style 
     } 
 
 }

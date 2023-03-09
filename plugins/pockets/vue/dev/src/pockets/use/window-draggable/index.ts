@@ -5,7 +5,7 @@ export let useWindowDraggable = (props) => {
 
     let elSize = useElementSize(props.container)
     let windowSize = useWindowSize()
-
+    console.log(windowSize)
     let boundaries = computed( () => {
         return {
             x: {
@@ -20,6 +20,7 @@ export let useWindowDraggable = (props) => {
     } )
 
     let { x, y, style } = useDraggable(props.container, {
+        stopPropagation: true,
         handle: props.handle,
         initialValue: { 
             x: boundaries.value.x[props.x], 

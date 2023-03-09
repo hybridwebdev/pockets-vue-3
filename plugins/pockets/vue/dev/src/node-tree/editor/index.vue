@@ -1,11 +1,11 @@
 <template>
     <Teleport to='body'>
-        <dragTest #default='drag'>
+        
             <div
                 class='border border-5 border-accent-lt pockets-node-tree-editor bg-accent-dk position-fixed'  
                 :class='{show: editor.show}'
                 :ref='drag.container'
-                :style='drag.style'
+                :style='drag.style.value'
             >
                 <div
                     v-if='editor.show'
@@ -42,7 +42,7 @@
                 </div>
 
             </div>
-        </dragTest>
+        
     </Teleport>
 </template>
 <script lang='ts' setup>  
@@ -84,7 +84,8 @@ let props = defineProps({
 
 Object.assign(editor, props)
 
-let { container, handle, style } = useWindowDraggable( { x: "end", y: "end" } )
+let drag = useWindowDraggable( { x: "end", y: "end" } )
+console.log(drag)
 
 </script>
 <style lang='scss'>

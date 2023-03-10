@@ -1,13 +1,11 @@
 <template>
     <div class='bg-accent-dk d-flex align-items-center text-white border-bottom border-5 border-accent-lt'>
         
-        <div v-if='editor.active && editor.show' class='d-flex align-items-center'>
+        <div v-if='editor.active && editor.show' class='d-flex flex-grow-1'>
+            
             <nodeTraverse/>
-            <span
-                class='text-capitalize fw-8 '
-            >
-                {{editor.mode}} - {{editor.active.schema.title ?? editor.active.node.el }} 
-            </span>
+
+            <slot/>
 
         </div>
         <div class='ms-auto gap-1 d-flex'>

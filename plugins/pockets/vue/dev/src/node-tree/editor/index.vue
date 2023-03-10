@@ -10,7 +10,14 @@
                 <div
                     v-if='editor.show'
                 > 
-                    <titleBar ref='handle'/>
+                    <titleBar ref='handle' class='drag-handle'>
+                        <span
+                            class='text-capitalize fw-8 flex-grow-1 d-flex align-items-center ps-1 '
+                            
+                        >
+                            {{editor.mode}} - {{editor.active.schema.title ?? editor.active.node.el }} 
+                        </span>
+                    </titleBar>
                     <div 
                     >
 
@@ -70,7 +77,6 @@ let modePanels = {
 
 let selectedModePanel = $computed( () =>  modePanels[editor.mode] ?? modePanels['edit'] )
 
-
 let props = defineProps({
     nodes: {
         type: Object
@@ -88,7 +94,10 @@ let handle = ref()
 let { style } = useWindowDraggable( { x: "end", y: "end", container, handle } )
 
 </script>
-<style lang='scss'>
+<style lang='scss' scoped>
+    .drag-handle {
+        cursor: grab;
+    }
     .pockets-node-tree-editor {
         &.show {
             width: 100%;

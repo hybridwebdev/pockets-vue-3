@@ -3,8 +3,8 @@ import { useDraggable, useElementSize, useWindowSize  } from '@vueuse/core'
 
 export let useWindowDraggable = (props) => {
 
-    window.addEventListener("selectstart", event => event.preventDefault());
-
+    let hander = event => event.preventDefault()
+    
     let elSize = useElementSize(props.container)
     
     let windowSize = useWindowSize({
@@ -25,6 +25,12 @@ export let useWindowDraggable = (props) => {
     } )
 
     let { x, y, style } = useDraggable(props.container, {
+        /**
+            Prevent elements from being highlighted while dragging
+        */
+        onStart: () =>  window.addEventListener("selectstart", hander) ,
+        onEnd: () => window.removeEventListener("selectstart", hander),
+
         stopPropagation: true,
         handle: props.handle,
         initialValue: { 
@@ -57,5 +63,5 @@ export let useWindowDraggable = (props) => {
     return {
         style
     }
-    
+
 }

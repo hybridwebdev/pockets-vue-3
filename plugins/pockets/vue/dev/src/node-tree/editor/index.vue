@@ -10,10 +10,10 @@
                 <div
                     v-if='editor.show'
                 > 
-                    <titleBar ref='handle' class='drag-handle'>
+                    <titleBar>
                         <span
-                            class='text-capitalize fw-8 flex-grow-1 d-flex align-items-center ps-1 '
-                            
+                            class='text-capitalize fw-8 flex-grow-1 d-flex align-items-center ps-1 drag-handle'
+                            ref='handle' 
                         >
                             {{editor.mode}} - {{editor.active.schema.title ?? editor.active.node.el }} 
                         </span>

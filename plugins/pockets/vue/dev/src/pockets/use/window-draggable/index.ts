@@ -5,7 +5,7 @@ export let useWindowDraggable = (props) => {
 
     let hander = event => event.preventDefault()
     
-    let elSize = useElementSize(props.container )
+    let elSize = useElementSize(props.container, undefined, { box: "border-box"} )
     
     let windowSize = useWindowSize({
         includeScrollbar: false

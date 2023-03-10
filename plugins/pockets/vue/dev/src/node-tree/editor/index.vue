@@ -11,12 +11,19 @@
                     v-if='editor.show'
                 > 
                     <titleBar>
-                        <span
-                            class='text-capitalize fw-8 flex-grow-1 d-flex align-items-center ps-1 drag-handle'
+                        <div 
                             ref='handle' 
+                            class='drag-handle flex-grow-1 align-items-center d-flex'
+
                         >
-                            {{editor.mode}} - {{editor.active.schema.title ?? editor.active.node.el }} 
-                        </span>
+                            <span
+                                class='text-capitalize fw-8 flex-grow-1 d-flex ps-1'
+                                v-if='editor.active'
+                            >
+
+                                {{editor.mode}} - {{editor.active.schema.title ?? editor.active.node.el }} 
+                            </span>
+                        </div>
                     </titleBar>
                     <div 
                     >

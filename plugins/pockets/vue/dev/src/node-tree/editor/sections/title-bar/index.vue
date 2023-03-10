@@ -1,7 +1,7 @@
 <template>
     <div class='bg-accent-dk d-flex align-items-center text-white border-bottom border-5 border-accent-lt'>
         
-        <div v-if='editor.active && editor.show' class='d-flex flex-grow-1'>
+        <div v-if='editor.show' class='d-flex flex-grow-1'>
             <nodeTraverse/>
             <slot/>
         </div>

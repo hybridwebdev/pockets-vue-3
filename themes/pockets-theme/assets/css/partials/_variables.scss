@@ -84,6 +84,14 @@ $utilities: (
       8: 8,
     ),
   ),
+  "max-width": (
+    property: max-width,
+    class: mw,
+    values: (
+      lg: 1040px,
+      md: 768px
+    )
+  ),
 
 );
 

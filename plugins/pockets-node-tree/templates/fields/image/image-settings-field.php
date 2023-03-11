@@ -41,7 +41,7 @@
 
 </div>
 
-<div v-if='node.data.source=="media"' class='test'>
+<div v-if='node.data.source=="media"'>
     <pockets-popup-menu  
         placement='bottom-start' 
         :autoHide="true"
@@ -51,7 +51,7 @@
     >
         <button class='btn btn-primary-dk'>Select Image</button>
         <template #popper>
-            <div class='p-2 bg-white mx-auto d-inline-block' style='max-width:768px'>
+            <div class='p-2 bg-white mx-auto mw-md overflow-hidden'>
                 <wp-media v-model:selected='node.data.ID' @update:selected='hydrate.active'></wp-media>
             </div>
         </template>

@@ -5158,8 +5158,12 @@ textarea.form-control-lg {
   width: auto !important;
 }
 
-.mw-100 {
-  max-width: 100% !important;
+.mw-lg {
+  max-width: 1040px !important;
+}
+
+.mw-md {
+  max-width: 768px !important;
 }
 
 .vw-100 {

@@ -1,5 +1,5 @@
 <template>
-    <popup-menu  
+    <pockets-popup-menu  
         placement='bottom-start' 
         :autoHide="true"
         :triggers='["click"]'
@@ -49,7 +49,7 @@
 
             </div>
         </template>
-    </popup-menu>
+    </pockets-popup-menu>
 </template>
 <script lang='ts' setup>
 

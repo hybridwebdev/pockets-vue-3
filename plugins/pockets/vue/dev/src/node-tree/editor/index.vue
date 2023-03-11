@@ -117,7 +117,7 @@ let { style } = useWindowDraggable( { x: "end", y: "end", container, handle } )
             max-width:500px;
         }
         label {
-            color: var(--bs-accent-dk);
+            color: var(--bs-primary-dk);
             font-weight:800;
             margin-bottom:10px
         }

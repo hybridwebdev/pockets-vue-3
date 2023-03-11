@@ -30,6 +30,7 @@ class node {
     public $schema = [
         "fields" => ['class'],
         "title" => "Generic Container",
+        "el-types" => [],
         "node" => [
             'el' => "div",
             'props' => [

@@ -15,7 +15,7 @@ class load extends \pockets_node_tree\fields\field {
         [
             'ID'=> "el-selector",
             'content'=> ['template' => 'fields/attributes/el-selector'],
-            'group'=> "Element"
+            'group'=> "Attributes"
         ],
     ];
 }

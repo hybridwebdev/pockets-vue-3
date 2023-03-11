@@ -1,7 +1,7 @@
 <template>
     <popup-menu  
         placement='bottom-start' 
-        :autoHide="false"
+        :autoHide="true"
         :triggers='["click"]'
         :delay='0'
     >
@@ -9,7 +9,7 @@
             class='fa fa-folder-tree p-1 btn btn-accent-dk text-white fw-8 border-0 rounded-0'
             :disabled='!editor.active'
         />
-        <template #content>
+        <template #popper>
             <div class='bg-accent-dk border-end border-bottom border-accent-lt border-5 text-white'>
                 
                 <span class='text-center fw-8 d-block border-bottom border-5 border-accent-lt'>Node Tree</span>

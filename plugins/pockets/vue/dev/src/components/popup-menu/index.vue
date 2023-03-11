@@ -1,13 +1,12 @@
-<template>
-    <VMenu popperClass='popup-menu' v-bind='$attrs'>
-        <slot></slot>
-        <template #popper>
-            <slot name='content'/>
-        </template>
-    </VMenu>
-</template>
+<script>
+import { PopperWrapper } from 'floating-vue'
+export default {
+  ...PopperWrapper,
+  vPopperTheme: 'popup-menu',
+}
+</script>
 <style lang='scss'>
-    .v-popper--theme-dropdown.popup-menu { 
+    .v-popper--theme-popup-menu { 
         .v-popper__inner {
             border: 0px;
             border-radius:0px

@@ -9,7 +9,7 @@ class node extends \pockets_node_tree\nodes\node {
         ]
     ];
     public $schema = [
-        "fields" => ['base-attributes', 'youtube', 'schema-selector'],
+        "fields" => ['base-attributes', 'youtube', 'schema-selector', 'el-selector'],
         "title" => "Youtube",
         "node" => [
             "schema" => "youtube",

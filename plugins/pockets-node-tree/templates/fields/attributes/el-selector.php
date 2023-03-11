@@ -8,6 +8,6 @@
     </select>
 </div>
 
-<div v-else>
-    SNAH
-</div>
+<p v-else class='text-danger fw-8'>
+    This node's element type cannot be changed! 
+</p>

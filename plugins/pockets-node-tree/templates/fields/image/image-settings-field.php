@@ -43,13 +43,12 @@
 
 <div v-if='node.data.source=="media"'>
     <pockets-popup-menu  
-        placement='bottom-start' 
         :autoHide="true"
         :triggers='["click"]'
         :delay='0'
         :positioning-disabled="true"
     >
-        <button class='btn btn-primary-dk'>Select Image</button>
+        <button class='btn btn-outline-accent-dk fw-8 rounded-0'>Select Image</button>
         <template #popper>
             <div class='p-2 bg-white mx-auto mw-md overflow-hidden'>
                 <wp-media v-model:selected='node.data.ID' @update:selected='hydrate.active'></wp-media>

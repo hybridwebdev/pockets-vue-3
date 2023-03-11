@@ -42,5 +42,15 @@
 </div>
 
 <div v-if='node.data.source=="media"'>
-    <wp-media v-model:selected='node.data.ID' @update:selected='hydrate.active'></wp-media>
+    <popup-menu  
+        placement='bottom-start' 
+        :autoHide="false"
+        :triggers='["click"]'
+        :delay='0'
+    >
+        <button>GO batch</button>
+        <template #content>
+            <wp-media v-model:selected='node.data.ID' @update:selected='hydrate.active'></wp-media>
+        </template>
+    </popup-menu>
 </div>

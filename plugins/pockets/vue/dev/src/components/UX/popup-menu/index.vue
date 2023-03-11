@@ -32,12 +32,8 @@ export default {
     }
 
     .v-popper__popper--no-positioning .v-popper__wrapper {
-        width: 100%;
+        margin: auto auto 0 auto;
         pointer-events: auto;
-        transition: transform .15s ease-out;
     }
 
-    .v-popper__popper--no-positioning.v-popper__popper--hidden .v-popper__wrapper {
-        
-    }
 </style>

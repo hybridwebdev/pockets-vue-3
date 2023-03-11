@@ -36,16 +36,13 @@
     </div>
 </template>
 <script lang='ts' setup>
-let test = ref([])
 
 import { inject, watch, ref } from "vue"
 
 import { editor } from "@/node-tree/editor/"
 
 let filters = {
-    group: (node) => {
-        return node.group == activeGroup
-    }
+    group: (node) => node.group == activeGroup
 }
 
 let filteredFields = $computed( () => editor.active.editFields.filter( filters.group ) )
@@ -56,7 +53,7 @@ let filteredGroups = $computed( () => {
     if(!editor.active.editFields) return []
     return editor.active.editFields
         .map(e => e.group )
-            .filter((value, index, self)  => self.indexOf(value) === index)
+            .filter( (value, index, self)  => self.indexOf(value) === index)
                 .sort( (a, b) => a.localeCompare(b) )
         
 } )
@@ -64,7 +61,7 @@ let filteredGroups = $computed( () => {
 let activeGroup = $ref(false)
 
 watch(() => filteredGroups, () => {
-    
+    console.log(activeGroup, filteredGroups)
     if(
         filteredGroups.includes(activeGroup)
         && activeGroup

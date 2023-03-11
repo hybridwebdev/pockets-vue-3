@@ -7,7 +7,7 @@ class node extends \pockets_node_tree\nodes\node {
         "fields" => ['base-attributes', 'schema-selector', 'el-selector'],
         "title" => "Container",
         
-        "elTypes" => ["div", 'section', 'aside'],
+        "elTypes" => ["div", 'section', 'aside', 'header', 'footer'],
 
         "node" => [
             "el" => "div",

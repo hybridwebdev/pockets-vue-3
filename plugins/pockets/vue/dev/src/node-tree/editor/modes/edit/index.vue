@@ -61,7 +61,7 @@ let filteredGroups = $computed( () => {
 let activeGroup = $ref(false)
 
 watch(() => filteredGroups, () => {
-    console.log(activeGroup, filteredGroups)
+
     if(
         filteredGroups.includes(activeGroup)
         && activeGroup

@@ -3,7 +3,7 @@
         :is='treeNode.el'
         v-bind='treeNode.props'
         class='pockets-node-tree-node'
-        @click.capture='clickHandler'
+        @click.stop='clickHandler'
         :class='classes'
         @mouseenter='hoverHandler(true)'
         @mouseleave='hoverHandler(false)'

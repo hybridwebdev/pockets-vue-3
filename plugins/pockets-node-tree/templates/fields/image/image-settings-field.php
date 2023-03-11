@@ -51,7 +51,7 @@
     >
         <button class='btn btn-primary-dk'>Select Image</button>
         <template #popper>
-            <div class='mx-auto p-2 bg-white'>
+            <div class='p-2 bg-white container-md'>
                 <wp-media v-model:selected='node.data.ID' @update:selected='hydrate.active'></wp-media>
             </div>
         </template>

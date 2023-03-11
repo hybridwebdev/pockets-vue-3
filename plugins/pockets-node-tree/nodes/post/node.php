@@ -13,6 +13,7 @@ class node extends \pockets_node_tree\nodes\node {
 
     public $schema = [
         "fields" => ['base-attributes', 'post-settings', 'schema-selector', 'el-selector'],
+        "elTypes" => ['div', 'article'],
         "title" => "Post",
         "node" => [
             "el" => "div",

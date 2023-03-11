@@ -5,7 +5,7 @@ class node extends \pockets_node_tree\nodes\node {
     public $edit_fields = [
         [
             'ID' => "content",
-            'content' => "<textarea v-model='node.props.innerHTML' class='form-control'></textarea>",
+            'content'=> ['template' => 'fields/render-html/edit'],
             'group' => "Edit"
         ],
     ];

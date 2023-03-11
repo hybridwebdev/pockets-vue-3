@@ -1,0 +1,1 @@
+<textarea v-model='node.props.innerHTML' class='form-control'></textarea>

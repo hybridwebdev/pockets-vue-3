@@ -4,7 +4,7 @@ class node extends \pockets_node_tree\nodes\node {
     public $edit_fields = [
         [
             'ID'=> "youtube",
-            'content'=> "<input v-model='node.props.videoid'>",
+             'content'=> ['template' => 'fields/youtube/edit'],
             'group'=> "Edit"
         ]
     ];

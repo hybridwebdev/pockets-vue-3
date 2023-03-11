@@ -106,6 +106,12 @@ let { style } = useWindowDraggable( { x: "end", y: "end", container, handle } )
         cursor: grab;
     }
     .pockets-node-tree-editor {
+        &:not(.show) {
+            bottom: 0;
+            right: 0;
+            top: unset !important;
+            left: unset !important;
+        }
         &.show {
             width: 100%;
             max-width:500px;

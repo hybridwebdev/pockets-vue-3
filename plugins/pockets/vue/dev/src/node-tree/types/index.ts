@@ -41,6 +41,7 @@ export type TreeNodeSchema = {
     title: string // used for displaying node
     fields: Array<TreeNodeSchemaField['ID']>
     node: TreeNode
+    elTypes: Array<string>
 }
 
 export type TreeNode = {

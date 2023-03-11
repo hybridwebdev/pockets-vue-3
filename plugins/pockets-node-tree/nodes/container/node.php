@@ -6,6 +6,9 @@ class node extends \pockets_node_tree\nodes\node {
     public $schema = [
         "fields" => ['base-attributes', 'schema-selector', 'el-selector'],
         "title" => "Container",
+        
+        "elTypes" => ["div", 'section', 'li'],
+
         "node" => [
             "el" => "div",
             "props" => [

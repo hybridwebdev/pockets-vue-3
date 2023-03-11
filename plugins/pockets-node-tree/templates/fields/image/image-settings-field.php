@@ -42,15 +42,18 @@
 </div>
 
 <div v-if='node.data.source=="media"'>
-    <popup-menu  
+    <pockets-popup-menu  
         placement='bottom-start' 
-        :autoHide="false"
+        :autoHide="true"
         :triggers='["click"]'
         :delay='0'
+        :positioning-disabled="true"
     >
-        <button>GO batch</button>
-        <template #content>
-            <wp-media v-model:selected='node.data.ID' @update:selected='hydrate.active'></wp-media>
+        <button class='btn btn-primary-dk'>Select Image</button>
+        <template #popper>
+            <div class='mx-auto p-2 bg-white'>
+                <wp-media v-model:selected='node.data.ID' @update:selected='hydrate.active'></wp-media>
+            </div>
         </template>
-    </popup-menu>
+    </pockets-popup-menu>
 </div>

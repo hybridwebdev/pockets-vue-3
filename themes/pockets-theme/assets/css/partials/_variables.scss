@@ -5,6 +5,8 @@ $theme-colors: (
   'primary-md': #8FB8DE,
   "primary-dk": #95A6CD,
 
+  "grey-lt": #efefef,
+
   "accent-lt": #9A94BC,
   'accent-md': #9B72A8,
   'accent-dk': #835878,
@@ -89,9 +91,20 @@ $utilities: (
   "max-width": (
     property: max-width,
     class: mw,
+    responsive: true, 
     values: (
       lg: 1040px,
       md: 768px
+    )
+  ),
+  "max-height": (
+    property: max-height,
+    class: mh,
+    responsive: true, 
+    values: (
+      100px: 100px,
+      150px: 150px,
+      200px: 200px,
     )
   ),
 

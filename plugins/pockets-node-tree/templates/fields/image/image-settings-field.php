@@ -48,7 +48,11 @@
         :delay='0'
         :positioning-disabled="true"
     >
-        <button class='btn btn-outline-accent-dk fw-8 rounded-0'>Select Image</button>
+        
+        <div class='bg-grey-lt grid columns-1 gap-1 p-2' role='button'>
+            <img :src='node.props.src' class='img-fluid mx-auto mh-150px'>
+            <button class='btn btn-accent-dk rounded-0'>Select Image</button>
+        </div>
         <template #popper>
             <div class='p-2 bg-white mx-auto mw-md overflow-hidden'>
                 <wp-media v-model:selected='node.data.ID' @update:selected='hydrate.active'></wp-media>

@@ -10,7 +10,7 @@ class load extends \pockets_node_tree\fields\field {
         [
             'ID'=> "node-selector",
             'content'=> ['template' => 'fields/attributes/node-selector'],
-            'group'=> "Node"
+            'group'=> "Schema"
         ],
     ];
 }

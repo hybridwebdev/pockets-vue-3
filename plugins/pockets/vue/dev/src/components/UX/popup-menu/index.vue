@@ -28,7 +28,7 @@ export default {
         
     .v-popper__popper--no-positioning .v-popper__backdrop {
         display: block;
-        background: rgba(0,0,0, .5)
+        background: var(--bs-back-drop)
     }
 
     .v-popper__popper--no-positioning .v-popper__wrapper {

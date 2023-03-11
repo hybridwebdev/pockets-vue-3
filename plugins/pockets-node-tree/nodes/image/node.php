@@ -12,7 +12,7 @@ class node extends \pockets_node_tree\nodes\node {
     ];
     
     public $schema = [
-        "fields" => ['base-attributes', 'image-settings', 'node-selector'],
+        "fields" => ['base-attributes', 'image-settings', 'schema-selector'],
         "title" => "Image",
         "node" => [
             "el" => "img",

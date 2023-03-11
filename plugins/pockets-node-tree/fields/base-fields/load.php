@@ -8,9 +8,14 @@ class load extends \pockets_node_tree\fields\field {
             'group'=> "Attributes"
         ],
         [
-            'ID'=> "node-selector",
-            'content'=> ['template' => 'fields/attributes/node-selector'],
+            'ID'=> "schema-selector",
+            'content'=> ['template' => 'fields/attributes/schema-selector'],
             'group'=> "Schema"
+        ],
+        [
+            'ID'=> "el-selector",
+            'content'=> ['template' => 'fields/attributes/el-selector'],
+            'group'=> "Element"
         ],
     ];
 }

@@ -3,7 +3,7 @@ namespace pockets_node_tree\nodes\wp_nav_menu;
 class node extends \pockets_node_tree\nodes\node {
 
     public $schema = [
-        "fields" => ['base-attributes', 'node-selector'],
+        "fields" => ['base-attributes', 'schema-selector'],
         "title" => "Wp Nav",
         "node" => [
             "schema" => "wp-nav-menu",

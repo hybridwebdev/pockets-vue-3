@@ -4,7 +4,7 @@ namespace pockets_node_tree\nodes\container;
 class node extends \pockets_node_tree\nodes\node {
 
     public $schema = [
-        "fields" => ['base-attributes', 'node-selector'],
+        "fields" => ['base-attributes', 'schema-selector', 'el-selector'],
         "title" => "Container",
         "node" => [
             "el" => "div",

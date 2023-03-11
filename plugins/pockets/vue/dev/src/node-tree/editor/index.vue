@@ -101,11 +101,11 @@ let handle = ref()
 let { style } = useWindowDraggable( { x: "end", y: "end", container, handle } )
 
 </script>
-<style lang='scss' scoped>
-    .drag-handle {
-        cursor: grab;
-    }
+<style lang='scss'>
     .pockets-node-tree-editor {
+        .drag-handle {
+            cursor: grab;
+        }
         &:not(.show) {
             bottom: 0;
             right: 0;

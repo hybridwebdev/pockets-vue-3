@@ -5,7 +5,5 @@
         <option v-for='type in schema.elTypes' :value='type'>
             {{type}}
         </option>
-        
-        
     </select>
 </div>

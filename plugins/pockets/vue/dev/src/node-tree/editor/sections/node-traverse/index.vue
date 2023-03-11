@@ -3,6 +3,7 @@
         placement='bottom-start' 
         :autoHide="false"
         :triggers='["click"]'
+        :delay='0'
     >
         <button 
             class='fa fa-folder-tree p-1 btn btn-accent-dk text-white fw-8 border-0 rounded-0'

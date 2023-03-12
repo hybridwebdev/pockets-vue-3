@@ -20,6 +20,7 @@ div(
 </template>
 <script lang='ts' setup>
 import { inject, computed } from "vue"
+
 let editor = inject('tip-tap-editor')
 let change = ($e) => {
     let v = options.value[$e.target.value] ?? false

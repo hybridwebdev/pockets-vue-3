@@ -33,7 +33,7 @@ div(
                 class='btn btn-accent-dk p-2 rounded-0'
                 v-tooltip='"Move Node left"'
                 :disabled='!editor.active.move.left'
-                @click='editor.active.move.left()'
+                @click='editor.active.move.left'
             
             ) 
                 i(
@@ -50,7 +50,7 @@ div(
                 class='btn btn-accent-dk p-2 rounded-0'
                 v-tooltip='"Move Node right"'
                 :disabled='!editor.active.move.right'
-                @click='editor.active.move.right()'
+                @click='editor.active.move.right'
             ) 
                 i(
                     class='fa fa-chevron-right'

@@ -22,18 +22,18 @@ div(
 import { inject, computed } from "vue"
 
 let editor = inject('tip-tap-editor')
+
 let change = ($e) => {
     let v = options.value[$e.target.value] ?? false
     if(v && v.select && typeof v.select == 'function') v.select()
 }
 
-let makeHeadingOption = (level: number ) => {
-    return {
-        text: `Heading ${level}`,
-        isActive:  editor.value.isActive( 'heading', { level } ),
-        select: () => editor.value.chain().focus().toggleHeading({ level } ).run()
-    }
-}
+let makeHeadingOption = (level: number ) => ( {
+    text: `Heading ${level}`,
+    isActive:  editor.value.isActive( 'heading', { level } ),
+    select: () => editor.value.chain().focus().toggleHeading({ level } ).run()
+} )
+
 let options = computed( () => [
     {
         text: "Paragraph",
@@ -46,6 +46,6 @@ let options = computed( () => [
     makeHeadingOption(4),
     makeHeadingOption(5),
     makeHeadingOption(6)
-])
+] )
 
 </script>

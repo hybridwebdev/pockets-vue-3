@@ -9,6 +9,9 @@
   },
   "dependencies": {
     "@googlemaps/js-api-loader": "^1.15.1",
+    "@tiptap/pm": "^2.0.0-beta.220",
+    "@tiptap/starter-kit": "^2.0.0-beta.220",
+    "@tiptap/vue-3": "^2.0.0-beta.220",
     "@vueuse/components": "^9.13.0",
     "@vueuse/core": "^9.13.0",
     "axios": "^1.2.1",

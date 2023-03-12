@@ -6,22 +6,8 @@ div(
   div(
     class='d-flex bg-accent-dk gap-0'
   )
-    button( 
-      class='btn btn-accent-dk'
-      @click="editor.chain().focus().toggleBold().run()"
-      :class="[ { 'active': editor.isActive('bold') }, btnClass ]"
+    format-buttons() 
 
-    )
-      i(class='fa fa-bold')
-
-    button( 
-      class='btn btn-accent-dk'
-      @click="editor.chain().focus().toggleItalic().run()"
-      :class="[ { 'active': editor.isActive('italic') }, btnClass ]"
-
-    )
-      i(class='fa fa-italic')
-      
   editor-content( 
     :editor="editor" 
     class='editor-wrapper'
@@ -29,13 +15,12 @@ div(
 
 </template>
 <script lang='ts' setup>
-import { onMounted, ref, onUnmounted } from "vue"
+import { onMounted, ref, onUnmounted, provide } from "vue"
 import StarterKit from '@tiptap/starter-kit'
 import { Editor, EditorContent } from '@tiptap/vue-3'
+import formatButtons from "./format-buttons"
 
 let emit = defineEmits(['update:modelValue'])
-
-let btnClass = 'rounded-0'
 
 let props = defineProps( {
     modelValue: {
@@ -44,19 +29,21 @@ let props = defineProps( {
     },
 } )
 
-let editor = $ref(false)
+let editor = ref(false)
 
 let editorConfig = {
     extensions: [
       StarterKit,
     ],
     content: props.modelValue,
-    onUpdate: () => emit( 'update:modelValue', editor.getHTML() ) ,
+    onUpdate: () => emit( 'update:modelValue', editor.value.getHTML() ) ,
 }
 
-onMounted( () => editor = new Editor(editorConfig) )
+onMounted( () => editor.value = new Editor(editorConfig) )
 
-onUnmounted( () => editor.destroy() )
+onUnmounted( () => editor.value.destroy() )
+
+provide('tip-tap-editor', editor)
 
 </script>
 <style lang='scss'>

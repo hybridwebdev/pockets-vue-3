@@ -1,6 +1,6 @@
 <template lang='pug'>
 div(
-    class='ms-auto d-flex align-items-center p-1'
+    class='ms-auto d-flex align-items-center pe-1'
     role='button'
     v-if='editor'
 )

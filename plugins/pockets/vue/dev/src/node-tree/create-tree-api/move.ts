@@ -9,6 +9,10 @@ export let useMove = (api:TreeNodeApi) : move => {
     }
     
     let child = (from: number, to: number) : false => {
+        if(!api.parent || !api.parent.node.nodes) return false;
+        let element = api.parent.node.nodes[from];
+        api.parent.node.nodes.splice(from, 1);
+        api.parent.node.nodes.splice(to, 0, element);
         return false
     }
 
@@ -17,10 +21,12 @@ export let useMove = (api:TreeNodeApi) : move => {
         self,
         child,
         left(){
-            return false
+            if(!api.move.child) return false;
+            return api.move.child(api.paths.index, api.paths.index-1)
         },
         right(){
-            return false
+            if(!api.move.child) return false;
+            return api.move.child(api.paths.index, api.paths.index+1)
         }
     }
     if(api.paths.index==0) {

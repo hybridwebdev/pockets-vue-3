@@ -3,6 +3,7 @@
 div(
     class='p-2'
 )
+
     div( 
         v-if='!editor.active || selectedActiveSame'
         class='text-center fw-8'
@@ -14,22 +15,45 @@ div(
         p(
             v-if='selected'
         ) Select a target to move node to.
+
     div( 
         v-if='editor.active && !selectedActiveSame' 
     )
+
         p( 
             v-if='!editor.active.parent && !selected'
             class='text-danger fw-8 text-center m-0' 
         ) This Node cannot be moved!
+
         div( 
             v-if='!selected && editor.active.parent'
-            class='grid columns-1 gap-2'
+            class='d-flex gap-2'
         )
+            button(
+                class='btn btn-accent-dk p-2'
+                v-tooltip='"Move Node left"'
+                :disabled='editor.active.paths.index == 0'
+            ) 
+                i(
+                    class='fa fa-chevron-left '
+                )
+
             button( 
                 @click='selectNode' 
                 class='btn btn-outline-confirm mx-auto px-8 py-2 fw-8 text-uppercase rounded-0'
                 v-tooltip='"Will move selected node to new location."'
             ) Move
+
+            button(
+                class='btn btn-accent-dk p-2'
+                v-tooltip='"Move Node right"'
+                :disabled='editor.active.paths.index == editor.active.parent.node.nodes.length -1'
+            ) 
+                i(
+                    class='fa fa-chevron-right'
+                )
+
+
         div( 
             v-if='selected' 
         )

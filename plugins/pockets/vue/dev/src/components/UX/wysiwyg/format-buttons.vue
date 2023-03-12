@@ -28,5 +28,5 @@ button(
 import { inject } from "vue"
 let editor = inject('tip-tap-editor')
 
-let btnClass = 'rounded-0'
+let btnClass = 'rounded-0 border-0 p-2'
 </script>

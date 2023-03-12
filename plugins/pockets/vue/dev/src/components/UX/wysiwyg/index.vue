@@ -7,7 +7,7 @@ div(
     class='d-flex bg-accent-dk gap-0'
   )
     format-buttons() 
-
+    element-selector()
   editor-content( 
     :editor="editor" 
     class='editor-wrapper'
@@ -19,6 +19,7 @@ import { onMounted, ref, onUnmounted, provide } from "vue"
 import StarterKit from '@tiptap/starter-kit'
 import { Editor, EditorContent } from '@tiptap/vue-3'
 import formatButtons from "./format-buttons"
+import elementSelector from "./element-selector"
 
 let emit = defineEmits(['update:modelValue'])
 

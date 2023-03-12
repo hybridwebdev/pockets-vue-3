@@ -30,9 +30,11 @@ div(
             class='d-flex gap-2'
         )
             button(
-                class='btn btn-accent-dk p-2'
+                class='btn btn-accent-dk p-2 rounded-0'
                 v-tooltip='"Move Node left"'
-                :disabled='editor.active.paths.index == 0'
+                :disabled='!editor.active.move.left'
+                @click='editor.active.move.left()'
+            
             ) 
                 i(
                     class='fa fa-chevron-left '
@@ -45,9 +47,10 @@ div(
             ) Move
 
             button(
-                class='btn btn-accent-dk p-2'
+                class='btn btn-accent-dk p-2 rounded-0'
                 v-tooltip='"Move Node right"'
-                :disabled='editor.active.paths.index == editor.active.parent.node.nodes.length -1'
+                :disabled='!editor.active.move.right'
+                @click='editor.active.move.right()'
             ) 
                 i(
                     class='fa fa-chevron-right'

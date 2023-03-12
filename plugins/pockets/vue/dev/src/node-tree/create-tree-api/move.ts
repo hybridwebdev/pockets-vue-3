@@ -1,4 +1,4 @@
-import { $pockets } from "@/pockets"
+
 import type { move, TreeNodeApi } from "@/node-tree/types"
 
 export let useMove = (api:TreeNodeApi) : move => {
@@ -9,14 +9,25 @@ export let useMove = (api:TreeNodeApi) : move => {
     }
     
     let child = (from: number, to: number) : false => {
-        console.log("i need to refactor this")
-        // api.node.nodes = $pockets.utils.array.move(api.node.nodes, from, to)
         return false
     }
+
+
     let move: move = {
         self,
-        child
+        child,
+        left(){
+            return false
+        },
+        right(){
+            return false
+        }
     }
-   
+    if(api.paths.index==0) {
+        move.left = false;
+    }
+    if(!api.parent || !api.parent.node.nodes || api.paths.index == api.parent.node.nodes.length -1) {
+        move.right = false;
+    }
     return move
 }

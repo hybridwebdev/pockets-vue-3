@@ -8,6 +8,10 @@ export type nodeHydrate = {
 export type move = {
     self: false | ( (to: number) => TreeNode | false )
     child: false | ( (from: number, to: number) => TreeNode | false )
+
+    left: false | ( () => TreeNode | false )
+    right: false | ( () => TreeNode | false )
+
 }
 
 export type replace = {

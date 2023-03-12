@@ -39,7 +39,7 @@ Teleport(
 
 </template>
 <script lang='ts' setup>  
-import { ref } from "vue"
+import { ref, computed } from "vue"
 
 import { useWindowDraggable } from "@/pockets/use/window-draggable"
 
@@ -54,6 +54,7 @@ import remove from "./modes/remove"
 import clone from "./modes/clone"
 import move from "./modes/drag-drop/move"
 import copy from "./modes/drag-drop/copy"
+
 let modePanels = {
     add, 
     edit,
@@ -63,7 +64,7 @@ let modePanels = {
     copy
 }
 
-let selectedModePanel = $computed( () =>  modePanels[editor.mode] ?? modePanels['edit'] )
+let selectedModePanel = computed( () =>  modePanels[editor.mode] ?? modePanels['edit'] )
 
 let props = defineProps({
     nodes: {

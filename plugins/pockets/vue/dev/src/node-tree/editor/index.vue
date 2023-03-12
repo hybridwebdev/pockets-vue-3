@@ -8,7 +8,7 @@
                 :style='style'
             >
                 <div
-                    v-if='editor.show'
+                    v-show='editor.show'
                 > 
                     <titleBar>
                         <div 
@@ -42,7 +42,7 @@
                 </div>
 
                 <div
-                    v-if='!editor.show'
+                    v-show='!editor.show'
                 >
                     <button 
                         class="fa fa-chevron-up p-1 btn rounded-0 btn-accent-dk fw-8 p-1 border-0"

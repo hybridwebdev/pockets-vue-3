@@ -1,64 +1,45 @@
-<template>
-    <Teleport to='body'>
-        
-            <div
-                class='border border-5 border-accent-lt pockets-node-tree-editor bg-accent-dk position-fixed'  
-                :class='{show: editor.show}'
-                ref='container'
-                :style='style'
-            >
-                <div
-                    v-show='editor.show'
-                > 
-                    <titleBar>
-                        <div 
-                            ref='handle' 
-                            class='drag-handle flex-grow-1 align-items-center d-flex'
+<template lang='pug'>
+Teleport(
+    to='body'
+)
+    div(
+        class='border border-5 border-accent-lt pockets-node-tree-editor bg-accent-dk position-fixed'  
+        :class='{ show: editor.show }'
+        ref='container'
+        :style='style'
+    )
+        div(
+            v-show='editor.show'
+         )
+            titleBar()
+                div( 
+                    ref='handle' 
+                    class='drag-handle flex-grow-1 align-items-center d-flex'
+                )
+                    span(
+                        class='text-capitalize fw-8 flex-grow-1 d-flex ps-1'
+                        v-if='editor.active'
+                    ) {{editor.mode}} - {{editor.active.schema.title ?? editor.active.node.el }} 
+            
+            div( class='bg-white')
+                
+                component( :is='selectedModePanel')
+                
+                div( class='bg-accent-dk d-flex border-top border-5 border-accent-lt')
+                    mode-buttons()
 
-                        >
-                            <span
-                                class='text-capitalize fw-8 flex-grow-1 d-flex ps-1'
-                                v-if='editor.active'
-                            >
+        div(
+            v-show='!editor.show'
+        )
+            button( 
+                class="fa fa-chevron-up p-1 btn rounded-0 btn-accent-dk fw-8 p-1 border-0"
+                v-tooltip='"Show"'
+                @click='editor.show = true'
+            )
 
-                                {{editor.mode}} - {{editor.active.schema.title ?? editor.active.node.el }} 
-                            </span>
-                        </div>
-                    </titleBar>
-                    <div 
-                    >
-
-                        <div class='bg-white'>
-                            <div>
-                                <component :is='selectedModePanel'/>
-                            </div>
-                            <div class='bg-accent-dk d-flex border-top border-5 border-accent-lt'>
-                                <mode-buttons/>
-                                
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>
-
-                <div
-                    v-show='!editor.show'
-                >
-                    <button 
-                        class="fa fa-chevron-up p-1 btn rounded-0 btn-accent-dk fw-8 p-1 border-0"
-                        v-tooltip='"Show"'
-                        @click='editor.show = true'
-                        
-                    />
-                </div>
-
-            </div>
-        
-    </Teleport>
 </template>
 <script lang='ts' setup>  
 import { ref } from "vue"
-import dragTest from "./drag-test"
 
 import { useWindowDraggable } from "@/pockets/use/window-draggable"
 

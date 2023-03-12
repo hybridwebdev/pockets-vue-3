@@ -3,6 +3,7 @@
 </template>
 <script lang='ts' setup>
 import { onMounted, ref, onUnmounted } from "vue"
+
 import StarterKit from '@tiptap/starter-kit'
 import { Editor, EditorContent } from '@tiptap/vue-3'
 

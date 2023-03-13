@@ -12,12 +12,13 @@ div(
     :editor="editor" 
     class='editor-wrapper'
   )
+  FloatingMenu(:editor='editor')
 
 </template>
 <script lang='ts' setup>
 import { onMounted, ref, onUnmounted, provide } from "vue"
 import StarterKit from '@tiptap/starter-kit'
-import { Editor, EditorContent } from '@tiptap/vue-3'
+import { Editor, EditorContent, FloatingMenu  } from '@tiptap/vue-3'
 import formatButtons from "./format-buttons"
 import elementSelector from "./element-selector"
 

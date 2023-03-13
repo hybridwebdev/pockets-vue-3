@@ -8,6 +8,9 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^36.0.1",
+    "@ckeditor/ckeditor5-build-inline": "^36.0.1",
+    "@ckeditor/ckeditor5-vue": "^4.0.1",
     "@googlemaps/js-api-loader": "^1.15.1",
     "@tiptap/pm": "^2.0.0-beta.220",
     "@tiptap/starter-kit": "^2.0.0-beta.220",

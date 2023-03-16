@@ -5,7 +5,7 @@ ckeditor( :editor='editor' tagName='div')
 </template>
 <script lang='ts'>
   import CKEditor from '@ckeditor/ckeditor5-vue';
-  import ClassicEditor from '@ckeditor/ckeditor5-build-inline';
+  import ClassicEditor from '@ckeditor/ckeditor5-build-balloon';
   export default {
       components: {
           ckeditor: CKEditor.component

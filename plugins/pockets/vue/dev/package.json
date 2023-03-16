@@ -8,6 +8,7 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "@ckeditor/ckeditor5-build-balloon": "^36.0.1",
     "@ckeditor/ckeditor5-build-classic": "^36.0.1",
     "@ckeditor/ckeditor5-build-inline": "^36.0.1",
     "@ckeditor/ckeditor5-vue": "^4.0.1",

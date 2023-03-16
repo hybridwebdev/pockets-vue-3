@@ -17,7 +17,7 @@ export default {
     inheritAttrs: false,
     computed: {
         filteredAttrs(){
-            let { innerHTML, ...rest} = this.$attrs
+            let { innerHTML,  ...rest} = this.$attrs
             return rest
         }
     }

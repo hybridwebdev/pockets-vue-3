@@ -46,9 +46,7 @@ let editorConfig = {
   onUpdate: () => emit( 'update:modelValue', editor.value.getHTML() ) ,
 }
 
-onMounted( () => {
-  editor.value = new Editor(editorConfig)
-} )
+onMounted( () => editor.value = new Editor(editorConfig) )
 
 onUnmounted( () => editor.value.destroy() )
 
@@ -58,9 +56,7 @@ provide('tip-tap-editor', editor)
 <style lang='scss'>
 .editor-wrapper {
   .ProseMirror {
-    padding: 10px;
     outline: none;
-    background: var(--bs-grey-lt)
   }
 }
 </style>

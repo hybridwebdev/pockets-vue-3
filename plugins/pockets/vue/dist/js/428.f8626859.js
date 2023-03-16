@@ -1,2 +1,0 @@
-"use strict";(self["webpackChunktest"]=self["webpackChunktest"]||[]).push([[428],{3744:function(t,e){e.Z=(t,e)=>{const r=t.__vccOpts||t;for(const[s,n]of e)r[s]=n;return r}},5428:function(t,e,r){r.r(e),r.d(e,{default:function(){return f}});var s=r(821);function n(t,e,r,n,u,c){return(0,s.renderSlot)(t.$slots,"default",{state:t.state})}let u=()=>({state:(0,s.reactive)({...(0,s.useAttrs)()})});var c={inheritAttrs:!1,setup:u},a=r(3744);const o=(0,a.Z)(c,[["render",n]]);var f=o}}]);
-//# sourceMappingURL=428.f8626859.js.map

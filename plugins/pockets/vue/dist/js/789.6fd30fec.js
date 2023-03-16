@@ -1,2 +1,0 @@
-"use strict";(self["webpackChunktest"]=self["webpackChunktest"]||[]).push([[789],{3744:function(t,e){e.Z=(t,e)=>{const n=t.__vccOpts||t;for(const[r,c]of e)n[r]=c;return n}},1789:function(t,e,n){n.r(e),n.d(e,{default:function(){return l}});var r=n(821);function c(t,e){return(0,r.openBlock)(),(0,r.createElementBlock)("div",null,[(0,r.renderSlot)(t.$slots,"default")])}var o=n(3744);const u={},s=(0,o.Z)(u,[["render",c]]);var l=s}}]);
-//# sourceMappingURL=789.6fd30fec.js.map

@@ -1,5 +1,5 @@
 import { editor } from "@/node-tree/editor/"
-import { computed, reactive } from "vue"
+import { computed, reactive, provide } from "vue"
 import { useInject } from "@/node-tree/create-tree-api/injection-key"
 
 export let setup = (props) => {
@@ -69,6 +69,7 @@ export let setup = (props) => {
         clickHandler,
     } )
 
+    provide('nodeApi', nodeApi)
     return state
     
 }

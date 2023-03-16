@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunktest"]=self["webpackChunktest"]||[]).push([[625],{3625:function(e,t,n){n.r(t),n.d(t,{default:function(){return p}});var a=n(821),o=(0,a.defineComponent)({__name:"marker",props:{lat:{type:Number},lng:{type:Number}},setup(e){const t=e;let n=()=>{},o=(0,a.inject)("google-maps"),{lat:r,lng:p}=t;return new o.google.maps.Marker({position:new o.google.maps.LatLng({lat:r,lng:p})}).setMap(o.map),(e,t)=>((0,a.openBlock)(),(0,a.createBlock)((0,a.unref)(n)))}});const r=o;var p=r}}]);
+//# sourceMappingURL=625.47fefb9c.js.map

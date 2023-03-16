@@ -1,6 +1,5 @@
 <template>
     <pockets-wysiwyg v-model='$attrs.innerHTML' v-bind='testa'/>
-    
 </template>
 <script>
 export default {

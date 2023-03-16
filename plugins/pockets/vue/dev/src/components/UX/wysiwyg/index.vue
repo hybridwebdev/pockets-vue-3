@@ -34,11 +34,16 @@ let props = defineProps( {
 let editor = ref(false)
 
 let editorConfig = {
-    extensions: [
-      StarterKit,
-    ],
-    content: props.modelValue,
-    onUpdate: () => emit( 'update:modelValue', editor.value.getHTML() ) ,
+  editorProps: {
+    attributes: {
+      class: '',
+    },
+  },
+  extensions: [
+    StarterKit,
+  ],
+  content: props.modelValue,
+  onUpdate: () => emit( 'update:modelValue', editor.value.getHTML() ) ,
 }
 
 onMounted( () => {

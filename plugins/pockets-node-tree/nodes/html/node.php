@@ -10,7 +10,7 @@ class node extends \pockets_node_tree\nodes\node {
         "elTypes" => ["div", 'section', 'aside', 'header', 'footer'],
 
         "node" => [
-            "el" => "div",
+            "el" => "pockets-html",
             "props" => [
                 "class" => "col-12",
                 'innerHTML' => "<p>Hello World</p>"

@@ -48,7 +48,6 @@ let editorConfig = {
 
 onMounted( () => {
   editor.value = new Editor(editorConfig)
-  console.log(editor.value)
 } )
 
 onUnmounted( () => editor.value.destroy() )

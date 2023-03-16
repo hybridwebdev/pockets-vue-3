@@ -56,7 +56,6 @@ export default {
             outline: 5px solid #f00 !important
         }
         &.editor-show {
-            button,
             a,
             iframe {
                 pointer-events: none 

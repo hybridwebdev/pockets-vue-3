@@ -12,7 +12,6 @@ div(
     :editor="editor" 
     class='editor-wrapper'
   )
-  FloatingMenu(:editor='editor')
 
 </template>
 <script lang='ts' setup>

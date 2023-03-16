@@ -22,7 +22,7 @@ export let setup = (props) => {
         if(editor?.active?.paths.full == nodeApi.paths.full) return true
     } )
 
-    let classes = computed(() => {
+    let classes = computed( () => {
         let {
             active,
             hovered,
@@ -34,7 +34,7 @@ export let setup = (props) => {
             "editor-show": editor.show,
             "selected": selected && editor.show
         }
-    })
+    } )
 
     let toolTip = computed( () => ( {
         content: nodeApi.branch.map(e => e.schema.title).join(' > '), 

@@ -41,7 +41,10 @@ let editorConfig = {
     onUpdate: () => emit( 'update:modelValue', editor.value.getHTML() ) ,
 }
 
-onMounted( () => editor.value = new Editor(editorConfig) )
+onMounted( () => {
+  editor.value = new Editor(editorConfig)
+  console.log(editor.value)
+} )
 
 onUnmounted( () => editor.value.destroy() )
 

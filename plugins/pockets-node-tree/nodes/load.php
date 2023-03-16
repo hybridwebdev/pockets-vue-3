@@ -6,6 +6,7 @@ class load {
         \pockets_node_tree\nodes\youtube\node::init();
         \pockets_node_tree\nodes\image\node::init();
         \pockets_node_tree\nodes\container\node::init();
+        \pockets_node_tree\nodes\html\node::init();
         
         \pockets_node_tree\nodes\post\node::init();
         \pockets_node_tree\nodes\wp_nav_menu\node::init();

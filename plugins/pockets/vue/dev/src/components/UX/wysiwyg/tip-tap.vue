@@ -1,11 +1,11 @@
 <template lang='pug'>
-div( 
-  v-if='editor'
-)
+
+div()
   editor-content( 
     v-if='editor'
     :editor="editor" 
     class='editor-wrapper'
+    v-bind='props'
   )
   bubbleMenu(
     :editor='editor'
@@ -13,7 +13,7 @@ div(
   )
     format-buttons() 
     element-selector()
-      
+    
 </template>
 <script lang='ts' setup>
 import { onMounted, ref, onUnmounted, provide } from "vue"

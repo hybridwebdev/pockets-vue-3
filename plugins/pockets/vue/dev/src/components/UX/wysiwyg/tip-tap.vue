@@ -7,6 +7,12 @@ div()
     class='editor-wrapper'
     v-bind='props'
   )
+  FloatingMenu(
+    :editor='editor'
+    v-if='editor'
+  )
+    format-buttons() 
+    element-selector()
   bubbleMenu(
     :editor='editor'
     v-if='editor'
@@ -18,7 +24,7 @@ div()
 <script lang='ts' setup>
 import { onMounted, ref, onUnmounted, provide } from "vue"
 import StarterKit from '@tiptap/starter-kit'
-import { Editor, EditorContent, BubbleMenu  } from '@tiptap/vue-3'
+import { Editor, EditorContent, BubbleMenu, FloatingMenu  } from '@tiptap/vue-3'
 import formatButtons from "./format-buttons"
 import elementSelector from "./element-selector"
 

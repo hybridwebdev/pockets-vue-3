@@ -4,7 +4,7 @@ namespace pockets_node_tree\nodes\html;
 class node extends \pockets_node_tree\nodes\node {
 
     public $schema = [
-        "fields" => ['base-attributes', 'schema-selector', 'el-selector'],
+        "fields" => ['base-attributes', 'schema-selector', 'el-selector', 'content'],
         "title" => "HTML",
         
         "elTypes" => ["div", 'section', 'aside', 'header', 'footer'],

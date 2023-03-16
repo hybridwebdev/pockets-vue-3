@@ -1,5 +1,5 @@
 <template>
-    <pockets-wysiwyg v-model='test' v-bind='testa'/>
+    <pockets-wysiwyg v-model='$attrs.innerHTML' v-bind='testa'/>
     
 </template>
 <script>

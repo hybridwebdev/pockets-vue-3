@@ -70,6 +70,7 @@ export let setup = (props) => {
     } )
 
     provide('nodeApi', nodeApi)
+    
     return state
     
 }

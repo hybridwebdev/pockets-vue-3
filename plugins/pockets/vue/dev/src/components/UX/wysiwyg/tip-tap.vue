@@ -3,21 +3,19 @@ div(
   v-if='editor'
   class='border border-2 border-accent-dk'
 )
-  div(
-    class='d-flex bg-accent-dk gap-0'
-  )
-    format-buttons() 
-    element-selector()
   editor-content( 
     :editor="editor" 
     class='editor-wrapper'
   )
-
+  bubbleMenu(:editor='editor')
+    format-buttons() 
+    element-selector()
+      
 </template>
 <script lang='ts' setup>
 import { onMounted, ref, onUnmounted, provide } from "vue"
 import StarterKit from '@tiptap/starter-kit'
-import { Editor, EditorContent, FloatingMenu  } from '@tiptap/vue-3'
+import { Editor, EditorContent, BubbleMenu  } from '@tiptap/vue-3'
 import formatButtons from "./format-buttons"
 import elementSelector from "./element-selector"
 

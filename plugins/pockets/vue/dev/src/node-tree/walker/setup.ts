@@ -1,5 +1,5 @@
 import { editor } from "@/node-tree/editor/"
-import { computed, ref, reactive, provide, inject } from "vue"
+import { computed, reactive } from "vue"
 import { useInject } from "@/node-tree/create-tree-api/injection-key"
 
 export let setup = (props) => {
@@ -36,30 +36,26 @@ export let setup = (props) => {
         }
     })
 
-    let toolTip = computed(() => {
-
-        return { 
-            content: nodeApi.branch.map(e => e.schema.title).join(' > '), 
-            shown: editor?.show && state.hovered, 
-            triggers: [], 
-            placement: "auto-start", 
-            popperClass: `pockets-node-tree-node-tooltip`,
-            delay: 1
-        }
-
-    })
-
-    let key = 'pockets/node-tree/node/disable-interactions'
+    let toolTip = computed( () => ( {
+        content: nodeApi.branch.map(e => e.schema.title).join(' > '), 
+        shown: editor?.show && state.hovered, 
+        triggers: [], 
+        placement: "auto-start", 
+        popperClass: `pockets-node-tree-node-tooltip`,
+        delay: 1
+    } ) )
 
     let hoverHandler = (value: boolean) => {
         if(state.childOfselected || state.selected) return;
         state.hovered = value
     }
+
     let clickHandler = () => {
         if(!editor.show) return
         if( state.childOfselected ) return;
         return editor.active = nodeApi 
     }
+
     let state = reactive( {
         hovered: false,
         disabled,
@@ -71,7 +67,6 @@ export let setup = (props) => {
         toolTip,
         disableInteractions: childOfselected,
         clickHandler,
-        
     } )
 
     return state

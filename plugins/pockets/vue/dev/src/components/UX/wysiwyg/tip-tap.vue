@@ -1,13 +1,16 @@
 <template lang='pug'>
 div( 
   v-if='editor'
-  class='border border-2 border-accent-dk'
 )
   editor-content( 
+    v-if='editor'
     :editor="editor" 
     class='editor-wrapper'
   )
-  bubbleMenu(:editor='editor')
+  bubbleMenu(
+    :editor='editor'
+    v-if='editor'
+  )
     format-buttons() 
     element-selector()
       

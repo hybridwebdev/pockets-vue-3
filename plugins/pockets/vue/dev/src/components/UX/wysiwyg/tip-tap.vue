@@ -45,7 +45,7 @@ export let createInstance = ( { content } ) => {
     onUpdate: () => content.value = editor.value.getHTML()  ,
   }
 
-  onMounted( () => editor.value = new Editor(editorConfig) )
+  editor.value = new Editor(editorConfig)
 
   onUnmounted( () => editor.value.destroy() )
 

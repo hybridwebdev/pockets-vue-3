@@ -1,25 +1,23 @@
 <template lang='pug'>
 
-div()
-  editor-content( 
-    v-if='editor'
-    :editor="editor" 
-    class='editor-wrapper'
-    v-bind='props'
-  )
-  FloatingMenu(
-    v-if='editor'
-    :editor='editor'
-  )
-    format-buttons() 
-    element-selector()
-  bubbleMenu(
-    v-if='editor'
-    :editor='editor'
-  )
-    format-buttons() 
-    element-selector()
-    
+editor-content( 
+  v-if='editor'
+  :editor="editor" 
+  class='editor-wrapper'
+)
+FloatingMenu(
+  v-if='editor'
+  :editor='editor'
+)
+  format-buttons() 
+  element-selector()
+bubbleMenu(
+  v-if='editor'
+  :editor='editor'
+)
+  format-buttons() 
+  element-selector()
+  
 </template>
 <script lang='ts' setup>
 import { onMounted, ref, onUnmounted, provide } from "vue"

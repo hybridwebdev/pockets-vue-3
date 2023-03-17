@@ -1,9 +1,11 @@
 <template>
-    <pockets-wysiwyg
-        :editable='nodeApi.editor.active && nodeApi.paths.full == nodeApi.editor.active.paths.full'
-        v-model='nodeApi.node.props.innerHTML' 
+    <div
         v-bind='filteredAttrs'
-    />
+    >
+        <pockets-wysiwyg
+            v-model='nodeApi.node.props.innerHTML' 
+        />
+    </div>
 </template>
 <script>
 import { inject } from "vue"

@@ -21,7 +21,7 @@ div()
 </template>
 <script lang='ts'>
 
-import { onMounted, ref, onUnmounted, provide, computed } from "vue"
+import { onMounted, ref, onUnmounted, provide, computed, watch } from "vue"
 import StarterKit from '@tiptap/starter-kit'
 import { Editor, EditorContent, BubbleMenu, FloatingMenu  } from '@tiptap/vue-3'
 import formatButtons from "./format-buttons"
@@ -64,9 +64,17 @@ let setup = ( props, { emit } )  => {
     set: (v) => emit( 'update:modelValue', v)
   } ) 
 
-  return createInstance( {
+  let { editor } = createInstance( {
     content
   } )
+
+  watch(content, (v) => {
+    editor.value.commands.setContent(v, false)
+  } )
+
+  return { 
+    editor
+  }
 
 }
 

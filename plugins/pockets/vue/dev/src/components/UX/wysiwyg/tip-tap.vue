@@ -19,43 +19,53 @@ bubbleMenu(
   element-selector()
   
 </template>
-<script lang='ts' setup>
+<script lang='ts'>
+
 import { onMounted, ref, onUnmounted, provide } from "vue"
 import StarterKit from '@tiptap/starter-kit'
 import { Editor, EditorContent, BubbleMenu, FloatingMenu  } from '@tiptap/vue-3'
 import formatButtons from "./format-buttons"
 import elementSelector from "./element-selector"
+let setup = (props, { emit }) => {
+    
+  let editor = ref(false)
 
-let emit = defineEmits(['update:modelValue'])
-
-let props = defineProps( {
-    modelValue: {
-      type: String,
-      required: true
+  let editorConfig = {
+    autofocus: true,
+    editorProps: {
+      attributes: {
+        class: '',
+      },
     },
-} )
+    extensions: [
+      StarterKit,
+    ],
+    content: props.modelValue,
+    onUpdate: () => emit( 'update:modelValue', editor.value.getHTML() ) ,
+  }
 
-let editor = ref(false)
+  onMounted( () => editor.value = new Editor(editorConfig) )
 
-let editorConfig = {
-  autofocus: true,
-  editorProps: {
-    attributes: {
-      class: '',
-    },
-  },
-  extensions: [
-    StarterKit,
-  ],
-  content: props.modelValue,
-  onUpdate: () => emit( 'update:modelValue', editor.value.getHTML() ) ,
+  onUnmounted( () => editor.value.destroy() )
+
+  provide('tip-tap-editor', editor)
+
+  return { 
+    editor, 
+  }
+
 }
 
-onMounted( () => editor.value = new Editor(editorConfig) )
-
-onUnmounted( () => editor.value.destroy() )
-
-provide('tip-tap-editor', editor)
+export default {
+  components: { EditorContent, BubbleMenu, FloatingMenu, formatButtons, elementSelector },
+  props: {
+      modelValue: {
+        type: String,
+        required: true
+      },
+  },
+  setup
+}
 
 </script>
 <style lang='scss'>

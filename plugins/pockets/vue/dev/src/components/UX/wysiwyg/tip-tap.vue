@@ -1,33 +1,34 @@
 <template lang='pug'>
-
-editor-content( 
-  v-if='editor'
-  :editor="editor" 
-  class='editor-wrapper'
-)
-FloatingMenu(
-  v-if='editor'
-  :editor='editor'
-)
-  format-buttons() 
-  element-selector()
-bubbleMenu(
-  v-if='editor'
-  :editor='editor'
-)
-  format-buttons() 
-  element-selector()
-  
+div()
+  editor-content( 
+    v-if='editor'
+    :editor="editor" 
+    class='editor-wrapper'
+  )
+  FloatingMenu(
+    v-if='editor'
+    :editor='editor'
+  )
+    format-buttons() 
+    element-selector()
+  bubbleMenu(
+    v-if='editor'
+    :editor='editor'
+  )
+    format-buttons() 
+    element-selector()
+    
 </template>
 <script lang='ts'>
 
-import { onMounted, ref, onUnmounted, provide } from "vue"
+import { onMounted, ref, onUnmounted, provide, computed } from "vue"
 import StarterKit from '@tiptap/starter-kit'
 import { Editor, EditorContent, BubbleMenu, FloatingMenu  } from '@tiptap/vue-3'
 import formatButtons from "./format-buttons"
 import elementSelector from "./element-selector"
-let setup = (props, { emit }) => {
-    
+
+export let createInstance = ( { content } ) => {
+
   let editor = ref(false)
 
   let editorConfig = {
@@ -40,8 +41,8 @@ let setup = (props, { emit }) => {
     extensions: [
       StarterKit,
     ],
-    content: props.modelValue,
-    onUpdate: () => emit( 'update:modelValue', editor.value.getHTML() ) ,
+    content: content.value,
+    onUpdate: () => content.value = editor.value.getHTML()  ,
   }
 
   onMounted( () => editor.value = new Editor(editorConfig) )
@@ -53,6 +54,19 @@ let setup = (props, { emit }) => {
   return { 
     editor, 
   }
+
+}
+
+let setup = ( props, { emit } )  => {
+
+  let content = computed( {
+    get: ( ) => props.modelValue,
+    set: (v) => emit( 'update:modelValue', v)
+  } ) 
+
+  return createInstance( {
+    content
+  } )
 
 }
 

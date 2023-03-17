@@ -40,6 +40,7 @@ let props = defineProps( {
 let editor = ref(false)
 
 let editorConfig = {
+  autofocus: true,
   editorProps: {
     attributes: {
       class: '',

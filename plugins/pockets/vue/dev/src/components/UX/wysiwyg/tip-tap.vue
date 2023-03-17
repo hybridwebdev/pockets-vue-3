@@ -8,14 +8,14 @@ div()
     v-bind='props'
   )
   FloatingMenu(
-    :editor='editor'
     v-if='editor'
+    :editor='editor'
   )
     format-buttons() 
     element-selector()
   bubbleMenu(
-    :editor='editor'
     v-if='editor'
+    :editor='editor'
   )
     format-buttons() 
     element-selector()

@@ -1,12 +1,10 @@
 <template lang='pug'>
 div()
   editor-content( 
-    v-if='editor'
     :editor="editor" 
     class='editor-wrapper'
   )
   bubbleMenu(
-    v-if='editor'
     :editor='editor'
     class='d-flex p-1 bg-accent-dk'
   )

@@ -9,13 +9,13 @@ div()
     v-if='editor'
     :editor='editor'
   )
-    //- format-buttons() 
+    format-buttons() 
     element-selector()
   bubbleMenu(
     v-if='editor'
     :editor='editor'
   )
-    //- format-buttons() 
+    format-buttons() 
     element-selector()
     
 </template>

@@ -3,6 +3,7 @@
 editor-content( 
   :editor="editor" 
   class='editor-wrapper'
+  v-bind='$attrs'
 )
 bubbleMenu(
   :editor='editor'

@@ -1,16 +1,15 @@
 <template lang='pug'>
-div()
-  editor-content( 
-    :editor="editor" 
-    class='editor-wrapper'
-  )
-  bubbleMenu(
-    :editor='editor'
-    class='d-flex p-1 bg-accent-dk'
-  )
-    format-buttons() 
-    element-selector()
-    
+
+editor-content( 
+  :editor="editor" 
+  class='editor-wrapper'
+)
+bubbleMenu(
+  :editor='editor'
+  class='d-flex p-1 bg-accent-dk'
+)
+  format-buttons() 
+  element-selector()
 </template>
 <script lang='ts'>
 //@ts-nocheck

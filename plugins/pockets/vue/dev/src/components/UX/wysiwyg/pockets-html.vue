@@ -2,24 +2,14 @@
     <div
         v-bind='filteredAttrs'
     >
-        {{test}}
         <pockets-wysiwyg
-            v-model='test' 
-        />
-            <pockets-wysiwyg
-            v-model='test' 
-        />
-            <pockets-wysiwyg
-            v-model='test' 
+            v-model='nodeApi.node.props.innerHTML' 
         />
     </div>
 </template>
 <script>
 import { inject } from "vue"
 export default {
-    data: () => ({
-        test: "Hello world"
-    }),
     inject: ['nodeApi'],
     inheritAttrs: false,
     computed: {

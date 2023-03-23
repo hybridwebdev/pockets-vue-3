@@ -8,7 +8,7 @@ div()
   bubbleMenu(
     v-if='editor'
     :editor='editor'
-    class='d-flex'
+    class='d-flex p-1 bg-accent-dk'
   )
     format-buttons() 
     element-selector()

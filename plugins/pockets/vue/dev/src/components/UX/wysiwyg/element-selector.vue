@@ -13,9 +13,6 @@ div(
             :selected='option.isActive'
             :value='i'
         ) {{ option.text }}
-    i(
-        class='fa fa-chevron-down text-white'
-    )
 
 </template>
 <script lang='ts' setup>

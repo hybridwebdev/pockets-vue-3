@@ -5,15 +5,10 @@ div()
     :editor="editor" 
     class='editor-wrapper'
   )
-  FloatingMenu(
-    v-if='editor'
-    :editor='editor'
-  )
-    format-buttons() 
-    element-selector()
   bubbleMenu(
     v-if='editor'
     :editor='editor'
+    class='d-flex'
   )
     format-buttons() 
     element-selector()
@@ -48,6 +43,13 @@ export let createInstance = ( { content } ) => {
   onUnmounted( () => editor.destroy() )
 
   provide('tip-tap-editor', editor)
+  
+  watch(content, (v) => {
+      if (editor.getHTML() === v) {
+        return
+      }
+      editor.commands.setContent(v, false)
+  } )
 
   return { 
     editor, 
@@ -58,20 +60,12 @@ export let createInstance = ( { content } ) => {
 let setup = ( props, { emit } )  => {
 
   let content = computed( {
-    get: ( ) => props.modelValue,
-    set: (v) => emit( 'update:modelValue', v)
+    get: _ => props.modelValue,
+    set: v => emit( 'update:modelValue', v)
   } ) 
 
   let { editor } = createInstance( {
     content
-  } )
-
-  watch(content, (v) => {
-      if (editor.getHTML() === v) {
-        return
-      }
-
-      editor.commands.setContent(v, false)
   } )
 
   return { 

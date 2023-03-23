@@ -30,15 +30,15 @@ let change = ($e) => {
 
 let makeHeadingOption = (level: number ) => ( {
     text: `H${level}`,
-    isActive:  editor.value.isActive( 'heading', { level } ),
-    select: () => editor.value.chain().focus().toggleHeading({ level } ).run()
+    isActive:  editor.isActive( 'heading', { level } ),
+    select: () => editor.chain().focus().toggleHeading({ level } ).run()
 } )
 
 let options = computed( () => [
     {
         text: "P",
-        isActive: editor.value.isActive('p'),
-        select: () => editor.value.chain().focus().setParagraph().run()
+        isActive: editor.isActive('p'),
+        select: () => editor.chain().focus().setParagraph().run()
     },
     makeHeadingOption(1),
     makeHeadingOption(2),

@@ -10,13 +10,13 @@ div()
     :editor='editor'
   )
     //- format-buttons() 
-    //- element-selector()
+    element-selector()
   bubbleMenu(
     v-if='editor'
     :editor='editor'
   )
     //- format-buttons() 
-    //- element-selector()
+    element-selector()
     
 </template>
 <script lang='ts'>

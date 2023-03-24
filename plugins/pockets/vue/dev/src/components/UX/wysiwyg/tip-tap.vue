@@ -5,6 +5,13 @@ editor-content(
   class='editor-wrapper'
   v-bind='$attrs'
 )
+FloatingMenu(
+  :editor='editor'
+  class='d-flex p-1 bg-accent-dk'
+)
+  format-buttons() 
+  element-selector()
+
 bubbleMenu(
   :editor='editor'
   class='d-flex p-1 bg-accent-dk'
@@ -21,7 +28,7 @@ import { Editor, EditorContent, BubbleMenu, FloatingMenu  } from '@tiptap/vue-3'
 import formatButtons from "./format-buttons"
 import elementSelector from "./element-selector"
 
-export let createInstance = ( { content } ) => {
+export let createEditorInstance = ( { content } ) => {
 
   let editorConfig = {
     autofocus: true,
@@ -45,11 +52,11 @@ export let createInstance = ( { content } ) => {
   provide('tip-tap-editor', editor)
   
   watch(content, (v) => {
-      console.log(editor.getJSON())
-      if (editor.getHTML() === v) {
-        return
-      }
-      editor.commands.setContent(v, false)
+    /**
+      Syncs editor instances
+    */
+    if ( editor.getHTML() === v ) return
+    editor.commands.setContent(v, false)
   } )
 
   return { 
@@ -65,7 +72,7 @@ let setup = ( props, { emit } )  => {
     set: v => emit( 'update:modelValue', v)
   } ) 
 
-  let { editor } = createInstance( {
+  let { editor } = createEditorInstance( {
     content
   } )
 

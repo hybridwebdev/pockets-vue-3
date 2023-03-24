@@ -1,0 +1,55 @@
+//@ts-nocheck
+import { onUnmounted, provide, computed, watch } from "vue"
+import StarterKit from '@tiptap/starter-kit'
+import { Editor } from '@tiptap/vue-3'
+
+let extensions = [
+  StarterKit,
+  
+]
+
+export let createEditorInstance = config => {
+
+  let { content } = config
+
+  let editorConfig = {
+    autofocus: true,
+    extensions,
+    content: content.value,
+    onUpdate: () => content.value = editor.getHTML()  ,
+  }
+
+  let editor = new Editor(editorConfig)
+
+  onUnmounted( () => editor.destroy() )
+
+  provide('tip-tap-editor', editor)
+  
+  watch(content, (v) => {
+    /**
+      Syncs editor instances
+    */
+    if ( editor.getHTML() === v ) return
+    editor.commands.setContent(v, false)
+  } )
+
+  return editor
+
+}
+
+export let setup = ( props, { emit } )  => {
+
+  let content = computed( {
+    get: _ => props.modelValue,
+    set: v => emit( 'update:modelValue', v)
+  } ) 
+
+  let editor = createEditorInstance( {
+    content
+  } )
+
+  return { 
+    editor
+  }
+
+}

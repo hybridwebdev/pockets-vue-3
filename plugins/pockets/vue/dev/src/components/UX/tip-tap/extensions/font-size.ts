@@ -3,8 +3,6 @@ import '@tiptap/extension-text-style'
 import { Extension } from '@tiptap/core'
 
 export const FontSize = Extension.create({
-    
-    name: 'color',
 
     addOptions() {
         return {

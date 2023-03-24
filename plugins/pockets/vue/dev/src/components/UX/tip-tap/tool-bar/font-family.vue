@@ -1,6 +1,6 @@
 <template lang='pug'>
 div(
-    class='ms-auto d-flex align-items-center pe-1'
+    class='ms-auto d-flex align-items-center'
     role='button'
     v-if='editor'
 )
@@ -25,24 +25,19 @@ let change = ($e) => {
     if(v && v.select && typeof v.select == 'function') v.select()
 }
 
-let makeHeadingOption = (level: number ) => ( {
-    text: `H${level}`,
-    isActive:  editor.isActive( 'heading', { level } ),
-    select: () => editor.chain().focus().toggleHeading({ level } ).run()
+let makeOption = (fontFamily: string ) => ( {
+    text: fontFamily,
+    isActive:  editor.isActive('textStyle', { fontFamily } ),
+    select: () => editor.chain().focus().setFontFamily( fontFamily ).run()
 } )
 
 let options = computed( () => [
     {
-        text: "P",
-        isActive: editor.isActive('p'),
-        select: () => editor.chain().focus().setParagraph().run()
-    },
-    makeHeadingOption(1),
-    makeHeadingOption(2),
-    makeHeadingOption(3),
-    makeHeadingOption(4),
-    makeHeadingOption(5),
-    makeHeadingOption(6)
+        text: "None",
+        isActive:  editor.isActive('textStyle', { fontFamily: undefined } ),
+        select: () => editor.chain().focus().unsetFontFamily().run()
+    }, 
+    makeOption('Inter')
 ] )
 
 </script>

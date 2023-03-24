@@ -23,9 +23,6 @@ button(
 )
     i(class='fa fa-strikethrough')
 
-button(
-    @click="editor.commands.setImage({ src: 'https://placehold.co/600x400' })"
-) Add Teh Imagzor
 </template>
 <script lang='ts' setup>
 import { inject } from "vue"

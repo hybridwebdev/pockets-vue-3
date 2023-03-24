@@ -24,6 +24,7 @@ export let createEditorInstance = config => {
     /**
       Syncs editor instances
     */
+    console.log(editor.getJSON())
     if ( editor.getHTML() === v ) return
     editor.commands.setContent(v, false)
   } )

@@ -15,16 +15,17 @@ export const FontSize = Extension.create({
         {
             ...this.options,
             attributes: {
-                color: {
+                terst: {
                     default: null,
                     parseHTML: element => element.style.color?.replace(/['"]+/g, ''),
                     renderHTML: attributes => {
-                        if (!attributes.color) {
+                        console.log(attributes)
+                        if (!attributes.terst) {
                             return {}
                         }
 
                         return {
-                            style: `color: ${attributes.color}`,
+                            style: `background-color: ${attributes.terst}`,
                         }
                     },
                 },
@@ -34,8 +35,8 @@ export const FontSize = Extension.create({
     },
     addCommands() {
         return {
-            setColor: color => ( { chain } ) => chain().setMark('textStyle', { color } ).run(),
-            unsetColor: () => ({ chain }) => chain().setMark('textStyle', { color: null } ).removeEmptyTextStyle().run(),
+            setColor: color => ( { chain } ) => chain().setMark('textStyle', { terst: color } ).run(),
+            unsetColor: () => ({ chain }) => chain().setMark('textStyle', { terst: null } ).removeEmptyTextStyle().run(),
         }
     },
 })

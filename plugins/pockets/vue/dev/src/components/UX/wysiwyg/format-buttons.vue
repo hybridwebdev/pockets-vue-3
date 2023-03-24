@@ -14,7 +14,7 @@ button(
 
 )
     i(class='fa fa-italic')
-
+ 
 button( 
     class='btn btn-accent-dk'
     @click="editor.chain().focus().toggleStrike().run()"

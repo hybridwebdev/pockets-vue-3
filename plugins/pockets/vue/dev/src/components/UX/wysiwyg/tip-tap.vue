@@ -14,6 +14,7 @@ bubbleMenu(
 </template>
 <script lang='ts'>
 //@ts-nocheck
+import Image from '@tiptap/extension-image'
 import { onMounted, ref, onUnmounted, provide, computed, watch } from "vue"
 import StarterKit from '@tiptap/starter-kit'
 import { Editor, EditorContent, BubbleMenu, FloatingMenu  } from '@tiptap/vue-3'
@@ -31,6 +32,7 @@ export let createInstance = ( { content } ) => {
     },
     extensions: [
       StarterKit,
+      Image
     ],
     content: content.value,
     onUpdate: () => content.value = editor.getHTML()  ,
@@ -43,6 +45,7 @@ export let createInstance = ( { content } ) => {
   provide('tip-tap-editor', editor)
   
   watch(content, (v) => {
+      console.log(editor.getJSON())
       if (editor.getHTML() === v) {
         return
       }

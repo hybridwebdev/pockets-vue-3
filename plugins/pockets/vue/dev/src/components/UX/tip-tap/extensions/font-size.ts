@@ -1,8 +1,10 @@
-//@ts-nocheck
 import '@tiptap/extension-text-style'
+
 import { Extension } from '@tiptap/core'
 
 export const FontSize = Extension.create({
+    
+    name: 'color',
 
     addOptions() {
         return {
@@ -11,32 +13,30 @@ export const FontSize = Extension.create({
     },
 
     addGlobalAttributes() {
-        return [
-        {
-            ...this.options,
+        return [ {
+            types: this.options.types,
             attributes: {
-                terst: {
+                color: {
                     default: null,
                     parseHTML: element => element.style.color?.replace(/['"]+/g, ''),
                     renderHTML: attributes => {
-                        console.log(attributes)
-                        if (!attributes.terst) {
+                        if (!attributes.color) {
                             return {}
                         }
 
                         return {
-                            style: `background-color: ${attributes.terst}`,
+                            style: `color: ${attributes.color}`,
                         }
                     },
                 },
             },
-        },
-        ]
+        } ]
     },
+
     addCommands() {
         return {
-            setColor: color => ( { chain } ) => chain().setMark('textStyle', { terst: color } ).run(),
-            unsetColor: () => ({ chain }) => chain().setMark('textStyle', { terst: null } ).removeEmptyTextStyle().run(),
+            setColor: color => ({ chain }) => chain().setMark('textStyle', { color }).run(),
+            unsetColor: () => ({ chain }) => chain().setMark('textStyle', { color: null }).removeEmptyTextStyle().run()
         }
     },
 })

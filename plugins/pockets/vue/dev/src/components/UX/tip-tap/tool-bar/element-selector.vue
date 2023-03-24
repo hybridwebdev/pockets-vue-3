@@ -37,6 +37,11 @@ let options = computed( () => [
         isActive: editor.isActive('p'),
         select: () => editor.chain().focus().setParagraph().run()
     },
+    {
+        text: "Code",
+        isActive: editor.isActive('codeBlock'),
+        select: () => editor.chain().focus().setCodeBlock().run()
+    },
     makeHeadingOption(1),
     makeHeadingOption(2),
     makeHeadingOption(3),

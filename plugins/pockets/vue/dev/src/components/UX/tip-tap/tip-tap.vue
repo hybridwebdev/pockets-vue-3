@@ -29,6 +29,13 @@ export default {
 .editor-wrapper {
   .ProseMirror {
     outline: none;
+    p.is-empty::before {
+      color: #adb5bd;
+      content: attr(data-placeholder);
+      height: 0;
+      pointer-events: none;
+    }
   }
 }
+
 </style>

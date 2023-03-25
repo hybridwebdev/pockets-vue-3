@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { onUnmounted, provide, computed, watch } from "vue"
 import { extensions } from "./extensions/"
+import { nodes } from "./nodes/"
 import { Editor } from '@tiptap/vue-3'
 
 export let createEditorInstance = config => {
@@ -9,7 +10,7 @@ export let createEditorInstance = config => {
 
   let editorConfig = {
     autofocus: true,
-    extensions,
+    extensions: [ ...extensions, ...nodes ],
     content: content.value,
     onUpdate: () => content.value = editor.getHTML()  ,
   }

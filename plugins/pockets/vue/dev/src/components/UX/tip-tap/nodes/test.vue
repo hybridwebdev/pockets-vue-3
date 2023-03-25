@@ -1,5 +1,10 @@
 <template>
-  <node-view-wrapper class="draggable-item">
+  <node-view-wrapper 
+    class="draggable-item" 
+    :class='{"asss": selected}'
+    contenteditable="false"
+  >
+    {{selected}} selected
     <div
       class="drag-handle"
       contenteditable="false"
@@ -33,7 +38,9 @@ export default {
     0 0 0 1px rgba(0, 0, 0, 0.05),
     0px 10px 20px rgba(0, 0, 0, 0.1),
   ;
-
+  &.asss {
+    outline: 5px solid #f00
+  }
   .drag-handle {
     padding:20px;
     background: #f00;

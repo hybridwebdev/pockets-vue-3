@@ -9,6 +9,8 @@ export let CustomNode =  Node.create({
     group: 'block',
     content: 'block+',
     draggable: true,
+    selectable: true,
+    atom: true,
     addAttributes() {
         return {
             class: ""
@@ -26,7 +28,7 @@ export let CustomNode =  Node.create({
         }
     },
     renderHTML({ HTMLAttributes }) {
-        return  [this.name, {}, 0]
+        return  [this.name, HTMLAttributes, 0]
     },
     parseHTML() {
         return [

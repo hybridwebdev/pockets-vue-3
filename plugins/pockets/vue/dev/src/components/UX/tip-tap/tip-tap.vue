@@ -34,6 +34,7 @@ export default {
       content: attr(data-placeholder);
       height: 0;
       pointer-events: none;
+      float:left;
     }
   }
 }

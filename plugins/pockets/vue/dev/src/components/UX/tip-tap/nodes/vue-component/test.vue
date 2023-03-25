@@ -2,7 +2,6 @@
   <node-view-wrapper 
     class="draggable-item" 
     :class='{"asss": selected}'
-    contenteditable="false"
   >
     {{selected}} selected
     <div

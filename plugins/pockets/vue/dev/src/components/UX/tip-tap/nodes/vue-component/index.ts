@@ -10,7 +10,7 @@ export default Node.create({
     content: 'block+',
     draggable: true,
     selectable: true,
-    atom: true,
+    atom: false,
     addAttributes() {
         return {
             class: ""

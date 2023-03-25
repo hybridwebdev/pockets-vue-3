@@ -3,13 +3,33 @@
 import { Node } from '@tiptap/core'
 import { VueNodeViewRenderer } from '@tiptap/vue-3'
 import Component from './test.vue'
-export let CustomNode =  Node.create({
-    name: 'vueComponent',
-    group: 'block',
 
-    content: 'inline*',
+export let CustomNode =  Node.create({
+    name: 'vue-component',
+    group: 'block',
+    content: 'block+',
+    draggable: true,
+    addAttributes() {
+        return {
+            content: []
+        }
+    },
+    addCommands(){
+        return {
+            setTest: attributes => (editor) => {
+                //
+                console.log(editor)
+                editor.commands.insertContent({ type: this.name, content: [
+                    {
+                        "type": "paragraph",
+                    }
+                ] });
+
+            }
+        }
+    },
     renderHTML({ HTMLAttributes }) {
-        return ['vue-component', HTMLAttributes, 0]
+        return  [this.name, {}, 0]
     },
     parseHTML() {
         return [
@@ -21,14 +41,7 @@ export let CustomNode =  Node.create({
     addNodeView() {
         return VueNodeViewRenderer(Component)
     },
-    addCommands(){
-        return {
-            setTest: attributes => ({ commands }) => {
-                console.log('yup')
-                return commands.setNode(this.name, attributes)
-            }
-        }
-    }
+    
 })
 
 export let nodes = [

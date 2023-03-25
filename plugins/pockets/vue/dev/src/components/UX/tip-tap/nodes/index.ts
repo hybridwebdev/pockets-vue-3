@@ -1,7 +1,7 @@
 import Wrapper from "./wrapper"
-import CustomNode from "./vue-component"
+import VucComponent from "./vue-component"
 
 export let nodes = [
-    CustomNode,
+    VucComponent,
     Wrapper
 ]

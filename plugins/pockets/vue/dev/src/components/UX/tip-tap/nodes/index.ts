@@ -11,7 +11,7 @@ export let CustomNode =  Node.create({
     draggable: true,
     addAttributes() {
         return {
-            content: []
+            class: ""
         }
     },
     addCommands(){

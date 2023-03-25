@@ -17,14 +17,11 @@ export let CustomNode =  Node.create({
     addCommands(){
         return {
             setTest: attributes => (editor) => {
-                //
-                console.log(editor)
-                editor.commands.insertContent({ type: this.name, content: [
+                editor.commands.insertContentAt(editor.state.selection.$to.pos, { type: this.name, content: [
                     {
                         "type": "paragraph",
                     }
-                ] });
-
+                ] } ) ;
             }
         }
     },

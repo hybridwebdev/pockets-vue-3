@@ -23,6 +23,9 @@ button(
 )
     i(class='fa fa-strikethrough')
 
+button(
+    @click="editor.chain().focus().setTest().run()"
+) Add container
 </template>
 <script lang='ts' setup>
 import { inject } from "vue"

@@ -1,7 +1,11 @@
 import Wrapper from "./wrapper"
-import VucComponent from "./vue-component"
+import VueComponent from "./vue-component"
+import Document from "./document"
+import { Text } from '@tiptap/extension-text'
 
 export let nodes = [
-    VucComponent,
-    Wrapper
+    VueComponent,
+    Wrapper,
+    Document,
+    Text
 ]

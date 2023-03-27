@@ -5,7 +5,7 @@ import FontFamily from '@tiptap/extension-font-family'
 import Placeholder from '@tiptap/extension-placeholder'
 import { FontSize } from "./font-size"
 export let extensions = [
-  StarterKit,
+  
   TextStyle,
 //   Color,
   FontFamily,

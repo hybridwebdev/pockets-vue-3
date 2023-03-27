@@ -2,6 +2,12 @@ import Paragraph from '@tiptap/extension-paragraph';
 import { VueNodeViewRenderer } from '@tiptap/vue-3'
 import Component from "./component.vue"
 export default Paragraph.extend({
+    addOptions(){
+        return {
+            tag: "p",
+            HTMLAttributes: {}
+        }
+    },
     addAttributes(){
         return {
             class: ""
@@ -10,11 +16,10 @@ export default Paragraph.extend({
     parseHTML() {
         return [
             { tag: 'p' },
-            { tag: 'doc' }
         ]
     },
-    renderHTML(o) {
-        return ['p', o.HTMLAttributes, 0]
+    renderHTML({HTMLAttributes}) {
+        return ['p', HTMLAttributes, 0]
     },
     addNodeView() {
         return VueNodeViewRenderer(Component)

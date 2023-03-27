@@ -8,9 +8,8 @@ import { FontSize } from "./font-size"
 import Focus from "@tiptap/extension-focus"
 
 export let extensions = [
-  
+  StarterKit,
   TextStyle,
-//   Color,
   FontFamily,
   FontSize,
   Placeholder.configure({

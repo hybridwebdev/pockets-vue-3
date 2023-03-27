@@ -8,4 +8,4 @@ export let nodes = [
     Paragraph.extend(wrapper),
     Document,
     Text,
-]
+] 

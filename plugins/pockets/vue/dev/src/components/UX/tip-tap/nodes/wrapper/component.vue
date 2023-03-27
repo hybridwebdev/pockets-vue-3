@@ -1,41 +1,13 @@
 <template>
-    <node-view-wrapper as='p' contenteditable='false' v-bind='node.attrs'>
-      <node-view-content class="content" as='pp' />
-      <input v-model='test'>
-    </node-view-wrapper>
+    <node-view-wrapper v-bind='node.attrs' />
 </template>
 <script>
 import { computed } from "vue"
-import { NodeViewContent, nodeViewProps, NodeViewWrapper } from '@tiptap/vue-3'
-let setup = (props, ) => {
-  let test = computed({
-    get(){
-      return props.node.attrs.class
-    },
-    set(v){
-      props.updateAttributes({class: v})
-      // props.setContent("<p>aaaaaaaa</p>")
-      
-    }
-  })
-  return {
-    test
-  }
-}
+import { nodeViewProps, NodeViewWrapper } from '@tiptap/vue-3'
 export default {
-  props: {
-    ...nodeViewProps,
-    class: {
-      type: String
-    }
-  },
+  props: nodeViewProps,
   components: {
     NodeViewWrapper,
-    NodeViewContent,
   },
-  mounted(){
-    console.log(this)
-  },
-  setup
 }
 </script>

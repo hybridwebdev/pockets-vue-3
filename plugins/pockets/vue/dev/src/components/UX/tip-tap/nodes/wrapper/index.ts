@@ -18,10 +18,8 @@ export default Paragraph.extend({
             { tag: 'p' },
         ]
     },
-    renderHTML({HTMLAttributes}) {
-        return ['p', HTMLAttributes, 0]
-    },
-    addNodeView() {
-        return VueNodeViewRenderer(Component)
-    },
+    
+    renderHTML: ({HTMLAttributes}) => ['p', HTMLAttributes, 0],
+    addNodeView: () => VueNodeViewRenderer(Component),
+
 })

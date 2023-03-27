@@ -9,6 +9,7 @@ export let createEditorInstance = config => {
   let { content } = config
 
   let editorConfig = {
+    injectCSS: false,
     autofocus: true,
     extensions: [ ...extensions, ...nodes ],
     content: content.value,

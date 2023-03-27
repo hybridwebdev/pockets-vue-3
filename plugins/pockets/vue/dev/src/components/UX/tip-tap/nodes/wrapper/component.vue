@@ -1,13 +1,6 @@
 <template>
-    <node-view-wrapper v-bind='node.attrs' />
+    <node-view-wrapper v-bind='nodeViewProps.attrs' />
 </template>
-<script>
-import { computed } from "vue"
+<script setup lang='ts'>
 import { nodeViewProps, NodeViewWrapper } from '@tiptap/vue-3'
-export default {
-  props: nodeViewProps,
-  components: {
-    NodeViewWrapper,
-  },
-}
 </script>

@@ -37,6 +37,10 @@ export default {
       float:left;
     }
   }
+  .has-focus {
+    border-radius: 3px;
+    box-shadow: 0 0 0 3px #68cef8;
+  }
 }
 
 </style>

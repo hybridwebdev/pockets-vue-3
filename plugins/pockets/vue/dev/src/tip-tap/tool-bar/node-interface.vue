@@ -1,0 +1,23 @@
+<template lang='pug'>
+div(v-if='editor.nodeTree.active')
+    input(
+        v-model="model"
+    )
+
+</template>
+<script lang='ts' setup>
+import { reactive, inject, computed } from "vue"
+let state = {
+
+}
+let editor = inject('tip-tap-editor')
+let model = computed({
+    get(){
+        return editor.getAttributes('paragraph').class
+        
+    },
+    set(v){
+        console.log(editor.nodeTree.active, 'aaaaaaaaa')
+    }
+})
+</script>

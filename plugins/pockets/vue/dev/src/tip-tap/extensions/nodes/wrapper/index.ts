@@ -9,6 +9,13 @@ type baseAttrs = {
 }
 
 export default (baseAttrs: baseAttrs) => ( {
+    addAttributes(){
+        return {
+            class: {
+                default: "aaaaaaaaaaa"
+            }
+        }
+    },
     baseAttrs,
     addNodeView: () => VueNodeViewRenderer(Component)
 } )

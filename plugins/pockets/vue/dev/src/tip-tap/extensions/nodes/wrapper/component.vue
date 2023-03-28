@@ -11,15 +11,12 @@ let setup = (props) => {
 
     let click = () => {
 
-        let { updateAttributes, node, extension, editor } = props
+        let { updateAttributes, node, editor } = props
 
-        let attrs = new Proxy(node.attrs, {
+        let attrs = new Proxy( node.attrs, {
             get: (target, k) => target[k],
-            set: (target, k, v) => {
-                updateAttributes( { [k]:v } ) 
-                return true
-            }
-        })
+            set: (target, k, v) => updateAttributes( { [k]:v } ) ? true : true
+        } )
 
         editor.nodeTree.active = {
             attrs,

@@ -11,9 +11,7 @@ type baseAttrs = {
 export default (baseAttrs: baseAttrs) => ( {
     addAttributes(){
         return {
-            class: {
-                default: "aaaaaaaaaaa"
-            }
+            class: ""
         }
     },
     baseAttrs,

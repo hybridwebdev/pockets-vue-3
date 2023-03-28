@@ -17,7 +17,7 @@ let model = computed({
         
     },
     set(v){
-        console.log(editor.nodeTree.active, 'aaaaaaaaa')
+        editor.nodeTree.active.updateAttributes({class: v})
     }
 })
 </script>

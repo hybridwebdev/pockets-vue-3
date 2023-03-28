@@ -5,9 +5,9 @@ import { Document } from '@tiptap/extension-document'
 import { Text } from '@tiptap/extension-text'
 
 export let nodes = [
-    Paragraph.extend( interfaceWrapper({ 
-        tag: "p"
-    }) ),
+    Paragraph.extend( interfaceWrapper( { 
+        as: "p"
+    } ) ),
     Document,
     Text,
 ]

@@ -1,11 +1,11 @@
 import { VueNodeViewRenderer } from '@tiptap/vue-3'
 import Component from "./component.vue"
 
-type NodeSchema = {
-    tag: String
+type baseAttrs = {
+    as: String
 }
 
-export default (NodeSchema: NodeSchema) => ( {
-    ...NodeSchema,
+export default (baseAttrs: baseAttrs) => ( {
+    baseAttrs,
     addNodeView: () => VueNodeViewRenderer(Component)
 } )

@@ -12,11 +12,18 @@ let setup = (props) => {
     let click = () => {
 
         let { updateAttributes, node, extension, editor } = props
-        editor.nodeTree.active = reactive({
-            attrs: node.attrs,
-            updateAttributes
+
+        let attrs = new Proxy(node.attrs, {
+            get: (target, k) => target[k],
+            set: (target, k, v) => {
+                updateAttributes( { [k]:v } ) 
+                return true
+            }
         })
-        watch( () => editor.nodeTree.active.attrs, (k) => updateAttributes(k), { deep: true } )
+
+        editor.nodeTree.active = {
+            attrs,
+        }
 
     }
     

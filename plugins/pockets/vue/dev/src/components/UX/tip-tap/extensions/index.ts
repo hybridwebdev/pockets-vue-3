@@ -7,7 +7,6 @@ import { FontSize } from "./font-size"
 import Focus from "@tiptap/extension-focus"
 
 export let extensions = [
-  
   TextStyle,
   FontFamily,
   FontSize,
@@ -15,5 +14,5 @@ export let extensions = [
     showOnlyCurrent: false,
     placeholder: 'Enter text here',
   }),
-  Focus
+  Focus,
 ]

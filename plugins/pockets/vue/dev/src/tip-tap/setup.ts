@@ -1,14 +1,8 @@
 //@ts-nocheck
-import { onUnmounted, provide, computed, watch, reactive } from "vue"
+import { onUnmounted, provide, computed, watch } from "vue"
 import { extensions } from "./extensions"
 import { Editor } from '@tiptap/vue-3'
-import { EditorSchema } from "@/tip-tap/types"
-
-let pockets = reactive<EditorSchema>({
-  nodes: {},
-  options: {},
-  active: false
-})
+import { nodeTree } from "./node-tree"
 
 export let createEditorInstance = config => {
 
@@ -24,7 +18,7 @@ export let createEditorInstance = config => {
 
   let editor = new Editor(editorConfig)
 
-  editor.pockets = pockets
+  editor.nodeTree = nodeTree
 
   onUnmounted( () => editor.destroy() )
 

@@ -1,5 +1,8 @@
 <template>
-    <node-view-wrapper v-bind='{...nodeViewProps.attrs, ...extension.config.baseAttrs }'/>
+    <node-view-wrapper 
+        v-bind='{...nodeViewProps.attrs, ...extension.config.baseAttrs }'
+        @click='editor.nodeTree.active = node'
+    />
 </template>
 <script setup lang='ts'>
 import { nodeViewProps, NodeViewWrapper } from '@tiptap/vue-3'

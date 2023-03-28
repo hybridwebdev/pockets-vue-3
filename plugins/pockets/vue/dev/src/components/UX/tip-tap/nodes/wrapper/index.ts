@@ -1,6 +1,6 @@
 import { VueNodeViewRenderer } from '@tiptap/vue-3'
 import Component from "./component.vue"
-let wrapper = {
+
+export default () => ({
     addNodeView: () => VueNodeViewRenderer(Component),
-}
-export default wrapper
+})

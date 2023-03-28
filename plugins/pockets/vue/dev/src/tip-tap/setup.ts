@@ -1,7 +1,14 @@
 //@ts-nocheck
-import { onUnmounted, provide, computed, watch } from "vue"
-import { extensions } from "./extensions/"
+import { onUnmounted, provide, computed, watch, reactive } from "vue"
+import { extensions } from "./extensions"
 import { Editor } from '@tiptap/vue-3'
+import { EditorSchema } from "@/tip-tap/types"
+
+let pockets = reactive<EditorSchema>({
+  nodes: {},
+  options: {},
+  active: false
+})
 
 export let createEditorInstance = config => {
 
@@ -12,10 +19,12 @@ export let createEditorInstance = config => {
     autofocus: true,
     extensions,
     content: content.value,
-    onUpdate: () => content.value = editor.getHTML()  ,
+    onUpdate: () => content.value = editor.getHTML(),
   }
 
   let editor = new Editor(editorConfig)
+
+  editor.pockets = pockets
 
   onUnmounted( () => editor.destroy() )
 

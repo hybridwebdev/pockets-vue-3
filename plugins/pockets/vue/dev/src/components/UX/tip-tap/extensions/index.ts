@@ -1,4 +1,3 @@
-import StarterKit from '@tiptap/starter-kit'
 import TextStyle from '@tiptap/extension-text-style'
 
 import FontFamily from '@tiptap/extension-font-family'
@@ -10,7 +9,6 @@ import Focus from "@tiptap/extension-focus"
 export let extensions = [
   
   TextStyle,
-//   Color,
   FontFamily,
   FontSize,
   Placeholder.configure({

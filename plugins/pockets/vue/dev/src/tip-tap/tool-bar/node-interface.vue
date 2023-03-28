@@ -13,8 +13,8 @@ let state = {
 let editor = inject('tip-tap-editor')
 let model = computed({
     get(){
-        return editor.getAttributes('paragraph').class
-        
+        console.log(editor)
+        return editor.nodeTree.active.node.attrs.class
     },
     set(v){
         editor.nodeTree.active.updateAttributes({class: v})

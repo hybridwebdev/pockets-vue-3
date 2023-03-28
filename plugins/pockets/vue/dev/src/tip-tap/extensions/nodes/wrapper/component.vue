@@ -1,7 +1,7 @@
 <template>
     <node-view-wrapper 
         v-bind='{...node.attrs, ...extension.config.baseAttrs }'
-        @click='editor.nodeTree.active = { updateAttributes, node }'
+        @click='editor.nodeTree.active = { updateAttributes, node, extension }'
     />
 </template>
 <script setup lang='ts'>

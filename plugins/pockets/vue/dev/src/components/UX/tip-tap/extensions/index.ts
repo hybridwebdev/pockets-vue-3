@@ -1,3 +1,4 @@
+import { nodes } from "./nodes"
 import TextStyle from '@tiptap/extension-text-style'
 
 import FontFamily from '@tiptap/extension-font-family'
@@ -15,4 +16,5 @@ export let extensions = [
     placeholder: 'Enter text here',
   }),
   Focus,
+  ...nodes
 ]

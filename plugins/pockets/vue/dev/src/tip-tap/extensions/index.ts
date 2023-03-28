@@ -1,3 +1,4 @@
+
 import { nodes } from "./nodes"
 import TextStyle from '@tiptap/extension-text-style'
 
@@ -8,6 +9,7 @@ import { FontSize } from "./font-size"
 import Focus from "@tiptap/extension-focus"
 
 export let extensions = [
+
   TextStyle,
   FontFamily,
   FontSize,

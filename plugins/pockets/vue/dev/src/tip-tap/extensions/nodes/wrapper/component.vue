@@ -29,8 +29,10 @@ let setup = (props) => {
 }
 
 export default {
-    components: {NodeViewWrapper},
+    components: {
+        NodeViewWrapper
+    },
     setup, 
-    props: { ...nodeViewProps }    
+    props: nodeViewProps  
 }
 </script>

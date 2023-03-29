@@ -10,14 +10,6 @@ type baseAttrs = {
 }
 
 export default (baseAttrs: baseAttrs) => ( {
-    extendNodeSchema() {
-        console.log(this)
-        return {
-            ass: () => {
-                return "hole"
-            }
-        }
-    },
     addAttributes(){
         return {
             ...this.parent?.(),

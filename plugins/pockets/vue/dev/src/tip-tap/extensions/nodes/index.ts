@@ -12,9 +12,8 @@ export let nodes = [
 
     Image.extend( interfaceWrapper( {
         as: "img",
-        contenteditable: false
     } ) ),
-    
+
     Document,
     Text,
 ]

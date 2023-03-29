@@ -1,8 +1,8 @@
 import interfaceWrapper from "./wrapper"
 import Image from "./image"
 import Paragraph from "./paragraph"
-import { Document } from '@tiptap/extension-document'
-import { Text } from '@tiptap/extension-text'
+import Document from './document'
+import Text from "./text"
 
 export let nodes = [
 

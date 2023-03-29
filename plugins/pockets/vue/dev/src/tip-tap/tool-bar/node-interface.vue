@@ -5,23 +5,19 @@ div(v-if='editor.nodeTree.active')
     )
 
     button(
-        @click='click'
-    ) Add teh image
+        @click='click(node)'
+        v-for='node in nodes'
+    ) {{node.name}}
 </template>
 <script lang='ts' setup>
 import { reactive, inject, computed } from "vue"
-let nodes = [
-    {
-        type: "image",
-        attrs: {
-            src: "https://placehold.co/600x400"
-        }
-    },
-]
 let editor = inject('tip-tap-editor')
 
-let click = () => {
-    console.log(editor)
-    editor.commands.insertContentAt(editor.state.selection.$to.pos, nodes[0] ) ;
+let nodes = Object.values(editor.schema.nodes).map(e=> {
+    return e
+} )
+console.log(nodes, editor)
+let click = (node) => {
+    editor.commands.insertContentAt(editor.state.selection.$to.pos, node ) ;
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
     <node-view-wrapper 
-        v-bind='{...node.attrs, ...extension.config.baseAttrs }'
+        v-bind='{...node.attrs, ...node.type.spec.wrapperAttrs }'
         @click='click'
     />
 </template>
@@ -8,7 +8,6 @@
 import { nodeViewProps, NodeViewWrapper } from '@tiptap/vue-3'
 import { reactive, computed, watch } from 'vue'
 let setup = (props) => {
-
     let click = () => {
 
         let { updateAttributes, node, editor } = props

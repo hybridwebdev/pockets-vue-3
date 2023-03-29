@@ -21,6 +21,7 @@ let nodes = [
 let editor = inject('tip-tap-editor')
 
 let click = () => {
+    console.log(editor)
     editor.commands.insertContentAt(editor.state.selection.$to.pos, nodes[0] ) ;
 }
 </script>

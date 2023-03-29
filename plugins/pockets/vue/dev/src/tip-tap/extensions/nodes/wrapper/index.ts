@@ -11,8 +11,8 @@ export default {
     },
     extendNodeSchema(){
         return {
-            ...this.options,
             ...this.parent?.(),
+            ...this.options,
         }
     },
     addAttributes(){

@@ -18,6 +18,6 @@ let nodes = Object.values(editor.schema.nodes).map(e=> {
 } )
 console.log(nodes, editor)
 let click = (node) => {
-    editor.commands.insertContentAt(editor.state.selection.$to.pos, node ) ;
+    editor.commands.insertContentAt(editor.state.selection.$to.pos, node ) 
 }
 </script>

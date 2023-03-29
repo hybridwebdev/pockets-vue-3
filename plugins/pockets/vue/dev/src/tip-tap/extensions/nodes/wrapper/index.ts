@@ -18,5 +18,5 @@ export default (baseAttrs: baseAttrs) => ( {
         }
     },
     baseAttrs,
-    addNodeView: () => VueNodeViewRenderer(Component)
+    addNodeView: () => VueNodeViewRenderer(Component),
 } )

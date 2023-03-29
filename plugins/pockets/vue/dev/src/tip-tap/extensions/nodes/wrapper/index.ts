@@ -6,13 +6,15 @@ type baseAttrs = {
         passed as additional v-bind attrs on the component
     */
     as: String
+    contenteditable?: boolean
 }
 
 export default (baseAttrs: baseAttrs) => ( {
     addAttributes(){
         return {
+            ...this.parent?.(),
             class: "",
-            id: ""
+            id: "",
         }
     },
     baseAttrs,

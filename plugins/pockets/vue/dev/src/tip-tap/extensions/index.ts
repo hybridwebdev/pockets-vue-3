@@ -7,8 +7,10 @@ import Placeholder from '@tiptap/extension-placeholder'
 import { FontSize } from "./font-size"
 
 import Focus from "@tiptap/extension-focus"
-
+import events from "./editor/events"
 export let extensions = [
+  
+  events,
 
   TextStyle,
   FontFamily,
@@ -18,5 +20,5 @@ export let extensions = [
     placeholder: 'Enter text here',
   }),
   Focus,
-  ...nodes
+  ...nodes,
 ]

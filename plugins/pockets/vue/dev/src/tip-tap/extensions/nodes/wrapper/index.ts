@@ -22,5 +22,5 @@ export default {
             id: "",
         }
     },
-    addNodeView: () => VueNodeViewRenderer(Component),
+    //addNodeView: () => VueNodeViewRenderer(Component),
 } 

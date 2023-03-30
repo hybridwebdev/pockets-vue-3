@@ -2,17 +2,36 @@
 import { Extension } from '@tiptap/core'
 
 export default Extension.create({
-    onSelectionUpdate({editor}){
+    onSelectionUpdate( { editor } ){
       let { selection } = editor.state
-      let target;
+      console.log(selection)
+      let { view } = editor
+      let node;
+      let pos;
       if(!selection.node) {
-        target = selection.$head.parent
+        node = selection.$head.parent
+        pos = selection.$head.parentOffset
       }
+      
       if(selection.node) {
-        target = selection.node
+        node = selection.node
+        pos = selection.$anchor.pos
       }
+      console.log(node.resolve )
+      let attrs = new Proxy(node.attrs, {
+        set: (target, key, value) => {
+          target[key] = value
+          view.dispatch(view.state.tr.setNodeMarkup(pos, undefined, {
+            [key]: value
+          }))
+          return true
+        },
+        get: (target, key) =>  target[key],
+      })
+
+
       editor.nodeTree.active = {
-        ...target
+        attrs
       }
       // console.log( editor.state.selection.$head.parent)
     }

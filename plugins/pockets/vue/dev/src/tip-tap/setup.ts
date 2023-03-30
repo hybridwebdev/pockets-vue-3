@@ -14,6 +14,20 @@ export let createEditorInstance = config => {
     extensions,
     content: content.value,
     onUpdate: () => content.value = editor.getHTML(),
+    onSelectionUpdate({editor}){
+      let { selection } = editor.state
+      let target;
+      if(!selection.node) {
+        target = selection.$head.parent
+      }
+      if(selection.node) {
+        target = selection.node
+      }
+      editor.nodeTree.active = {
+        ...target
+      }
+      // console.log( editor.state.selection.$head.parent)
+    }
   }
 
   let editor = new Editor(editorConfig)

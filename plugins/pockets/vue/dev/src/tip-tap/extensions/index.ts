@@ -13,8 +13,8 @@ export let extensions = [
   events,
 
   TextStyle,
-  FontFamily,
-  FontSize,
+  // FontFamily,
+  // FontSize,
   Placeholder.configure({
     showOnlyCurrent: false,
     placeholder: 'Enter text here',

@@ -30,6 +30,6 @@ export default Extension.create({
       editor.nodeTree.active = {
         attrs
       }
-      // console.log( editor.state.selection.$head.parent)
+
     }
 })

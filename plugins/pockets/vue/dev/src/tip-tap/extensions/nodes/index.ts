@@ -3,7 +3,7 @@ import Paragraph from "./paragraph"
 import Document from './document'
 import Text from "./text"
 
-export let nodes = [
+export default [
     Paragraph,
     Image,
     Document,

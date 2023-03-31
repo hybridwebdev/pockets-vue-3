@@ -6,17 +6,9 @@ import Text from "./text"
 
 export let nodes = [
 
-    Paragraph.extend( interfaceWrapper ).configure( {
-        wrapperAttrs: {
-            as: "p"
-        }
-    } ),
+    Paragraph.extend( interfaceWrapper ),
 
-    Image.extend( interfaceWrapper ).configure( {
-        wrapperAttrs: {
-            as: "img"
-        }
-    } ),
+    Image.extend( interfaceWrapper ),
 
     Document,
     Text,

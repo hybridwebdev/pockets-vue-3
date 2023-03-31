@@ -8,8 +8,26 @@ import { FontSize } from "./font-size"
 
 import Focus from "@tiptap/extension-focus"
 import events from "./editor/events"
+import { Extension } from "@tiptap/core"
+let terst = Extension.create({
+  addGlobalAttributes() {
+    return [
+      {
+        // Extend the following extensions
+        types: [
+          'image',
+          'paragraph',
+        ],
+        // … with those attributes
+        attributes: {
+           class: ""
+        },
+      },
+    ]
+  },
+})
 export let extensions = [
-  
+  terst,
   events,
 
   TextStyle,

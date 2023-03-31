@@ -22,5 +22,9 @@ export default {
             id: "",
         }
     },
+    update(node, decorations) {
+        console.log('node', node)
+        return true;
+    }
     //addNodeView: () => VueNodeViewRenderer(Component),
 } 

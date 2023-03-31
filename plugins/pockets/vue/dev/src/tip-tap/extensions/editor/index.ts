@@ -4,7 +4,7 @@ import TextStyle from '@tiptap/extension-text-style'
 import Focus from "@tiptap/extension-focus"
 
 import events from "./events"
-import attributes from "./attributes"
+
 
 export default [
     History,
@@ -15,5 +15,5 @@ export default [
     TextStyle,
     Focus,
     events,
-    attributes
+
 ]

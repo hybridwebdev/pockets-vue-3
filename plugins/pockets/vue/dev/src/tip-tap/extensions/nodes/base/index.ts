@@ -1,7 +1,9 @@
 export default {
   extendNodeSchema(){
     return {
-      ders: "title"
+      nodeSchema: {
+
+      }
     }
   },
   addAttributes() {

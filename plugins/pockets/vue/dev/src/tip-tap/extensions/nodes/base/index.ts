@@ -1,18 +1,12 @@
 
-type schema = {
-  editFields: [],
-}
-
 let schemas = {
-  paragraph: {
-    editFields: []
-  },
   container: {
-    editFields: []
+    default: "<div></div>"
   }
 }
 
 export default {
+  draggable: true,
   extendNodeSchema(){
     let nodeSchema = schemas[this.name] ?? false
     return {

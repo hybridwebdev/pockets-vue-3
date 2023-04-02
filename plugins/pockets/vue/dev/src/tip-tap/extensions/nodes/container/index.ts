@@ -2,19 +2,18 @@
 
 import { Node } from '@tiptap/core'
 
-export default Node.create({
+export default Node.create( {
     name: 'container',
     group: 'block',
-    content: 'block+',
-    atom: false,
+    content: 'block*',
     renderHTML({ HTMLAttributes }) {
-        return  [ this.name, HTMLAttributes, 0 ]
+        return  [ 'div', HTMLAttributes, 0 ]
     },
     parseHTML() {
         return [
             {
-                tag: this.name,
+                tag: 'div',
             },
         ]
     },
-})
+} )

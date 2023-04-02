@@ -29,6 +29,9 @@ export default {
 .editor-wrapper {
   .ProseMirror {
     outline: none;
+    .is-empty {
+      min-height:10px
+    }
     p.is-empty::before {
       color: #adb5bd;
       content: attr(data-placeholder);

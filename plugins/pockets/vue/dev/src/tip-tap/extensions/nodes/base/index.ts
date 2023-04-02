@@ -6,7 +6,6 @@ let schemas = {
 }
 
 export default {
-  draggable: true,
   extendNodeSchema(){
     let nodeSchema = schemas[this.name] ?? false
     return {

@@ -1,4 +1,3 @@
-//@ts-nocheck
 
 type schema = {
   editFields: [],

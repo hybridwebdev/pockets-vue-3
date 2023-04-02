@@ -3,7 +3,6 @@ div(v-if='editor.nodeTree.active')
     input(
         v-model="editor.nodeTree.active.attrs.class"
     )
-
     button(
         @click='click(node)'
         v-for='node in nodes'
@@ -13,10 +12,10 @@ div(v-if='editor.nodeTree.active')
 import { reactive, inject, computed } from "vue"
 let editor = inject('tip-tap-editor')
 
-let nodes = Object.values(editor.schema.nodes).map(e=> {
-    return e
-} )
+let nodes = Object.values(editor.schema.nodes).filter(e=>  e.spec.nodeSchema )
+
 console.log(nodes, editor)
+
 let click = (node) => {
     editor.commands.insertContentAt(editor.state.selection.$to.pos, node ) 
 }

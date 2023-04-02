@@ -1,4 +1,3 @@
-// @ts-nocheck
 
 import { Node } from '@tiptap/core'
 

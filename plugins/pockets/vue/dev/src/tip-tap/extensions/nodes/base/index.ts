@@ -1,7 +1,7 @@
 
 let schemas = {
   container: {
-    default: "<div>aaaaaaaaaaaa</div>"
+    default: "<div>aaaaaaaa</div>"
   }
 }
 

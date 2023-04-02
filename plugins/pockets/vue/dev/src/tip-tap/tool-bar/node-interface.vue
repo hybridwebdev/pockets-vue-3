@@ -16,6 +16,8 @@ let nodes = Object.values(editor.schema.nodes)
     //.filter( e=>  e.spec.nodeSchema )
 console.log(editor.schema.nodes)
 let click = (node) => {
-    editor.commands.insertContentAt(editor.state.selection.$to.pos, node.spec.nodeSchema.default) 
+    editor.commands.insertContentAt(editor.state.selection.$to.pos, node.spec.nodeSchema.default, {
+         updateSelection: true,
+    }) 
 }
 </script>

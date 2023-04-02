@@ -1,4 +1,3 @@
-
 export default {
   extendNodeSchema(){
     return {
@@ -10,7 +9,8 @@ export default {
   addAttributes() {
       return {
           ...this.parent?.(),
-          class: ""
+          class: "",
+          id: ""
       }
   }
 }

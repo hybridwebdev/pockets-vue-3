@@ -6,14 +6,10 @@ export default Node.create( {
     name: 'container',
     group: 'block',
     content: 'block*',
-    renderHTML({ HTMLAttributes }) {
-        return  [ 'div', HTMLAttributes, 0 ]
-    },
-    parseHTML() {
-        return [
-            {
-                tag: 'div',
-            },
-        ]
-    },
+    renderHTML: ({ HTMLAttributes }) => [ 'div', HTMLAttributes, 0 ],
+    parseHTML: () =>  [
+        {
+            tag: 'div',
+        },
+    ],
 } )

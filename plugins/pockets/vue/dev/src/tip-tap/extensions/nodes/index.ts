@@ -5,9 +5,12 @@ import Text from "./text"
 import Container from "./container"
 import base from "./base"
 export default [
+    
     Paragraph.extend(base),
     Image.extend(base),
+    Container.extend(base),
+    
     Document,
     Text,
-    Container
+    
 ]

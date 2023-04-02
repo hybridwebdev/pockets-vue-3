@@ -3,7 +3,7 @@
 import { Node } from '@tiptap/core'
 
 export default Node.create({
-    name: 'div',
+    name: 'container',
     group: 'block',
     content: 'block+',
     atom: false,

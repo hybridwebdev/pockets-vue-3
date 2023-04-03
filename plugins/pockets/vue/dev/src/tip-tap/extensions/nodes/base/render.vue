@@ -2,7 +2,6 @@
     <node-view-wrapper 
         v-bind='node.attrs' 
         :as='node.type.spec.nodeSchema.as' 
-        @click.self='click'
         v-tooltip='node.type.name'
     />
 </template>

@@ -1,7 +1,10 @@
 
 let schemas = {
   container: {
-    default: "<div>aaaaaaaa</div>"
+    default: "<div>Hello world</div>"
+  },
+  image: {
+    default: "<img src='https://placehold.co/600x400'>"
   }
 }
 

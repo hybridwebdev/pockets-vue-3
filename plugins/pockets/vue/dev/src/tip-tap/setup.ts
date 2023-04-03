@@ -10,7 +10,6 @@ export let createEditorInstance = config => {
 
   let editorConfig = {
     injectCSS: false,
-    autofocus: true,
     extensions,
     content: content.value,
     onUpdate: () => content.value = editor.getHTML(),

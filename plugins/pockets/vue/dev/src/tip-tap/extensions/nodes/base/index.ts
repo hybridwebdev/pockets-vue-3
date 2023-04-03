@@ -9,6 +9,7 @@ export default {
   extendNodeSchema(){
     let nodeSchema = schemas[this.name] ?? false
     return {
+      ...this.parent?.(),
       nodeSchema
     }
   },
@@ -18,5 +19,6 @@ export default {
           class: "",
           id: ""
       }
-  }
+  },
+  
 }

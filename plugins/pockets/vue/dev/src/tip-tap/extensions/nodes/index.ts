@@ -9,7 +9,6 @@ export default [
     Paragraph.extend(base),
     Image.extend(base),
     Container.extend(base),
-    
     Document,
     Text,
     

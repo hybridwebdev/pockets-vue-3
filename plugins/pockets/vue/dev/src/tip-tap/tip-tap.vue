@@ -29,8 +29,13 @@ export default {
 .editor-wrapper {
   .ProseMirror {
     outline: none;
+    div {
+      border: 1px solid #f00;
+      padding: 10px;
+    }
     .is-empty {
-      min-height:10px
+      min-height:40px;
+      background: #f00
     }
     p.is-empty::before {
       color: #adb5bd;

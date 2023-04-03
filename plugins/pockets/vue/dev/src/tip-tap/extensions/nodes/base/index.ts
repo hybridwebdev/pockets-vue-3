@@ -1,14 +1,23 @@
+import Component from './render.vue'
+import { VueNodeViewRenderer } from '@tiptap/vue-3'
 
 let schemas = {
   container: {
-    default: "<div>Hello world</div>"
+    default: "<div>Hello world</div>",
+    as:"div"
   },
   image: {
-    default: "<img src='https://placehold.co/600x400'>"
+    default: "<img src='https://placehold.co/600x400'>",
+    as: 'img'
+  },
+  paragraph: {
+    default: "<p>Hello</p>",
+    as: 'p'
   }
 }
 
 export default {
+  draggable: true,
   extendNodeSchema(){
     let nodeSchema = schemas[this.name] ?? false
     return {
@@ -20,8 +29,11 @@ export default {
       return {
           ...this.parent?.(),
           class: "",
-          id: ""
+          id: "",
       }
+  },
+  addNodeView() {
+    return VueNodeViewRenderer(Component)
   },
   
 }

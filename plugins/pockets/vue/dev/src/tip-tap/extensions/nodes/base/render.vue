@@ -3,6 +3,7 @@
         v-bind='node.attrs' 
         :as='node.type.spec.nodeSchema.as' 
         v-tooltip='node.type.name'
+        data-drag-handle
     />
 </template>
 

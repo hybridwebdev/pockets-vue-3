@@ -1,5 +1,7 @@
+
 import Component from './render.vue'
 import { VueNodeViewRenderer } from '@tiptap/vue-3'
+
 
 let schemas = {
   container: {
@@ -29,11 +31,10 @@ export default {
       return {
           ...this.parent?.(),
           class: "",
-          id: "",
       }
   },
   addNodeView() {
     return VueNodeViewRenderer(Component)
   },
-  
+ 
 }

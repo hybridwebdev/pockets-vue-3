@@ -20,7 +20,9 @@ import { BubbleMenu, FloatingMenu } from '@tiptap/vue-3'
 import {
   Editor, isNodeSelection, isTextSelection, posToDOMRect,
 } from '@tiptap/core'
+
 import { inject } from "vue"
+
 let editor = inject('tip-tap-editor')
 
 let shouldShow = function({ view, state, from, to, }){

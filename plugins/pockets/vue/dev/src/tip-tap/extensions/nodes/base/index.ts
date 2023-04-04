@@ -30,14 +30,14 @@ export default {
       return {
           ...this.parent?.(),
           class: "",
-          // blockId: {
-          //     render: false,
-          //     default: null,
-          //     renderHTML: (attributes) => ({
-          //       blockId: attributes.blockId,
-          //     }),  
-          //     parseHTML: _ => Math.random(),
-          // },
+          blockId: {
+              render: false,
+              default: null,
+              renderHTML: (attributes) => ({
+                blockId: attributes.blockId,
+              }),  
+              parseHTML: _ => Math.random(),
+          },
       }
   },
   addNodeView() {

@@ -26,6 +26,6 @@ import { inject } from "vue"
 let editor = inject('tip-tap-editor')
 
 let shouldShow = function({ view, state, from, to, }){
-  return editor.nodeTree.active && editor.nodeTree.active.selectionType == 'text'
+  return editor.nodeTree.active 
 }
 </script>

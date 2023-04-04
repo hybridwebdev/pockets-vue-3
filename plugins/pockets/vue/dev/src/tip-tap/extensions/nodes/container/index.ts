@@ -2,6 +2,7 @@
 import { Node } from '@tiptap/core'
 
 export default Node.create( {
+    isolating: true,
     name: 'container',
     group: 'block',
     content: 'block*',

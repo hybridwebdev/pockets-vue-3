@@ -7,7 +7,7 @@ let selectHandler = ({ editor, transaction, event }) => {
   let { view } = editor
   let node;
   let pos;
-
+  console.log(selection)
   if(!selection.node) {
     node = selection.$head.parent
     pos = selection.$from.before(1)

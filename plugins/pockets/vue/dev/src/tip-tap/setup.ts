@@ -16,7 +16,7 @@ export let createEditorInstance = config => {
   }
 
   let editor = new Editor(editorConfig)
-  console.log(editor)
+
   editor.nodeTree = nodeTree
 
   onUnmounted( () => editor.destroy() )
@@ -27,7 +27,7 @@ export let createEditorInstance = config => {
     /**
       Syncs editor instances
     */
-    console.log({ json: editor.getJSON(), html: editor.getHTML()})
+    console.log({ json: editor.getJSON(), html: editor.getHTML() } )
     if ( editor.getHTML() === v ) return
     editor.commands.setContent(v, false)
   } )

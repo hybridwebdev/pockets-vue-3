@@ -2,6 +2,12 @@
     <component 
         :is='treeNode.el'
         v-bind='treeNode.props'
+        class='pockets-node-tree-node'
+        @click.stop='clickHandler'
+        :class='classes'
+        @mouseenter='hoverHandler(true)'
+        @mouseleave='hoverHandler(false)'
+        v-tooltip='toolTip'
     >
         <component 
             v-for='(node, i) in treeNode.nodes'

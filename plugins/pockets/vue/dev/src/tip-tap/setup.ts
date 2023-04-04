@@ -16,7 +16,7 @@ export let createEditorInstance = config => {
   }
 
   let editor = new Editor(editorConfig)
-
+  console.log(editor)
   editor.nodeTree = nodeTree
 
   onUnmounted( () => editor.destroy() )

@@ -1,7 +1,6 @@
 
 import Component from './render.vue'
 import { VueNodeViewRenderer } from '@tiptap/vue-3'
-import { uniqueId } from "lodash" 
 
 let schemas = {
   container: {
@@ -31,16 +30,14 @@ export default {
       return {
           ...this.parent?.(),
           class: "",
-          blockId: {
-              render: false,
-              default: null,
-              renderHTML: (attributes) => ({
-                blockId: attributes.blockId,
-              }),  
-              parseHTML: element => {
-                  return Math.random()
-              },
-          },
+          // blockId: {
+          //     render: false,
+          //     default: null,
+          //     renderHTML: (attributes) => ({
+          //       blockId: attributes.blockId,
+          //     }),  
+          //     parseHTML: _ => Math.random(),
+          // },
       }
   },
   addNodeView() {

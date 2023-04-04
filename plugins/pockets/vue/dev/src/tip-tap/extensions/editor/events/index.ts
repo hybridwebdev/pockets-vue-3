@@ -16,7 +16,6 @@ let selectHandler = ({ editor, transaction, event }) => {
     node = selection.node
     pos = selection.$anchor.pos
   }
-
   let attrs = new Proxy(node.attrs, {
     set: (target, key, value) => {
       view.dispatch( view.state.tr.setNodeAttribute(pos, key, value) )

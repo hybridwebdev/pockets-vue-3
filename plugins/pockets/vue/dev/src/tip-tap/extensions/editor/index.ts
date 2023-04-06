@@ -1,11 +1,10 @@
-import { History } from "@tiptap/extension-history"
+
 import Placeholder from '@tiptap/extension-placeholder'
 import TextStyle from '@tiptap/extension-text-style'
 import Focus from "@tiptap/extension-focus"
-import dropCursor from "@tiptap/extension-dropcursor"
 import starterKit from "@tiptap/starter-kit"
 
-import events from "./events"
+import selectHandler from "./select-handler/"
 
 export default [
     starterKit,
@@ -15,6 +14,5 @@ export default [
     }),
     TextStyle,
     Focus,
-    events,
-    dropCursor
+    selectHandler,
 ]

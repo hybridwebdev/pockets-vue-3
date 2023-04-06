@@ -2,14 +2,11 @@
 bubbleMenu(
   :editor='editor'
   class='d-flex p-1 bg-accent-dk align-items-center'
-  :shoualdShow='shouldShow'
 )
-  | aaaaaa
-  node-interface()
-  //- fontColor()
-  //- fontFamily()
-  //- element-selector()
-  //- format-buttons() 
+  fontColor()
+  fontFamily()
+  element-selector()
+  format-buttons() 
 </template>
 <script lang='ts' setup>
 import nodeInterface from "./node-interface"
@@ -26,7 +23,4 @@ import { inject } from "vue"
 
 let editor = inject('tip-tap-editor')
 
-let shouldShow = function({ view, state, from, to, }){
-  return true;//editor.nodeTree.active 
-}
 </script>

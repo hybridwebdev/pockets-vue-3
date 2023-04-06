@@ -24,10 +24,11 @@ let selectHandler = ({ editor, transaction, event }) => {
     },
     get: (target, key) =>  target[key],
   })
-
+  console.log(node)
   editor.nodeTree.active = {
     attrs,
-    selectionType: selection.jsonID
+    selectionType: selection.jsonID,
+    name: node.type.name
   }
 
 }

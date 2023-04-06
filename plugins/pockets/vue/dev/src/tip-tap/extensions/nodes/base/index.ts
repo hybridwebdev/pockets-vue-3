@@ -5,15 +5,18 @@ import { VueNodeViewRenderer } from '@tiptap/vue-3'
 let schemas = {
   container: {
     default: "<div>Hello world</div>",
-    as:"div"
+    as:"div",
+    editable: false
   },
   image: {
     default: "<img src='https://placehold.co/600x400'>",
-    as: 'img'
+    as: 'img',
+    editable: false
   },
   paragraph: {
     default: "<p>Hello</p>",
-    as: 'p'
+    as: 'p',
+    editable: true
   }
 }
 
@@ -27,6 +30,7 @@ export default {
     }
   },
   addAttributes() {
+      let nodeSchema = schemas[this.name] ?? false
       return {
           ...this.parent?.(),
           class: "",
@@ -38,6 +42,9 @@ export default {
               }),  
               parseHTML: _ => Math.random(),
           },
+          contenteditable: {
+            default: nodeSchema.editable
+          }
       }
   },
   addNodeView() {

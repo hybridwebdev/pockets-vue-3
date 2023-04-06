@@ -4,7 +4,7 @@ import TextStyle from '@tiptap/extension-text-style'
 import Focus from "@tiptap/extension-focus"
 import dropCursor from "@tiptap/extension-dropcursor"
 import events from "./events"
-
+import blockSelect from "./events/block-select"
 
 export default [
     History,
@@ -12,6 +12,7 @@ export default [
         showOnlyCurrent: false,
         placeholder: 'Enter text here',
     }),
+    blockSelect,
     TextStyle,
     Focus,
     events,

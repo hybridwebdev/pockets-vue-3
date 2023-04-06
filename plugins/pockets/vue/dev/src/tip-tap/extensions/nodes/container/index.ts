@@ -1,12 +1,13 @@
 
 import { Node } from '@tiptap/core'
-
+import { mergeAttributes } from '@tiptap/core'
 export default Node.create( {
     isolating: true,
     name: 'container',
     group: 'block',
-    content: 'block*',
-    renderHTML: ( { HTMLAttributes } ) => [ 'div', HTMLAttributes, 0 ],
+    content: 'block+',
+    atom: true,
+    renderHTML: ( { HTMLAttributes } ) => [ 'div', mergeAttributes(HTMLAttributes, {}), 0 ],
     parseHTML: () =>  [
         {   
             tag: "div",

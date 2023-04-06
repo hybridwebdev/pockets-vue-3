@@ -1,5 +1,6 @@
 <template lang='pug'>
 div(v-if='editor.nodeTree.active')
+    | {{editor.nodeTree.active}}
     button(
         @click='click(node)'
         v-for='node in nodes'

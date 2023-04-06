@@ -7,15 +7,19 @@ let selectHandler = ({ editor, transaction, event }) => {
   let { view } = editor
   let node;
   let pos;
+  
+  if(selection.$from.depth === 0) return;
+
   if(!selection.node) {
     node = selection.$head.parent
-    pos = selection.$from.before(1)
+    pos = selection.$from.before(selection.$from.depth)
   }
   
   if(selection.node) {
     node = selection.node
     pos = selection.$anchor.pos
   }
+
   let attrs = new Proxy(node.attrs, {
     set: (target, key, value) => {
       view.dispatch( view.state.tr.setNodeAttribute(pos, key, value) )
@@ -24,7 +28,7 @@ let selectHandler = ({ editor, transaction, event }) => {
     },
     get: (target, key) =>  target[key],
   })
-  console.log(node)
+
   editor.nodeTree.active = {
     attrs,
     selectionType: selection.jsonID,
@@ -34,13 +38,6 @@ let selectHandler = ({ editor, transaction, event }) => {
 }
 
 export default Extension.create({
-  addKeyboardShortcuts () {
-    return {
-      Enter: ({ editor }) => {
-        return true
-      }
-    }
-  },
   onFocus: selectHandler,
   onSelectionUpdate: selectHandler
 })

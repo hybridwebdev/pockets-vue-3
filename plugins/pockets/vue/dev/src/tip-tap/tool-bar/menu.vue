@@ -1,13 +1,4 @@
 <template lang='pug'>
-pockets-popup-menu(  
-    placement='bottom-start' 
-    :autoHide="true"
-    :triggers='["click"]'
-    :delay='0'
-)
-  span() BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB
-  template( #popper)
-    span() TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 bubbleMenu(
   :editor='editor'
   class='d-flex p-1 bg-accent-dk align-items-center'
@@ -23,7 +14,8 @@ import formatButtons from "./format-buttons"
 import elementSelector from "./element-selector"
 import fontColor from "./font-color"
 import fontFamily from "./font-family"
-import { BubbleMenu } from '@tiptap/vue-3'
+// import { BubbleMenu } from '@tiptap/vue-3'
+import  { BubbleMenu }  from './bubble-menu/component.ts'
 import {
   Editor, isNodeSelection, isTextSelection, posToDOMRect,
 } from '@tiptap/core'

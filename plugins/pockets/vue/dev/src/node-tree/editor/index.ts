@@ -4,7 +4,7 @@ import { reactive, computed } from "vue"
 
 export let editor:TreeEditor  = reactive( {
 
-    show: false,
+    show: true,
     mode: "edit",
     
     nodes: {

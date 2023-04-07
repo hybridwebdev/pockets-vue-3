@@ -1,8 +1,33 @@
 //@ts-nocheck
-import { Extension } from '@tiptap/core'
+import { Extension, isNodeSelection, posToDOMRect } from '@tiptap/core'
+
+
+let nodeFind = (editor) => {
+  let { state, view } = editor
+  const { ranges } = state.selection
+  const from = Math.min(...ranges.map(range => range.$from.pos))
+  const to = Math.max(...ranges.map(range => range.$to.pos))
+  if (isNodeSelection(state.selection)) {
+    let node = view.nodeDOM(from) as HTMLElement
+    // support for CellSelections
+
+    const nodeViewWrapper = node.dataset.nodeViewWrapper ? node : node.querySelector('[data-node-view-wrapper]')
+
+    if (nodeViewWrapper) {
+      node = nodeViewWrapper.firstChild as HTMLElement
+    }
+
+    if (node) {
+      return node.getBoundingClientRect()
+    }
+  }
+  return posToDOMRect(view, from, to)
+}
 
 let selectHandler = ({ editor, transaction, event }) => {
   
+  console.log(nodeFind(editor))
+
   let { selection } = editor.state
   let { view } = editor
   let node;

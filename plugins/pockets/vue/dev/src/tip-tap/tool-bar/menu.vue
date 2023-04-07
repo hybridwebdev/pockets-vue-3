@@ -23,7 +23,7 @@ import formatButtons from "./format-buttons"
 import elementSelector from "./element-selector"
 import fontColor from "./font-color"
 import fontFamily from "./font-family"
-import { BubbleMenu, FloatingMenu } from '@tiptap/vue-3'
+import { BubbleMenu } from '@tiptap/vue-3'
 import {
   Editor, isNodeSelection, isTextSelection, posToDOMRect,
 } from '@tiptap/core'

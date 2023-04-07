@@ -1,9 +1,12 @@
+//@ts-nocheck
 import {
   Editor, isNodeSelection, isTextSelection, posToDOMRect,
 } from '@tiptap/core'
 import { EditorState, Plugin, PluginKey } from '@tiptap/pm/state'
 import { EditorView } from '@tiptap/pm/view'
 import tippy, { Instance, Props } from 'tippy.js'
+
+import { createTooltip, destroyTooltip } from 'floating-vue'
 
 export interface BubbleMenuPluginProps {
   pluginKey: PluginKey | string
@@ -79,6 +82,7 @@ export class BubbleMenuView {
     tippyOptions = {},
     updateDelay = 250,
     shouldShow,
+    test = {}
   }: BubbleMenuViewProps) {
     this.editor = editor
     this.element = element
@@ -97,6 +101,7 @@ export class BubbleMenuView {
     // Detaches menu content from its current parent
     this.element.remove()
     this.element.style.visibility = 'visible'
+    this.test = test
   }
 
   mousedownHandler = () => {
@@ -222,11 +227,13 @@ export class BubbleMenuView {
             }
 
             if (node) {
-              return node.getBoundingClientRect()
+              this.test.coords = node.getBoundingClientRect()
+              return this.test.coords
             }
           }
 
-          return posToDOMRect(view, from, to)
+          this.test.coords = posToDOMRect(view, from, to)
+          return this.test.coords
         }),
     })
 
@@ -258,8 +265,7 @@ export class BubbleMenuView {
 
 export const BubbleMenuPlugin = (options: BubbleMenuPluginProps) => {
   return new Plugin({
-    key:
-      typeof options.pluginKey === 'string' ? new PluginKey(options.pluginKey) : options.pluginKey,
+    key: typeof options.pluginKey === 'string' ? new PluginKey(options.pluginKey) : options.pluginKey,
     view: view => new BubbleMenuView({ view, ...options }),
   })
 }

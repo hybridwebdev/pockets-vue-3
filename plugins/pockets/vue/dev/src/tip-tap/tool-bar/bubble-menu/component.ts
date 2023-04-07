@@ -1,3 +1,4 @@
+//@ts-nocheck
 import { BubbleMenuPlugin, BubbleMenuPluginProps } from './base'
 import {
   defineComponent,
@@ -6,6 +7,9 @@ import {
   onMounted,
   PropType,
   ref,
+  reactive,
+  watch,
+
 } from 'vue'
 
 export const BubbleMenu = defineComponent({
@@ -39,7 +43,14 @@ export const BubbleMenu = defineComponent({
   },
 
   setup(props, { slots }) {
+
     const root = ref<HTMLElement | null>(null)
+    let test = reactive({
+      coords: ""
+    })
+    watch(() => test, () => {
+      console.log(test)
+    }, { deep: true})
     onMounted(() => {
       const {
         updateDelay,
@@ -56,6 +67,7 @@ export const BubbleMenu = defineComponent({
         pluginKey,
         shouldShow,
         tippyOptions,
+        test
       }) )
     })
 

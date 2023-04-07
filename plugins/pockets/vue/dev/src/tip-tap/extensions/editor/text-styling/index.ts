@@ -25,6 +25,11 @@ export default Extension.create<Options>({
   addCommands: () => ({
     setTextStyle: (o: property) => ({ chain }) => chain().setMark('textStyle', o).removeEmptyTextStyle().run(),
   }),
+  addGlobalAttributes() {
+    return [
+      styleExtension( { key: "backgroundColor", styleName: "background-color", types: this.options?.types }),
+      styleExtension( { key: "color", styleName: "color", types: this.options?.types } ) 
+    ]
+  }
 })
-  .extend( styleExtension( { key: "backgroundColor", styleName: "background-color" } ) )
-  .extend( styleExtension( { key: "color", styleName: "color" } ) )
+  

@@ -25,8 +25,6 @@ let nodeFind = (editor) => {
 }
 
 let selectHandler = ({ editor, transaction, event }) => {
-  
-  console.log(nodeFind(editor))
 
   let { selection } = editor.state
   let { view } = editor
@@ -57,7 +55,8 @@ let selectHandler = ({ editor, transaction, event }) => {
   editor.nodeTree.active = {
     attrs,
     selectionType: selection.jsonID,
-    name: node.type.name
+    name: node.type.name,
+    position: nodeFind(editor)
   }
 
 }

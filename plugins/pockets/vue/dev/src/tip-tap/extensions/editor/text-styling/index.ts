@@ -25,7 +25,7 @@ let styleExtension = (propertyDef: propertyDef) => {
     attributes: {
       [key]: {
         default: null,
-        parseHTML: element => element.style[key],
+        parseHTML: element => element.style[styleName],
         renderHTML: attributes => {
           if (!attributes[key]) return {}
           return {
@@ -44,7 +44,8 @@ export default Extension.create({
   }),
   addGlobalAttributes: () => [
     styleExtension( { key: "backgroundColor", styleName: "background-color"}),
-    styleExtension( { key: "color", styleName: "color" } ) 
+    styleExtension( { key: "color", styleName: "color" } ),
+    styleExtension( { key: "fontSize", styleName: "font-size" } )  
   ]
 })
   

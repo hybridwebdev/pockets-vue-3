@@ -4,17 +4,19 @@ import TextStyle from '@tiptap/extension-text-style'
 import Focus from "@tiptap/extension-focus"
 import starterKit from "@tiptap/starter-kit"
 
-import selectHandler from "./select-handler/"
-import colors  from "./color/"
+import selectHandler from "./select-handler"
+import textStyling  from "./text-styling"
 
 export default [
-    ...colors,
+    
+    TextStyle,
+    textStyling,
+
     starterKit,
     Placeholder.configure({
         showOnlyCurrent: false,
         placeholder: 'Enter text here',
     }),
-    TextStyle,
     Focus,
     selectHandler,
 ]

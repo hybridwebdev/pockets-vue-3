@@ -9,6 +9,7 @@ input(
     @input="editor.chain().focus().setTextStyle({backgroundColor: $event.target.value}).run()"
     :value="editor.getAttributes('textStyle').backgroundColor"
 )
+| {{ editor.getAttributes('textStyle') }}
 </template>
 <script lang='ts' setup>
 import { inject, computed } from "vue"

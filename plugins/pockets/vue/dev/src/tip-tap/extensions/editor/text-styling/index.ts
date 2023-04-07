@@ -25,7 +25,7 @@ let styleExtension = (propertyDef: propertyDef) => {
     attributes: {
       [key]: {
         default: null,
-        parseHTML: element => element.style[key]?.replace(/['"]+/g, ''),
+        parseHTML: element => element.style[key],
         renderHTML: attributes => {
           if (!attributes[key]) return {}
           return {

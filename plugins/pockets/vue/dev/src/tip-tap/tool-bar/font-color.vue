@@ -1,7 +1,7 @@
 <template lang='pug'>
 input(
     type="color"
-    @input="editor.chain().focus().setColor($event.target.value).run()"
+    @input="editor.chain().focus().setTextStyle({color: $event.target.value}).run()"
     :value="editor.getAttributes('textStyle').color"
 )
 </template>

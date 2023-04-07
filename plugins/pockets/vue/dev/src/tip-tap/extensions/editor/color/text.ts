@@ -2,32 +2,23 @@ import '@tiptap/extension-text-style'
 
 import { Extension } from '@tiptap/core'
 
-export type ColorOptions = {
+export type Options = {
   types: string[],
+}
+
+type property = {
+  [key: string]: string | null
 }
 
 declare module '@tiptap/core' {
   interface Commands<ReturnType> {
-    color: {
-      /**
-       * Set the text color
-       */
-      setColor: (color: string) => ReturnType,
-      /**
-       * Unset the text color
-       */
-      unsetColor: () => ReturnType,
+    TextStyle: {
+      setTextStyle: (property: property) => void
     }
   }
 }
 
-export default Extension.create<ColorOptions>({
-  name: 'color',
-  addOptions() {
-    return {
-      types: ['textStyle'],
-    }
-  },
+let colorExtension = {
   addGlobalAttributes() {
     return [
       {
@@ -49,19 +40,19 @@ export default Extension.create<ColorOptions>({
       },
     ]
   },
+}
+
+export default Extension.create<Options>({
+  name: 'text-styling',
+  addOptions() {
+    return {
+      types: ['textStyle'],
+    }
+  },
   addCommands() {
     return {
-      setColor: color => ({ chain }) => {
-        return chain()
-          .setMark('textStyle', { color })
-          .run()
-      },
-      unsetColor: () => ({ chain }) => {
-        return chain()
-          .setMark('textStyle', { color: null })
-          .removeEmptyTextStyle()
-          .run()
-      },
+      setTextStyle: (o: property) => ({ chain }) => chain().setMark('textStyle', o).removeEmptyTextStyle().run(),
     }
   },
 })
+  .extend(colorExtension)

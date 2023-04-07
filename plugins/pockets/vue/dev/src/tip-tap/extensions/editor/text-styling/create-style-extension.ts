@@ -1,18 +1,21 @@
-export default {
+type propertyDef = {
+  key: string
+  styleName: string
+}
+export default (propertyDef: propertyDef) => ({
   addGlobalAttributes() {
+    let { key, styleName } = propertyDef
     return [
       {
         types: this.options.types,
         attributes: {
-          color: {
+          [key]: {
             default: null,
             parseHTML: element => element.style.color?.replace(/['"]+/g, ''),
             renderHTML: attributes => {
-              if (!attributes.color) {
-                return {}
-              }
+              if (!attributes.color) return {}
               return {
-                style: `color: ${attributes.color}`,
+                style: `${styleName}: ${attributes.color}`,
               }
             },
           },
@@ -20,4 +23,4 @@ export default {
       },
     ]
   },
-}
+})

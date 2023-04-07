@@ -1,6 +1,6 @@
 import '@tiptap/extension-text-style'
 import { Extension } from '@tiptap/core'
-import colorExtension from "./color"
+import styleExtension from "./create-style-extension"
 export type Options = {
   types: string[],
 }
@@ -17,17 +17,13 @@ declare module '@tiptap/core' {
   }
 }
 
-
 export default Extension.create<Options>({
   name: 'text-styling',
-  addOptions() {
-    return {
-      types: ['textStyle'],
-    }
-  },
-  addCommands() {
-    return {
-      setTextStyle: (o: property) => ({ chain }) => chain().setMark('textStyle', o).removeEmptyTextStyle().run(),
-    }
-  },
-}).extend(colorExtension)
+  addOptions: () => ({
+    types: ['textStyle'],
+  }),
+  addCommands: () => ({
+    setTextStyle: (o: property) => ({ chain }) => chain().setMark('textStyle', o).removeEmptyTextStyle().run(),
+  }),
+})
+  .extend( styleExtension( { key: "color", styleName: "color" } ) )

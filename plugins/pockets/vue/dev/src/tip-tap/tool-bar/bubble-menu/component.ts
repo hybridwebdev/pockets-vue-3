@@ -49,14 +49,14 @@ export const BubbleMenu = defineComponent({
         tippyOptions,
       } = props
 
-      editor.registerPlugin(BubbleMenuPlugin({
+      editor.registerPlugin( BubbleMenuPlugin({
         updateDelay,
         editor,
         element: root.value as HTMLElement,
         pluginKey,
         shouldShow,
         tippyOptions,
-      }))
+      }) )
     })
 
     onBeforeUnmount(() => {

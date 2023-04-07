@@ -26,4 +26,5 @@ export default Extension.create<Options>({
     setTextStyle: (o: property) => ({ chain }) => chain().setMark('textStyle', o).removeEmptyTextStyle().run(),
   }),
 })
+  .extend( styleExtension( { key: "backgroundColor", styleName: "background-color" } ) )
   .extend( styleExtension( { key: "color", styleName: "color" } ) )

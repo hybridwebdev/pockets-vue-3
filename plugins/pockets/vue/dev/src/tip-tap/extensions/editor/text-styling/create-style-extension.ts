@@ -11,11 +11,11 @@ export default (propertyDef: propertyDef) => ({
         attributes: {
           [key]: {
             default: null,
-            parseHTML: element => element.style.color?.replace(/['"]+/g, ''),
+            parseHTML: element => element.style[key]?.replace(/['"]+/g, ''),
             renderHTML: attributes => {
-              if (!attributes.color) return {}
+              if (!attributes[key]) return {}
               return {
-                style: `${styleName}: ${attributes.color}`,
+                style: `${styleName}: ${attributes[key]}`,
               }
             },
           },

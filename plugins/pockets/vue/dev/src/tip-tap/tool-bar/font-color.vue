@@ -1,16 +1,16 @@
 <template lang='pug'>
 input(
     type="color"
-    @input="editor.chain().focus().setTextStyle({color: $event.target.value}).run()"
+    @input="editor.chain().focus().setTextStyle( { color: $event.target.value } ).run()"
     :value="editor.getAttributes('textStyle').color"
 )
 input(
     type="color"
-    @input="editor.chain().focus().setTextStyle({backgroundColor: $event.target.value}).run()"
+    @input="editor.chain().focus().setTextStyle( { backgroundColor: $event.target.value } ).run()"
     :value="editor.getAttributes('textStyle').backgroundColor"
 )
 input(
-    @input="editor.chain().setTextStyle({fontSize: $event.target.value}).run()"
+    @input="editor.chain().setTextStyle( { fontSize: $event.target.value } ).run()"
     :value="editor.getAttributes('textStyle').fontSize"
     type='text'
 )

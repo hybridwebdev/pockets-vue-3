@@ -7,8 +7,9 @@ pockets-popup-menu(
   theme='tip-tap-menu'
   :positioning-disabled='true'
   v-if='editor.nodeTree.active'
-
+  :result='position'
 )
+  div() aaaaaaaaaaa
   template(#popper)
     div(
       @click='editor.nodeTree.inMenu = true'
@@ -19,23 +20,20 @@ pockets-popup-menu(
 <script lang='ts'>
 import { 
   inject,
-  computed
+  computed,
+  ref
 } from "vue"
 import { BubbleMenuPlugin } from './base'
 
 let setup = () => {
   
   let editor = inject('tip-tap-editor')
-  
-  let positioning = computed(() => {
-    return editor.nodeTree.active.position || {
-      top: 0
-    }
-  })
-  console.log(positioning)
+  let position = {
+    top: "100px"
+  }
   return {
     editor,
-    positioning 
+    position
   }
 
 }
@@ -44,12 +42,10 @@ export default {
 }
 
 </script>
-<style lang='scss' module>
+<style lang='scss'>
 .v-popper--theme-tip-tap-menu {
-  transform: translate3d(0, 0, 0) !important;
-  top: 100px;
+  position: fixed;
   width: 300px;
-  top: v-bind('positioning.top');
-
+  
 }
 </style>

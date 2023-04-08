@@ -18,39 +18,39 @@
     :target-nodes="getTargetNodes"
     :reference-node="() => $refs.reference"
     :popper-node="() => $refs.popperContent.$el"
-    v-on="$listeners"
+    :triggers='[]'
+    placement='auto'
+    :shown='true'
+    :autoHide='false'
   >
     <div
       ref="reference"
       class="v-popper"
       :class="[
-        themeClass,
         {
           'v-popper--shown': isShown,
         },
       ]"
     >
-      <slot />
-
-      <PopperContent
-        ref="popperContent"
-        :popper-id="popperId"
-        :theme="theme"
-        :shown="isShown"
-        :mounted="shouldMountContent"
-        :skip-transition="skipTransition"
-        :auto-hide="autoHide"
-        :handle-resize="handleResize"
-        :classes="classes"
-        :result="result"
-        @hide="hide"
-        @resize="onResize"
-      >
-        <slot
-          name="popper"
-          :shown="isShown"
-        />
-      </PopperContent>
+        <slot/>
+        <PopperContent
+            ref="popperContent"
+            :popper-id="popperId"
+            :theme="theme"
+            :shown="isShown"
+            :mounted="shouldMountContent"
+            :skip-transition="skipTransition"
+            :auto-hide="autoHide"
+            :handle-resize="handleResize"
+            :classes="classes"
+            :result="result"
+            @hide="hide"
+            @resize="onResize"
+        >
+            <slot
+                name='popper'
+            />
+        </PopperContent>
     </div>
   </Popper>
 </template>
@@ -82,7 +82,7 @@ export default {
     theme: {
       type: String,
       default () {
-        return this.$options.vPopperTheme
+        return 'terst'
       },
     },
   },

@@ -1,9 +1,10 @@
 <template lang='pug'>
 bubble-menu()
-  fontColor()
-  fontFamily()
-  element-selector()
-  format-buttons() 
+  template(#popper)
+    fontColor()
+    fontFamily()
+    element-selector()
+    format-buttons() 
 </template>
 <script lang='ts' setup>
 import nodeInterface from "./node-interface"

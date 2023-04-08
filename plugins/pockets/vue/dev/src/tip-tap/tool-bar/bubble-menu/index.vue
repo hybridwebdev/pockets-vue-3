@@ -48,20 +48,40 @@ import {
 } from 'floating-vue'
 
 import { 
-    ref 
+    ref, 
+    inject,
+    computed 
 } from "vue"
 
 let setup = () => {
+    let editor = inject('tip-tap-editor')
     let container = ref()
     let getTargetNodes = () =>  Array.from(container.value.children)
-    let result = {
-        "x": 100,
-        "y": 300,
-        "placement": "top",
-        "strategy": "fixed",
-        "arrow": false,
-        "transformOrigin": null
-    }
+    let result = computed(() => {
+        
+        let state = {
+            "x": 0,
+            "y": 0,
+            "placement": "bottom",
+            "strategy": "fixed",
+            "arrow": false,
+            "transformOrigin": null,
+            flip: true
+        }
+        
+        let { active }  = editor.nodeTree
+        
+        if(active) {
+            let { position } = active
+            return {
+                ...state,
+                x: position.left,
+                y: position.top + position.height + 10
+            }
+        }
+        
+        return state
+    })
     return {
         container,
         getTargetNodes,

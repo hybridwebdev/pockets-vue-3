@@ -1,8 +1,8 @@
 <script>
 import { PopperWrapper } from 'floating-vue'
 export default {
-  ...PopperWrapper,
   vPopperTheme: 'popup-menu',
+  ...PopperWrapper,
 }
 </script>
 <style lang='scss'>

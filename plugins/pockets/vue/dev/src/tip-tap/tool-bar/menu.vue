@@ -1,12 +1,10 @@
 <template lang='pug'>
-bubbleMenu(
-  :editor='editor'
-  class='d-flex p-1 bg-accent-dk align-items-center'
-)
+bubble-menu()
   fontColor()
   fontFamily()
   element-selector()
   format-buttons() 
+
 </template>
 <script lang='ts' setup>
 import nodeInterface from "./node-interface"
@@ -14,14 +12,6 @@ import formatButtons from "./format-buttons"
 import elementSelector from "./element-selector"
 import fontColor from "./font-color"
 import fontFamily from "./font-family"
-// import { BubbleMenu } from '@tiptap/vue-3'
-import  { BubbleMenu }  from './bubble-menu/component.ts'
-import {
-  Editor, isNodeSelection, isTextSelection, posToDOMRect,
-} from '@tiptap/core'
-
-import { inject } from "vue"
-
-let editor = inject('tip-tap-editor')
-
+import bubbleMenu from "./bubble-menu/component.vue"
 </script>
+

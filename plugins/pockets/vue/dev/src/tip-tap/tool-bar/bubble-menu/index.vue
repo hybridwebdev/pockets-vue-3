@@ -23,7 +23,7 @@
         >
             <PopperContent
                 :popper-id="popperId"
-                :theme="theme"
+                :theme="'theme'"
                 :shown="isShown"
                 :mounted="true"
                 :classes="classes"
@@ -59,11 +59,6 @@ export default {
     Popper: Popper(),
     PopperContent,
   },
-
-  mixins: [
-    PopperMethods,
-    ThemeClass,
-  ],
 
   inheritAttrs: false,
 

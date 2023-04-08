@@ -8,6 +8,7 @@ pockets-popup-menu(
   :positioning-disabled='false'
 )
   template(#popper)
+    | {{state}}
     slot()
 </template>
 <script lang='ts'>
@@ -15,12 +16,24 @@ import {
   inject,
   onBeforeUnmount,
   onMounted,
+  reactive
 } from "vue"
+import { BubbleMenuPlugin } from './base'
 
 let setup = () => {
+  
   let editor = inject('tip-tap-editor')
+  
+  let state = reactive({  coords: null } )
+
   onMounted(() => {
-  })
+     editor.registerPlugin( BubbleMenuPlugin( state ) )
+  } )
+
+  return {
+    state
+  }
+
 }
 export default {
   setup

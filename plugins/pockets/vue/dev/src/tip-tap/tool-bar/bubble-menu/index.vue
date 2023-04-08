@@ -2,9 +2,9 @@
 
     <Popper
         v-bind="$attrs"
-        :theme="theme"
+        :theme="'theme'"
         :target-nodes="getTargetNodes"
-        :reference-node="() => $refs.reference"
+        :reference-node="() => $refs.container"
         :popper-node="() => $refs.popperContent.$el"
         :triggers='[]'
         placement='auto'
@@ -18,25 +18,18 @@
         }"
     >
         <div
-            ref="reference"
+            ref="container"
             class="v-popper"
         >
             <PopperContent
+                ref="popperContent"
+                class='position-fixed'
                 :popper-id="popperId"
                 :theme="'theme'"
                 :shown="isShown"
                 :mounted="true"
                 :classes="classes"
-                :result='{
-                    "x": 100,
-                    "y": 300,
-                    "placement": "top",
-                    "strategy": "fixed",
-                    "arrow": false,
-                    "transformOrigin": null
-                }'
-                ref="popperContent"
-                class='position-fixed'
+                :result='result'
             >
                 <slot/>
             </PopperContent>
@@ -46,6 +39,7 @@
 </template>
 
 <script>
+
 import {
   Popper,
   PopperContent,
@@ -53,29 +47,34 @@ import {
   ThemeClass
 } from 'floating-vue'
 
+import { 
+    ref 
+} from "vue"
+
+let setup = () => {
+    let container = ref()
+    let getTargetNodes = () =>  Array.from(container.value.children)
+    let result = {
+        "x": 100,
+        "y": 300,
+        "placement": "top",
+        "strategy": "fixed",
+        "arrow": false,
+        "transformOrigin": null
+    }
+    return {
+        container,
+        getTargetNodes,
+        result,
+    }
+}
+
 export default {
-
-  components: {
-    Popper: Popper(),
-    PopperContent,
-  },
-
-  inheritAttrs: false,
-
-  props: {
-    theme: {
-      type: String,
-      default () {
-        return 'default-theme'
-      },
+    setup,
+    components: {
+        Popper: Popper(),
+        PopperContent,
     },
-  },
-
-  methods: {
-    getTargetNodes () {
-      return Array.from(this.$refs.reference.children)
-    },
-  },
 
 }
 </script>

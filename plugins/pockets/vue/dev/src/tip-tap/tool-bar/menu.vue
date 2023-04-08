@@ -4,7 +4,6 @@ bubble-menu()
   fontFamily()
   element-selector()
   format-buttons() 
-
 </template>
 <script lang='ts' setup>
 import nodeInterface from "./node-interface"

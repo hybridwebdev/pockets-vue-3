@@ -1,15 +1,16 @@
 //@ts-nocheck
 import { Extension, isNodeSelection, posToDOMRect } from '@tiptap/core'
-
-
-let nodeFind = (editor) => {
+ 
+let getCoords = (editor) => {
+  
   let { state, view } = editor
   const { ranges } = state.selection
   const from = Math.min(...ranges.map(range => range.$from.pos))
   const to = Math.max(...ranges.map(range => range.$to.pos))
+  
   if (isNodeSelection(state.selection)) {
+
     let node = view.nodeDOM(from) as HTMLElement
-    // support for CellSelections
 
     const nodeViewWrapper = node.dataset.nodeViewWrapper ? node : node.querySelector('[data-node-view-wrapper]')
 
@@ -20,8 +21,11 @@ let nodeFind = (editor) => {
     if (node) {
       return node.getBoundingClientRect()
     }
+
   }
+
   return posToDOMRect(view, from, to)
+
 }
 
 let selectHandler = ({ editor, transaction, event }) => {
@@ -31,7 +35,9 @@ let selectHandler = ({ editor, transaction, event }) => {
   let node;
   let pos;
   
-  if(selection.$from.depth === 0) return;
+  if(selection.$from.depth === 0) {
+    editor.nodeTree.active = false
+  }
 
   if(!selection.node) {
     node = selection.$head.parent
@@ -56,12 +62,17 @@ let selectHandler = ({ editor, transaction, event }) => {
     attrs,
     selectionType: selection.jsonID,
     name: node.type.name,
-    position: nodeFind(editor)
+    position: getCoords(editor)
   }
 
 }
 
+let unselect = ({ editor }) => {
+  editor.nodeTree.active = false
+}
+
 export default Extension.create({
   onFocus: selectHandler,
-  onSelectionUpdate: selectHandler
+  onSelectionUpdate: selectHandler,
+  onBlur: unselect
 })

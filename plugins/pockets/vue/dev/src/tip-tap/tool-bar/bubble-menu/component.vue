@@ -8,7 +8,7 @@ pockets-popup-menu(
   :positioning-disabled='false'
 )
   template(#popper)
-    | {{state}}
+    | {{editor.nodeTree.active}}
     slot()
 </template>
 <script lang='ts'>
@@ -24,14 +24,8 @@ let setup = () => {
   
   let editor = inject('tip-tap-editor')
   
-  let state = reactive({  coords: null } )
-
-  onMounted(() => {
-     editor.registerPlugin( BubbleMenuPlugin( state ) )
-  } )
-
   return {
-    state
+    editor
   }
 
 }

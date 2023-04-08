@@ -11,6 +11,6 @@ import formatButtons from "./format-buttons"
 import elementSelector from "./element-selector"
 import fontColor from "./font-color"
 import fontFamily from "./font-family"
-import bubbleMenu from "./bubble-menu/component.vue"
+import bubbleMenu from "./bubble-menu/index.vue"
 </script>
 

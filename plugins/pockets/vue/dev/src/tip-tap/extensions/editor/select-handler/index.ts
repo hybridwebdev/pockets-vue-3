@@ -1,6 +1,6 @@
 //@ts-nocheck
 import { Extension, isNodeSelection, posToDOMRect } from '@tiptap/core'
- 
+import { nextTick }  from "vue"
 let getCoords = (editor) => {
   
   let { state, view } = editor
@@ -28,7 +28,7 @@ let getCoords = (editor) => {
 
 }
 
-let selectHandler = ({ editor, transaction, event }) => {
+let selectHandler = ({ editor }) => {
 
   let { selection } = editor.state
   let { view } = editor
@@ -49,7 +49,7 @@ let selectHandler = ({ editor, transaction, event }) => {
     pos = selection.$anchor.pos
   }
 
-  let attrs = new Proxy(node.attrs, {
+  let props = new Proxy(node.attrs, {
     set: (target, key, value) => {
       view.dispatch( view.state.tr.setNodeAttribute(pos, key, value) )
       target[key] = value
@@ -59,7 +59,7 @@ let selectHandler = ({ editor, transaction, event }) => {
   })
 
   editor.nodeTree.active = {
-    attrs,
+    props,
     selectionType: selection.jsonID,
     name: node.type.name,
     position: getCoords(editor)
@@ -68,7 +68,8 @@ let selectHandler = ({ editor, transaction, event }) => {
 }
 
 let unselect = ({ editor }) => {
-  editor.nodeTree.active = false
+  console.log('blur')
+  //editor.nodeTree.active = false
 }
 
 export default Extension.create({

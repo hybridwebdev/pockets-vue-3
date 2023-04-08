@@ -20,13 +20,12 @@ export class BubbleMenuView {
   }
 
   getCoords = (view: EditorView ) => {
-   
-    const { state, composing } = view
-    const { doc, selection } = state
+    let { state } = view
+    let { selection } = state
+    let { ranges } = selection
 
-    const { ranges } = selection
-    const from = Math.min(...ranges.map(range => range.$from.pos))
-    const to = Math.max(...ranges.map(range => range.$to.pos))
+    let from = Math.min(...ranges.map(range => range.$from.pos))
+    let to = Math.max(...ranges.map(range => range.$to.pos))
     
     if ( isNodeSelection(state.selection) ) {
         
@@ -53,6 +52,6 @@ export class BubbleMenuView {
 export const BubbleMenuPlugin = (state: BubbleMenuPluginProps) => {
   return new Plugin({
     key: new PluginKey('terst'),
-    view: view => new BubbleMenuView({ view, state }),
+    view: _ => new BubbleMenuView({ state }),
   })
 }

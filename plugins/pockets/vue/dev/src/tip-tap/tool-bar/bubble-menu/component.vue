@@ -1,44 +1,50 @@
 <template lang='pug'>
 
-pockets-popup-menu(
-  :triggers='[]'
-  :shown="true"
-  placement='top'
-  theme='tip-tap-menu'
-  :positioning-disabled='true'
-  v-if='editor.nodeTree.active'
-  :result='position'
-)
-  div() aaaaaaaaaaa
-  template(#popper)
-    div(
-      @click='editor.nodeTree.inMenu = true'
-    )
-      | {{editor.nodeTree.active}}
-      slot()
+div()
+  | hello world
+  slot()
 </template>
 <script lang='ts'>
+
 import { 
   inject,
   computed,
-  ref
+  ref,
+  onMounted,
+  onUnmounted
 } from "vue"
-import { BubbleMenuPlugin } from './base'
 
-let setup = () => {
+import BubbleMenuPlugin from './plugin'
+
+let props = {
+  pluginKey: {
+    type: String,
+    default: 'floatingMenu',
+  },
+}
+
+let setup = (props) => {
   
   let editor = inject('tip-tap-editor')
-  let position = {
-    top: "100px"
-  }
+
+  onMounted(() => {
+    editor.registerPlugin( BubbleMenuPlugin( {
+      props,
+      editor,
+    } ) )
+  })
+
+  onUnmounted( () => editor.unregisterPlugin( props.pluginKey ) )
+
   return {
     editor,
-    position
   }
 
 }
+
 export default {
-  setup
+  setup,
+  props
 }
 
 </script>

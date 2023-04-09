@@ -1,14 +1,19 @@
-import { EditorState, Plugin, PluginKey } from '@tiptap/pm/state'
 
-class terst {
+import { Plugin, PluginKey } from '@tiptap/pm/state'
+import type { EditorState } from '@tiptap/pm/state'
+import type { EditorView } from '@tiptap/pm/view'
+
+class pluginClass {
     constructor(o){
-        super()
     }
+    update(view: EditorView, oldState?: EditorState) {
+    }
+
 }
 export default (options) => {
-  return new Plugin({
-    key:
-      typeof options.pluginKey === 'string' ? new PluginKey(options.pluginKey) : options.pluginKey,
-    view: view => new terst({ view, ...options }),
-  })
+    let { pluginKey } = options.props
+    return new Plugin( {
+        key: new PluginKey(pluginKey),
+        view: view => new pluginClass({ view, ...options }),
+    } )
 }

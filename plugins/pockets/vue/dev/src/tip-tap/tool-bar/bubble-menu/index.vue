@@ -52,9 +52,11 @@ import {
     inject,
     computed 
 } from "vue"
-
+import { 
+    useCoords 
+} from "./use-coords"
 let setup = () => {
-    let editor = inject('tip-tap-editor')
+    let coords = useCoords()
     let container = ref()
     let getTargetNodes = () =>  Array.from(container.value.children)
     let result = computed(() => {
@@ -69,17 +71,13 @@ let setup = () => {
             flip: true
         }
         
-        let { active }  = editor.nodeTree
-        
-        if(active) {
-            let { position } = active
+        if(coords) {
             return {
                 ...state,
-                x: position.left,
-                y: position.top + position.height + 10
+                x: coords.value.left,
+                y: coords.value.top,
             }
         }
-        
         return state
     })
     return {

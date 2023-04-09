@@ -1,11 +1,11 @@
 //@ts-nocheck
 import { extensions } from "@/pockets-tip-tap/"
 import { onUnmounted, provide, watch } from "vue"
-
+import type { Computed } from "vue"
 import { Editor } from '@tiptap/vue-3'
 import { injectEditorKey } from "@/pockets-tip-tap"
 
-export let useCreateEditorInstance = content => {
+export let useCreateEditorInstance = (content: Computed<string>) => {
 
   let editorConfig = {
     injectCSS: false,

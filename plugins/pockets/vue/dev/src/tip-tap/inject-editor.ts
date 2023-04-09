@@ -1,4 +1,5 @@
 import { InjectionKey, inject } from "vue"
+
 export let injectEditorKey: InjectionKey<any> = Symbol('tip-tap-editor')
 
 export let injectEditor = () => {

@@ -17,7 +17,7 @@ div(
 </template>
 <script lang='ts' setup>
 
-import { injectEditor } from '@/pockets-tip-tap/inject-editor'
+import { injectEditor } from '@/pockets-tip-tap/'
 
 import { computed } from "vue"
 

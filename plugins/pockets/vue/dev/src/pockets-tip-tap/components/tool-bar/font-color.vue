@@ -17,7 +17,7 @@ input(
 </template>
 <script lang='ts' setup>
 import { inject, computed } from "vue"
-import { injectEditor } from '@/pockets-tip-tap/inject-editor'
+import { injectEditor } from '@/pockets-tip-tap/'
 
 let editor = injectEditor()
 </script>

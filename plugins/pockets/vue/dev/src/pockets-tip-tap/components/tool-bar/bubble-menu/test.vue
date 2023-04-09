@@ -8,7 +8,7 @@ div()
 </template>
 <script lang='ts'>
 import { useCoords, useSelectedNode } from "@/pockets-tip-tap/extensions/vue-use/"
-import { injectEditor } from '@/pockets-tip-tap/inject-editor'
+import { injectEditor } from '@/pockets-tip-tap/'
 
 let setup = (props) => {
   let editor = injectEditor()

@@ -1,2 +1,2 @@
-export * from "./inject-editor"
+export * from "./inject/"
 export * from "./extensions/vue-use"

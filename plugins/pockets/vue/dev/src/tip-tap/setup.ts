@@ -3,7 +3,7 @@ import { onUnmounted, provide, computed, watch } from "vue"
 import { extensions } from "./extensions"
 import { Editor } from '@tiptap/vue-3'
 import { nodeTree } from "./node-tree"
-import { injectionKey as tipTapInjectionKey } from "./injection-key"
+import { injectionKey as tipTapInjectionKey } from "./inject-editor"
 
 export let createEditorInstance = config => {
 

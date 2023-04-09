@@ -1,7 +1,7 @@
 import type { Editor } from '@tiptap/core'
 
 import { isNodeSelection, posToDOMRect } from '@tiptap/core'
-import { useInject } from '@/tip-tap/injection-key'
+import { useInject } from '@/tip-tap/inject-editor'
 
 import { 
   ref,

@@ -17,7 +17,7 @@ div(
 </template>
 <script lang='ts' setup>
 
-import { useInject } from '@/tip-tap/injection-key'
+import { useInject } from '@/tip-tap/inject-editor'
 
 import { computed } from "vue"
 

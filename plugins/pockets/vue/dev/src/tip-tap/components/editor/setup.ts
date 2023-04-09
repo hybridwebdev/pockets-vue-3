@@ -1,8 +1,8 @@
 //@ts-nocheck
 import { onUnmounted, provide, computed, watch } from "vue"
-import { extensions } from "../../extensions"
+import { extensions } from "@/tip-tap/extensions"
 import { Editor } from '@tiptap/vue-3'
-import { injectEditorKey } from "../.."
+import { injectEditorKey } from "@/tip-tap/"
 
 export let createEditorInstance = config => {
 

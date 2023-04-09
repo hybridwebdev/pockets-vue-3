@@ -1,5 +1,5 @@
 
-let selectHandler = ({ editor }) => {
+export let selectHandler = ({ editor }) => {
 
   let { selection } = editor.state
   let { view } = editor

@@ -18,8 +18,6 @@ export let createEditorInstance = config => {
 
   let editor = new Editor(editorConfig)
 
-  editor.nodeTree = nodeTree
-
   onUnmounted( () => editor.destroy() )
 
   provide(tipTapInjectionKey, editor)

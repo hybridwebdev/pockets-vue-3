@@ -1,5 +1,16 @@
 
-export let useSelectedNode = ( editor ) => {
+import { 
+  ref,
+  onMounted,
+  onUnmounted,
+} from "vue"
+
+export let useSelectedNode = (editor) => {
+  let nodeRef = ref(false)
+  return nodeRef
+}
+export let helper = ( editor ) => {
+
 
   let { selection } = editor.state
   let { view } = editor
@@ -28,7 +39,5 @@ export let useSelectedNode = ( editor ) => {
     },
     get: (target, key) =>  target[key],
   })
-  return {
 
-  }
 }

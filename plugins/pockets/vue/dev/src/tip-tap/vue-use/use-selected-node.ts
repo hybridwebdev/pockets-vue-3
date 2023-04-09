@@ -9,7 +9,7 @@ import {
 
 export let useSelectedNode = ( editor: Editor ) => {
   
-  let nodeRef = ref<null | any>(null)
+  let nodeRef = ref<any>(false)
 
   let updateHandler = (view) => nodeRef.value = getSelectedNode(editor) 
 
@@ -28,7 +28,7 @@ export let getSelectedNode = ( editor:Editor ) => {
   let pos;
 
   if(selection.$from.depth === 0) {
-    return null
+    return false
   }
 
   if( isNodeSelection(selection) ) {

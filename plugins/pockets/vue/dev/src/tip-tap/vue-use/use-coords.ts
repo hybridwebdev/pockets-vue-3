@@ -10,7 +10,7 @@ import {
 
 export let useCoords = (editor: Editor) => {
 
-  let coords = ref<null | DOMRect>(null)
+  let coords = ref<false | DOMRect>(false)
   
   let updateHandler = (view) => coords.value = getCoords(editor) 
 

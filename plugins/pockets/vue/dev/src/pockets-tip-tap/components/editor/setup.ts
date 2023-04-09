@@ -4,9 +4,7 @@ import { extensions } from "@/pockets-tip-tap/extensions"
 import { Editor } from '@tiptap/vue-3'
 import { injectEditorKey } from "@/pockets-tip-tap"
 
-export let useCreateEditorInstance = config => {
-
-  let { content } = config
+export let useCreateEditorInstance = content => {
 
   let editorConfig = {
     injectCSS: false,
@@ -42,9 +40,7 @@ export let setup = ( props, { emit } )  => {
     set: v => emit( 'update:modelValue', v)
   } ) 
 
-  let editor = useCreateEditorInstance( {
-    content
-  } )
+  let editor = useCreateEditorInstance( content )
 
   return { 
     editor

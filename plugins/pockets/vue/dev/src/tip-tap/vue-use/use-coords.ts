@@ -29,7 +29,7 @@ export let getCoords = (editor: Editor) => {
   const from = Math.min(...ranges.map(range => range.$from.pos))
   const to = Math.max(...ranges.map(range => range.$to.pos))
   
-  if (isNodeSelection(state.selection)) {
+  if ( isNodeSelection(state.selection) ) {
 
     let node = view.nodeDOM(from) as HTMLElement
 

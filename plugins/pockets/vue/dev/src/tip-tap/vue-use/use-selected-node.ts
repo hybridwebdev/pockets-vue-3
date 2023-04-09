@@ -5,7 +5,7 @@ import {
   onUnmounted,
 } from "vue"
 
-export let useSelectedNode = (editor: Editor) => {
+export let useSelectedNode = ( editor: Editor ) => {
   
   let nodeRef = ref(false)
 
@@ -17,9 +17,9 @@ export let useSelectedNode = (editor: Editor) => {
 
   return nodeRef
 }
-export let getSelectedNode = ( editor ) => {
 
-  return false;
+export let getSelectedNode = ( editor:Editor ) => {
+
   // let { selection } = editor.state
   // let { view } = editor
   // let node;
@@ -48,4 +48,6 @@ export let getSelectedNode = ( editor ) => {
   //   get: (target, key) =>  target[key],
   // })
 
+  return false;
+  
 }

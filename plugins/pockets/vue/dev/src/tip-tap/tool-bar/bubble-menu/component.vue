@@ -8,10 +8,10 @@ div()
 
 import { 
   inject,
-  computed,
   ref,
   onMounted,
-  onUnmounted
+  onUnmounted,
+  reactive
 } from "vue"
 
 import BubbleMenuPlugin from './plugin'
@@ -26,11 +26,16 @@ let props = {
 let setup = (props) => {
   
   let editor = inject('tip-tap-editor')
+  let state = reactive( {
+    show: false,
+    coords: false
+  } )
 
   onMounted(() => {
     editor.registerPlugin( BubbleMenuPlugin( {
       props,
       editor,
+      state
     } ) )
   })
 

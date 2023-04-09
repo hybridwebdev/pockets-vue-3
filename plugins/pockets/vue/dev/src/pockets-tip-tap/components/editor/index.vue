@@ -8,7 +8,7 @@ toolBar()
 </template>
 <script lang='ts'>
 import { EditorContent } from '@tiptap/vue-3'
-import toolBar from "@/pockets-tip-tap/tool-bar/menu.vue"
+import toolBar from "@/pockets-tip-tap/components/tool-bar/menu.vue"
 import { setup } from "./setup"
 export default {
   components: { 

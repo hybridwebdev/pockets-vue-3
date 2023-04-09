@@ -1,18 +1,20 @@
 <template lang='pug'>
-
 div()
-  | hello world
-  | {{ coords }}
+  div(class='p-1') 
+    | {{ coords }}
+  div(class='p-1') 
+    | {{ node}}
   slot()
 </template>
 <script lang='ts'>
-import { useCoords } from "@/tip-tap/vue-use/"
+import { useCoords, useSelectedNode } from "@/tip-tap/vue-use/"
 import { injectEditor } from '@/tip-tap/inject-editor'
 
 let setup = (props) => {
   let editor = injectEditor()
   return {
-    coords: useCoords(editor)
+    coords: useCoords(editor),
+    node: useSelectedNode(editor)
   }
 }
 

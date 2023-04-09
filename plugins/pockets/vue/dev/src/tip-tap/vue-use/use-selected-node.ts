@@ -1,5 +1,5 @@
 
-export let selectHandler = ({ editor }) => {
+export let useSelectedNode = ( editor ) => {
 
   let { selection } = editor.state
   let { view } = editor
@@ -28,5 +28,7 @@ export let selectHandler = ({ editor }) => {
     },
     get: (target, key) =>  target[key],
   })
+  return {
 
+  }
 }

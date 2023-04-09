@@ -2,7 +2,7 @@
 import { onUnmounted, provide, computed, watch } from "vue"
 import { extensions } from "./extensions"
 import { Editor } from '@tiptap/vue-3'
-import { injectionKey as tipTapInjectionKey } from "./inject-editor"
+import { injectEditorKey } from "./"
 
 export let createEditorInstance = config => {
 
@@ -13,13 +13,14 @@ export let createEditorInstance = config => {
     extensions,
     content: content.value,
     onUpdate: () => content.value = editor.getHTML(),
+    autofocus: false
   }
 
   let editor = new Editor(editorConfig)
 
   onUnmounted( () => editor.destroy() )
 
-  provide(tipTapInjectionKey, editor)
+  provide(injectEditorKey, editor)
   
   watch(content, (v) => {
     /**

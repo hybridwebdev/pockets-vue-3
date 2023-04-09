@@ -45,7 +45,9 @@ export default Extension.create({
   addGlobalAttributes: () => [
     styleExtension( { key: "backgroundColor", styleName: "background-color"}),
     styleExtension( { key: "color", styleName: "color" } ),
-    styleExtension( { key: "fontSize", styleName: "font-size" } )  
+    styleExtension( { key: "fontSize", styleName: "font-size" } ),  
+    styleExtension( { key: "fontFamily", styleName: "font-family" } ),
+    styleExtension( { key: "fontWeight", styleName: "font-weight" } ),
   ]
 })
   

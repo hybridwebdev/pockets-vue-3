@@ -30,7 +30,7 @@ let change = ($e) => {
 let makeOption = (fontFamily: string ) => ( {
     text: fontFamily,
     isActive:  editor.isActive('textStyle', { fontFamily } ),
-    select: () => editor.chain().focus().setFontFamily( fontFamily ).run()
+    select: () => editor.chain().focus().setTextStyle( { fontFamily } ).run()
 } )
 
 let options = computed( () => [

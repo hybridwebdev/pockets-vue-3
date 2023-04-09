@@ -6,7 +6,7 @@ div()
   slot()
 </template>
 <script lang='ts'>
-import { useCoords } from "./use-coords"
+import { useCoords } from "@/tip-tap/vue-use/"
 import { injectEditor } from '@/tip-tap/inject-editor'
 
 let setup = (props) => {

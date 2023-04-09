@@ -22,7 +22,7 @@ export let useCoords = (editor: Editor) => {
   
 }
 
-export let getCoords = (editor: Editor) => {
+let getCoords = (editor: Editor) => {
   
   let { state, view } = editor
   const { ranges } = state.selection

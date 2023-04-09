@@ -21,7 +21,7 @@ export let useSelectedNode = ( editor: Editor ) => {
   
 }
 
-export let getSelectedNode = ( editor:Editor ) => {
+let getSelectedNode = ( editor:Editor ) => {
 
   let { selection } = editor.state
   let { view } = editor

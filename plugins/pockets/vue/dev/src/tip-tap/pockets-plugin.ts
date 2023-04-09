@@ -1,5 +1,5 @@
 import { defineAsyncComponent } from "vue"
-let component = defineAsyncComponent( () => import("./tip-tap.vue") )
+let component = defineAsyncComponent( () => import("./editor.vue") )
 let pocketsHtml = defineAsyncComponent( () => import("./pockets-html.vue") )
 export let plugin:$pocketsPlugin = {
     createApp: (app: any, $pockets: $pockets) => {

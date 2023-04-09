@@ -25,7 +25,7 @@ button(
 
 </template>
 <script lang='ts' setup>
-import { useInject } from '@/tip-tap/inject-editor'
-let editor = useInject()
+import { injectEditor } from '@/tip-tap/inject-editor'
+let editor = injectEditor()
 let btnClass = 'rounded-0 border-0 p-1'
 </script>

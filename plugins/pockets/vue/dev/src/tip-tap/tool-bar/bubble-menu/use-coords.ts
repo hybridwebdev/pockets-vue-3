@@ -1,7 +1,7 @@
 import type { Editor } from '@tiptap/core'
 
 import { isNodeSelection, posToDOMRect } from '@tiptap/core'
-import { useInject } from '@/tip-tap/inject-editor'
+import { injectEditor } from '@/tip-tap/inject-editor'
 
 import { 
   ref,
@@ -11,7 +11,7 @@ import {
 
 export let useCoords = () => {
   
-  let editor = useInject() 
+  let editor = injectEditor() 
 
   let coords = ref<null | any>(false)
   

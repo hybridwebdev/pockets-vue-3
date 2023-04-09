@@ -17,11 +17,11 @@ div(
 </template>
 <script lang='ts' setup>
 
-import { useInject } from '@/tip-tap/inject-editor'
+import { injectEditor } from '@/tip-tap/inject-editor'
 
 import { computed } from "vue"
 
-let editor = useInject()
+let editor = injectEditor()
 
 let change = ($e) => {
     let v = options.value[$e.target.value] ?? false

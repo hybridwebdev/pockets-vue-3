@@ -25,7 +25,7 @@ button(
 
 </template>
 <script lang='ts' setup>
-import { inject } from "vue"
-let editor = inject('tip-tap-editor')
+import { useInject } from '@/tip-tap/injection-key'
+let editor = useInject()
 let btnClass = 'rounded-0 border-0 p-1'
 </script>

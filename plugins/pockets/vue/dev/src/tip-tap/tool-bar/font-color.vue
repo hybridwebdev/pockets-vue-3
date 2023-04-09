@@ -17,5 +17,7 @@
 </template>
 <script lang='ts' setup>
 import { inject, computed } from "vue"
-let editor = inject('tip-tap-editor')
+import { useInject } from '@/tip-tap/injection-key'
+
+let editor = useInject()
 </script>

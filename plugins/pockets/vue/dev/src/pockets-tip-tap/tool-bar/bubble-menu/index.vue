@@ -55,9 +55,9 @@ import {
 
 import { 
     useCoords 
-} from "@/tip-tap/extensions/vue-use"
+} from "@/pockets-tip-tap/extensions/vue-use"
 
-import { injectEditor } from '@/tip-tap/inject-editor'
+import { injectEditor } from '@/pockets-tip-tap/inject-editor'
 
 let setup = () => {
     let editor = injectEditor()

@@ -1,7 +1,6 @@
 import type { Editor } from '@tiptap/core'
 
 import { isNodeSelection, posToDOMRect } from '@tiptap/core'
-import { injectEditor } from '@/tip-tap/inject-editor'
 
 import { 
   ref,
@@ -9,9 +8,7 @@ import {
   onUnmounted,
 } from "vue"
 
-export let useCoords = () => {
-  
-  let editor = injectEditor() 
+export let useCoords = (editor: Editor) => {
 
   let coords = ref<null | any>(false)
   

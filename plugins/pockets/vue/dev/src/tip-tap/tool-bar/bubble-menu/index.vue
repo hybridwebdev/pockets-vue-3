@@ -52,11 +52,17 @@ import {
     inject,
     computed 
 } from "vue"
+
 import { 
     useCoords 
 } from "./use-coords"
+
+import { injectEditor } from '@/tip-tap/inject-editor'
+
 let setup = () => {
-    let coords = useCoords()
+    let editor = injectEditor()
+
+    let coords = useCoords(editor)
     let container = ref()
     let getTargetNodes = () =>  Array.from(container.value.children)
     let result = computed(() => {

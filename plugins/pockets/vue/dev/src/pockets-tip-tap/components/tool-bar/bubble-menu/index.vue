@@ -47,17 +47,9 @@ import {
   ThemeClass
 } from 'floating-vue'
 
-import { 
-    ref, 
-    inject,
-    computed 
-} from "vue"
+import {  ref,  inject, computed  } from "vue"
 
-import { 
-    useCoords 
-} from "@/pockets-tip-tap/"
-
-import { injectEditor } from '@/pockets-tip-tap/'
+import { useCoords, injectEditor } from "@/pockets-tip-tap/"
 
 let setup = () => {
     let editor = injectEditor()

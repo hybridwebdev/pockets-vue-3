@@ -4,7 +4,6 @@
     </div>
 </template>
 <script lang='ts' setup>
-import { useSelectedNode } from "@/pockets-tip-tap/"
-import { injectEditor } from "@/pockets-tip-tap/"
+import { useSelectedNode, injectEditor } from "@/pockets-tip-tap/"
 let node = useSelectedNode(injectEditor())
 </script>

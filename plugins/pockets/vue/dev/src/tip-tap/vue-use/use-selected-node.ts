@@ -9,15 +9,16 @@ import {
 
 export let useSelectedNode = ( editor: Editor ) => {
   
-  let nodeRef = ref<any>(false)
+  let selectedNode = ref<any>(false)
 
-  let updateHandler = (view) => nodeRef.value = getSelectedNode(editor) 
+  let updateHandler = (view) => selectedNode.value = getSelectedNode(editor) 
 
   onMounted( () => editor.on('transaction', updateHandler ) )
 
   onUnmounted( () => editor.off('transaction', updateHandler ) )
 
-  return nodeRef
+  return selectedNode
+  
 }
 
 export let getSelectedNode = ( editor:Editor ) => {

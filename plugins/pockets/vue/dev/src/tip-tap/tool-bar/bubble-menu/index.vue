@@ -75,9 +75,10 @@ let setup = () => {
             return {
                 ...state,
                 x: coords.value.left,
-                y: coords.value.top,
+                y: coords.value.top + coords.value.height + 10,
             }
         }
+        
         return state
     })
     return {

@@ -6,7 +6,8 @@ import type { EditorView } from '@tiptap/pm/view'
 class pluginClass {
     constructor(o){
     }
-    update(view: EditorView, oldState?: EditorState) {
+    update(view: EditorView) {
+        console.log(view)
     }
 
 }

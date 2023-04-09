@@ -1,4 +1,6 @@
 import type { Editor } from '@tiptap/core'
+import { isNodeSelection } from '@tiptap/core'
+
 import { 
   ref,
   onMounted,
@@ -7,7 +9,7 @@ import {
 
 export let useSelectedNode = ( editor: Editor ) => {
   
-  let nodeRef = ref(false)
+  let nodeRef = ref<null | any>(null)
 
   let updateHandler = (view) => nodeRef.value = getSelectedNode(editor) 
 
@@ -20,34 +22,35 @@ export let useSelectedNode = ( editor: Editor ) => {
 
 export let getSelectedNode = ( editor:Editor ) => {
 
-  // let { selection } = editor.state
-  // let { view } = editor
-  // let node;
-  // let pos;
-  
-  // if(selection.$from.depth === 0) {
-  //   editor.nodeTree.active = false
-  // }
+  let { selection } = editor.state
+  let { view } = editor
+  let node;
+  let pos;
 
-  // if(!selection.node) {
-  //   node = selection.$head.parent
-  //   pos = selection.$from.before(selection.$from.depth)
-  // }
-  
-  // if(selection.node) {
-  //   node = selection.node
-  //   pos = selection.$anchor.pos
-  // }
+  if(selection.$from.depth === 0) {
+    return null
+  }
 
-  // let props = new Proxy(node.attrs, {
-  //   set: (target, key, value) => {
-  //     view.dispatch( view.state.tr.setNodeAttribute(pos, key, value) )
-  //     target[key] = value
-  //     return true
-  //   },
-  //   get: (target, key) =>  target[key],
-  // })
+  if( isNodeSelection(selection) ) {
+      node = selection.node
+      pos = selection.$anchor.pos
+  }
+  if( !isNodeSelection(selection) ) {
+    node = selection.$head.parent
+    pos = selection.$from.before(selection.$from.depth)
+  }
 
-  return false;
-  
+  let props = new Proxy(node.attrs, {
+    set: (target, key: string, value) => {
+      view.dispatch( view.state.tr.setNodeAttribute(pos, key, value) )
+      target[key] = value
+      return true
+    },
+    get: (target, key) =>  target[key],
+  })
+
+  return {
+    props
+  }
+
 }

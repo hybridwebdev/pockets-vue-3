@@ -19,6 +19,7 @@ export let useCoords = (editor: Editor) => {
   onUnmounted( () => editor.off('transaction', updateHandler ) )
 
   return coords
+  
 }
 
 export let getCoords = (editor: Editor) => {

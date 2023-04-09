@@ -1,6 +1,6 @@
 //@ts-nocheck
 import { extensions } from "@/pockets-tip-tap/"
-import { onUnmounted, provide, computed, watch } from "vue"
+import { onUnmounted, provide, watch } from "vue"
 
 import { Editor } from '@tiptap/vue-3'
 import { injectEditorKey } from "@/pockets-tip-tap"

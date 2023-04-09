@@ -57,7 +57,7 @@ import {
     useCoords 
 } from "@/pockets-tip-tap/"
 
-import { injectEditor } from '@/pockets-tip-tap/inject-editor'
+import { injectEditor } from '@/pockets-tip-tap/'
 
 let setup = () => {
     let editor = injectEditor()

@@ -17,9 +17,9 @@ export let useCreateEditorInstance = content => {
 
   let editor = new Editor(editorConfig)
 
-  onUnmounted( () => editor.destroy() )
-
   provide(injectEditorKey, editor)
+
+  onUnmounted( () => editor.destroy() )
   
   watch(content, (v) => {
     /**

@@ -7,9 +7,12 @@ div()
 </template>
 <script lang='ts'>
 import { useCoords } from "./use-coords"
+import { injectEditor } from '@/tip-tap/inject-editor'
+
 let setup = (props) => {
+  let editor = injectEditor()
   return {
-    coords: useCoords(props)
+    coords: useCoords(editor)
   }
 }
 

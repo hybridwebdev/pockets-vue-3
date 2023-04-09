@@ -16,9 +16,12 @@ div(
 
 </template>
 <script lang='ts' setup>
-import { inject, computed } from "vue"
 
-let editor = inject('tip-tap-editor')
+import { useInject } from '@/tip-tap/injection-key'
+
+import { computed } from "vue"
+
+let editor = useInject()
 
 let change = ($e) => {
     let v = options.value[$e.target.value] ?? false

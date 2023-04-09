@@ -3,6 +3,7 @@ import { onUnmounted, provide, computed, watch } from "vue"
 import { extensions } from "./extensions"
 import { Editor } from '@tiptap/vue-3'
 import { nodeTree } from "./node-tree"
+import { injectionKey as tipTapInjectionKey } from "./injection-key"
 
 export let createEditorInstance = config => {
 
@@ -21,7 +22,7 @@ export let createEditorInstance = config => {
 
   onUnmounted( () => editor.destroy() )
 
-  provide('tip-tap-editor', editor)
+  provide(tipTapInjectionKey, editor)
   
   watch(content, (v) => {
     /**

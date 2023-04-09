@@ -2,54 +2,19 @@
 
 div()
   | hello world
+  | {{ coords }}
   slot()
 </template>
 <script lang='ts'>
-
-import { 
-  inject,
-  ref,
-  onMounted,
-  onUnmounted,
-  reactive
-} from "vue"
-
-import BubbleMenuPlugin from './plugin'
-
-let props = {
-  pluginKey: {
-    type: String,
-    default: 'floatingMenu',
-  },
-}
-
+import { useCoords } from "./use-coords"
 let setup = (props) => {
-  
-  let editor = inject('tip-tap-editor')
-  let state = reactive( {
-    show: false,
-    coords: false
-  } )
-
-  onMounted(() => {
-    editor.registerPlugin( BubbleMenuPlugin( {
-      props,
-      editor,
-      state
-    } ) )
-  })
-
-  onUnmounted( () => editor.unregisterPlugin( props.pluginKey ) )
-
   return {
-    editor,
+    coords: useCoords(props)
   }
-
 }
 
 export default {
   setup,
-  props
 }
 
 </script>

@@ -1,6 +1,5 @@
 //@ts-nocheck
 import { Extension, isNodeSelection, posToDOMRect } from '@tiptap/core'
-import { nextTick }  from "vue"
 let getCoords = (editor) => {
   
   let { state, view } = editor
@@ -73,7 +72,7 @@ let unselect = ({ editor }) => {
 }
 
 export default Extension.create({
-  onFocus: selectHandler,
-  onSelectionUpdate: selectHandler,
-  onBlur: unselect
+  // onFocus: selectHandler,
+  // onSelectionUpdate: selectHandler,
+  // onBlur: unselect
 })
